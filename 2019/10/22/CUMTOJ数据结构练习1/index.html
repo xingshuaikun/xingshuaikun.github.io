@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CUMTOJ数据结构练习1 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="问题 A: 回文数题目描述我们把从左往右和从右往左念起来相同的数字叫做回文数。例如，75457就是一个回文数。当然某个数用某个进制表示不是回文数，但是用别的进制表示可能就是回文数。例如，17是用十进制表示的数，显然它不是一个回文数，但是将17用二进制表示出来是10001，显然在二进制下它是一个回文数。现在给你一个用十进制表示的数，请你判断它在2到16进制下是否是回文数。 输入输入包含多组测试数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMTOJ数据结构练习1">
+<meta property="og:url" content="http://example.com/2019/10/22/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%83%E4%B9%A01/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="问题 A: 回文数题目描述我们把从左往右和从右往左念起来相同的数字叫做回文数。例如，75457就是一个回文数。当然某个数用某个进制表示不是回文数，但是用别的进制表示可能就是回文数。例如，17是用十进制表示的数，显然它不是一个回文数，但是将17用二进制表示出来是10001，显然在二进制下它是一个回文数。现在给你一个用十进制表示的数，请你判断它在2到16进制下是否是回文数。 输入输入包含多组测试数据。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-22T09:12:10.000Z">
+<meta property="article:modified_time" content="2020-01-10T01:59:06.320Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CUMTOJ数据结构练习1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/22/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%83%E4%B9%A01/" class="article-date">
+  <time class="dt-published" datetime="2019-10-22T09:12:10.000Z" itemprop="datePublished">2019-10-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      CUMTOJ数据结构练习1
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="问题-A-回文数"><a href="#问题-A-回文数" class="headerlink" title="问题 A: 回文数"></a>问题 A: 回文数</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>我们把从左往右和从右往左念起来相同的数字叫做回文数。例如，75457就是一个回文数。<br>当然某个数用某个进制表示不是回文数，但是用别的进制表示可能就是回文数。<br>例如，17是用十进制表示的数，显然它不是一个回文数，但是将17用二进制表示出来是10001，显然在二进制下它是一个回文数。<br>现在给你一个用十进制表示的数，请你判断它在2到16进制下是否是回文数。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>输入包含多组测试数据。每组输入一个用十进制表示的正整数n（0 &lt; n &lt; 50000），当n &#x3D; 0时，输入结束。</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>对于每组输入，如果n在2<del>16进制中的某些进制表示下是回文数，则输出“Number i is palindrom in basis ”，在后面接着输出那些进制。其中i用n的值代替，后面输出的进制中，每两个数字之间空一个。<br>如果n在2</del>16进制的表示下都不为回文数，则输出“Number i is not a palindrom”，其中i用n的值代替。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>17<br>19<br>0</p>
+</blockquote>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>Number 17 is palindrom in basis 2 4 16<br>Number 19 is not a palindrom</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int Judge(int n, int i);</span><br><span class="line">    int Decimal_Num = 1;</span><br><span class="line">    while(Decimal_Num)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; Decimal_Num;</span><br><span class="line">        if(Decimal_Num == 0)</span><br><span class="line">            return 0;</span><br><span class="line">        int arr[20] = &#123; 0 &#125;;</span><br><span class="line">        int i, t = 0;</span><br><span class="line">        for(i = 2; i &lt;= 16; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(Judge(Decimal_Num, i))</span><br><span class="line">            &#123;</span><br><span class="line">                t = 1;</span><br><span class="line">                arr[i] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(t)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; &quot;Number &quot; &lt;&lt; Decimal_Num &lt;&lt; &quot; is palindrom in basis &quot;;</span><br><span class="line">            for(i = 2; i &lt;= 16; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(arr[i])</span><br><span class="line">                    cout &lt;&lt; i &lt;&lt; &quot; &quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            cout &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            cout &lt;&lt; &quot;Number &quot; &lt;&lt; Decimal_Num &lt;&lt; &quot; is not a palindrom\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int Judge(int n, int i)</span><br><span class="line">&#123;</span><br><span class="line">    int a[50];</span><br><span class="line">    int g, num = 0;</span><br><span class="line">    while(n)</span><br><span class="line">    &#123;</span><br><span class="line">        a[num++] = n % i;</span><br><span class="line">        n /= i;</span><br><span class="line">    &#125;</span><br><span class="line">    int t = 1;</span><br><span class="line">    for(g = 0; g &lt; num / 2; g++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(a[g] != a[num - 1 - g])</span><br><span class="line">        &#123;</span><br><span class="line">            t = 0;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-C-单词排序"><a href="#问题-C-单词排序" class="headerlink" title="问题 C: 单词排序"></a>问题 C: 单词排序</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>小红学会了很多英文单词，妈妈为了帮小红加强记忆，拿出纸、笔，把 N 个单词写在纸上的一行里，小红看了几秒钟后，将这张纸扣在桌子上。妈妈问小红：“你能否将这 N 个单词按照字典排列的顺序，从小到大写出来？”小红按照妈妈的要求写出了答案。现在请你编写程序帮助妈妈检查小红的答案是否正确。注意：所有单词都由小写字母组成，单词两两之间用一个空格分隔。</p>
+<h2 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h2><p>输入包含两行。<br>第一行仅包括一个正整数N(0&lt;N≤26)。<br>第二行包含N个单词，表示妈妈写出的单词，两两之间用一个空格分隔。<br>单个单词长度不超过1010。</p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><p>输出仅有一行。针对妈妈写出的单词，按照字典排列的顺序从小到大排列成一行的结果，每个单词后带一个空格。</p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>4<br>city boy tree student</p>
+</blockquote>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>boy city student tree </p>
+</blockquote>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    string word[30];</span><br><span class="line">    int word_num, i;</span><br><span class="line">    cin &gt;&gt; word_num;</span><br><span class="line">    for (i = 0; i &lt; word_num; i++)</span><br><span class="line">        cin &gt;&gt; word[i];</span><br><span class="line">    sort(word, word + word_num);</span><br><span class="line">    for (i = 0; i &lt; word_num; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if (i == 0)</span><br><span class="line">            cout &lt;&lt; word[i];</span><br><span class="line">        else</span><br><span class="line">            cout &lt;&lt; &quot; &quot; &lt;&lt; word[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-D-4-5-17-Power-Strings"><a href="#问题-D-4-5-17-Power-Strings" class="headerlink" title="问题 D: 4.5.17 Power Strings"></a>问题 D: 4.5.17 Power Strings</h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given two strings a and b we define a<em>b to be their concatenation. For example, if a &#x3D; “abc” and b &#x3D; “def” then a</em>b &#x3D; “abcdef”. If we think of concatenation as multiplication, exponentiation by a non-negative integer is defined in the normal way: a^0 &#x3D; “” (the empty string) and a^(n+1) &#x3D; a*(a^n).</p>
+<h2 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h2><p>Each test case is a line of input representing s, a string of printable characters. The length of s will be at least 1 and will not exceed 1 million characters. A line containing a period follows the last test case.</p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><p>For each s you should print the largest n such that s &#x3D; a^n for some string a.</p>
+<h2 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>abcd<br>aaaa<br>ababab<br>.</p>
+</blockquote>
+<h2 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>1<br>4<br>3</p>
+</blockquote>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int arr[1000005], len;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    void set_naxt(char str[]);</span><br><span class="line">    int I;</span><br><span class="line">    char str[1000001];</span><br><span class="line">    while (cin &gt;&gt; str &amp;&amp; strcmp(str, &quot;.&quot;) != 0)</span><br><span class="line">    &#123;</span><br><span class="line">        set_naxt(str);</span><br><span class="line">        if (len % (len - arr[len]) == 0)</span><br><span class="line">            I = len / (len - arr[len]);</span><br><span class="line">        else</span><br><span class="line">            I = 1;</span><br><span class="line">        cout &lt;&lt; I &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void set_naxt(char str[])</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0, j = -1;</span><br><span class="line">    arr[0] = -1;</span><br><span class="line">    len = strlen(str);</span><br><span class="line">    while (i &lt; len)</span><br><span class="line">    &#123;</span><br><span class="line">        if (j == -1 || str[i] == str[j])</span><br><span class="line">        &#123;</span><br><span class="line">            i++; </span><br><span class="line">            j++;</span><br><span class="line">            arr[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            j = arr[j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/22/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%83%E4%B9%A01/" data-id="cl1qb1dxe001aqktu4yap2gav" data-title="CUMTOJ数据结构练习1" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/22/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%83%E4%B9%A02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          CUMTOJ数据结构练习2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/21/MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">MySQL服务启动</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>密码学复习 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 背景明天就要进行密码学课程的考试了，所以就简单总结一下知识点，供自己复习之用，大神勿喷嘻嘻(#^.^#) 2 古典密码2.2 置换密码类似于 DES 的 E 盒扩展置换和 P 盒置换。 2.3 代换密码   密码类别 密钥空间    移位密码 25   乘法密码 11（gcd(n, k)&#x3D;1）   仿射密码 311（12×26-1&#x3D;311）   Playfair 25!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学复习">
+<meta property="og:url" content="http://example.com/2020/01/02/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="1 背景明天就要进行密码学课程的考试了，所以就简单总结一下知识点，供自己复习之用，大神勿喷嘻嘻(#^.^#) 2 古典密码2.2 置换密码类似于 DES 的 E 盒扩展置换和 P 盒置换。 2.3 代换密码   密码类别 密钥空间    移位密码 25   乘法密码 11（gcd(n, k)&#x3D;1）   仿射密码 311（12×26-1&#x3D;311）   Playfair 25!">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102191951156.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102195518346.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102195611793.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102195559210.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102195625608.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102195531163.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102193508969.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102191638456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102192239949.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102193218222.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102193933571.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102193113634.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200102194024151.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-01-02T10:37:43.000Z">
+<meta property="article:modified_time" content="2020-01-10T01:36:18.382Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200102191951156.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-密码学复习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/01/02/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2020-01-02T10:37:43.000Z" itemprop="datePublished">2020-01-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      密码学复习
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>明天就要进行密码学课程的考试了，所以就简单总结一下知识点，供自己复习之用，大神勿喷嘻嘻(#^.^#)</p>
+<h1 id="2-古典密码"><a href="#2-古典密码" class="headerlink" title="2 古典密码"></a>2 古典密码</h1><h2 id="2-2-置换密码"><a href="#2-2-置换密码" class="headerlink" title="2.2 置换密码"></a>2.2 置换密码</h2><p>类似于 DES 的 E 盒扩展置换和 P 盒置换。</p>
+<h2 id="2-3-代换密码"><a href="#2-3-代换密码" class="headerlink" title="2.3 代换密码"></a>2.3 代换密码</h2><table>
+<thead>
+<tr>
+<th>密码类别</th>
+<th>密钥空间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>移位密码</td>
+<td>25</td>
+</tr>
+<tr>
+<td>乘法密码</td>
+<td>11（gcd(n, k)&#x3D;1）</td>
+</tr>
+<tr>
+<td>仿射密码</td>
+<td>311（12×26-1&#x3D;311）</td>
+</tr>
+<tr>
+<td>Playfair</td>
+<td>25!</td>
+</tr>
+<tr>
+<td>Vigenere</td>
+<td>26**m（k&#x3D;k1k2k3…km）</td>
+</tr>
+<tr>
+<td>Hill</td>
+<td>具体看矩阵</td>
+</tr>
+</tbody></table>
+<h2 id="2-4-安全性分析"><a href="#2-4-安全性分析" class="headerlink" title="2.4 安全性分析"></a>2.4 安全性分析</h2><table>
+<thead>
+<tr>
+<th>统计分析法</th>
+<th>明文-密文对分析法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单表代换（爆破）</td>
+<td>Hill密码的矩阵</td>
+</tr>
+<tr>
+<td>多表代换（卡西斯基和重合指数确定密钥长度，拟重合指数确定密钥内容）</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="3-分组密码"><a href="#3-分组密码" class="headerlink" title="3 分组密码"></a>3 分组密码</h1><h2 id="3-1-DES"><a href="#3-1-DES" class="headerlink" title="3.1 DES"></a>3.1 DES</h2><h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><ul>
+<li>初始置换和初始逆置换</li>
+<li>F 函数包含 E 盒扩展置换、密钥加、S 盒代换和 P 盒置换</li>
+<li>子密钥生成</li>
+</ul>
+<h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><blockquote>
+<p>对 DES 的 S 盒、迭代次数、密钥长度等设计准则的争议<br>DES 存在一些弱密钥和半弱密钥<br>DES 的 56 位密钥无法抵抗穷举攻击<br>代数结构存在互补对称性</p>
+</blockquote>
+<h2 id="3-2-AES"><a href="#3-2-AES" class="headerlink" title="3.2 AES"></a>3.2 AES</h2><h3 id="基本步骤-1"><a href="#基本步骤-1" class="headerlink" title="基本步骤"></a>基本步骤</h3><p>字节代换、行移位、列混合、轮密钥加</p>
+<p><img src="https://img-blog.csdnimg.cn/20200102191951156.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="AES加解密"></p>
+<h3 id="安全性分析-1"><a href="#安全性分析-1" class="headerlink" title="安全性分析"></a>安全性分析</h3><ul>
+<li>差分攻击</li>
+<li>线性攻击</li>
+</ul>
+<h2 id="3-3-IDEA"><a href="#3-3-IDEA" class="headerlink" title="3.3 IDEA"></a>3.3 IDEA</h2><p>128 位密钥加密 64 位明文</p>
+<h2 id="3-4-工作模式"><a href="#3-4-工作模式" class="headerlink" title="3.4 工作模式"></a>3.4 工作模式</h2><ul>
+<li>电子密码本模式（ECB）</li>
+<li>密码分组链接模式（CBC）</li>
+<li>密码反馈模式（CFB）</li>
+<li>输出反馈模式（OFB）</li>
+<li>计数器模式（CTR）</li>
+</ul>
+<h2 id="3-5-具体分析"><a href="#3-5-具体分析" class="headerlink" title="3.5 具体分析"></a>3.5 具体分析</h2><p>电子密码本模式（ECB）具有良好的差错控制。实际上，每一个分组可被看成是用同一个密钥加密的单独消息。密文中数据出了错，解密时，会使得相对应的整个明文分组解密错误，但它不会影响其他密文块解密。然而，如果密文中偶尔丢失或添加一些数据位，那么整个密文序列将不能正确解密，除非有某种帧结构能够重新排列分组的边界。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200102195518346.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="电子密码本模式（ECB）"></p>
+<p>使用 CBC 时，虽然明文分组中发生错误将影响对应的密文分组以及其后的所有密文分组。但是由于解密将反转这种影响，最后得到的明文也仍然只有那一个分组有错误。因而，CBC 没有明文错误扩散。<br>密文错误相对复杂一点。由于信道噪声或存储介质损坏的存在，接收方得到的密文常常会有一些错误。在 CBC 中，密文中一个分组发生错误将影响对应解密明文分组和其后的一个解密明文分组。随后的那个分组在解密后在同样的比特位上有错误，但是，再之后的分组将不受影响。因而，CBC 的密文错误扩散是很小的。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200102195611793.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="密码分组链接模式（CBC）"></p>
+<p>同 CBC 一样在 CFB 中，明文的一个错误就好影响所有后面的密文但解密的明文只有一个分组错误。密文出现错误更有意思。首先，密文里单独 1 位的错误会引起解密后对应明文的一位错误；其次，错误进入移位寄存器，将导致加密输出错误，直到该错误从寄存器的另一端移出。在 8 比特 CFB 中，如果使用 DES 算法，密文中 1 比特的错误会使解密后明文产生 9 字节的错误，之后，系统恢复正常，后面的密文被重新正确解密。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200102195559210.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="密码反馈模式（CFB）"></p>
+<p>OFB 的一个优点是传输过程中密文在某位上发生的错误不会影响解密后明文其他位。比如，C1中有 1 位发生了错误，只会影响到 P1 的恢复，后续的明文单元不受影响。<br>但是 OFB 中，失去同步将是致命的。如果加密端和解密端移位寄存器不同步，那么恢复的明文将是一些无用的杂乱数据，任何 OFB 的系统必须有检测失步的机制，并用新的（或同一个）IV填充双方移位寄存器重新获得同步。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200102195625608.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="输出反馈模式（OFB）"></p>
+<p>CTR 只要求实现加密而不要求实现解密</p>
+<p><img src="https://img-blog.csdnimg.cn/20200102195531163.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="计数器模式（CTR）"></p>
+<h1 id="4-序列密码"><a href="#4-序列密码" class="headerlink" title="4 序列密码"></a>4 序列密码</h1><p>LFSR、周期、游程、本原多项式、m序列</p>
+<h1 id="5-哈希函数"><a href="#5-哈希函数" class="headerlink" title="5 哈希函数"></a>5 哈希函数</h1><h2 id="5-1-MD5"><a href="#5-1-MD5" class="headerlink" title="5.1 MD5"></a>5.1 MD5</h2><h3 id="基本步骤-2"><a href="#基本步骤-2" class="headerlink" title="基本步骤"></a>基本步骤</h3><p>附加填充位、初始化链接变量、分组处理、步函数</p>
+<p>注：在明文（二进制序列）的后面填充一个1和若干个0使得消息的长度模512与448同余。若原来的明文长度大于模512大于448，则填充的下一个512分组。例如原来的消息长度为500，则填充之后的长度为512+448。最后的64位存放<font color=red>消息的长度</font>，不够的在后面补0直到64位为止。</p>
+<h2 id="5-2-SHA1"><a href="#5-2-SHA1" class="headerlink" title="5.2 SHA1"></a>5.2 SHA1</h2><h2 id="安全性分析-2"><a href="#安全性分析-2" class="headerlink" title="安全性分析"></a>安全性分析</h2><p><img src="https://img-blog.csdnimg.cn/20200102193508969.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="Hash函数攻击"></p>
+<h1 id="6-公钥密码"><a href="#6-公钥密码" class="headerlink" title="6 公钥密码"></a>6 公钥密码</h1><h2 id="6-1-RSA"><a href="#6-1-RSA" class="headerlink" title="6.1 RSA"></a>6.1 RSA</h2><h3 id="基本步骤-3"><a href="#基本步骤-3" class="headerlink" title="基本步骤"></a>基本步骤</h3><p><img src="https://img-blog.csdnimg.cn/20200102191638456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="RSA算法"></p>
+<h3 id="安全性分析-3"><a href="#安全性分析-3" class="headerlink" title="安全性分析"></a>安全性分析</h3><ul>
+<li>二次筛法</li>
+<li>数域筛法</li>
+<li>共模攻击</li>
+<li>低指数攻击</li>
+<li>重复加密攻击</li>
+</ul>
+<h2 id="6-2-ElGamal"><a href="#6-2-ElGamal" class="headerlink" title="6.2 ElGamal"></a>6.2 ElGamal</h2><h3 id="基本步骤-4"><a href="#基本步骤-4" class="headerlink" title="基本步骤"></a>基本步骤</h3><p><img src="https://img-blog.csdnimg.cn/20200102192239949.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="ElGamal加解密"></p>
+<h1 id="7-数字签名"><a href="#7-数字签名" class="headerlink" title="7 数字签名"></a>7 数字签名</h1><ul>
+<li>RSA</li>
+<li>ElGamal</li>
+</ul>
+<h2 id="7-1-RSA"><a href="#7-1-RSA" class="headerlink" title="7.1 RSA"></a>7.1 RSA</h2><p><img src="https://img-blog.csdnimg.cn/20200102193218222.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="RSA签名使用Hash函数"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200102193933571.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="RSA实现数字签名"></p>
+<h2 id="7-2-ElGamal"><a href="#7-2-ElGamal" class="headerlink" title="7.2 ElGamal"></a>7.2 ElGamal</h2><p><img src="https://img-blog.csdnimg.cn/20200102193113634.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="ElGamal签名使用Hash函数"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200102194024151.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="ElGamal实现数字签名"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/01/02/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" data-id="cl1qb1dze0069qktu0ldj9coa" data-title="密码学复习" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/04/kali%E5%AD%A6%E4%B9%A0-msf-shodan-%E8%8E%B7%E5%8F%96%E6%91%84%E5%83%8F%E5%A4%B4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          kali学习-msf-使用msfvenom生成木马用于渗透虚拟机
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/25/zip%E4%BC%AA%E5%8A%A0%E5%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">zip伪加密</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

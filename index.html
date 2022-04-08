@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="iHui">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="iHui">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-IDA Pro静态分析dex文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2021-09-21T02:03:42.000Z" itemprop="datePublished">2021-09-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>中秋佳节，团圆节日，祝大家中秋节快乐哈O(∩_∩)O</p>
+<p>今天上午实验室就我一个人，不过终于把困扰我两天的<font color=red>IDA Pro静态分析dex文件</font>搞定了，坤哥yyds(●’◡’●)。</p>
+<p>话不多说，分析正式开始，一大波文字加图片来袭中，请做好准备。</p>
+<h1 id="2-分析过程"><a href="#2-分析过程" class="headerlink" title="2 分析过程"></a>2 分析过程</h1><h2 id="2-1-在Android手机中安装apk"><a href="#2-1-在Android手机中安装apk" class="headerlink" title="2.1 在Android手机中安装apk"></a>2.1 在Android手机中安装apk</h2><p>使用<font color=red>adb</font>命令安装app-release.apk到自己调试用的Android手机中，打开Crackme0201后进入注册界面，输入用户名为iReverse和注册码为1234567812345678，接着点击注册按钮，发现错误提示信息<font color=red>无效用户名或注册码</font>，如图1所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/95390638224c40f780671f3186e3892d.jpg?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图1 发现错误提示信息"></p>
+<h2 id="2-2-使用ApkTool工具反编译APK文件"><a href="#2-2-使用ApkTool工具反编译APK文件" class="headerlink" title="2.2 使用ApkTool工具反编译APK文件"></a>2.2 使用ApkTool工具反编译APK文件</h2><p><font color=red>ApkTool</font>是一款常用的跨平台APK文件反编译工具，使用命令<font color=red>apktool d app-release.apk -o outdir</font>可以在当前的outdir目录下生成反编译文件。反编译文件包含一系列目录和文件，<font color=red>smali目录</font>中存放了程序的所有反汇编代码，<font color=red>res目录</font>中存放的则是程序中所有的资源文件，这些目录的子目录和文件的组织结构与开发时源码目录的组织结构是一致的，反编译APK文件的过程如图3所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/b5477ca3f76f48ebaf49f99c55111042.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图2 反编译APK文件"></p>
+<h2 id="2-3-grep分析APK文件"><a href="#2-3-grep分析APK文件" class="headerlink" title="2.3 grep分析APK文件"></a>2.3 grep分析APK文件</h2><p>如何寻找突破口是分析一个程序的关键。对大部分Android程序来说，错误提示信息是指路明灯。错误提示代码附近通常就是程序的核心验证代码，我们可以通过阅读这些代码理解软件的注册流程。</p>
+<p>错误提示属于Android程序中的字符串资源。在开发Android程序时，这些字符串可能会被<font color=red>硬编码</font>到源码中，也可能引用自<font color=red>res&#x2F;values&#x2F;strings.xml</font>文件。</p>
+<p>首先，使用<font color=red>grep</font>命令可以找到错误提示代码所在的字符串资源文件strings.xml中的<font color=red>string类标识</font>，在public.xml找到字符串对应的唯一的int类型的<font color=red>索引值</font>，在outdir&#x2F;smali&#x2F;com&#x2F;iReverse&#x2F;crackme0201&#x2F;MainActivity$1.smali文件中找到错误提示信息对应的id值<font color=red>0x7f0e0055c</font>，如图3所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/bd71637f051d4da9939083079c6fa856.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图3 通过错误提示信息找到关键代码"></p>
+<h2 id="2-4-使用7-Zip工具解压apk"><a href="#2-4-使用7-Zip工具解压apk" class="headerlink" title="2.4 使用7-Zip工具解压apk"></a>2.4 使用7-Zip工具解压apk</h2><p>打开app-release.apk文件所在的文件夹，使用<font color=red>7-Zip</font>将其解压到当前目录下，如图4所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/5fdda44481124a29828dd17935573df6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图4 使用7-Zip工具解压app-release.apk"></p>
+<h2 id="2-5-使用IDAPro静态分析classes-dex文件"><a href="#2-5-使用IDAPro静态分析classes-dex文件" class="headerlink" title="2.5 使用IDAPro静态分析classes.dex文件"></a>2.5 使用IDAPro静态分析classes.dex文件</h2><p>点击classes.dex文件，右键以<font color=red>IDA Pro(64-bit)</font>方式打开，如图5所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/5a0ce784b0484eb891ab4be101f4279d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图5 使用IDA Pro打开classes.dex文件"></p>
+<p>在加载新文件的过程中，加载的文件选择<font color=red>Android DEX file</font>，处理器类型选择<font color=red>Dalvik Virtual Machine [dalvik]</font>，点击OK按钮后便进行加载，这时尽量多等会，以使<font color=red>classes.dex</font>文件被完全加载。</p>
+<p><img src="https://img-blog.csdnimg.cn/ba854edaee1f481cb39b71fc3b573f20.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图6 选择打开的基本配置信息"></p>
+<p>在IDA Pro主窗口按<font color=red>Alt+T</font>快捷键，在弹出的<font color=red>Text search</font>搜索框中输入<font color=red>unsuccessed</font>字符串的ID<font color=red>0x7f0e005c</font>，只勾选<font color=red>Find all occurrences</font>，然后单击OK按钮进行搜索，如图7所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/69e203536750486fbe9e20bbe65af729.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_17,color_FFFFFF,t_70,g_se,x_16" alt="图7 搜索字符串0x7f0e005c"></p>
+<p>稍等片刻就可以定位调用的代码行了，如图8所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/9ac0d9bbd5404a6c93bbb745e1bc151e.png" alt="图8 找到字符串unsuccessed定义的smali指令"></p>
+<p>双击即可进入IDA View-A的流程图视图，右键进入文本视图，以便修改代码，如图9所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/1f6419336b0f4489934e771d59d284d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图9 进入文本视图"></p>
+<p>进入文本视图后，往上滑动，发现关键代码<font color=red>if-nez</font>，如图10所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/fcb19c09e75b4e67828f7acd625fcd30.png" alt="图10 定位关键代码if-nez"></p>
+<p>点击IDA Pro主界面上的<font color=red>Hex-View-1</font>选项卡，发现这行代码的指令为<font color=red>39 03 0F 00</font>，如图11所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/a4a2a7e7e18b469098e67ac8f0082653.png" alt="图11 查看操作码"></p>
+<p>通过查找Dalvik字节码集合的总结<a target="_blank" rel="noopener" href="https://source.android.google.cn/devices/tech/dalvik/dalvik-bytecode?hl=zh-cn">https://source.android.google.cn/devices/tech/dalvik/dalvik-bytecode?hl=zh-cn</a>，得知第一个字节<font color=red>39</font>为<font color=red>if-nez</font>指令的操作码，我们只需将其改成<font color=red>if-eqz</font>指令的操作码。翻看Dalvik指令集列表，得知<font color=red>if-eqz</font>指令的操作码为<font color=red>38</font>。</p>
+<p>下面利用IDA Pro给原文件打补丁，操作方法是：定位需要修改的反汇编行，单击菜单项”Edit” -&gt; “Patch program” -&gt; “Change byte…”，如图12所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/8e9caee4a0ca45249f179ad80add492d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图12 定位需要修改的反汇编行"></p>
+<p>在弹出的修改界面上，将<font color=red>39 03 0F 00 54 23 D1 41 14 01 5C 00 0E 7F 71 30</font>修改为<font color=red>38 03 0F 00 54 23 D1 41 14 01 5C 00 0E 7F 71 30</font>。<br>注意：这里只将第1个字节<font color=red>39</font>修改成了<font color=red>38</font>，其他字节均保持不变。</p>
+<p><img src="https://img-blog.csdnimg.cn/af3217c30eb943aea9e4150277eddd32.png" alt="图13 修改第1个字节"></p>
+<p>修改完成后，单击<font color=red>“Edit”</font> -&gt; <font color=red>“Patch program”</font> -&gt; <font color=red>“Apply patches to input file…”</font>，如图14所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/8949240d405849c38c9228a95013ba9f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图14 保存回原文件"></p>
+<p>确认保存路径无误后，单击OK按钮保存即可，如图15所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/f78aa38a356141f2aa37e8804acc0515.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图15 保存回原文件"></p>
+<p>关闭IDA Pro，发现classes.dex文件已经被修改，如图16所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/afa6223a823849c587fba2965a2b8bba.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图16 经过修改后的classes.dex文件"></p>
+<h2 id="2-6-使用d2j-dex-recompute-checksum修改classes-dex的关键字段"><a href="#2-6-使用d2j-dex-recompute-checksum修改classes-dex的关键字段" class="headerlink" title="2.6 使用d2j-dex-recompute-checksum修改classes.dex的关键字段"></a>2.6 使用d2j-dex-recompute-checksum修改classes.dex的关键字段</h2><p>修改后的<font color=red>classes.dex</font>文件，其<font color=red>DexHeader</font>头部的<font color=red>checksum</font>与<font color=red>signature</font>字段是错误的，需要进行修正。<br>这里，我们使用<font color=red>dex2jar</font>提供的工具<font color=red>d2j-dex-recompute-checksum</font>，在终端提示符下执行如图17中的命令，命令执行后，会在<font color=red>classes.dex</font>的当前目录下生成修正的文件<font color=red>classes-rechecksum.dex</font>。</p>
+<p><img src="https://img-blog.csdnimg.cn/cfc15ea163344f788a6e7e0b43c16e18.png" alt="图17 修改DexHeader头部的checksum与signature字段"></p>
+<h2 id="2-7-使用7-Zip获得压缩包test-zip"><a href="#2-7-使用7-Zip获得压缩包test-zip" class="headerlink" title="2.7 使用7-Zip获得压缩包test.zip"></a>2.7 使用7-Zip获得压缩包test.zip</h2><p>将<font color=red>classes-rechecksum.dex</font>的文件名修改为<font color=red>classes.dex</font>，并将修改文件名后的<font color=red>classes.dex</font>复制到<font color=red>app-release.apk</font>文件解压的文件目录下，然后选定<font color=red>res</font>、<font color=red>AndroidManifest.xml</font>、<font color=red>app-release</font>、<font color=red>classes.dex</font>和<font color=red>resources.arsc</font>文件使用<font color=red>7-Zip</font>文件进行压缩获得<font color=red>test.zip</font>文件，如图18所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/eceaef1b51ac48d5bcab07037c9f4c58.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图18 压缩文件获得压缩包test.zip"></p>
+<h2 id="2-8-使用signapk签名test-apk"><a href="#2-8-使用signapk签名test-apk" class="headerlink" title="2.8 使用signapk签名test.apk"></a>2.8 使用signapk签名test.apk</h2><p>将<font color=red>test.zip</font>文件名修改为<font color=red>test.apk</font>，并使用<font color=red>signapk</font>对其进行签名，最终即可获得经过破解后的apk文件<font color=red>test-sign.apk</font>，如图19所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/1aae67de83b2408996a053c5f5012941.png" alt="图19 签名apk文件"></p>
+<h2 id="2-9-安装apk到Android手机"><a href="#2-9-安装apk到Android手机" class="headerlink" title="2.9 安装apk到Android手机"></a>2.9 安装apk到Android手机</h2><p>下一步，使用<font color=red>adb</font>命令查看Android手机是否连接到电脑上，并使用adb命令将修改后的<font color=red>test-sign.apk</font>安装到Android手机中，如图20所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/68254ae4f3cd4ff6a338c3006cd89f08.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图20 adb安装apk到Android手机"></p>
+<p>最后，在Android手机中，输入用户名为iReverse和注册码为1234567812345678，接着点击注册按钮，发现注册成功，如图21所示。</p>
+<h2 id="2-10-破解成功"><a href="#2-10-破解成功" class="headerlink" title="2.10 破解成功"></a>2.10 破解成功</h2><p><img src="https://img-blog.csdnimg.cn/645e3312002d4d4c82662a84906621ea.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_14,color_FFFFFF,t_70,g_se,x_16" alt="图21 app注册成功"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1><p>本次使用<font color=red>IDA Pro</font>对注册软件<font color=red>Crackme0201.apk</font>进行静态逆向分析，使用了<font color=red>adb</font>、<font color=red>7-Zip</font>、<font color=red>ApkTool</font>、<font color=red>grep</font>、<font color=red>IDAPro</font>、<font color=red>d2j-dex-recompute-checksum</font>和<font color=red>signapk</font>工具，尽管中间过程有些坎坷，但经过坤哥我的努力，终于还是把这个简单的APP给破解了，以后接着搞更难的。(￢︿̫̿￢☆)</p>
+<h1 id="4-参考文章"><a href="#4-参考文章" class="headerlink" title="4  参考文章"></a>4  参考文章</h1><p>《Android软件开发权威指南》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/" data-id="cl1qb1dy1002wqktuagy9e5dn" data-title="IDA Pro静态分析dex文件" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-编写并分析第一个Android应用程序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/" class="article-date">
+  <time class="dt-published" datetime="2021-09-13T11:37:43.000Z" itemprop="datePublished">2021-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>要想掌握Android逆向分析技术，就要从开发学起。这个学习路线是线性的、循序渐进的。分析Android程序是开发Android程序的逆过程。要想分析一个Android程序，首先应该了解其开发流程、程序结构、语句分支、解密原理等。<br>今天，我开始跟着<font color=red>《Android软件开发权威指南》</font>这本书的第二章开始正式编写并分析Android应用程序。</p>
+<h1 id="2-编写Android程序"><a href="#2-编写Android程序" class="headerlink" title="2 编写Android程序"></a>2 编写Android程序</h1><h2 id="2-1-MainActivity-java"><a href="#2-1-MainActivity-java" class="headerlink" title="2.1 MainActivity.java"></a>2.1 MainActivity.java</h2><p>这个方法主要用于<font color=red>计算用户名与注册码是否匹配</font>。首先，使用MD5算法计算用户名字符串的散列值，将计算结果转换成长度为32位的十六进制字符串。然后，将字符串中的所有奇数位重新组合，生成新的字符串，这个字符串就是最终的注册码。最后，将这个字符串与传入的注册码进行比较。如果二者相同，表示注册码是正确的；如果二者不同，表示注册码是错误的。</p>
+<p>在MainActivity的OnCreate()方法中添加注册按钮点击事件的监听器。如果用户名与注册码匹配，就弹出注册成功的提示；如果用户名与注册码不匹配，则弹出用户名或注册码无效的提示，具体代码如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">package com.iReverse.crackme0201;</span><br><span class="line"></span><br><span class="line">import androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.util.Log;</span><br><span class="line">import android.view.View;</span><br><span class="line">import android.widget.Button;</span><br><span class="line">import android.widget.EditText;</span><br><span class="line">import android.widget.Toast;</span><br><span class="line">import android.view.View.OnClickListener;</span><br><span class="line"></span><br><span class="line">import java.security.MessageDigest;</span><br><span class="line">import java.security.NoSuchAlgorithmException;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private EditText edit_userName;</span><br><span class="line">    private EditText edit_sn;</span><br><span class="line">    private Button btn_register;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        setTitle(R.string.unregister);</span><br><span class="line">        edit_userName = findViewById(R.id.edit_username);       // 获取EditText的输入获取用户名的id</span><br><span class="line">        edit_sn = findViewById(R.id.edit_sn);                   // 获取EditText的输入获取用注册码的id</span><br><span class="line">        btn_register = findViewById(R.id.button_register);      // 获取注册按钮的id</span><br><span class="line"></span><br><span class="line">        // 设置注册按钮的时间监听器</span><br><span class="line">        btn_register.setOnClickListener(new OnClickListener() &#123;</span><br><span class="line"></span><br><span class="line">            // 重写onClick方法</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                // 注册失败</span><br><span class="line">                if (!checkSN(edit_userName.getText().toString().trim(),</span><br><span class="line">                        edit_sn.getText().toString().trim())) &#123;</span><br><span class="line">                    Toast.makeText(MainActivity.this,</span><br><span class="line">                            R.string.unsuccessed, Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                // 注册成功</span><br><span class="line">                else &#123;</span><br><span class="line">                    Toast.makeText(MainActivity.this,</span><br><span class="line">                            R.string.successed, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    btn_register.setEnabled(false);</span><br><span class="line">                    setTitle(R.string.registered);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /* 计算用户名与注册码是否匹配 */</span><br><span class="line">    private boolean checkSN(String userName, String sn) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            if ((userName == null) || (userName.length() == 0))</span><br><span class="line">                return false;</span><br><span class="line">            if ((sn == null) || (sn.length() != 16))</span><br><span class="line">                return false;</span><br><span class="line">            // 返回实现 MD5消息摘要算法 的 MessageDigest 对象</span><br><span class="line">            MessageDigest digest = MessageDigest.getInstance(&quot;MD5&quot;);</span><br><span class="line">            digest.reset();         // 重置摘要以供再次使用</span><br><span class="line">            // 将字符串编码为 byte 序列后，再使用该字节数组更新摘要</span><br><span class="line">            digest.update(userName.getBytes());</span><br><span class="line">            // 使用指定的字节数组对摘要执行最终更新，然后完成摘要计算</span><br><span class="line">            byte[] bytes = digest.digest();</span><br><span class="line">            String hexstr = toHexString(bytes, &quot;&quot;);</span><br><span class="line">            // 创建字符串的 StringBuilder 类</span><br><span class="line">            StringBuilder sb = new StringBuilder();</span><br><span class="line"></span><br><span class="line">            /* 将字符串的奇数位重新组合生成注册码sn</span><br><span class="line">            charAt() 方法用于返回指定索引处的字符 */</span><br><span class="line">            for (int i = 0; i &lt; hexstr.length(); i += 2) &#123;</span><br><span class="line">                sb.append(hexstr.charAt(i));</span><br><span class="line">            &#125;</span><br><span class="line">            String userSN = sb.toString();</span><br><span class="line"></span><br><span class="line">            Log.d(&quot;用户名：&quot;, hexstr);</span><br><span class="line">            Log.d(&quot;序列号：&quot;, userSN);</span><br><span class="line"></span><br><span class="line">            if (!userSN.equalsIgnoreCase(sn))</span><br><span class="line">                return false;</span><br><span class="line">        &#125; catch (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static String toHexString(byte[] bytes, String separator) &#123;</span><br><span class="line">        // 创建字符串的 StringBuilder 类</span><br><span class="line">        StringBuilder hexString = new StringBuilder();</span><br><span class="line">        for (byte b : bytes) &#123;</span><br><span class="line">            String hex = Integer.toHexString(0xFF &amp; b);     // 与运算</span><br><span class="line">            if(hex.length() == 1)&#123;</span><br><span class="line">                hexString.append(&#x27;0&#x27;);</span><br><span class="line">            &#125;</span><br><span class="line">            hexString.append(hex).append(separator);</span><br><span class="line">        &#125;</span><br><span class="line">        return hexString.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-activity-main-xml"><a href="#2-2-activity-main-xml" class="headerlink" title="2.2 activity_main.xml"></a>2.2 activity_main.xml</h2><p>工程布局文件的主要信息如下所示，主要是用户名和注册码的文本输入框和注册按钮，在我的真机上的运行效果如图1所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/2357c90b4dd04e9caa29b3a3d7d97bcb.jpg?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图1 真机运行效果图"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;fill_parent&quot;</span><br><span class="line">    android:layout_height=&quot;fill_parent&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot; &gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=&quot;@+id/textView1&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:gravity=&quot;center&quot;</span><br><span class="line">        android:text=&quot;@string/info&quot;</span><br><span class="line">        android:textSize=&quot;20dp&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_marginLeft=&quot;10dp&quot;</span><br><span class="line">        android:orientation=&quot;horizontal&quot;&gt;</span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;@string/username&quot; /&gt;</span><br><span class="line">        &lt;EditText</span><br><span class="line">            android:id=&quot;@+id/edit_username&quot;</span><br><span class="line">            android:hint=&quot;@string/hint_username&quot;</span><br><span class="line">            android:layout_width=&quot;0dp&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;10dp&quot;</span><br><span class="line">            android:layout_marginRight=&quot;10dp&quot;</span><br><span class="line">            android:layout_weight=&quot;1&quot;</span><br><span class="line">            android:ems=&quot;10&quot; &gt;</span><br><span class="line">        &lt;/EditText&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_marginLeft=&quot;10dp&quot;</span><br><span class="line">        android:orientation=&quot;horizontal&quot;&gt;</span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;@string/sn&quot; /&gt;</span><br><span class="line">        &lt;EditText</span><br><span class="line">            android:id=&quot;@+id/edit_sn&quot;</span><br><span class="line">            android:hint=&quot;@string/hint_sn&quot;</span><br><span class="line">            android:layout_width=&quot;0dp&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_marginLeft=&quot;10dp&quot;</span><br><span class="line">            android:layout_marginRight=&quot;10dp&quot;</span><br><span class="line">            android:layout_weight=&quot;1&quot;</span><br><span class="line">            android:ems=&quot;10&quot; &gt;</span><br><span class="line">        &lt;/EditText&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=&quot;@+id/button_register&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_marginRight=&quot;10dp&quot;</span><br><span class="line">        android:layout_gravity=&quot;right&quot;</span><br><span class="line">        android:text=&quot;@string/register&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-strings-xml"><a href="#2-3-strings-xml" class="headerlink" title="2.3 strings.xml"></a>2.3 strings.xml</h2><p>本文件主要存储module中使用的字符串资源。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;string name=&quot;app_name&quot;&gt;Crackme0201&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;menu_settings&quot;&gt;Settings&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;title_activity_main&quot;&gt;Crackme0201&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;info&quot;&gt;Android程序破解演示实例&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;username&quot;&gt;用户名：&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;sn&quot;&gt;注册码：&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;register&quot;&gt;注    册&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;hint_username&quot;&gt;请输入用户名&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;hint_sn&quot;&gt;请输入16位的注册码&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;unregister&quot;&gt;程序未注册&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;registered&quot;&gt;程序已注册&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;unsuccessed&quot;&gt;无效用户名或注册码&lt;/string&gt;</span><br><span class="line">    &lt;string name=&quot;successed&quot;&gt;恭喜您！注册成功&lt;/string&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-打包apk文件"><a href="#2-4-打包apk文件" class="headerlink" title="2.4 打包apk文件"></a>2.4 打包apk文件</h2><p>打包过程中需要指定相应的密钥库和输入密钥库的密码，如图2所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/4cef2cb0f8344116a972288939c79791.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图2 编译生成APK文件"></p>
+<h1 id="3-破解第一个Android程序"><a href="#3-破解第一个Android程序" class="headerlink" title="3 破解第一个Android程序"></a>3 破解第一个Android程序</h1><h2 id="3-1-使用ApkTool反编译APK文件"><a href="#3-1-使用ApkTool反编译APK文件" class="headerlink" title="3.1 使用ApkTool反编译APK文件"></a>3.1 使用ApkTool反编译APK文件</h2><p><font color=red>ApkTool</font>是一款常用的跨平台APK文件反编译工具，使用命令<font color=red>apktool d app-release.apk -o outdir</font>可以在当前的outdir目录下生成反编译文件。反编译文件包含一系列目录和文件，<font color=red>smali目录</font>中存放了程序的所有反汇编代码，<font color=red>res目录</font>中存放的则是程序中所有的资源文件，这些目录的子目录和文件的组织结构与开发时源码目录的组织结构是一致的，反编译APK文件的过程如图3所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/7d02442f0390446c82f4d1feb426fec2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图3 反编译APK文件"></p>
+<h2 id="3-2-分析APK文件"><a href="#3-2-分析APK文件" class="headerlink" title="3.2 分析APK文件"></a>3.2 分析APK文件</h2><p>如何寻找突破口是分析一个程序的关键。对大部分Android程序来说，错误提示信息是指路明灯。错误提示代码附近通常就是程序的核心验证代码，我们可以通过阅读这些代码理解软件的注册流程。</p>
+<p>错误提示属于Android程序中的字符串资源。在开发Android程序时，这些字符串可能会被<font color=red>硬编码</font>到源码中，也可能引用自<font color=red>res&#x2F;values&#x2F;strings.xml</font>文件。</p>
+<p>首先，使用<font color=red>grep</font>命令可以找到错误提示代码所在的字符串资源文件strings.xml中的<font color=red>string类标识</font>，在public.xml找到字符串对应的唯一的int类型的<font color=red>索引值</font>，在outdir&#x2F;smali&#x2F;com&#x2F;iReverse&#x2F;crackme0201&#x2F;MainActivity$1.smali文件中找到错误提示信息所在的代码，如图4所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/ca0c8fa7c994429ab785cd9ee7e4d433.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图4 grep命令查找错误提示代码文件"></p>
+<p>其次，用记事本打开<font color=red>outdir&#x2F;smali&#x2F;com&#x2F;iReverse&#x2F;crackme0201&#x2F;MainActivity$1.smali</font>文件，经过对代码分析可知<font color=red>if-nez p1, :cond_0</font>是决定程序接下来往哪里执行，<font color=red>cond_0</font>是注册成功的标识部分的代码，而<font color=red>goto_0</font>是失败部分的代码，如图5所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/5863856e4723408183dadda94484477f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图5 smali代码分析逻辑"></p>
+<p>接着，这里我们需要修改<font color=red>if-nez</font>为<font color=red>if-eqz</font>，然后保存后退出，代码就修改完成了。</p>
+<p>修改smali文件的代码后，需要将该文件重新编译，打包成APK文件。回编译命令是<font color=red>apktool b outdir</font>。在终端执行图6中的命令，即可将smali和资源编译成APK文件。</p>
+<p><img src="https://img-blog.csdnimg.cn/a7e4a1db6f764e76ada845d8ce446ae3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_16,color_FFFFFF,t_70,g_se,x_16" alt="图6 编译未签名的APK文件"></p>
+<p>然后，但可能会出现反编译失败的情况，这时可以重新使用命令<font color=red>apktool -r d app-release.apk -o outdir</font>进行编译APK文件，然后进行修改，最后再进行反编译。</p>
+<p>编译成功之后，此时我们的APK文件是<font color=red>没有签名</font>的，这时我们可以利用<font color=red>singapk</font>对APK文件进行签名，iReverse.x509.pem和iReverse.pk8文件可以利用<font color=red>openssl</font>进行生成，APK的签名过程如图7所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/52d0c794441d4264bae0cb38fdeb654d.png" alt="图7 利用signapk签名APK文件"></p>
+<p>最后，在真机上安装APK文件，在“用户名”和“注册码”输入框中输入任意字符，单击“注册”按钮，程序会弹出注册成功的提示信息，而且标题栏的字符会编程“程序已注册”，如图8 所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/d9d52f5ef82c4389b4b6f169e4ebb333.jpg?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图8 注册成功"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1><p>破解Android程序的操作流程为：<font color=red>反编译-&gt;分析-&gt;修改-&gt;回编译-&gt;签名</font>，但此次过程非常简单，属于入门知识。</p>
+<p>在以后的实际分析过程中，我们接触的代码远比这些代码复制，有些代码甚至经过了混淆，很难阅读。对这样的代码，需要使用一些辅助分析手段（例如，将动态调试与其他技巧结合使用）进行分析。</p>
+<h1 id="4-参考文章"><a href="#4-参考文章" class="headerlink" title="4 参考文章"></a>4 参考文章</h1><p>《Android软件开发权威指南》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/" data-id="cl1qb1dzy0081qktu6kuog19w" data-title="编写并分析第一个Android应用程序" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Android四大组件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2021-09-05T13:20:16.000Z" itemprop="datePublished">2021-09-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>研究生开学了，在北京工业大学的新学期就要正式开始了，学校奥运餐厅真是实惠，这一点给学校点个赞！！！<br>虽说在中蓝住宿，去本部上课，不过感觉这样还不错，每天还能去校外溜达溜达，就当散心了。<br>话不多说，开始我的<font color=red>Android安全</font>之路吧(●’◡’●)。</p>
+<h1 id="Android四大组件详解"><a href="#Android四大组件详解" class="headerlink" title="Android四大组件详解"></a>Android四大组件详解</h1><p>众所周知，Android四大组件分别为<font color=red>Activity</font>、<font color=red>Service</font>、<font color=red>Content Provider</font>、<font color=red>Broadcast Receiver</font>。</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Activities</td>
+<td>描述UI，并且处理用户与机器屏幕的交互。</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>处理与应用程序关联的后台操作。</td>
+</tr>
+<tr>
+<td>Broadcast Receivers</td>
+<td>处理Android操作系统和应用程序之间的通信。</td>
+</tr>
+<tr>
+<td>Content Providers</td>
+<td>处理数据和数据库管理方面的问题。</td>
+</tr>
+</tbody></table>
+<h2 id="1-Activity"><a href="#1-Activity" class="headerlink" title="1 Activity"></a>1 Activity</h2><p>一个活动标识一个具有用户界面的单一屏幕。举个例子，一个邮件应用程序可以包含一个活动用于显示新邮件列表，另一个活动用来编写邮件，再一个活动来阅读邮件。当应用程序拥有多于一个活动，其中的一个会被标记为当应用程序启动的时候显示。</p>
+<ol>
+<li><p>一个Activity通常就是一个单独的屏幕（窗口）；</p>
+</li>
+<li><p>Activity之间通过Intent进行通信；</p>
+</li>
+<li><p>android应用中每一个Activity都必须要在AndroidManifest.xml配置文件中声明，否则系统将不识别也不执行该Activity。</p>
+</li>
+</ol>
+<p>一个活动是Activity类的一个子类，如下所示：</p>
+<pre><code>public class MainActivity extends Activity &#123;
+
+&#125;
+</code></pre>
+<h2 id="2-Service"><a href="#2-Service" class="headerlink" title="2 Service"></a>2 Service</h2><p>服务是运行在后台，执行长时间操作的组件。举个例子，服务可以是用户在使用不同的程序时在后台播放音乐，或者在活动中通过网络获取数据但不阻塞用户交互。</p>
+<ol>
+<li><p>Service用于在后台完成用户指定的操作。Service分为两种：</p>
+<p> started（启动）：当应用程序组件（如Activity）调用startService()方法启动服务时，服务处于started状态。</p>
+<p> bound（绑定）：当应用程序组件调用bindService()方法绑定到服务时，服务处于bound状态。</p>
+</li>
+<li><p>startService()与bindService()区别：</p>
+<p> started service（启动服务）是由其他组件调用startService()方法启动的，这导致服务的onStartCommand()方法被调用。当服务是started状态时，其生命周期与启动它的组件无关，并且可以在后台无限期运行，即使启动服务的组件已经被销毁。因此，服务需要在完成任务后调用stopSelf()方法停止，或者由其他组件调用stopService()方法停止。</p>
+<p> 使用bindService()方法启用服务，调用者与服务绑定在了一起，调用者一旦退出，服务也就终止，大有“不求同时生，必须同时死”的特点。</p>
+</li>
+<li><p>开发人员需要在应用程序配置文件中声明全部的service，使用<service></service>标签。</p>
+</li>
+<li><p>Service通常位于后台运行，它一般不需要与用户交互，因此Service组件没有图形用户界面。Service组件需要继承Service基类。Service组件通常用于为其他组件提供后台服务或监控其他组件的运行状态。</p>
+</li>
+</ol>
+<p>一个服务是Service类的子类，如下所示：</p>
+<pre><code>public class MyService extends Service &#123;
+
+&#125;
+</code></pre>
+<h2 id="3-Content-Provider"><a href="#3-Content-Provider" class="headerlink" title="3 Content Provider"></a>3 Content Provider</h2><p>内容提供者组件通过请求从一个应用程序到另一个应用程序提供数据。这些请求由ContentResolver类的方法来处理。这些数据可以是存储在文件系统、数据库或者其他其他地方。</p>
+<ol>
+<li><p>android平台提供了Content Provider使一个应用程序的指定数据集提供给其他应用程序。其他应用可以通过ContentResolver类从该内容提供者中获取或存入数据；</p>
+</li>
+<li><p>只有需要在多个应用程序间共享数据是才需要内容提供者。例如，通讯录数据被多个应用程序使用，且必须存储在一个内容提供者中。它的好处是统一数据访问方式；</p>
+</li>
+<li><p>ContentProvider实现数据共享。ContentProvider用于保存和获取数据，并使其对所有应用程序可见。这是不同应用程序间共享数据的唯一方式，因为android没有提供所有应用共同访问的公共存储区；</p>
+</li>
+<li><p>开发人员不会直接使用ContentProvider类的对象，大多数是通过ContentResolver对象实现对ContentProvider的操作；</p>
+</li>
+<li><p>ContentProvider使用URI来唯一标识其数据集，这里的URI以content:&#x2F;&#x2F;作为前缀，表示该数据由ContentProvider来管理。</p>
+</li>
+</ol>
+<p>内容提供者是ContentProvider类的子类，并实现一套标准的API，以便其他应用程序来执行事务。</p>
+<pre><code>public class MyContentProvider extends  ContentProvider &#123;
+
+&#125;
+</code></pre>
+<h2 id="4-Broadcast-Receiver"><a href="#4-Broadcast-Receiver" class="headerlink" title="4 Broadcast Receiver"></a>4 Broadcast Receiver</h2><p>Broadcast Receiver简单地响应从其他应用程序或者系统发来的广播消息。举个例子，应用程序可以发起广播来让其他应用程序知道一些数据已经被下载到设备，并且可以供他们使用。因此Broadcast Receiver会拦截这些通信并采取适当的行动。</p>
+<ol>
+<li><p>你的应用可以使用它对外部事件进行过滤，只对感兴趣的外部事件(如当电话呼入时，或者数据网络可用时)进行接收并做出响应。广播接收器没有用户界面。然而，它们可以启动一个activity或serice来响应它们收到的信息，或者用NotificationManager来通知用户。通知可以用很多种方式来吸引用户的注意力，例如闪动背灯、震动、播放声音等。一般来说是在状态栏上放一个持久的图标，用户可以打开它并获取消息；</p>
+</li>
+<li><p>广播接收者的注册有两种方法，分别是程序动态注册和AndroidManifest文件中进行静态注册；</p>
+</li>
+<li><p>动态注册Broadcast Receiver特点是当用来注册的Activity关掉后，广播也就失效了。静态注册无需担忧广播接收器是否被关闭，只要设备是开启状态，广播接收器也是打开着的。也就是说哪怕app本身未启动，该app订阅的广播在触发时也会对它起作用。</p>
+</li>
+</ol>
+<p>广播接收器是BroadcastReceiver类的一个子类，每个消息以Intent对象的形式来广播。</p>
+<pre><code>public class MyReceiver  extends  BroadcastReceiver &#123;
+
+&#125;
+</code></pre>
+<h1 id="Android四大组件总结"><a href="#Android四大组件总结" class="headerlink" title="Android四大组件总结"></a>Android四大组件总结</h1><h2 id="1-四大组件的注册"><a href="#1-四大组件的注册" class="headerlink" title="1 四大组件的注册"></a>1 四大组件的注册</h2><p>4大基本组件都需要注册才能使用，每个Activity、Service、Content Provider都需要在AndroidManifest文件中进行配置。AndroidManifest文件中未进行声明的Activity、Service以及Content Provider将不为系统所见，从而也就不可用。而Broadcast Receiver广播接收者的注册分静态注册（在AndroidManifest文件中进行配置）和通过代码动态创建并以调用Context.registerReceiver()的方式注册至系统。需要注意的是在AndroidManifest文件中进行配置的广播接收者会随系统的启动而一直处于活跃状态，只要接收到感兴趣的广播就会触发（即使程序未运行）。</p>
+<h2 id="2-四大组件的激活"><a href="#2-四大组件的激活" class="headerlink" title="2 四大组件的激活"></a>2 四大组件的激活</h2><p>内容提供者的激活：当接收到ContentResolver发出的请求后，Content Provider被激活。而其它三种组件Activity、Service和Broadcast Receiver被一种叫做intent的异步消息所激活。</p>
+<h2 id="3-四大组件的关闭"><a href="#3-四大组件的关闭" class="headerlink" title="3 四大组件的关闭"></a>3 四大组件的关闭</h2><p>Content Provider仅在响应ContentResolver提出请求的时候激活。而一个Broadcast Receiver仅在响应广播信息的时候激活。所以，没有必要去显式的关闭这些组件。Activity关闭：可以通过调用它的finish()方法来关闭一个activity。服务关闭：对于通过startService()方法启动的服务要调用Context.stopService()方法关闭服务，使用bindService()方法启动的服务要调用Contex.unbindService()方法关闭服务。</p>
+<h2 id="4-Android中的任务（Activity栈）"><a href="#4-Android中的任务（Activity栈）" class="headerlink" title="4 Android中的任务（Activity栈）"></a>4 Android中的任务（Activity栈）</h2><ol>
+<li><p>任务其实就是Activity的栈，它由一个或多个Activity组成，共同完成一个完整的用户体验。栈底的是启动整个任务的Activity，栈顶的是当前运行的用户可以交互的Activity，当一个Activity启动另外一个的时候，新的Activity就被压入栈，并成为当前运行的Activity。而前一个Activity仍保持在栈之中。当用户按下BACK键的时候，当前Activity出栈，而前一个恢复为当前运行的Activity。栈中保存的其实是对象，栈中的Activity永远不会重排，只会压入或弹出；</p>
+</li>
+<li><p>任务中的所有Activity是作为一个整体进行移动的。整个的任务（即Activity栈）可以移到前台，或退至后台；</p>
+</li>
+<li><p>Android系统是一个多任务(Multi-Task)的操作系统，可以在用手机听音乐的同时，也执行其他多个程序。每多执行一个应用程序，就会多耗费一些系统内存，当同时执行的程序过多，或是关闭的程序没有正确释放掉内存，系统就会觉得越来越慢，甚至不稳定。为了解决这个问题，Android引入了一个新的机制，即生命周期(Life Cycle)。</p>
+</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>学习Android逆向分析，必然得先学会正向开发，这样才能从整体上把握知识体系，有利于一名Android逆向工程师的培养！！！</p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/android/android-application-components.html">https://www.runoob.com/android/android-application-components.html</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/930dadb7a3cf">https://www.jianshu.com/p/930dadb7a3cf</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/" data-id="cl1qb1dx3000mqktufdi6e2en" data-title="Android四大组件" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-中国矿业大学本科生涯总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2021-06-25T09:50:40.000Z" itemprop="datePublished">2021-06-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>之前因为琐事缠身，没有更新过博客，现在赋闲在家，准备接着写博客，顺便来个总结。<br>从2017年的9月到2021年的6月，我在<a target="_blank" rel="noopener" href="http://www.cumt.edu.cn/">中国矿业大学</a>的本科生活终于结束了。在这4年的生活中，我经历了很多很多，但终究还是到了这个分别的时光，借此博客来对自己的本科生活做个总结吧(#^.^#)</p>
+<h1 id="2-阶段生活"><a href="#2-阶段生活" class="headerlink" title="2 阶段生活"></a>2 阶段生活</h1><h2 id="大一"><a href="#大一" class="headerlink" title="大一"></a>大一</h2><p>起初我是在矿业工程学院的矿业类17-6班度过了我的大一时光，那时的自己还只是一个小萌新，真是啥都不懂(～￣(OO)￣)ブ。但大一的矿业舍友也给了不少的帮助，从最初office的使用、各种材料的评估到各种课程作业的互相帮助，这给我们的革命友谊打下坚实的基础，我将终生难忘。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210625182447328.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="大一"></p>
+<h2 id="大二"><a href="#大二" class="headerlink" title="大二"></a>大二</h2><p>大二刚开始，我和舍友便分别了，但大家仍一起去泰山旅游。获得矿大二等奖学金后，我通过转专业到了计算机科学与技术学院的信息安全专业。而这一年的我也是非常劳累，各种课程铺天盖地的涌过来，让我真是感觉人生达到了高潮。而我也和新的转专业舍友共同学习，这让我也减轻了不少压力。</p>
+<p><img src="https://img-blog.csdnimg.cn/2021062518272270.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="大二"></p>
+<h2 id="大三"><a href="#大三" class="headerlink" title="大三"></a>大三</h2><p>大三，我的学业压力不那么大了，在充分考虑后，我走上了考研的道路。大三上学期，我认真学习专业课知识，成绩还算不错。而大三寒假的时候，却发生了罕见的新冠肺炎疫情，我也只能在家上网课，在家考研的效率很低。幸好4月15日左右终于返校，我才有幸可以努力考研。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210625183007310.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="大三"></p>
+<h2 id="大四"><a href="#大四" class="headerlink" title="大四"></a>大四</h2><p>大四，上半学期的时候，我简直疯了似的考研，数学一、英语一、政治、专业课（408），这些让我天天为之奔波劳累。皇天不负有心人，大四下学期开学的时候，我最终的考研成绩初试总分是386，还是相当不错的，在复试的时候，也是挺顺利的。最终，顺利的被<a target="_blank" rel="noopener" href="https://www.bjut.edu.cn/">北京工业大学</a>录取，现在正在家等录取通知书。毕设《加密聊天软件的设计与实现》也让我非常劳累，但幸好指导老师非常仁慈，我的毕设做的还是挺不错的。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210625183340747.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="大四"></p>
+<h1 id="3-今后规划"><a href="#3-今后规划" class="headerlink" title="3 今后规划"></a>3 今后规划</h1><p>受舍友在字节跳动的薪资待遇吸引，我决定研究生期间努力学习Android逆向知识，这样能够在行业上立于不败之地。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210625183154782.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="今后"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/" data-id="cl1qb1dys0053qktu7oto9mmx" data-title="中国矿业大学本科生涯总结" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-北京工业大学考研--复试--机试刷题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2021-03-19T10:47:38.000Z" itemprop="datePublished">2021-03-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>快要开始复试了，虽然今年疫情不那么严重，但我估计北工大的复试还是线上进行，不过练习点编程题目也不是什么坏事，废话不多说，开始淦吧……</p>
+<h1 id="2-字符数组"><a href="#2-字符数组" class="headerlink" title="2 字符数组"></a>2 字符数组</h1><h2 id="2-1-题目"><a href="#2-1-题目" class="headerlink" title="2.1 题目"></a>2.1 题目</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
+<p>删除字符串中所有空格，并输出删除空格后的字符串和被删除的空格数</p>
+</blockquote>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>利用<font color=red>gets()</font>函数接收输入的字符串，然后调用函数<font color=red>delSpace(s[])</font>删除所以空格并返回已经删除的空格数量。</p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>Ikun is a handsome boy.</p>
+</blockquote>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>The number of space is:4<br>Now the string is:<br>Ikunisahandsomeboy.</p>
+</blockquote>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">// 删除字符串中所有空格，并输出删除空格后的字符串和被删除的空格数</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    </span><br><span class="line">    // 函数调用 </span><br><span class="line">    int delSpace(char s[]);</span><br><span class="line">    </span><br><span class="line">    // 字符串str </span><br><span class="line">    char str[100];</span><br><span class="line">    </span><br><span class="line">    // num 表示字符串中的空格数 </span><br><span class="line">    int num = 0;</span><br><span class="line">    </span><br><span class="line">    // 输入字符串 </span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;Enter a string:&quot;);</span><br><span class="line">    gets(str);</span><br><span class="line">    </span><br><span class="line">    // 删除空格并返回字符串中的空格数 </span><br><span class="line">    num = delSpace(str);</span><br><span class="line">    </span><br><span class="line">    // 函数调用后的结果 </span><br><span class="line">    printf(&quot;The space of number is: %d\n&quot;, num);</span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;Now the string is: &quot;);</span><br><span class="line">    puts(str); </span><br><span class="line">    return 0;</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">int delSpace(char s[]) &#123;</span><br><span class="line">    int i = 0, j = 0;</span><br><span class="line">    </span><br><span class="line">    // 未完全遍历所给字符串 </span><br><span class="line">    while(s[i] != &#x27;\0&#x27;) &#123;</span><br><span class="line">        </span><br><span class="line">        // 当前位置不是空格 </span><br><span class="line">        if(s[i] != &#x27; &#x27;) &#123;</span><br><span class="line">            s[j] = s[i];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    s[j] = &#x27;\0&#x27;;</span><br><span class="line">    // 返回所删除字符的个数 </span><br><span class="line">    return i - j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h3><p><img src="https://img-blog.csdnimg.cn/2021031919051999.png" alt="图1 题2.1运行图"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li><font color=red>gets()</font>的使用方法</li>
+<li><font color=red>puts()</font>的使用方法</li>
+</ul>
+<h2 id="2-2-题目"><a href="#2-2-题目" class="headerlink" title="2.2 题目"></a>2.2 题目</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
+<p>输入字符串和m。输出后m个字符；若不足m个字符就全部输出</p>
+</blockquote>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>首先，利用<font color=red>gets()</font>函数接收输入的字符串，然后，利用<font color=red>scanf()</font>函数接收输入的m，接着，调用函数<font color=red>strlen(s)</font>计算字符串的长度<font color=red>len</font>，最后，通过判断<font color=red>m</font>和<font color=red>len</font>的相对大小利用循环输出字符串。</p>
+<h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>Ikun is a handsome boy.<br>4</p>
+</blockquote>
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>boy.</p>
+</blockquote>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">// 输入字符串和m。输出后m个字符；若不足m个字符就全部输出</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt; </span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    </span><br><span class="line">    // m 表示待输出的字符串长度 </span><br><span class="line">    // i 表示计数变量</span><br><span class="line">    // len 表示输入的字符串长度 </span><br><span class="line">    int m = 0, i = 0, j = 0, len = 0;</span><br><span class="line">    </span><br><span class="line">    // 字符串s </span><br><span class="line">    char s[1000];</span><br><span class="line">    </span><br><span class="line">    // 输入字符串 </span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;Please input the string:&quot;);</span><br><span class="line">    gets(s);</span><br><span class="line">    </span><br><span class="line">    // 输入m </span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;Please input the value of m:&quot;);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;m);</span><br><span class="line">    </span><br><span class="line">    // 计算字符串长度 </span><br><span class="line">    len = strlen(s);</span><br><span class="line">    </span><br><span class="line">    // 字符串长度不足m个 </span><br><span class="line">    if(len &lt; m)</span><br><span class="line">        puts(s);</span><br><span class="line">    </span><br><span class="line">    // 字符串长度大于m个 </span><br><span class="line">    else &#123;</span><br><span class="line">        // 合理控制计数变量的值进行删除 </span><br><span class="line">        for(i = len - m; s[i] != &#x27;\0&#x27;; i++) &#123;</span><br><span class="line">            printf(&quot;%c&quot;, s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="展示-1"><a href="#展示-1" class="headerlink" title="展示"></a>展示</h3><p><img src="https://img-blog.csdnimg.cn/20210319191646934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图2 题2.2运行图"></p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><ul>
+<li><font color=red>strlen()</font>函数的使用方法</li>
+<li><font color=red>scanf()</font>函数的使用方法</li>
+</ul>
+<h2 id="2-3-题目"><a href="#2-3-题目" class="headerlink" title="2.3 题目"></a>2.3 题目</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
+<p>删除字符串s中从第k个字符开始的n个字符，若不足n个，删除到末尾即可</p>
+</blockquote>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>首先，利用<font color=red>gets()</font>函数接收输入的字符串，然后，调用函数<font color=red>strlen(s)</font>计算字符串的长度<font color=red>len</font>，最后，合理控制计数变量的值进行删除。</p>
+<h3 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>Ikun is a handsome boy.<br>9<br>11</p>
+</blockquote>
+<h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>The deleted string is:<br>Ikun is boy.</p>
+</blockquote>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">// 删除字符串s中从第k个字符开始的n个字符，若不足n个，删除到末尾即可</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt; </span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    </span><br><span class="line">    // n 表示待输出的字符串长度 </span><br><span class="line">    // k 表示待输出的字符串首位置 </span><br><span class="line">    // i, j 都是计数变量</span><br><span class="line">    // len 表示 输入的字符串长度 </span><br><span class="line">    int n = 0, k = 0, i = 0, j = 0, len = 0;</span><br><span class="line">    </span><br><span class="line">    // 字符串s </span><br><span class="line">    char s[1000];</span><br><span class="line">    </span><br><span class="line">    // 输入字符串 </span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;Please input the string:&quot;);</span><br><span class="line">    gets(s);</span><br><span class="line">    </span><br><span class="line">    // 输入k </span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;Please input the value of k:&quot;);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;k);</span><br><span class="line">    </span><br><span class="line">    // 输入n</span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;Please input the value of n:&quot;);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    </span><br><span class="line">    // 计算字符串长度 </span><br><span class="line">    len = strlen(s);</span><br><span class="line">    </span><br><span class="line">    // 字符串长度不足m个 </span><br><span class="line">    if(k + n - 1 &gt; len)</span><br><span class="line">        s[k - 1] = &#x27;\0&#x27;;</span><br><span class="line">    </span><br><span class="line">    // 字符串长度大于m个 </span><br><span class="line">    else &#123;</span><br><span class="line">        // 合理控制计数变量的值进行删除 </span><br><span class="line">        for(i = k - 1, j = k + n - 1; s[j] != &#x27;\0&#x27;;) &#123;</span><br><span class="line">            s[i] = s[j];</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        s[i] = &#x27;\0&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;The deleted string is:&quot;);</span><br><span class="line">    puts(s);</span><br><span class="line">    return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="展示-2"><a href="#展示-2" class="headerlink" title="展示"></a>展示</h3><p><img src="https://img-blog.csdnimg.cn/2021031919223519.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3 题2.3运行图"></p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>合理处理计算变量<font color=red>i</font>和<font color=red>j</font>的值</li>
+</ul>
+<h2 id="2-4-题目"><a href="#2-4-题目" class="headerlink" title="2.4 题目"></a>2.4 题目</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
+<p>从指定的字符串读取前n个字符显示 </p>
+</blockquote>
+<h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>首先，利用<font color=red>gets()</font>函数接收字符串，然后，判断字符串长度<font color=rd>len</font>和<font color=rd>n</font>的大小以便输出对应的结果。</p>
+<h3 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>Ikun is a handsome boy.<br>6</p>
+</blockquote>
+<h3 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>Ikun i</p>
+</blockquote>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">// 从指定的字符串读取前n个字符显示 </span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt; </span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    </span><br><span class="line">    // n 表示待输出的字符串长度 </span><br><span class="line">    // i 表示计数变量</span><br><span class="line">    // len 表示输入的字符串长度 </span><br><span class="line">    int n = 0, i = 0, j = 0, len = 0;</span><br><span class="line">    </span><br><span class="line">    // 字符串s </span><br><span class="line">    char s[1000];</span><br><span class="line">    </span><br><span class="line">    // 输入字符串 </span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;Please input the string:&quot;);</span><br><span class="line">    gets(s);</span><br><span class="line">    </span><br><span class="line">    // 输入n</span><br><span class="line">    printf(&quot;%s\n&quot;, &quot;Please input the value of n:&quot;);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    </span><br><span class="line">    // 计算字符串长度 </span><br><span class="line">    len = strlen(s);</span><br><span class="line">    </span><br><span class="line">    // 字符串长度不足n个 </span><br><span class="line">    if(n &gt; len)</span><br><span class="line">        puts(s);</span><br><span class="line">    </span><br><span class="line">    // 字符串长度大于n个 </span><br><span class="line">    else &#123;</span><br><span class="line">        // 合理控制计数变量的值进行输出 </span><br><span class="line">        for(i = 0; i &lt; n; i++)</span><br><span class="line">            printf(&quot;%c&quot;, s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="展示-3"><a href="#展示-3" class="headerlink" title="展示"></a>展示</h3><p><img src="https://img-blog.csdnimg.cn/20210319192547553.png" alt="图4 题2.4运行图"></p>
+<h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>一定的逻辑思想</li>
+</ul>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1><p>今天关于字符数组的练习收获良多，总结下来就是下面的几点。</p>
+<ul>
+<li><font color=red>gets()</font>函数的使用方法</li>
+<li><font color=red>puts()</font>函数的使用方法</li>
+<li><font color=red>scanf()</font>函数的使用方法</li>
+<li><font color=red>strlen()</font>函数的使用方法</li>
+<li>合理的数组下标表示</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/" data-id="cl1qb1dz3005tqktuf9dy7drj" data-title="北京工业大学考研--复试--机试刷题" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机考研复试--牛客网--C语言练习--Day7" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day7/" class="article-date">
+  <time class="dt-published" datetime="2021-01-07T13:16:49.000Z" itemprop="datePublished">2021-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day7/">计算机考研复试--牛客网--C语言练习--Day7</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>第7天的题目是非常规进制的题目，火星人啊，你可真会玩</p>
+<h1 id="2-题目：火星A-B"><a href="#2-题目：火星A-B" class="headerlink" title="2 题目：火星A+B"></a>2 题目：火星A+B</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>读入两个不超过25位的火星正整数A和B，计算A+B。需要注意的是：在火星上，整数不是单一进制的，第n位的进制就是第n个素数。例如：地球上的10进制数2，在火星上记为“1,0”，因为火星个位数是2进制的；地球上的10进制数38，在火星上记为“1,1,1,0”，因为火星个位数是2进制的，十位数是3进制的，百位数是5进制的，千位数是7进制的……</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><blockquote>
+<p>测试输入包含若干测试用例，每个测试用例占一行，包含两个火星正整数A和B，火星整数的相邻两位数用逗号分隔，A和B之间有一个空格间隔。当A或B为0时输入结束，相应的结果不要输出。</p>
+</blockquote>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><blockquote>
+<p>对每个测试用例输出1行，即火星表示法的A+B的值。</p>
+</blockquote>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>1,0 2,1<br>4,2,0 1,2,0<br>1 10,6,4,2,1<br>0 0</p>
+</blockquote>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>1,0,1<br>1,1,1,0<br>1,0,0,0,0,0</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">int change(int a[], char b[]);</span><br><span class="line">void add(int a[], int b[], int alen, int blen);</span><br><span class="line">int c[25] = &#123;2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97&#125;;</span><br><span class="line">int main() &#123;</span><br><span class="line">    char A[50], B[50];</span><br><span class="line">    int a[26], b[26], alen, blen;</span><br><span class="line">    while(scanf(&quot;%s%s&quot;, A, B) != EOF) &#123;    //输入两个字符串并分别存储在A和B两个字符数组中</span><br><span class="line">        if(A[0] == &#x27;0&#x27; &amp;&amp; B[0] == &#x27;0&#x27;)    //结果不输出，循环结束</span><br><span class="line">            break;</span><br><span class="line">        alen = change(a, A);    //字符数组A转换成整型数组a并且逆置，返回数组长度alen</span><br><span class="line">        blen = change(b, B);    //字符数组B转换成整型数组b并且逆置，返回数组长度blen</span><br><span class="line">        if(alen &gt; blen)</span><br><span class="line">            add(a, b, alen, blen);</span><br><span class="line">        else</span><br><span class="line">            add(b, a, blen, alen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int change(int a[], char b[]) &#123;    //将字符数组转换成整型数组并且逆置</span><br><span class="line">    int j=0;</span><br><span class="line">    for(int i = strlen(b) - 1; i &gt;= 0; i--)</span><br><span class="line">        if(b[i] != &#x27;,&#x27;) &#123;</span><br><span class="line">            if(b[i-1] == &#x27;,&#x27; || i == 0)</span><br><span class="line">                a[j++] = b[i] - &#x27;0&#x27;;</span><br><span class="line">            else &#123;</span><br><span class="line">                a[j++] = (b[i-1] - &#x27;0&#x27;) * 10 + (b[i] - &#x27;0&#x27;);</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    return j;        //返回整型数组长度</span><br><span class="line">&#125;</span><br><span class="line">void add(int a[], int b[], int alen, int blen) &#123;    //相加</span><br><span class="line">    int i = 0;</span><br><span class="line">    while(i &lt; alen) &#123;</span><br><span class="line">        if(i &lt; blen)</span><br><span class="line">            a[i] += b[i];</span><br><span class="line">        if(a[i] &gt;= c[i]) &#123;</span><br><span class="line">            a[i] -= c[i];</span><br><span class="line">            if(i == alen - 1) &#123;</span><br><span class="line">                a[i+1] = 1;</span><br><span class="line">                alen++;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                a[i+1]++;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int j = alen - 1; j &gt;= 0; j--) &#123;    //反向输出</span><br><span class="line">        if(j == 0)</span><br><span class="line">            printf(&quot;%d&quot;, a[j]);</span><br><span class="line">        else</span><br><span class="line">            printf(&quot;%d,&quot;, a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-分析"><a href="#3-分析" class="headerlink" title="3 分析"></a>3 分析</h1><ul>
+<li>字符串的ASCII码转换成数字可以减去<font color=red>48</font>，也可以减去<font color=red>‘0’</font></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day7/" data-id="cl1qb1e04008sqktu4ldv9pwf" data-title="计算机考研复试--牛客网--C语言练习--Day7" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机考研复试--牛客网--C语言练习--Day6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day6/" class="article-date">
+  <time class="dt-published" datetime="2021-01-06T08:57:42.000Z" itemprop="datePublished">2021-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day6/">计算机考研复试--牛客网--C语言练习--Day6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>第6天的题目终于是中文题目了，而且看着还挺不难的样子……</p>
+<h1 id="2-题目：后缀子串排序"><a href="#2-题目：后缀子串排序" class="headerlink" title="2 题目：后缀子串排序"></a>2 题目：后缀子串排序</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>对于一个字符串，将其后缀子串进行排序，例如grain 其子串有： grain rain ain in n 然后对各子串按字典顺序排序，即： ain,grain,in,n,rain</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><blockquote>
+<p>每个案例为一行字符串。</p>
+</blockquote>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><blockquote>
+<p>将子串排序输出</p>
+</blockquote>
+<p>意思大致是：<br>对于每种情况，输出三行，分别显示该情况的加法（a+b）、减法（a-b）和乘法（a×b）的精确结果，每行一个结果。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>grain</p>
+</blockquote>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>ain<br>grain<br>in<br>n<br>rain</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">int main() &#123;</span><br><span class="line">    char s[200], *p;</span><br><span class="line">    int len, i, m;</span><br><span class="line">    while(scanf(&quot;%s&quot;, s) != EOF) &#123;        //将字符串输入到字符数字s中</span><br><span class="line">        len = strlen(s);        //求出字符数组中输入的字符长度</span><br><span class="line">        char a[len][len+1];</span><br><span class="line">        for(i = 0; i &lt; len; i++) &#123;</span><br><span class="line">            strcpy(a[i], s+i);        //将字符串的后缀字串存储在a[i]开始的单元中</span><br><span class="line">        &#125;</span><br><span class="line">        qsort(a, len, sizeof(a[0]), strcmp);    //对数组a存储的后缀字串进行排序</span><br><span class="line">        for(i = 0; i &lt; len; i++) &#123;</span><br><span class="line">            printf(&quot;%s\n&quot;, a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-分析"><a href="#3-分析" class="headerlink" title="3 分析"></a>3 分析</h1><h2 id="头文件-include-lt-stdlib-h-gt-中的常用函数"><a href="#头文件-include-lt-stdlib-h-gt-中的常用函数" class="headerlink" title="头文件#include &lt;stdlib.h&gt;中的常用函数"></a>头文件<font color=red>#include &lt;stdlib.h&gt;</font>中的常用函数</h2><table>
+<thead>
+<tr>
+<th>double atof(const char *str)</th>
+<th>把参数 str 所指向的字符串转换为一个浮点数（类型为 double 型）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int atoi(const char *str)</td>
+<td>把参数 str 所指向的字符串转换为一个整数（类型为 int 型）</td>
+</tr>
+<tr>
+<td>void *malloc(size_t size)</td>
+<td>分配所需的内存空间，并返回一个指向它的指针</td>
+</tr>
+<tr>
+<td>void free(void *ptr)</td>
+<td>释放之前调用 calloc、malloc 或 realloc 所分配的内存空间</td>
+</tr>
+<tr>
+<td>void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void <em>, const void</em>))</td>
+<td>数组排序</td>
+</tr>
+<tr>
+<td>int abs(int x)</td>
+<td>返回 x 的绝对值</td>
+</tr>
+<tr>
+<td>int rand(void)</td>
+<td>返回一个范围在 0 到 RAND_MAX 之间的伪随机数。</td>
+</tr>
+</tbody></table>
+<h2 id="头文件-include-lt-string-h-gt-中的常用函数"><a href="#头文件-include-lt-string-h-gt-中的常用函数" class="headerlink" title="头文件#include &lt;string.h&gt;中的常用函数"></a>头文件<font color=red>#include &lt;string.h&gt;</font>中的常用函数</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char *strcat(char *dest, const char *src)</td>
+<td>把 src 所指向的字符串追加到 dest 所指向的字符串的结尾</td>
+</tr>
+<tr>
+<td>int strcmp(const char *str1, const char *str2)</td>
+<td>把 str1 所指向的字符串和 str2 所指向的字符串进行比较</td>
+</tr>
+<tr>
+<td>int strncmp(const char *str1, const char *str2, size_t n)</td>
+<td>把 str1 和 str2 进行比较，最多比较前 n 个字节</td>
+</tr>
+<tr>
+<td>char *strcpy(char *dest, const char *src)</td>
+<td>把 src 所指向的字符串复制到 dest</td>
+</tr>
+<tr>
+<td>char *strncpy(char *dest, const char *src, size_t n)</td>
+<td>把 src 所指向的字符串复制到 dest，最多复制 n 个字符</td>
+</tr>
+<tr>
+<td>size_t strlen(const char *str)</td>
+<td>计算字符串 str 的长度，直到空结束字符，但不包括空结束字符</td>
+</tr>
+<tr>
+<td>char *strstr(const char *haystack, const char *needle)</td>
+<td>在字符串 haystack 中查找第一次出现字符串 needle（不包含空结束字符）的位置</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day6/" data-id="cl1qb1e04008pqktugc6l5fdd" data-title="计算机考研复试--牛客网--C语言练习--Day6" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机考研复试--牛客网--C语言练习--Day5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day5/" class="article-date">
+  <time class="dt-published" datetime="2021-01-05T11:43:46.000Z" itemprop="datePublished">2021-01-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day5/">计算机考研复试--牛客网--C语言练习--Day5</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>第5天的题目实在搞不定了，于是就参考了一下排名第一的大佬的代码</p>
+<h1 id="2-题目：Powerful-Calculator"><a href="#2-题目：Powerful-Calculator" class="headerlink" title="2 题目：Powerful Calculator"></a>2 题目：Powerful Calculator</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Today, facing the rapid development of business, SJTU recognizes that more powerful calculator should be studied, developed and appeared in future market shortly. SJTU now invites you attending such amazing research and development work.     In most business applications, the top three useful calculation operators are Addition (+), Subtraction (-) and Multiplication (×) between two given integers. Normally, you may think it is just a piece of cake. However, since some integers for calculation in business application may be very big, such as the GDP of the whole world, the calculator becomes harder to develop.     For example, if we have two integers 20 000 000 000 000 000 and 4 000 000 000 000 000, the exact results of addition, subtraction and multiplication are:     20000000000000000 + 4000000000000000 &#x3D; 24 000 000 000 000 000     20000000000000000 - 4000000000000000 &#x3D; 16 000 000 000 000 000     20000000000000000 × 4000000000000000 &#x3D; 80 000 000 000 000 000 000 000 000 000 000     Note: SJTU prefers the exact format of the results rather than the float format or scientific remark format. For instance, we need “24000000000000000” rather than 2.4×10^16.     As a programmer in SJTU, your current task is to develop a program to obtain the exact results of the addition (a + b), subtraction (a - b) and multiplication (a × b) between two given integers a and b.</p>
+<p>意思大致是：<br>今天，面对业务的快速发展，上海交通大学认识到，更强大的计算器应该研究，开发和出现在未来的市场很快。上海交通大学诚邀您参加如此精彩的研发工作。在大多数业务应用程序中，前三个有用的计算运算符是两个给定整数之间的加法（+）、减法（-）和乘法（×）。通常，你可能会认为这只是小菜一碟。然而，由于商业应用中计算的一些整数可能非常大，比如全球的GDP，使得计算器的开发变得更加困难。例如，如果我们有两个整数20 000 000 000和4 000 000 000 000 000，那么加、减、乘的精确结果是：200000000000+40000000000&#x3D;24 000 000 000 000 000 000 000-40000000000&#x3D;16 000 000 000 000 000 000 000×40000000000&#x3D;8 000 000 000 000 000 000 000 000注：上海交通大学倾向于结果的精确格式，而不是浮点数格式或科学备注格式。例如，我们需要“24000000000000000”，而不是2.4×10^16。作为上海交通大学的程序员，您当前的任务是开发一个程序，以获得两个给定整数a和b之间的加法（a+b）、减法（a-b）和乘法（a×b）的精确结果。</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><blockquote>
+<p>Each case consists of two separate lines where the first line gives the integer a and the second gives b (|a| &lt;10^400 and |b| &lt; 10^400).</p>
+</blockquote>
+<p>意思大致是：<br>每种情况由两行组成，第一行给出整数a，第二行给出b（| a |&lt;10^400和| b |&lt;10^400）。</p>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><blockquote>
+<p>For each case, output three separate lines showing the exact results of addition (a + b), subtraction (a - b) and multiplication (a × b) of that case, one result per lines.</p>
+</blockquote>
+<p>意思大致是：<br>对于每种情况，输出三行，分别显示该情况的加法（a+b）、减法（a-b）和乘法（a×b）的精确结果，每行一个结果。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>20000000000000000<br>4000000000000000</p>
+</blockquote>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>24000000000000000<br>16000000000000000<br>80000000000000000000000000000000</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">char stra[500];</span><br><span class="line">char strb[500];</span><br><span class="line">struct bign &#123;</span><br><span class="line">    int d[1000];</span><br><span class="line">    int len;</span><br><span class="line">&#125;;</span><br><span class="line">struct bign data1;</span><br><span class="line">struct bign data2;</span><br><span class="line">void init(struct bign* a) &#123;</span><br><span class="line">    memset((*a).d, 0, sizeof((*a).d));</span><br><span class="line">    (*a).len=0;</span><br><span class="line">&#125;</span><br><span class="line">struct bign add(struct bign a, struct bign b) &#123;</span><br><span class="line">    int i;</span><br><span class="line">    struct bign c;</span><br><span class="line">    init(&amp;c);</span><br><span class="line">    int carry = 0;</span><br><span class="line">    for(i = 0; i &lt; a.len || i &lt; b.len; i++) &#123;</span><br><span class="line">        int temp = a.d[i] + b.d[i] + carry;</span><br><span class="line">        c.d[c.len++] = temp % 10;</span><br><span class="line">        carry = temp / 10;</span><br><span class="line">    &#125;</span><br><span class="line">    if(carry != 0) &#123;</span><br><span class="line">        c.d[c.len++] = carry;</span><br><span class="line">    &#125;</span><br><span class="line">    return c;</span><br><span class="line">&#125;</span><br><span class="line">struct bign minu(struct bign a, struct bign b) &#123;</span><br><span class="line">    int i;</span><br><span class="line">    struct bign c;</span><br><span class="line">    init(&amp;c);</span><br><span class="line">    for(i = 0; i &lt; a.len || i &lt; b.len; i++) &#123;</span><br><span class="line">        if(a.d[i] &lt; b.d[i]) &#123;</span><br><span class="line">            a.d[i+1]--;</span><br><span class="line">            a.d[i] += 10;</span><br><span class="line">        &#125;</span><br><span class="line">        c.d[c.len++] = a.d[i] - b.d[i];</span><br><span class="line">    &#125;</span><br><span class="line">    while(c.len - 1 &gt;= 1 &amp;&amp; c.d[c.len-1] == 0) &#123;</span><br><span class="line">        c.len--;</span><br><span class="line">    &#125;</span><br><span class="line">    return c;</span><br><span class="line">&#125;</span><br><span class="line">struct bign multi(struct bign a, struct bign b) &#123;</span><br><span class="line">    struct bign c;</span><br><span class="line">    int i, j;</span><br><span class="line">    init(&amp;c);</span><br><span class="line">    int carry = 0;</span><br><span class="line">    for(i = 0; i &lt; a.len; i++) &#123;</span><br><span class="line">        for(j = 0; j &lt; b.len; j++) &#123;</span><br><span class="line">            int temp = c.d[i+j];</span><br><span class="line">            c.d[i+j] = (c.d[i+j] + carry + a.d[i] * b.d[j]) % 10;</span><br><span class="line">            carry = (a.d[i] * b.d[j] + carry + temp) / 10;</span><br><span class="line">        &#125;</span><br><span class="line">        int m = i + j;</span><br><span class="line">        while(carry != 0) &#123;</span><br><span class="line">            c.d[m++] = carry % 10;</span><br><span class="line">            carry /= 10;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    c.len = a.len + b.len + 1;</span><br><span class="line">    while(c.len - 1 &gt;= 1 &amp;&amp; c.d[c.len-1] == 0) &#123;</span><br><span class="line">        c.len--;</span><br><span class="line">    &#125;</span><br><span class="line">    return c;</span><br><span class="line">&#125;</span><br><span class="line">int compare(struct bign a, struct bign b) &#123;</span><br><span class="line">    if(a.len &gt; b.len)</span><br><span class="line">        return 1;</span><br><span class="line">    else if(a.len &lt; b.len)</span><br><span class="line">        return - 1;</span><br><span class="line">    else &#123;</span><br><span class="line">        int i;</span><br><span class="line">        for(i = a.len - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">            if(a.d[i] &gt; b.d[i])</span><br><span class="line">                return 1;</span><br><span class="line">            else if(a.d[i] &lt; b.d[i])</span><br><span class="line">                return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void print(struct bign a) &#123;</span><br><span class="line">    int i;</span><br><span class="line">    for(i = a.len - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">        printf(&quot;%d&quot;, a.d[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void f_add(struct bign a, struct bign b, int signa, int signb, int res) &#123;</span><br><span class="line">    struct bign c;</span><br><span class="line">    if(signa == 1 &amp;&amp; signb == 1) &#123;</span><br><span class="line">        c=add(a, b);</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(signa == -1 &amp;&amp; signb == -1) &#123;</span><br><span class="line">        c=add(a, b);</span><br><span class="line">        printf(&quot;-&quot;);</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(signa == 1 &amp;&amp; signb == -1) &#123;</span><br><span class="line">        if(res == -1) &#123;</span><br><span class="line">            c=minu(b, a);</span><br><span class="line">            printf(&quot;-&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            c=minu(a, b);</span><br><span class="line">        &#125;</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        if(res == 1) &#123;</span><br><span class="line">            c = minu(a, b);</span><br><span class="line">            printf(&quot;-&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            c=minu(b, a);</span><br><span class="line">        &#125;</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void f_minu(struct bign a, struct bign b, int signa, int signb, int res) &#123;</span><br><span class="line">    struct bign c;</span><br><span class="line">    if(signa == 1 &amp;&amp; signb == -1) &#123;</span><br><span class="line">        c = add(a, b);</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(signa == -1 &amp;&amp; signb == 1) &#123;</span><br><span class="line">        c=add(a, b);</span><br><span class="line">        printf(&quot;-&quot;);</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(signa == 1 &amp;&amp; signb == 1) &#123;</span><br><span class="line">        if(res == -1) &#123;</span><br><span class="line">            c=minu(b, a);</span><br><span class="line">            printf(&quot;-&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            c = minu(a, b);</span><br><span class="line">        &#125;</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        if(res == 1) &#123;</span><br><span class="line">            c = minu(a, b);</span><br><span class="line">            printf(&quot;-&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            c=minu(b, a);</span><br><span class="line">        &#125;</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void f_multi(struct bign a, struct bign b, int signa, int signb,int res) &#123;</span><br><span class="line">    struct bign c;</span><br><span class="line">    if(signa * signb &gt;= 0) &#123;</span><br><span class="line">        c = multi(a, b);</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        c = multi(a, b);</span><br><span class="line">        printf(&quot;-&quot;);</span><br><span class="line">        print(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int i, j, k;</span><br><span class="line">    while(scanf(&quot;%s %s&quot;, stra, strb) != EOF) &#123;      //输入a，b两个数字字符</span><br><span class="line">        int lena, lenb;</span><br><span class="line">        int len1, len2;</span><br><span class="line">        int signa = 1;      //默认输入a为正数</span><br><span class="line">        int signb = 1;      //默认输入b为正数</span><br><span class="line">        if(stra[0] == &#x27;-&#x27;)      //如果该数字是负数</span><br><span class="line">            signa = -1;</span><br><span class="line">        if(strb[0] == &#x27;-&#x27;)      //如果该数字是负数</span><br><span class="line">            signb = -1;</span><br><span class="line">        lena = strlen(stra);        //求a数字字符的长度</span><br><span class="line">        len1 = lena;</span><br><span class="line">        if(signa == -1)         //如果是负数，字符长度减1</span><br><span class="line">            len1 = lena - 1;</span><br><span class="line">        lenb = strlen(strb);        //求b数字字符的长度</span><br><span class="line">        len2 = lenb;</span><br><span class="line">        if(signb == -1)         //如果是负数，字符长度减1</span><br><span class="line">            len2 = lenb - 1;</span><br><span class="line">        data1.len = len1;</span><br><span class="line">        for(i = 0; i &lt; len1; i++) &#123;</span><br><span class="line">            //每个数字的ASCII减去&#x27;0&#x27;的ASCII得到该数字的大小</span><br><span class="line">            data1.d[i] = stra[lena-i-1] - &#x27;0&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">        data2.len = len2;</span><br><span class="line">        for(i = 0; i &lt; len2; i++) &#123;</span><br><span class="line">            //每个数字的ASCII减去&#x27;0&#x27;的ASCII得到该数字的大小</span><br><span class="line">            data2.d[i] = strb[lenb-i-1] - &#x27;0&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">        int res = compare(data1, data2);</span><br><span class="line">        f_add(data1, data2, signa, signb, res);     //加法</span><br><span class="line">        f_minu(data1, data2, signa, signb, res);       //减法</span><br><span class="line">        f_multi(data1, data2, signa, signb, res);       //乘法</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-分析"><a href="#3-分析" class="headerlink" title="3 分析"></a>3 分析</h1><ul>
+<li>今天题目真心不好做，我现在怀疑出这个题的人的脑回路了</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day5/" data-id="cl1qb1e03008kqktuf06va5c4" data-title="计算机考研复试--牛客网--C语言练习--Day5" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机考研复试--牛客网--C语言练习--Day4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day4/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T10:09:05.000Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day4/">计算机考研复试--牛客网--C语言练习--Day4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>第4天的题目总的来说不是特别难，核心就是一个求数字数值位的和的运算</p>
+<h1 id="2-题目：Digital-Roots"><a href="#2-题目：Digital-Roots" class="headerlink" title="2 题目：Digital Roots"></a>2 题目：Digital Roots</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>The digital root of a positive integer is found by summing the digits of the integer. If the resulting value is a single digit then that digit is the digital root. If the resulting value contains two or more digits, those digits are summed and the process is repeated. This is continued as long as necessary to obtain a single digit.     For example, consider the positive integer 24. Adding the 2 and the 4 yields a value of 6. Since 6 is a single digit, 6 is the digital root of 24. Now consider the positive integer 39. Adding the 3 and the 9 yields 12. Since 12 is not a single digit, the process must be repeated. Adding the 1 and the 2 yeilds 3, a single digit and also the digital root of 39.</p>
+<p>意思大致是：<br>正整数的数字根是通过对整数的数字求和得到的。如果结果值是单个数字，则该数字是数字根。如果结果值包含两个或两个以上的数字，则将这些数字相加并重复该过程。只要有必要获得一个数字，就可以继续这样做。例如，考虑正整数24。将2和4相加得到值6。因为6是一个数字，所以6是24的数字根。现在考虑正整数39。加上3和9得到12。因为12不是一个数字，所以必须重复这个过程。将1和2相加得到3，一个数字，还有39的数字根。</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><blockquote>
+<p>The input file will contain a list of positive integers, one per line.<br>The integer may consist of a large number of digits.</p>
+</blockquote>
+<p>意思大致是：<br>输入文件将包含一个正整数列表，每行一个。<br>整数可以由大量数字组成。</p>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><blockquote>
+<p>For each integer in the input, output its digital root on a separate line of the output.</p>
+</blockquote>
+<p>意思大致是：<br>对于输入中的每个整数，在输出的单独行上输出其数字根。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>24<br>39<br>0</p>
+</blockquote>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>6<br>3</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int DigitalRoot(int k);</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int num;</span><br><span class="line">    while(scanf(&quot;%d&quot;, &amp;num) != EOF) &#123;        //输入待计算数字根的数</span><br><span class="line">        int result = num;</span><br><span class="line">        while(1) &#123;</span><br><span class="line">            result = DigitalRoot(result);        //计算数字根</span><br><span class="line">            if(result &gt;= 1 &amp;&amp; result &lt;= 9)       //满足条件就退出循环</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;, result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int DigitalRoot(int k) &#123;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    while(k != 0) &#123;</span><br><span class="line">        sum += k % 10;        //计算数字位的和</span><br><span class="line">        k /= 10;        //计算低一位的数值</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-分析"><a href="#3-分析" class="headerlink" title="3 分析"></a>3 分析</h1><ul>
+<li>今天题目的难点是求一个数字的各数值位的数字之和，可以利用一个循环不断进行<font color=red>除法加法求模</font>运算进行</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day4/" data-id="cl1qb1e01008cqktub6kchu0o" data-title="计算机考研复试--牛客网--C语言练习--Day4" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机考研复试--牛客网--C语言练习--Day3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day3/" class="article-date">
+  <time class="dt-published" datetime="2021-01-03T10:25:13.000Z" itemprop="datePublished">2021-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day3/">计算机考研复试--牛客网--C语言练习--Day3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>第3天的题目涉及到动态规划了，真是有点难度了……</p>
+<h1 id="2-题目：神奇的口袋"><a href="#2-题目：神奇的口袋" class="headerlink" title="2 题目：神奇的口袋"></a>2 题目：神奇的口袋</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有一个神奇的口袋，总的容积是40，用这个口袋可以变出一些物品，这些物品的总体积必须是40。John现在有n个想要得到的物品，每个物品的体积分别是a1，a2……an。John可以从这些物品中选择一些，如果选出的物体的总体积是40，那么利用这个神奇的口袋，John就可以得到这些物品。现在的问题是，John有多少种不同的选择物品的方式。</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><blockquote>
+<p>输入的第一行是正整数n (1 &lt;&#x3D; n &lt;&#x3D; 20)，表示不同的物品的数目。接下来的n行，每行有一个1到40之间的正整数，分别给出a1，a2……an的值。</p>
+</blockquote>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><blockquote>
+<p>输出不同的选择物品的方式的数目。</p>
+</blockquote>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>3<br>20<br>20<br>20</p>
+</blockquote>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>3</p>
+</blockquote>
+<h2 id="代码1（递归）"><a href="#代码1（递归）" class="headerlink" title="代码1（递归）"></a>代码1（递归）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#递归实现</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int count(int i, int sum);</span><br><span class="line">int a[100];</span><br><span class="line">int n = 1;</span><br><span class="line">int main() &#123;</span><br><span class="line">    while(scanf(&quot;%d\n&quot;, &amp;n) != EOF) &#123;</span><br><span class="line">        for(int i = 0; i &lt; n; i++)</span><br><span class="line">            scanf(&quot;%d\n&quot;, &amp;a[i]);</span><br><span class="line">        printf(&quot;%d&quot;, count(0, 40));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int count(int i, int sum)&#123;</span><br><span class="line">    if(sum == 0)                //找到一组和为sum的组合数</span><br><span class="line">        return 1;</span><br><span class="line">    if(i == n || sum &lt; 0)       //i==n说明没有其他的数来组合，sum&lt;0说明组合不出</span><br><span class="line">        return 0;</span><br><span class="line">    return</span><br><span class="line">        //从数组的第i为开始，包含a[i],和不包含a[i]</span><br><span class="line">        count(i + 1, sum - a[i]) + count(i + 1, sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码2（动态规划）"><a href="#代码2（动态规划）" class="headerlink" title="代码2（动态规划）"></a>代码2（动态规划）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#动态规划</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    int arr[21];</span><br><span class="line">    int dp[25][45];        //dp[i][j]代表前i个物品凑出j体积，共有多少种方法</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;arr[i]);</span><br><span class="line">        dp[i][0] = 1;        //初始化边界</span><br><span class="line">    &#125;</span><br><span class="line">    dp[0][0] = 1;        //初始化边界</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        for(int j = 1; j &lt;= 40; j++) &#123;</span><br><span class="line">            dp[i][j] = dp[i-1][j];        //默认没有新的组合方式</span><br><span class="line">            if(arr[i] &lt;= j) &#123;</span><br><span class="line">                dp[i][j] += dp[i-1][j-arr[i]];    //经判断有新的组合方式</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;, dp[n][40]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-分析"><a href="#3-分析" class="headerlink" title="3 分析"></a>3 分析</h1><ul>
+<li>递归函数注意出口的实现</li>
+<li>利用EOF来表示没有输入结束，比如<font color=red>while(scanf(“%d\n”, &amp;n) !&#x3D; EOF)</font></li>
+<li><font color=red>动态规划</font>还是挺有难度的，看来得好好复习算法了</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day3/" data-id="cl1qb1dzy0084qktuaiy07nle" data-title="计算机考研复试--牛客网--C语言练习--Day3" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

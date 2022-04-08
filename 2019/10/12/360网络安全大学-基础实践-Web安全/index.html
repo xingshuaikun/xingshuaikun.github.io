@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>360网络安全大学-基础实践-Web安全 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 SQL注入1.1 定义： 所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。  1.2 执行条件1 用户能够">
+<meta property="og:type" content="article">
+<meta property="og:title" content="360网络安全大学-基础实践-Web安全">
+<meta property="og:url" content="http://example.com/2019/10/12/360%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E5%AD%A6-%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5-Web%E5%AE%89%E5%85%A8/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="1 SQL注入1.1 定义： 所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。  1.2 执行条件1 用户能够">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190925203035803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190925210526607.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190925210903995.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190925211018380.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190925212925861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190925211841933.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190925212022540.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190925212451950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190925213401668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191106192200884.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-10-11T16:55:59.000Z">
+<meta property="article:modified_time" content="2019-12-15T05:20:04.452Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190925203035803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-360网络安全大学-基础实践-Web安全" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/12/360%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E5%AD%A6-%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5-Web%E5%AE%89%E5%85%A8/" class="article-date">
+  <time class="dt-published" datetime="2019-10-11T16:55:59.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      360网络安全大学-基础实践-Web安全
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-SQL注入"><a href="#1-SQL注入" class="headerlink" title="1 SQL注入"></a>1 SQL注入</h1><h2 id="1-1-定义："><a href="#1-1-定义：" class="headerlink" title="1.1 定义："></a>1.1 定义：</h2><blockquote>
+<p>所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
+</blockquote>
+<h2 id="1-2-执行条件"><a href="#1-2-执行条件" class="headerlink" title="1.2 执行条件"></a>1.2 执行条件</h2><p>1 用户能够控制输入<br>2 原本程序要执行的SQL语句，拼接了用户输入的恶意数据</p>
+<h2 id="1-3-SQL注入"><a href="#1-3-SQL注入" class="headerlink" title="1.3 SQL注入"></a>1.3 SQL注入</h2><p>1 联合查询union<br>2 information.schema数据库是MySQL自带的数据库，可以利用information.schema.SCHEMA_NAME来查看所有数据库<br>3 万能密码绕过<code>&#39;or&#39; 1 &#39;=&#39; 1 #</code><br>4 数字型注入</p>
+<p>检测方法</p>
+<table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="http://www.test.com/user.php?id=8&#39;">http://www.test.com/user.php?id=8&#39;</a></th>
+<th>返回错误，未对单引号处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://www.test.com/user.php?id=8">http://www.test.com/user.php?id=8</a> and 1&#x3D;1</td>
+<td>运行正常</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.test.com/user.php?id=8">http://www.test.com/user.php?id=8</a> and 1&#x3D;2</td>
+<td>运行异常</td>
+</tr>
+</tbody></table>
+<p>5 SQL盲注</p>
+<ul>
+<li>布尔盲注</li>
+<li>时间盲注<br>BENCHMARK(count, expr)<br>通过讲expr执行count次来达到延迟的目的<br>sleep(time)<br>直接延迟time时间</li>
+<li>报错型盲注</li>
+</ul>
+<p>6 SQL文件头注入</p>
+<ul>
+<li>HTTP Header内容<br>1） User-Agent：使得服务器能够识别客户使用的操作系统，浏览器版本。（很多数据量大的网站中会记录客户使用的操作系统或浏览器版本等存入数据库中）<br>2） Cookie：网站为了辨别用户身份、进行session跟踪二储存在用户本地终端上的数据（通常经过加密）<br>3） X-Forwarded-For：简称XFF头，它代表客户端，也就是HTTP的请求端真实的IP（通常一些网站的防注入功能会记录请求端真实IP地址并写入数据库or某文件【通过修改XFF头可以实现伪造IP】）<br>4） Clien-IP：同上<br>5） Rerferer：浏览器向Web服务器表明自己是从哪个页面链接过来的<br>6） Host：客户端指定自己想访问的Web服务器的域名&#x2F;IP地址和端口号</li>
+</ul>
+<p>7 宽字节注入</p>
+<p>GBK<br>UTF-8</p>
+<h2 id="1-4-SQL注入检测绕过"><a href="#1-4-SQL注入检测绕过" class="headerlink" title="1.4 SQL注入检测绕过"></a>1.4 SQL注入检测绕过</h2><p>1 大小写绕过<br>比如拦截了union，那就使用Union UnIoN等等<br>2 编码绕过<br>WAF（也称为：网站应用级入侵防御系统。英文：Web Application Firewall，全称：Web应用防护系统）检测关键字，比如检测union，用%55也就是U的16进制编码来代替U，union写成%55nION，结合大小写也可以绕过一些WAF<br>3 注释绕过<br>适用于WAF只是过滤了一次危险的语句，而没有阻断我们的整个查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?id=1+union+select+1,2,3/*</span><br></pre></td></tr></table></figure>
+
+<p>比如对于上面这条查询，WAF过滤了一次union和select，在之前在写一个注释的语句，让它吧注释里面的过滤掉，并不影响我们的查询。<br>绕过语句就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?id=1/ * union * /union/ * select * /select+1,2,3/*</span><br></pre></td></tr></table></figure>
+
+<p>4 分隔重写绕过</p>
+<p>适用于那种WAF采用了正则表达式的情况，会检测所有敏感字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?id=1+un/** ion+sel/** ect+1,2,3-</span><br></pre></td></tr></table></figure>
+
+<p>至于重写绕过，适用于WAF过滤了一次的情况，和我们上传aaspsp的原理一样，我们可以写出类似Ununionion这样的，过滤一次union后就会执行我们的查询了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 ununionion select 1,2,3-</span><br></pre></td></tr></table></figure>
+
+<p>5 同功能函数替换</p>
+<ul>
+<li>Substring()可以用mid(), substr()这些函数来替换，都是用来取字符串的某一位字符的</li>
+<li>Ascii()编码可以用hex(), bin()也就是16进制和二进制编码替换</li>
+<li>时间盲注中Benchmark()可以用sleep()来替换</li>
+</ul>
+<p>6 WAF绕过脚本</p>
+<p>kali的<code>/usr/share/sqlmap/tamper</code>目录下主要存放的是WAF绕过脚本，比如base64encode.py是把base64编码后的字符串展示绕过，其余的请看下方链接<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34444097/article/details/82717357">https://blog.csdn.net/qq_34444097&#x2F;article&#x2F;details&#x2F;82717357</a></p>
+<h1 id="2-敏感信息泄露"><a href="#2-敏感信息泄露" class="headerlink" title="2 敏感信息泄露"></a>2 敏感信息泄露</h1><h2 id="2-1-目录"><a href="#2-1-目录" class="headerlink" title="2.1 目录"></a>2.1 目录</h2><ol>
+<li>默认账户</li>
+<li>后台&#x2F;服务对公开发</li>
+<li>DEBUG信息</li>
+<li>目录列表</li>
+<li>备份文件</li>
+<li>系统产生的临时文件</li>
+<li>GIT泄露</li>
+<li>SVN泄露</li>
+</ol>
+<h2 id="2-2-默认账户"><a href="#2-2-默认账户" class="headerlink" title="2.2 默认账户"></a>2.2 默认账户</h2><ol>
+<li>数据库软件<br>MySQL账户：root<br>sql server管理员账户：sa</li>
+<li>集成开发环境</li>
+<li>CMS内容管理系统<br>账户admin</li>
+<li>路由器管理界面</li>
+<li>摄像头管理界面</li>
+</ol>
+<h2 id="2-3-后台-x2F-服务对公开发"><a href="#2-3-后台-x2F-服务对公开发" class="headerlink" title="2.3 后台&#x2F;服务对公开发"></a>2.3 后台&#x2F;服务对公开发</h2><ol>
+<li>后台地址泄露</li>
+<li>后台地址被爆破</li>
+<li>后台未做授权</li>
+<li>敏感服务未做访问限制，可以直接访问</li>
+</ol>
+<h2 id="2-4-debug信息"><a href="#2-4-debug信息" class="headerlink" title="2.4 debug信息"></a>2.4 debug信息</h2><blockquote>
+<p>为了开发人员能够快速定位错误的代码，脚本配置文件打开出错误提示选项<br>debug信息可能会透露部分代码、绝对路径等信息。（比如SQL的报错注入）</p>
+</blockquote>
+<h2 id="2-5-目录列表"><a href="#2-5-目录列表" class="headerlink" title="2.5 目录列表"></a>2.5 目录列表</h2><h2 id="2-6-备份文件"><a href="#2-6-备份文件" class="headerlink" title="2.6 备份文件"></a>2.6 备份文件</h2><blockquote>
+<p>.bak等相关备份文件<br>.zip等相关压缩命令产物<br>.tar.tz、.tar等tar命令的产物<br>.sql等相关数据库</p>
+</blockquote>
+<h2 id="2-7-系统产生的临时文件"><a href="#2-7-系统产生的临时文件" class="headerlink" title="2.7 系统产生的临时文件"></a>2.7 系统产生的临时文件</h2><blockquote>
+<p>.tmp文件<br>.swp文件<br>.Ds_Store</p>
+</blockquote>
+<h2 id="2-8-GIT泄露"><a href="#2-8-GIT泄露" class="headerlink" title="2.8 GIT泄露"></a>2.8 GIT泄露</h2><blockquote>
+<p>分布式版本控制系统<br>隐藏仓库文件夹.git文件夹<br>还原仓库文件</p>
+</blockquote>
+<h2 id="2-9-SVN泄露"><a href="#2-9-SVN泄露" class="headerlink" title="2.9 SVN泄露"></a>2.9 SVN泄露</h2><blockquote>
+<p>集中式版本控制系统<br>隐藏仓库文件夹.svn文件夹<br>还原仓库文件</p>
+</blockquote>
+<h1 id="3-CSRF-amp-SSRF"><a href="#3-CSRF-amp-SSRF" class="headerlink" title="3 CSRF&amp;SSRF"></a>3 CSRF&amp;SSRF</h1><h2 id="3-1-CSRF（跨站请求伪造）"><a href="#3-1-CSRF（跨站请求伪造）" class="headerlink" title="3.1 CSRF（跨站请求伪造）"></a>3.1 CSRF（跨站请求伪造）</h2><h3 id="3-1-2-原理总结"><a href="#3-1-2-原理总结" class="headerlink" title="3.1.2 原理总结"></a>3.1.2 原理总结</h3><p>一个CSRF漏洞攻击的实现，其需要由“三个部分”来组成</p>
+<ol>
+<li>有一个漏洞存在（无需验证、任意修改后台数据、新增请求）</li>
+<li>伪装数据操作请求的恶意链接或者页面</li>
+<li>诱使用户主动访问或登录恶意链接，触发非法操作</li>
+</ol>
+<h3 id="3-1-3-漏洞的存在"><a href="#3-1-3-漏洞的存在" class="headerlink" title="3.1.3 漏洞的存在"></a>3.1.3 漏洞的存在</h3><p>关键字：跨站请求漏洞(CSR： Cross Site Request)<br>如果需要CSRF攻击能够成功，首先就需要目标站点或系统存在一个可以<br>进行数据修改或者新增操作且此操作被提交后台后的过程中，其未提供<br>任何身份识别或校验的参数。后台只要收到请求，就立即下发数据修改或<br>新增的操作；<br>以上漏洞情况的存在，出现比较多的场景有用户密码的修改、购物地址的<br>修改或后台管理账户的新增等等操作过程中。</p>
+<h3 id="3-1-4-漏洞利用的伪装"><a href="#3-1-4-漏洞利用的伪装" class="headerlink" title="3.1.4 漏洞利用的伪装"></a>3.1.4 漏洞利用的伪装</h3><p>关键字：伪装请求(F： forgery)<br>CSRF漏洞存在了，如果需要真正的被利用，还需要对“修改或新增”数<br>据操作请求的伪装，此时恶意攻击者只要将伪装好的“数据修改或新增<br>的请求发送给被攻击者，或者通过社工的方式诱使被攻击者在其 cookie还<br>生效的情况下点击了此请求链接，即可触发csrf漏洞，成功修改或新增当<br>前用户的数据信息，如修改当前用户的密码、又或者是当前用户为后台管<br>理员，触发漏洞后新增了一个后台管理员。</p>
+<h3 id="3-1-5-用户非本意的操作"><a href="#3-1-5-用户非本意的操作" class="headerlink" title="3.1.5 用户非本意的操作"></a>3.1.5 用户非本意的操作</h3><p>关键字：非本意操作<br>当前用户在不知情的情况下，访问了黑客恶意构造的页面或链接，即在<br>非本意的情况下完成黑客想完成的“非法操作”，实现了对当前用户个人<br>信息的恶意操作。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190925203035803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="3-1-6-小结"><a href="#3-1-6-小结" class="headerlink" title="3.1.6 小结"></a>3.1.6 小结</h3><p>小结：构造一个恶意链接或者html页面<br>CSRF漏洞的目的：利用已存在的漏洞构造了一个“恶意链接”或“html页<br>面”，然后诱使用户点击触发此漏洞。<br>目标站点存在一个漏洞(CSRF)，攻击者利用此类漏洞伪装了一个链接<br>或者html页面，诱使被攻击者在登录的情况下（即当前 cookie有效的情况<br>下）点击此伪装请求，随后在用户不知情的情况下完成了对当前用户数<br>据的修改或者新增操作，而被修改的信息可能是用户的密码、关键信息又<br>或者新增后台管理员等。</p>
+<h2 id="3-2-SSRF-服务器端请求伪造"><a href="#3-2-SSRF-服务器端请求伪造" class="headerlink" title="3.2 SSRF(服务器端请求伪造)"></a>3.2 SSRF(服务器端请求伪造)</h2><h3 id="3-2-1-SSRF简介"><a href="#3-2-1-SSRF简介" class="headerlink" title="3.2.1 SSRF简介"></a>3.2.1 SSRF简介</h3><p>SSRF（Server-Side Request Forgery：服务器端请求伪造）是一种由攻击<br>者构造形成，由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻<br>击的目标是从外网无法访问的内部系统，正是因为它是由服务端发起<br>的，所以它能够请求到与它相连而与外网隔离的内部系统。<br>SSRF形成的原因大都是由于服务端提供了从其他服务器应用获取数据<br>的功能且没有对目标地址做过滤与限制，比如从指定URL地址获取网<br>页文本内容，加载指定地址的图片，下载等等。</p>
+<h3 id="3-2-2-SSRF常见危害"><a href="#3-2-2-SSRF常见危害" class="headerlink" title="3.2.2 SSRF常见危害"></a>3.2.2 SSRF常见危害</h3><ol>
+<li>可以对外网、服务器所在内网、本地进行端口扫描，获取一些服务的Banner信息等</li>
+<li>攻击运行在内网或本地的应用程序</li>
+<li>对内网Web应用进行指纹识别，通过访问默认文件实现（如 Readme等文件）</li>
+<li>攻击内外网的Web应用，主要是使用GET就可以实现的攻击（比如Struts2，SQLI等）</li>
+<li>用File协议读取本地文件等</li>
+</ol>
+<h3 id="3-2-3-SSRF常见应用场景"><a href="#3-2-3-SSRF常见应用场景" class="headerlink" title="3.2.3 SSRF常见应用场景"></a>3.2.3 SSRF常见应用场景</h3><ol>
+<li>分享</li>
+<li>在线翻译</li>
+<li>图片加载与下载</li>
+<li>图片、文章收藏功能</li>
+<li>未公开的API实现以及其他调用URL的功能等</li>
+</ol>
+<h1 id="4-XSS跨站脚本"><a href="#4-XSS跨站脚本" class="headerlink" title="4 XSS跨站脚本"></a>4 XSS跨站脚本</h1><h2 id="4-1-定义"><a href="#4-1-定义" class="headerlink" title="4.1 定义"></a>4.1 定义</h2><p>跨站脚本攻击(Cross Site Scripting)，为了不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意的Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。<br>主要可以对用户cookie资料窃取、会话劫持、钓鱼欺骗等各种攻击。</p>
+<h2 id="4-2-攻击流程"><a href="#4-2-攻击流程" class="headerlink" title="4.2 攻击流程"></a>4.2 攻击流程</h2><p><img src="https://img-blog.csdnimg.cn/20190925210526607.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h2 id="4-3-跨站脚本介绍"><a href="#4-3-跨站脚本介绍" class="headerlink" title="4.3 跨站脚本介绍"></a>4.3 跨站脚本介绍</h2><h2 id="4-4-跨站脚本实例"><a href="#4-4-跨站脚本实例" class="headerlink" title="4.4 跨站脚本实例"></a>4.4 跨站脚本实例</h2><h3 id="4-4-1-前端HTML代码-后端PHP代码"><a href="#4-4-1-前端HTML代码-后端PHP代码" class="headerlink" title="4.4.1 前端HTML代码+后端PHP代码"></a>4.4.1 前端HTML代码+后端PHP代码</h3><p><img src="https://img-blog.csdnimg.cn/20190925210903995.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="4-4-2-两种利用方式"><a href="#4-4-2-两种利用方式" class="headerlink" title="4.4.2 两种利用方式"></a>4.4.2 两种利用方式</h3><p><img src="https://img-blog.csdnimg.cn/20190925211018380.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="4-4-3-跨站脚本的分类"><a href="#4-4-3-跨站脚本的分类" class="headerlink" title="4.4.3 跨站脚本的分类"></a>4.4.3 跨站脚本的分类</h3><p>根据特性和利用手法的不同，主要分成三大类型：</p>
+<ol>
+<li>反射型XSS（也叫非持久性XSS）</li>
+<li>存储型XSS（存储性XSS）</li>
+<li>DOM型的XSS</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20190925212925861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h2 id="4-5-反射型XSS"><a href="#4-5-反射型XSS" class="headerlink" title="4.5 反射型XSS"></a>4.5 反射型XSS</h2><h3 id="4-5-1-简介"><a href="#4-5-1-简介" class="headerlink" title="4.5.1 简介"></a>4.5.1 简介</h3><p>反射型XSS（也叫非持久型XSS、参数型XSS）<br>主要用于将恶意脚本附加到URL地址的参数中<br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/XSS4.php?name=&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4-5-2-攻击原理"><a href="#4-5-2-攻击原理" class="headerlink" title="4.5.2 攻击原理"></a>4.5.2 攻击原理</h3><p><img src="https://img-blog.csdnimg.cn/20190925211841933.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="4-5-3-编码转换"><a href="#4-5-3-编码转换" class="headerlink" title="4.5.3 编码转换"></a>4.5.3 编码转换</h3><p><img src="https://img-blog.csdnimg.cn/20190925212022540.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>由此可知，恶意代码经过编码处理后会大大增加其迷惑性</p>
+<h2 id="4-6-存储型XSS"><a href="#4-6-存储型XSS" class="headerlink" title="4.6 存储型XSS"></a>4.6 存储型XSS</h2><h3 id="4-6-1-简介"><a href="#4-6-1-简介" class="headerlink" title="4.6.1 简介"></a>4.6.1 简介</h3><p>存储型XSS相当于持久型XSS，此类XSS不需要用户点击特定URL就能执行跨站脚本，攻击者事先吧恶意JavaScript代码上传或存储到漏洞服务器中，当受害者浏览包含此恶意JavaScript代码的页面就会执行恶意代码。</p>
+<h3 id="4-6-2-攻击原理"><a href="#4-6-2-攻击原理" class="headerlink" title="4.6.2 攻击原理"></a>4.6.2 攻击原理</h3><p><img src="https://img-blog.csdnimg.cn/20190925212451950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h2 id="4-7-DOM型XSS"><a href="#4-7-DOM型XSS" class="headerlink" title="4.7 DOM型XSS"></a>4.7 DOM型XSS</h2><h3 id="4-7-1-定义"><a href="#4-7-1-定义" class="headerlink" title="4.7.1 定义"></a>4.7.1 定义</h3><p>先以一张w3c的图来说明，到底什么是dom：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190925213401668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>dom就是一个树状的模型，你可以编写Javascript代码根据dom一层一层的节点，去遍历&#x2F;获取&#x2F;修改对应的节点，对象，值。了解了这么一个知识点，你就会发现，其实dom xss并不复杂，他也属于反射型xss的一种(domxss取决于输出位置，并不取决于输出环境，因此domxss既有可能是反射型的，也有可能是存储型的)，简单去理解就是因为他输出点在DOM。dom - xss是通过url传入参数去控制触发的）分析完dom-xss之后，再说说存储型xss，其实也很好理解，存储型xss，自然就是存入了数据库，再取出来，导致的xss。3，）反射型xss实际上是包括了dom - xss了，关键点仍然是在通过url控制了页面的输出（dom-xss也类似，只因为输出地点不同而导致结果不一致）。</p>
+<p>DOM型XSS其实是一种特殊类型的反射型XSS，它是基于DOM文档对象模型的一种漏洞。</p>
+<p>在网站页面中有许多页面的元素，当页面到达浏览器时浏览器会为页面创建一个顶级的Document object文档对象，接着生成各个子文档对象，每个页面元素对应一个文档对象，每个文档对象包含属性、方法和事件。可以通过JS脚本对文档对象进行编辑从而修改页面的元素。也就是说，客户端的脚本程序可以通过DOM来动态修改页面内容，从客户端获取DOM中的数据并在本地执行。基于这个特性，就可以利用JS脚本来实现XSS漏洞的利用。</p>
+<h3 id="4-7-2-可能触发DOM型XSS的属性："><a href="#4-7-2-可能触发DOM型XSS的属性：" class="headerlink" title="4.7.2 可能触发DOM型XSS的属性："></a>4.7.2 可能触发DOM型XSS的属性：</h3><p>document.referer属性</p>
+<p>window.name属性</p>
+<p>location属性</p>
+<p>innerHTML属性</p>
+<p>documen.write属性</p>
+<p>······</p>
+<h1 id="5-Web安全漏洞挖掘"><a href="#5-Web安全漏洞挖掘" class="headerlink" title="5 Web安全漏洞挖掘"></a>5 Web安全漏洞挖掘</h1><p><img src="https://img-blog.csdnimg.cn/20191106192200884.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="Web安全漏洞挖掘"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/12/360%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E5%AD%A6-%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5-Web%E5%AE%89%E5%85%A8/" data-id="cl1qb1dwv000aqktubyutaou9" data-title="360网络安全大学-基础实践-Web安全" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/12/burpsuite%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          burpsuite使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/12/360%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E5%AD%A6-%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5-%E5%AF%86%E7%A0%81%E5%AD%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">360网络安全大学-基础实践-密码学</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

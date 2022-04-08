@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>C++常用方法 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="背景下周数据结构实验就要开始考试了，所以总结一点C++的常用方法来学习，希望下周的考试全都会(#^.^#)(#^.^#)(#^.^#) 1 输出小数点后2位1.1 C1printf(&quot;num &#x3D; %.2f\n&quot;, num); 输出结果为：num &#x3D; 3.00 1.2 C++头文件#include &lt; iomanip&gt;1cout &lt;&lt; &amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++常用方法">
+<meta property="og:url" content="http://example.com/2019/10/15/C++%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="背景下周数据结构实验就要开始考试了，所以总结一点C++的常用方法来学习，希望下周的考试全都会(#^.^#)(#^.^#)(#^.^#) 1 输出小数点后2位1.1 C1printf(&quot;num &#x3D; %.2f\n&quot;, num); 输出结果为：num &#x3D; 3.00 1.2 C++头文件#include &lt; iomanip&gt;1cout &lt;&lt; &amp;quot">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191020103458164.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015153615409.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015161442291.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015162243954.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015164720716.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015165208287.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015165752616.png">
+<meta property="article:published_time" content="2019-10-15T06:55:34.000Z">
+<meta property="article:modified_time" content="2019-12-15T05:49:54.096Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191020103458164.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-C++常用方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/15/C++%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2019-10-15T06:55:34.000Z" itemprop="datePublished">2019-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cpp/">Cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      C++常用方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>下周数据结构实验就要开始考试了，所以总结一点C++的常用方法来学习，希望下周的考试全都会<br>(#^.^#)(#^.^#)(#^.^#)</p>
+<h2 id="1-输出小数点后2位"><a href="#1-输出小数点后2位" class="headerlink" title="1 输出小数点后2位"></a>1 输出小数点后2位</h2><h3 id="1-1-C"><a href="#1-1-C" class="headerlink" title="1.1 C"></a>1.1 C</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;num = %.2f\n&quot;, num);</span><br></pre></td></tr></table></figure>
+<p>输出结果为：<br>num &#x3D; 3.00</p>
+<h3 id="1-2-C-头文件-include-lt-iomanip-gt"><a href="#1-2-C-头文件-include-lt-iomanip-gt" class="headerlink" title="1.2 C++头文件#include &lt; iomanip&gt;"></a>1.2 C++头文件#include &lt; iomanip&gt;</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; &quot;num = &quot; &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; num &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：<br>num &#x3D; 3.00</p>
+<h2 id="2-sort-函数"><a href="#2-sort-函数" class="headerlink" title="2 sort()函数"></a>2 sort()函数</h2><h3 id="2-1-背景"><a href="#2-1-背景" class="headerlink" title="2.1 背景"></a>2.1 背景</h3><p>最近在刷ACM经常用到排序，以前老是写冒泡，可把冒泡带到OJ里后发现经常超时，所以本想用快排，可是很多学长推荐用sort函数，因为自己写的快排写不好真的没有sort快，所以毅然决然选择sort函数。</p>
+<h3 id="2-2-用法"><a href="#2-2-用法" class="headerlink" title="2.2 用法"></a>2.2 用法</h3><p>1、sort函数可以三个参数也可以两个参数，必须的头文件#include &lt; algorithm&gt;<br>2、它使用的排序方法是类似于快排的方法，时间复杂度为n*log2(n)<br>3、sort函数有三个参数：（第三个参数可不写）</p>
+<ul>
+<li>第一个是要排序的数组的起始地址。</li>
+<li>第二个是结束的地址（最后一位要排序的地址）</li>
+<li>第三个参数是排序的方法，可以是从大到小也可是从小到大，还可以不写第三个参数，此时默认的排序方法是从小到大排序。</li>
+</ul>
+<h3 id="2-3-示例"><a href="#2-3-示例" class="headerlink" title="2.3 示例"></a>2.3 示例</h3><p>1 以int为例的基本数据类型的sort()使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a[5] = &#123;1, 3, 4, 2, 5&#125;;</span><br><span class="line">    sort(a, a + 5);</span><br><span class="line">    for (int i = 0; i &lt; 5; i++)</span><br><span class="line">		cout &lt;&lt; a[i] &lt;&lt; &#x27; &#x27;;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：<br>1 2 3 4 5</p>
+<p>2 自定义cmp参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	bool cmp(int x, int y);</span><br><span class="line">    int a[5] = &#123;1, 3, 4, 2, 5&#125;;</span><br><span class="line">    sort(a, a + 5, cmp);</span><br><span class="line">    for (int i = 0; i &lt; 5; i++)</span><br><span class="line">        cout &lt;&lt; a[i] &lt;&lt; &#x27; &#x27;;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">bool cmp(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">    return x &gt; y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：<br>5 4 3 2 1</p>
+<h2 id="3-memset-函数"><a href="#3-memset-函数" class="headerlink" title="3 memset()函数"></a>3 memset()函数</h2><h3 id="3-1-标准库-include-lt-string-h-gt"><a href="#3-1-标准库-include-lt-string-h-gt" class="headerlink" title="3.1 标准库#include &lt;string.h&gt;"></a>3.1 标准库#include &lt;string.h&gt;</h3><h3 id="3-2-描述"><a href="#3-2-描述" class="headerlink" title="3.2 描述"></a>3.2 描述</h3><p>C 库函数 void *memset(void *str, int c, size_t n) 复制字符 c（一个无符号字符）到参数 str 所指向的字符串的前 n 个字符。</p>
+<h3 id="3-3-声明"><a href="#3-3-声明" class="headerlink" title="3.3 声明"></a>3.3 声明</h3><blockquote>
+<p>void *memset(void *str, int c, size_t n)</p>
+</blockquote>
+<h3 id="3-4-参数"><a href="#3-4-参数" class="headerlink" title="3.4 参数"></a>3.4 参数</h3><ul>
+<li>str 指向要填充的内存块。</li>
+<li>c 要被设置的值。该值以 int 形式传递，但是函数在填充内存块时是使用该值的无符号字符形式。</li>
+<li>n 要被设置为该值的字节数。</li>
+</ul>
+<h3 id="3-5-返回值"><a href="#3-5-返回值" class="headerlink" title="3.5 返回值"></a>3.5 返回值</h3><p>该值返回一个指向存储区 str 的指针。</p>
+<h3 id="3-6-程序实例"><a href="#3-6-程序实例" class="headerlink" title="3.6 程序实例"></a>3.6 程序实例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	char str[30] = &quot;ikun, Hello, world!!!&quot;;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;将已开辟内存空间 str 的首 n 个字节的值设为值 c&quot; &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;str before memset: &quot;;</span><br><span class="line">	puts(str);</span><br><span class="line">	memset(str, &#x27;*&#x27;, 6);</span><br><span class="line">	cout &lt;&lt; &quot;str after  memset: &quot;;</span><br><span class="line">	puts(str);</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;用于内存空间初始化&quot; &lt;&lt; endl;</span><br><span class="line">	int demo[10], i;</span><br><span class="line">	memset(demo, 0, 40);</span><br><span class="line">	for(i = 0; i &lt; 10; i++)</span><br><span class="line">		cout &lt;&lt; demo[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191020103458164.png"></p>
+<h3 id="3-7-关于memset初始化与赋值问题"><a href="#3-7-关于memset初始化与赋值问题" class="headerlink" title="3.7 关于memset初始化与赋值问题"></a>3.7 关于memset初始化与赋值问题</h3><p>memset是C&#x2F;C++提供的函数初始化函数，在C中头文件是&lt;string.h&gt;，在C++中头文件是。在此强调一下，可以用memset给一个数组初始化为0、-1或一个很大的数，但是不要用memset函数来赋具体的值，原因如下</p>
+<ul>
+<li><p>void *memset(void *s, int ch, size_t n);<br>memset是将从地址s开始，字节长度为n的内存全部赋值为ch（注意是每一个字节都赋值为ch）</p>
+</li>
+<li><p>char B[20]; memset(B, 1, sizeof(B));<br>因此，当memset(内存地址，1，字节数)这句的意思是要把指定的内存空间的值设置为0x01。对于char型数组B，正好是每个元素占一个字节，所以这样赋值就是将数组B中所有的元素都赋值为1，没有问题。</p>
+</li>
+<li><p>int C[20]; memset(C, 1, sizeof(C));<br>但是对于int型数组C，每个元素占四个字节。也就是说将数组C中的每个元素赋值成0x01010101，对应的十进制就是16843009。</p>
+</li>
+</ul>
+<h2 id="4-string类型"><a href="#4-string类型" class="headerlink" title="4 string类型"></a>4 string类型</h2><h3 id="4-1-初始化"><a href="#4-1-初始化" class="headerlink" title="4.1 初始化"></a>4.1 初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    string s;							//默认初始化，一个空字符串</span><br><span class="line">    string s1(&quot;ssss&quot;);					//s1是字面值“ssss”的副本</span><br><span class="line">	cout &lt;&lt; s1 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    string s2(s1);						//s2是s1的副本</span><br><span class="line">	cout &lt;&lt; s2 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    string s3 = s2;						//s3是s2的副本</span><br><span class="line">	cout &lt;&lt; s3 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    string s4(10, &#x27;c&#x27;);					//把s4初始化</span><br><span class="line">	cout &lt;&lt; s4 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    string s5 = &quot;hiya&quot;;					//拷贝初始化</span><br><span class="line">	cout &lt;&lt; s5 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    string s6 = string(10, &#x27;c&#x27;);		//拷贝初始化，生成一个初始化好的对象，拷贝给s6</span><br><span class="line">	cout &lt;&lt; s6 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    char cs[] = &quot;12345&quot;;</span><br><span class="line">    string s7(cs, 3);					//复制字符串cs的前3个字符到s当中</span><br><span class="line">	cout &lt;&lt; s7 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    string s8 = &quot;asac&quot;;</span><br><span class="line">	cout &lt;&lt; s8 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    string s9 = &quot;abcdefghijklmn&quot;;</span><br><span class="line">	cout &lt;&lt; s9 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    string s10(s9, 3, 4);				//s10是s9从下标3开始4个字符的拷贝，超过s3.size出现未定义</span><br><span class="line">	cout &lt;&lt; s10 &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015153615409.png"></p>
+<h3 id="4-2-字符串处理操作"><a href="#4-2-字符串处理操作" class="headerlink" title="4.2 字符串处理操作"></a>4.2 字符串处理操作</h3><h4 id="4-2-1-substr操作"><a href="#4-2-1-substr操作" class="headerlink" title="4.2.1 substr操作"></a>4.2.1 substr操作</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    string s = &quot;abcdefg&quot;;</span><br><span class="line"></span><br><span class="line">    //s.substr(pos1, n)返回字符串位置为pos1后面的n个字符组成的串</span><br><span class="line">    string s2 = s.substr(1, 5);//bcdef</span><br><span class="line">	cout &lt;&lt; s2 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //s.substr(pos)//得到一个pos到结尾的串</span><br><span class="line">    string s3 = s.substr(4);//efg</span><br><span class="line">	cout &lt;&lt; s3 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：<br>bcdef<br>efg</p>
+<h4 id="4-2-2-insert操作"><a href="#4-2-2-insert操作" class="headerlink" title="4.2.2 insert操作"></a>4.2.2 insert操作</h4><p>插入操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    string str = &quot;to be question&quot;;</span><br><span class="line">    string str2 = &quot;the &quot;;</span><br><span class="line">    string str3 = &quot;or not to be&quot;;</span><br><span class="line">    string::iterator it;</span><br><span class="line"></span><br><span class="line">    //s.insert(pos, str)//在s的pos位置插入str</span><br><span class="line">    str.insert(6, str2);                 // to be the question</span><br><span class="line"></span><br><span class="line">    //s.insert(pos, str, a, n)在s的pos位置插入str中插入位置a到后面的n个字符</span><br><span class="line">    str.insert(6, str3, 3, 4);             // to be not the question</span><br><span class="line"></span><br><span class="line">    //s.insert(pos, cstr, n)//在pos位置插入cstr字符串从开始到后面的n个字符</span><br><span class="line">    str.insert(10, &quot;that is cool&quot;, 8);    // to be not that is the question</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //s.insert(pos, cstr)在s的pos位置插入cstr</span><br><span class="line">    str.insert(10, &quot;to be &quot;);            // to be not to be that is the question</span><br><span class="line"></span><br><span class="line">    //s.insert(pos, n, ch)在s的pos位置上面插入n个ch</span><br><span class="line">    str.insert(15, 1, &#x27;:&#x27;);               // to be not to be: that is the question</span><br><span class="line"></span><br><span class="line">    //s.insert(s.it, ch)在s的it指向位置前面插入一个字符ch，返回新插入的位置的迭代器</span><br><span class="line">    it = str.insert(str.begin() + 5, &#x27;,&#x27;); // to be, not to be: that is the question</span><br><span class="line"></span><br><span class="line">    //s.insert(s.it, n, ch)//在s的it所指向位置的前面插入n个ch</span><br><span class="line">    str.insert (str.end(), 3, &#x27;.&#x27;);       // to be, not to be: that is the question...</span><br><span class="line"></span><br><span class="line">    //s.insert(it, str.ita, str.itb)在it所指向的位置的后面插入[ita,itb)的字符串</span><br><span class="line">    str.insert (it+2, str3.begin(), str3.begin() + 3); // to be, or not to be: that is the question...</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-3-erase操作"><a href="#4-2-3-erase操作" class="headerlink" title="4.2.3 erase操作"></a>4.2.3 erase操作</h4><p>用来执行删除操作，删除操作有三种</p>
+<ol>
+<li>指定pos和len，其中pos为起始位置，pos以及后面len-1个字符串都删除</li>
+<li>迭代器，删除迭代器指向的字符</li>
+<li>迭代器范围，删除这一范围的字符串，范围左闭右开</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  string str (&quot;This is an example sentence.&quot;);</span><br><span class="line">  cout &lt;&lt; str &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">                          // &quot;This is an example sentence.&quot;</span><br><span class="line">  str.erase (10,8);       //            ^^^^^^^^</span><br><span class="line">  //直接指定删除的字符串位置第十个后面的8个字符</span><br><span class="line">  cout &lt;&lt; str &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">                            // &quot;This is an sentence.&quot;</span><br><span class="line">  str.erase (str.begin()+9);//           ^</span><br><span class="line">  //删除迭代器指向的字符</span><br><span class="line">  cout &lt;&lt; str &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">                            // &quot;This is a sentence.&quot;</span><br><span class="line">                            //       ^^^^^</span><br><span class="line">  str.erase (str.begin()+5, str.end()-9);</span><br><span class="line">  //删除迭代器范围的字符</span><br><span class="line">  cout &lt;&lt; str &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">                            // &quot;This sentence.&quot;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-4-append和replace操作"><a href="#4-2-4-append和replace操作" class="headerlink" title="4.2.4 append和replace操作"></a>4.2.4 append和replace操作</h4><p>1 append操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">	string str;</span><br><span class="line">    string str2 = &quot;Writing &quot;;</span><br><span class="line">    string str3 = &quot;print 10 and then 5 more&quot;;</span><br><span class="line"></span><br><span class="line">    //直接追加一个str2的字符串</span><br><span class="line">    str.append(str2);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //后面追加str3第6个字符开始的3个字符串</span><br><span class="line">    str.append(str3, 6, 3);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //追加字符串形参的前5个字符</span><br><span class="line">    str.append(&quot;dots are cool&quot;, 5);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //直接添加</span><br><span class="line">    str.append(&quot;here: &quot;);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //添加10个&#x27;.&#x27;</span><br><span class="line">    str.append(10, &#x27;.&#x27;);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //添加str3迭代器范围的字符串</span><br><span class="line">    str.append(str3.begin() + 8, str3.end());</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    str += &quot;lalala&quot;;</span><br><span class="line">    cout &lt;&lt; str &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015161442291.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>2 replace操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">    string base = &quot;this is a test string.&quot;;</span><br><span class="line">    string str2 = &quot;n example&quot;;</span><br><span class="line">    string str3 = &quot;sample phrase&quot;;</span><br><span class="line">    string str4 = &quot;useful.&quot;;</span><br><span class="line"></span><br><span class="line">    string str = base;           // &quot;this is a test string.&quot;</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //第9个字符以及后面的5个字符被str2代替</span><br><span class="line">    str.replace(9, 5, str2);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //第19个字符串以及后面的6个字符用str的第7个字符以及后面的6个字符代替</span><br><span class="line">    str.replace(19, 6, str3, 7, 6);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //第8个字符以及后面的10个字符用字符串参数代替</span><br><span class="line">    str.replace(8, 10, &quot;just a&quot;);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //第8个字符以及后面的6个字符用字符串参数的前7个字符替换</span><br><span class="line">    str.replace(8, 6, &quot;a shorty&quot;, 7);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //第22以及后面的1个字符用3个叹号替换</span><br><span class="line">    str.replace(22, 1, 3, &#x27;!&#x27;);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    //迭代器的原理同上</span><br><span class="line">    // Using iterators:</span><br><span class="line">    str.replace(str.begin(), str.end() - 3, str3);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    str.replace(str.begin(), str.begin() + 6, &quot;replace&quot;);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    str.replace(str.begin() + 8, str.begin() + 14, &quot;is coolness&quot;,7);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    str.replace(str.begin() + 12, str.end() - 4, 4, &#x27;o&#x27;);</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    str.replace(str.begin() + 11, str.end(), str4.begin(), str4.end());</span><br><span class="line">    cout &lt;&lt; str &lt;&lt; endl;   </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015162243954.png"></p>
+<h3 id="4-3-字符串搜索操作"><a href="#4-3-字符串搜索操作" class="headerlink" title="4.3 字符串搜索操作"></a>4.3 字符串搜索操作</h3><h4 id="4-3-1-find"><a href="#4-3-1-find" class="headerlink" title="4.3.1 find"></a>4.3.1 find</h4><p>find函数主要是查找一个字符串是否在调用的字符串中出现过，大小写敏感。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    string str (&quot;There are two needles in this haystack with needles.&quot;);</span><br><span class="line">    string str2 (&quot;needle&quot;);</span><br><span class="line"></span><br><span class="line">    // different member versions of find in the same order as above:</span><br><span class="line">    //在str当中查找第一个出现的needle，找到则返回出现的位置，否则返回结尾</span><br><span class="line">    int found = str.find(str2);</span><br><span class="line">    if (found != string::npos)</span><br><span class="line">		cout &lt;&lt; &quot;first &#x27;needle&#x27; found at: &quot; &lt;&lt; found &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">    //在str当中，从第found+1的位置开始查找参数字符串的前6个字符</span><br><span class="line">    found = str.find(&quot;needles are small&quot;, found + 1, 6);</span><br><span class="line">    if (found != string::npos)</span><br><span class="line">		cout &lt;&lt; &quot;second &#x27;needle&#x27; found at: &quot; &lt;&lt; found &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">    //在str当中查找参数中的字符串</span><br><span class="line">    found = str.find(&quot;haystack&quot;);</span><br><span class="line">    if (found != string::npos)</span><br><span class="line">		cout &lt;&lt; &quot;&#x27;haystack&#x27; also found at: &quot; &lt;&lt; found &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">    //查找一个字符</span><br><span class="line">    found = str.find(&#x27;.&#x27;);</span><br><span class="line">    if (found != string::npos)</span><br><span class="line">		cout &lt;&lt; &quot;Period found at: &quot; &lt;&lt; found &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">    //组合使用，把str2用参数表中的字符串代替</span><br><span class="line">    // let&#x27;s replace the first needle:</span><br><span class="line">    str.replace(str.find(str2), str2.length(), &quot;preposition&quot;);</span><br><span class="line">    cout &lt;&lt; str &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015164720716.png"></p>
+<h4 id="4-3-2-rfind"><a href="#4-3-2-rfind" class="headerlink" title="4.3.2 rfind"></a>4.3.2 rfind</h4><p>rfind函数就是找最后一个出现的匹配字符串，返回的位置仍然是从前往后数的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    string str (&quot;The sixth sick sheik&#x27;s sixth sheep&#x27;s sick.&quot;);</span><br><span class="line">    string key (&quot;sixth&quot;);//             ^</span><br><span class="line">    //rfind是找最后一个出现的匹配字符串</span><br><span class="line">    int found = str.rfind(key);</span><br><span class="line">    if (found != string::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; found &lt;&lt; endl;								//输出23</span><br><span class="line">        str.replace (found,key.length(),&quot;seventh&quot;);			//找到的sixth替换成seventh</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; str &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015165208287.png"></p>
+<h3 id="4-4-compare"><a href="#4-4-compare" class="headerlink" title="4.4 compare"></a>4.4 compare</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    string s1 = &quot;123&quot;, s2 = &quot;123&quot;;</span><br><span class="line">    cout &lt;&lt; s1.compare(s2) &lt;&lt; endl;							//0</span><br><span class="line"></span><br><span class="line">    s1 = &quot;123&quot;, s2 = &quot;1234&quot;;</span><br><span class="line">    cout &lt;&lt; s1.compare(s2) &lt;&lt; endl;							//-1</span><br><span class="line"></span><br><span class="line">    s1 = &quot;1234&quot;, s2 = &quot;123&quot;;</span><br><span class="line">    cout &lt;&lt; s1.compare(s2) &lt;&lt; endl;							//1</span><br><span class="line"></span><br><span class="line">    string str1 (&quot;green apple&quot;);</span><br><span class="line">    string str2 (&quot;red apple&quot;);</span><br><span class="line"></span><br><span class="line">    if(str1.compare(str2) != 0)</span><br><span class="line">		cout &lt;&lt; str1 &lt;&lt; &quot; is not &quot; &lt;&lt; str2 &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">    //str1的第6个字符以及后面的5个字符和参数比较</span><br><span class="line">    if(str1.compare(6, 5, &quot;apple&quot;) == 0)</span><br><span class="line">		cout &lt;&lt; &quot;still, &quot; &lt;&lt; str1 &lt;&lt; &quot; is an apple\n&quot;;</span><br><span class="line"></span><br><span class="line">    if(str2.compare(str2.size() - 5, 5, &quot;apple&quot;) == 0)</span><br><span class="line">		cout &lt;&lt; &quot;and &quot; &lt;&lt; str2 &lt;&lt; &quot; is also an apple\n&quot;;</span><br><span class="line"></span><br><span class="line">    //str1的第6个字符以及后面的5个字符和str2的第4个字符以及后面的5个字符比较</span><br><span class="line">    if(str1.compare(6, 5, str2, 4, 5) == 0)</span><br><span class="line">		cout &lt;&lt; &quot;therefore, both are apples\n&quot;;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191015165752616.png"></p>
+<p>由于string重载了运算符，可以直接用&gt;,&lt;，&#x3D;&#x3D;来进行比较，也很方便。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/15/C++%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="cl1qb1dx6000rqktu6b92fsqi" data-title="C++常用方法" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/15/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard%20Template%20Library,STL%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          C++标准模板库（Standard Template Library,STL）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/14/python%E7%9A%84requests%E6%A8%A1%E5%9D%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">python的requests模块的使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

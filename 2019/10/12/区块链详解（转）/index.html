@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>区块链详解（转） | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本文转载于https:&#x2F;&#x2F;blog.csdn.net&#x2F;taifei&#x2F;article&#x2F;details&#x2F;80596763 区块链详解（转）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区块链详解（转）">
+<meta property="og:url" content="http://example.com/2019/10/12/%E5%8C%BA%E5%9D%97%E9%93%BE%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="本文转载于https:&#x2F;&#x2F;blog.csdn.net&#x2F;taifei&#x2F;article&#x2F;details&#x2F;80596763 区块链详解（转）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/A289A92DAB5C07FACF1B519B9B812B7246D2A5EE2_size94_w1080_h720.jpeg">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/A68845781B6AE6D001016A21B1332ABCBE36C97F5_size87_w1080_h606.jpeg">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/A683BE2E65C54BF4089EB7BFEA308D8394E0CA2FE_size116_w1080_h724.jpeg">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/A63A8B0C917AC68E20102EE0E0A9119C34B540ECD_size69_w1080_h603.jpeg">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/A047340A47A4E47FECC83151449FC564D14D7FEEA_size40_w624_h538.jpeg">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/A51D43AC985604E83F7B99804701CCBE14B62A045_size17_w468_h240.jpeg">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/AD07A128E7171E4AD7C13D790066B87D956217C81_size88_w1080_h606.jpeg">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/A77D084AEC5C031AB725206191831D1CD8145EAAD_size87_w1080_h607.jpeg">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/A2D2C8F92556F42E297428DF5763EF098124A62E9_size98_w1080_h596.jpeg">
+<meta property="og:image" content="http://p0.ifengimg.com/pmop/2018/0605/A8BB3C5F98C2A3230023D384B3F5D1A73F8B08399_size531_w640_h8960.jpeg">
+<meta property="og:image" content="http://www.szhgh.com/Article/news/society/2018-06-06/171932.html">
+<meta property="article:published_time" content="2019-10-11T16:38:16.000Z">
+<meta property="article:modified_time" content="2019-10-11T16:48:42.258Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="区块链">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://p0.ifengimg.com/pmop/2018/0605/A289A92DAB5C07FACF1B519B9B812B7246D2A5EE2_size94_w1080_h720.jpeg">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-区块链详解（转）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/12/%E5%8C%BA%E5%9D%97%E9%93%BE%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-10-11T16:38:16.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      区块链详解（转）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文转载于<a target="_blank" rel="noopener" href="https://blog.csdn.net/taifei/article/details/80596763">https://blog.csdn.net/taifei/article/details/80596763</a></p>
+<h1 id="区块链详解（转）"><a href="#区块链详解（转）" class="headerlink" title="区块链详解（转）"></a>区块链详解（转）</h1><div id="article_content" class="article_content clearfix">
+                                    <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-3019150162.css">
+                                        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-3019150162.css">
+                <div class="htmledit_views" id="content_views">
+                                            <p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">侠客岛按】</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　上个月，我岛在杭州举办了线下沙龙，邀请了蚂蚁金服技术实验室高级技术专家邓福喜，和大家聊了聊最近大热的区块链技术。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　在千呼万唤中，岛叔今天终于把文字整理好了。大家不用在后台催了!</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　三千多字的文字整理稿中，干货很多。邓老师把区块链的概念讲得挺清楚，包括其应用场景和大家最感兴趣的比特币等等。同时也厘清了大家对区块链的一些误解。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　以下为岛叔整理的文字实录，看完，相信区块链对你来说将不再神秘。(这里再透露一下，文末有福利哦。)</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/A289A92DAB5C07FACF1B519B9B812B7246D2A5EE2_size94_w1080_h720.jpeg" alt="" width="580" height="387" border="0" style="padding:0px;border:none;"></p><address style="margin:0px;padding:0px;color:rgb(0,0,0);font-family:Simsun;font-size:14px;background-color:rgb(255,255,255);text-align:center;">　　蚂蚁金服技术实验室高级技术专家邓福喜</address><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　实际上区块链最早可以追溯到2009年，那时一个很神秘的人叫中本聪，提出了区块链的概念，同时给出了一个初始的设计和实现，也就是现在广为人知的比特币。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　现在大家对区块链技术的了解，更多可能是停留在用比特币炒币，或者市场上发行的一些奇奇怪怪的加密货币上，比如马勒戈币等等。这些乱象，确实使大家对区块链产生了较大的误解。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　其实就区块链本身来说，它是一项技术，技术本身并没有错。今天，越来越多的人渴望了解区块链的本质，我也希望能够通过一些简单的介绍，让大家直观地了解到区块链究竟是什么?它在我们日常生活中可以解决什么问题?</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/A68845781B6AE6D001016A21B1332ABCBE36C97F5_size87_w1080_h606.jpeg" alt="" width="580" height="325" border="0" style="padding:0px;border:none;"></p><address style="margin:0px;padding:0px;color:rgb(0,0,0);font-family:Simsun;font-size:14px;background-color:rgb(255,255,255);text-align:center;">　　区块链</address><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　首先，区块链并不高深，它其实就是一个多方参与的加密分布式记账本。这里面有三个关键词：记账本、加密和分布式，搞明白这三个词，其实对区块链技术就会有一个比较明晰的理解了。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　首先是第一个关键词：记账本。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　这个账本其实就像我们的银行账户一样，你在某一个银行里面有多少钱，今天花了多少等等，这些都是有记账的。我们再拿比特币交易的例子来说，一笔比特币交易完成之后，比特币的区块链上就会记住你购进购出多少比特币的流水，这些条目会在你的账户中，你的账户就是一个账本。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　这个账本可不是普通的账本，它前面有一个定语，叫多方参与。多方参与意味着什么?这个账本不是一个人去记的，也不是一个中心化机构去记的，而是由分散在全球各个角落的人一起记。甚至借助于卫星系统，接下来可能还会分布在星空中。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　这和我们平常在各个银行中开户存钱，然后再分别让各个银行给我们记账可大不相同。无论你分散在世界哪里，只要你有一台电脑，你就可以进入这个数据库，看看A交易了10个比特币，或者B交易了100个比特币等等。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　第二个关键词是加密。加密的意思就是通过一个密码学的手段，保证你的账户不会被别人篡改。这就和现在我们去银行转账，他们通常会给你一个U盾一样，这个U盾就相当于你账户的一把钥匙，只有拥有钥匙的人才能操作这个账户，才能进行转账。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　在区块链里面也有这个概念。你在区块链开户的时候，系统会自动创建一把钥匙，有了这个钥匙才可以操作区块链上的账户。这把钥匙的产生，和使用钥匙进行账户操作的一些判断，都来源于这个加密学手段。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　第三个关键词叫做分布式。分布式的意思是说，区块链这个多方参与的节点，实际上是分布在全球的任何一个网络节点里面，他不归属于一个特定的机构。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　像现在在BAT的一些系统里，存在有很多服务器，这个服务器我们也可以说他是多方参与的，但是我们不能说他是分布式的。为什么呢?因为分布式有两个原则：一是它在物理位置上是分布式的;二，它在规则上面也是分布式的。但是像BAT他们的服务器，是归属于一个特定机构或者特定的个体的，这不能叫分布式。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　理解这三点，其实就能把区块链整个串起来了：区块链就是分散在全球的所有的离散的点上的多个机器，维护一个特定的账户系统，而这种系统通过一种密码学的手段，可以保证操作时比较规矩的一项技术。可以这样简单地去理解区块链。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　如果你还没搞清楚的话，我用小虎队的《爱》这首歌来讲，可能会更形象。这首歌简直就像是为区块链写的。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　向天空大声的呼唤说声我爱你 向那流浪的白云说声我想你 让那天空听得见、 让那白云看得见 谁也擦不掉我们许下的诺言 ……</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　这里面出现的“天空”“白云”“蓝天”“大海”，我们就可以理解成一个个节点，当你向他们喊出“我爱你”的时候，这些节点就默默的把账记录在数据库上了，然后大家都能看见。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　记录下来之后，歌词里的“谁也擦不掉我们许下的诺言”，擦不掉的意思就是说，我只要记下来以后，这个就成为一个恒久不变的一个东西，这样的话女生就会觉得特别的安全，如果有一天这个男生反悔了，这个女生就可以在所谓的“天空”“白云”上找到他当初的表白，证明他的确说过这个事，这是一个比较形象的理解。</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/A683BE2E65C54BF4089EB7BFEA308D8394E0CA2FE_size116_w1080_h724.jpeg" alt="" width="580" height="389" border="0" style="padding:0px;border:none;"></p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　比特币</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　很多人对比特币很好奇，不明白他和区块链之间到底有什么关系，接下来和大家聊聊这个。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　要想了解比特币，我们我们先要明白比特币究竟是如何记账的。前面提到了，区块链里每个人都有一本账本，那么到底由谁来记账?我记的帐为什么别人要认?这又引出一个共识算法的问题，即如何保证大家记的账是一致的。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　比如，我给用户A 10个比特币，A收到了10个比特币，这个记账的过程是透明的。但这笔账，并不是A他自己记的，而是依靠系统里面的一个所谓的共识算法，大家一起来决定由某一个人记账。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　这样有一个好处，就是每次记账的人都不一样，就可以避免某人知道谁下一个记账，去贿赂贿赂他，让他弄个假账这种情况出现了。这个时候，就会更加公平公正。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　所以在比特币里，就采取一种叫做竞争记账的方式，大家都去抢记账的权力，抢到之后就可以获得记账奖励。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　我们可以用国粹打麻将来做一个比喻。</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/A63A8B0C917AC68E20102EE0E0A9119C34B540ECD_size69_w1080_h603.jpeg" alt="" width="580" height="324" border="0" style="padding:0px;border:none;"></p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　我们打麻将不就是不断地去摸牌打牌，最终胡牌的一个过程吗?四个“矿工”一组，最先从144个随机数字中，一人一次摸牌机会，碰撞出一组牌，谁先胡了谁就赢了，获得收益，也获得记账权。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　因为胡牌的过程是随机的，有可能跟你打牌的策略有关，也有可能跟你的运气有关等等，反正每个人都是凭本事来嘛。大家都认这个结果，然后开始下一轮记账权。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　但是，和打麻将不同的是，这个随机的过程要比胡牌难度高得多。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　如果打麻将算是解一元一次方程的话，那比特币挖矿可能就相当于一元一万次方程那样了，难度是指数级增长的。这种情况下，计算机高手就选择了另一种方式，我不一点一点算，我直接通过尝试的办法试出来。有点类似于暴力破解的感觉。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　通过不断去尝试，谁第一个解出来，那么谁就获得这个记账权，也就是获得了记账奖励——比特币。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　区块链≠ICO</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　现在很多人一提区块链，就认为是骗人的，这其实和之前的市场乱象有关。其实我们应该区分一个概念，ICO和区块链没有半毛钱关系。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　ICO中文翻译过来叫首次货币发行。大家可能会想到另外一个类似的词叫IPO，这是第一次公开募集资金的意思。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　ICO和IPO之间本质的区别是，IPO有监管，而ICO可以帮助那些不能发售股票的企业，绕开IPO，绕开监管，让发展更为初期的公司有了一个更加灵活的融资手段。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　而这个ICO的平台，正是借助于区块链技术支持下的以太坊。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　简单地说，就是这个以太坊可以让每个人都能生成自己的虚拟货币，基本没有门槛。里面起什么名字的都有，有人还发行了“马勒戈币”。这也是让大家对区块链产生很大误解的一个地方。</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/A047340A47A4E47FECC83151449FC564D14D7FEEA_size40_w624_h538.jpeg" alt="" width="624" height="538" border="0" style="padding:0px;border:none;"></p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　目前，ICO还没有一个规章制度去规范，所以就变得特别没有章法。所以现在很多坏人在利用ICO，放大人性中的贪婪，然后去变相募集大家的资金，摧毁了人与人的信任。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　另外，ICO和数字货币也是两码事。数字货币是具有法定发币机构背书的，具有权威性、具有最高价值信任的法币，是与纸币有同等价值和使用效力的。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　而那些借助以太坊进行ICO的人，募集的并不是数字货币，它募集的就是一些加密货币。所以ICO也不能称之为数字货币。</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/A51D43AC985604E83F7B99804701CCBE14B62A045_size17_w468_h240.jpeg" alt="" width="468" height="240" border="0" style="padding:0px;border:none;"></p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　最重要的是，我们要充分认识到，区块链技术的魅力是要建立信任，而ICO乱象却是在摧毁信任。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　区块链的这种信任来源于什么，或者说信任是怎么建立起来的呢?</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　我们现在这个互联网时代，大家互相看不到对方的真身，有时我们在做价值交换的时候，很难信任对方，因为不公开嘛。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　但是，如果当一件事情大家都能够看得到的时候，那么它就不存在作假行为，也不存在作弊的可能性，对吧?这不就是说区块链技术嘛?</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　比如，一个人给我转十个比特币，我记账说他转给我一百个?但事实上大家都能看到这笔转账，你的100个比特币是虚假的，这样的话，这个记账人也许以后就要被大家淘汰了。而且在区块链这个平台上，这种检测成本是比较低的，所以大家就不会有做假账这个驱动力了。</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/AD07A128E7171E4AD7C13D790066B87D956217C81_size88_w1080_h606.jpeg" alt="" width="580" height="325" border="0" style="padding:0px;border:none;"></p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　优势与短板</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　刚刚讲了这么多，大家应该也感觉到区块链的优势所在。但是其实，区块链发展才不过几年，还处于一个“婴儿期”，它的“能”与“不能”同样明显。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　就拿信息保护来说吧。我们一直说区块链产生的信任来源于“公开”，但是公开就意味着没有秘密。比如，我给你转个账，但是我不希望任何人看到我给你转账，但是我又不能够作假，这其实也是挺尴尬的。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　更大的挑战则在技术之外，比如怎么实现真正的多方记账。现实情况是，许多场景中，参与者不愿意、没动力参与到这个分布式记帐本，一起记小本本。如何让大家接受区块链这个技术，参与进来，这还都需要考虑。</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/A77D084AEC5C031AB725206191831D1CD8145EAAD_size87_w1080_h607.jpeg" alt="" width="600" height="337" border="0" style="padding:0px;border:none;"></p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　但是，区块链的优势更显而易见。比如说，我们可以将区块链落地到公益领域，让每一笔善款都有迹可循。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　以前的公益善款记录，记小本本的就只是公益机构本人，他写什么你只能接受什么。但现在，有好几个小本本同时在记录这一件事情。我捐了100块钱，那就是实打实的100元，我还可以在区块链上看到每一笔资金的流向。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　所以你看，好多人同时记小本本，就是所谓的“去中心化”，他们之间可以相互作证，也相互证伪，因此最大程度上保证了透明性和信任度。</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/A2D2C8F92556F42E297428DF5763EF098124A62E9_size98_w1080_h596.jpeg" alt="" width="580" height="320" border="0" style="padding:0px;border:none;"></p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　除此之外，在保险行业、房屋租界行业、零售行业等等，区块链都可以凭借其“公开”的特性，大有所为。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　最后，我们不妨想象一下未来：我们捐出去的善款每一笔都清晰可查;我租的每一个房子房源清晰可见;母亲在挑奶粉时，不会再有 “这是不是真货”的犹疑……</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　那时，或许真的就没人再有兴趣问“区块链是什么?”了。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);text-align:right;">　　编辑/百里云鹤</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　最后有一个小福利。</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　在六一儿童节的时候，一位支付宝工程师给自己7岁的儿子画的一本童话故事书，主题是区块链……</p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);">　　如果你家也有小孩子对区块链感兴趣的话，不妨讲给他听。</p><p align="center" style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);"><img src="http://p0.ifengimg.com/pmop/2018/0605/A8BB3C5F98C2A3230023D384B3F5D1A73F8B08399_size531_w640_h8960.jpeg" alt="" width="640" height="1200" border="0" style="padding:0px;border:none;"></p><p style="margin-bottom:0px;padding-top:5px;padding-bottom:5px;line-height:28px;white-space:pre-wrap;color:rgb(0,0,0);font-family:Simsun;background-color:rgb(255,255,255);text-align:center;"><img src="http://www.szhgh.com/Article/news/society/2018-06-06/171932.html" width="250" style="padding:0px;border:none;" alt=""></p>                                    </div>
+                    </div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/12/%E5%8C%BA%E5%9D%97%E9%93%BE%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/" data-id="cl1qb1dz1005lqktu4rlt3c2x" data-title="区块链详解（转）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          CUMTOJ算法实验二
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/12/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B93-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">CUMTOJ数据结构实验内容3-4</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

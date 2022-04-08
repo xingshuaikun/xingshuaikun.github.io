@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>密码学课程设计-古典密码-维吉尼亚 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 概述1858年，法国密码学家维吉尼亚提出一种以一系列代换表依次对明文消息的字母序列进行代换的加密方法，即明文消息中出现的同一个字母，在加密时不是完全被同一固定的字母代换，而是根据其出现的位置次序用不同的字母代换。 2 算法原理与设计思路2.1 首先使用维吉尼亚方阵，它的基本方阵是26列26行。方阵的第一行是a到z按正常顺序排列的字母表，第二行是第一行左移循环一位得到的，其他各行依次类推，方阵如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学课程设计-古典密码-维吉尼亚">
+<meta property="og:url" content="http://example.com/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81-%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="1 概述1858年，法国密码学家维吉尼亚提出一种以一系列代换表依次对明文消息的字母序列进行代换的加密方法，即明文消息中出现的同一个字母，在加密时不是完全被同一固定的字母代换，而是根据其出现的位置次序用不同的字母代换。 2 算法原理与设计思路2.1 首先使用维吉尼亚方阵，它的基本方阵是26列26行。方阵的第一行是a到z按正常顺序排列的字母表，第二行是第一行左移循环一位得到的，其他各行依次类推，方阵如">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200222143840930.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200222144118863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020022214431934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200222144526311.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-02-22T06:33:45.000Z">
+<meta property="article:modified_time" content="2020-02-22T06:45:56.118Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200222143840930.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-密码学课程设计-古典密码-维吉尼亚" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81-%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A/" class="article-date">
+  <time class="dt-published" datetime="2020-02-22T06:33:45.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      密码学课程设计-古典密码-维吉尼亚
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><p>1858年，法国密码学家维吉尼亚提出一种以一系列代换表依次对明文消息的字母序列进行代换的加密方法，即明文消息中出现的同一个字母，在加密时不是完全被同一固定的字母代换，而是根据其出现的位置次序用不同的字母代换。</p>
+<h1 id="2-算法原理与设计思路"><a href="#2-算法原理与设计思路" class="headerlink" title="2 算法原理与设计思路"></a>2 算法原理与设计思路</h1><h2 id="2-1-首先使用维吉尼亚方阵，它的基本方阵是26列26行。方阵的第一行是a到z按正常顺序排列的字母表，第二行是第一行左移循环一位得到的，其他各行依次类推，方阵如下图所示。"><a href="#2-1-首先使用维吉尼亚方阵，它的基本方阵是26列26行。方阵的第一行是a到z按正常顺序排列的字母表，第二行是第一行左移循环一位得到的，其他各行依次类推，方阵如下图所示。" class="headerlink" title="2.1 首先使用维吉尼亚方阵，它的基本方阵是26列26行。方阵的第一行是a到z按正常顺序排列的字母表，第二行是第一行左移循环一位得到的，其他各行依次类推，方阵如下图所示。"></a>2.1 首先使用维吉尼亚方阵，它的基本方阵是26列26行。方阵的第一行是a到z按正常顺序排列的字母表，第二行是第一行左移循环一位得到的，其他各行依次类推，方阵如下图所示。</h2><p><img src="https://img-blog.csdnimg.cn/20200222143840930.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="维吉尼亚方阵"></p>
+<h2 id="2-2-加密时，按照密钥字的指示，决定采用哪一个单表。例如密钥字是iscbupt，加密时，明文的第一个字母用与附加列上字母i相对应的密码表进行加密，明文的第二个字母用与附加列的字母s相对应的密码表进行加密，依次类推。"><a href="#2-2-加密时，按照密钥字的指示，决定采用哪一个单表。例如密钥字是iscbupt，加密时，明文的第一个字母用与附加列上字母i相对应的密码表进行加密，明文的第二个字母用与附加列的字母s相对应的密码表进行加密，依次类推。" class="headerlink" title="2.2 加密时，按照密钥字的指示，决定采用哪一个单表。例如密钥字是iscbupt，加密时，明文的第一个字母用与附加列上字母i相对应的密码表进行加密，明文的第二个字母用与附加列的字母s相对应的密码表进行加密，依次类推。"></a>2.2 加密时，按照密钥字的指示，决定采用哪一个单表。例如密钥字是iscbupt，加密时，明文的第一个字母用与附加列上字母i相对应的密码表进行加密，明文的第二个字母用与附加列的字母s相对应的密码表进行加密，依次类推。</h2><h2 id="2-3-令英文字母a-b-„-z对应于从0到25的整数。"><a href="#2-3-令英文字母a-b-„-z对应于从0到25的整数。" class="headerlink" title="2.3 令英文字母a,b,„,z对应于从0到25的整数。"></a>2.3 令英文字母a,b,„,z对应于从0到25的整数。</h2><p><img src="https://img-blog.csdnimg.cn/20200222144118863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="加解密方法"></p>
+<h1 id="3-关键算法分析"><a href="#3-关键算法分析" class="headerlink" title="3 关键算法分析"></a>3 关键算法分析</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 加密函数</span><br><span class="line">def Encrypt(plaintext, key_list):</span><br><span class="line">    ciphertext = &quot;&quot;</span><br><span class="line">    i = 0</span><br><span class="line">    for ch in plaintext:  # 遍历明文</span><br><span class="line">        if i % len(key_list) == 0:</span><br><span class="line">            i = 0</span><br><span class="line">        if ch.isalpha():  # 明文是否为字母,如果是,则判断大小写,分别进行加密</span><br><span class="line">            if ch.isupper():</span><br><span class="line">                ciphertext += Alphabet[(ord(ch) - 65 + key_list[i]) % 26]</span><br><span class="line">                i += 1</span><br><span class="line">            else:</span><br><span class="line">                ciphertext += Alphabet[(ord(ch) - 97 + key_list[i]) % 26].lower()</span><br><span class="line">                i += 1</span><br><span class="line">        else:  # 如果密文不为字母,直接添加到密文字符串里</span><br><span class="line">            ciphertext += ch</span><br><span class="line">return ciphertext</span><br></pre></td></tr></table></figure>
+
+<p>加密算法的关键是给出初始密钥，例如第一个密钥字母是i，对第一个明文字母c进行加密时，选用左边附加列上的字母i对应的那一行作为代替密码表，查处于c相对应的密文字母是K，依次类推即可得出明文。上述代码中的生成密钥部分为核心代码，只有密钥更长，才能保证密码算法的可靠性。解密算法和加密算法只需要减去密钥继续模26即可得到。</p>
+<h1 id="4-运行结果"><a href="#4-运行结果" class="headerlink" title="4 运行结果"></a>4 运行结果</h1><p>完整代码如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">#Vigenere密码</span><br><span class="line">Alphabet = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#x27;</span><br><span class="line"></span><br><span class="line"># 根据输入的key生成key列表</span><br><span class="line">def Get_KeyList(key):</span><br><span class="line">    key_list = []</span><br><span class="line">    for ch in key:</span><br><span class="line">        key_list.append(ord(ch.upper()) - 65)</span><br><span class="line">    return key_list</span><br><span class="line"></span><br><span class="line"># 加密函数</span><br><span class="line">def Encrypt(plaintext, key_list):</span><br><span class="line">    ciphertext = &quot;&quot;</span><br><span class="line">    i = 0</span><br><span class="line">    for ch in plaintext:  # 遍历明文</span><br><span class="line">        if i % len(key_list) == 0:</span><br><span class="line">            i = 0</span><br><span class="line">        if ch.isalpha():  # 明文是否为字母,如果是,则判断大小写,分别进行加密</span><br><span class="line">            if ch.isupper():</span><br><span class="line">                ciphertext += Alphabet[(ord(ch) - 65 + key_list[i]) % 26]</span><br><span class="line">                i += 1</span><br><span class="line">            else:</span><br><span class="line">                ciphertext += Alphabet[(ord(ch) - 97 + key_list[i]) % 26].lower()</span><br><span class="line">                i += 1</span><br><span class="line">        else:  # 如果密文不为字母,直接添加到密文字符串里</span><br><span class="line">            ciphertext += ch</span><br><span class="line">    return ciphertext</span><br><span class="line"></span><br><span class="line"># 解密函数</span><br><span class="line">def Decrypt(ciphertext, key_list):</span><br><span class="line">    plaintext = &quot;&quot;</span><br><span class="line">    i = 0</span><br><span class="line">    for ch in ciphertext:  # 遍历密文</span><br><span class="line">        if i % len(key_list) == 0:</span><br><span class="line">            i = 0</span><br><span class="line">        if ch.isalpha():  # 密文为否为字母,如果是,则判断大小写,分别进行解密</span><br><span class="line">            if ch.isupper():</span><br><span class="line">                plaintext += Alphabet[(ord(ch) - 65 - key_list[i]) % 26]</span><br><span class="line">                i += 1</span><br><span class="line">            else:</span><br><span class="line">                plaintext += Alphabet[(ord(ch) - 97 - key_list[i]) % 26].lower()</span><br><span class="line">                i += 1</span><br><span class="line">        else:  # 如果密文不为字母,直接添加到明文字符串里</span><br><span class="line">            plaintext += ch</span><br><span class="line">    return plaintext</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    print(&quot;加密请按D,解密请按E:&quot;)</span><br><span class="line">    user_input = input()</span><br><span class="line">    while(user_input != &#x27;D&#x27; and user_input != &#x27;E&#x27;):  # 输入合法性判断</span><br><span class="line">        print(&quot;输入有误!请重新输入:&quot;)</span><br><span class="line">        user_input = input()</span><br><span class="line">    print(&quot;请输入密钥:&quot;)</span><br><span class="line">    key = input()</span><br><span class="line">    while (key.isalpha() == False):  # 输入合法性判断</span><br><span class="line">        print(&quot;输入有误!密钥为字母,请重新输入:&quot;)</span><br><span class="line">        key = input()</span><br><span class="line">    key_list = Get_KeyList(key)</span><br><span class="line"></span><br><span class="line"># 加密</span><br><span class="line">    if user_input == &#x27;D&#x27;:</span><br><span class="line">        print(&quot;请输入明文:&quot;)</span><br><span class="line">        plaintext = input()</span><br><span class="line">        ciphertext = Encrypt(plaintext, key_list)</span><br><span class="line">        print(&quot;密文:&quot;)</span><br><span class="line">        print(ciphertext)</span><br><span class="line"># 解密</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;请输入密文:&quot;)</span><br><span class="line">        ciphertext = input()</span><br><span class="line">        plaintext = Decrypt(ciphertext, key_list)</span><br><span class="line">        print(&quot;明文:&quot;)</span><br><span class="line">        print(plaintext)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<p>运行效果如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020022214431934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="运行效果"></p>
+<h1 id="5-密码安全性分析"><a href="#5-密码安全性分析" class="headerlink" title="5 密码安全性分析"></a>5 密码安全性分析</h1><p>多表代换密码体制的分析方法主要分为以下三步：<br>第一步：确定秘钥的长度，常用方法有卡西斯基测试法和重合指数法；<br>第二步：确定秘钥，常用的方法是拟重合指数法；<br>第三步：根据第二步确定的秘钥恢复出明文，如果有条件允许可以验证结论的正确性。</p>
+<p>卡西斯基测试法基本原理：<br>若用给定长度为k的密钥周期地对明文字母加密，则当明文中有两个相同字母组在明文序列中间隔的字母数为k的倍数时，这两个明文字母组对应的密文字母组必然相同。但反过来，若密文中出现两个相同的字母组，他们所对应的明文字母组未必相同，但相同的可能性很大。如果将密文中相同的字母组找出来，并对其间隔的字母数进行综合研究，找出他们间隔字母数的最大公因子，就有可能提取出有关密钥字长度k的信息。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222144526311.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="重合指数法"></p>
+<p>上面对于维吉尼亚密码的分析只有通过大量的密文才能实现，所以较短的密文几乎是不可破译的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81-%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A/" data-id="cl1qb1dzj006pqktuggxuhcwl" data-title="密码学课程设计-古典密码-维吉尼亚" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%BA%8F%E5%88%97%E5%AF%86%E7%A0%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          密码学课程设计-序列密码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/10/Java%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Java课程实践</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

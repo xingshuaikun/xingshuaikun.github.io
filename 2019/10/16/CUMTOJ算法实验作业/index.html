@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CUMTOJ算法实验作业 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="问题 A: 凯撒加密法题目描述 凯撒加密法，或称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。例如，当偏移量是左移3的时候：明文字母表：ABCDEFGHIJKLMNOPQRSTUVWXYZ密文字母表：DEFGHIJKLMNOPQRSTUVWXYZABC使用时，加密者查找明文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMTOJ算法实验作业">
+<meta property="og:url" content="http://example.com/2019/10/16/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="问题 A: 凯撒加密法题目描述 凯撒加密法，或称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。例如，当偏移量是左移3的时候：明文字母表：ABCDEFGHIJKLMNOPQRSTUVWXYZ密文字母表：DEFGHIJKLMNOPQRSTUVWXYZABC使用时，加密者查找明文">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191016211706322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191016211749136.png">
+<meta property="article:published_time" content="2019-10-16T12:45:46.000Z">
+<meta property="article:modified_time" content="2020-01-10T02:11:05.322Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="密码学">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191016211706322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CUMTOJ算法实验作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/16/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A/" class="article-date">
+  <time class="dt-published" datetime="2019-10-16T12:45:46.000Z" itemprop="datePublished">2019-10-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      CUMTOJ算法实验作业
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="问题-A-凯撒加密法"><a href="#问题-A-凯撒加密法" class="headerlink" title="问题 A: 凯撒加密法"></a>问题 A: 凯撒加密法</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p> 凯撒加密法，或称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。<br>例如，当偏移量是左移3的时候：<br>明文字母表：ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>密文字母表：DEFGHIJKLMNOPQRSTUVWXYZABC<br>使用时，加密者查找明文字母表中需要加密的消息中的每一个字母所在位置，并且写下密文字母表中对应的字母。需要解密的人则根据事先已知的密钥反过来操作，得到原来的明文。例如：<br>明文：THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG<br>密文：WKH TXLFN EURZQ IRA MXPSV RYHU WKH ODCB GRJ<br>现在给定你一个字符串S（长度不会超过1000000）和一个整数k（-1000000000&lt;&#x3D;k&lt;&#x3D;1000000000），分别代表接受者收到的密文和在加密该密文时向后的偏移量，你的任务是计算出原来的明文<br>注意：只有字母在加密时才会发生偏移，其它字符保持不变</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p> 输入包含多组数据，其中第一行为数据组数T（T&lt;&#x3D;10）<br>每组数据第一行为一个字符串S，由数字、字母以及常见字符组成（不含空格），第二行为一个整数k代表加密时向后的偏移量（|S|&lt;&#x3D;1000000,-1000000000&lt;&#x3D;k&lt;&#x3D;1000000000）</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>对每组数据，输出一行字符串，代表输入中的密文对应的明文。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>1<br>DEFGHIJKLMNOPQRSTUVWXYZABC<br>3</p>
+</blockquote>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>此题就是将输入的字符串传到string类型的变量str中，然后对数组进行操作即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str[i][j] = &#x27;A&#x27; + (str[i][j] - &#x27;A&#x27; - offset[i] + 26) % 26;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int max_num = 10;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i, j, T;</span><br><span class="line">    string str[max_num];</span><br><span class="line">    int offset[max_num];</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    for(i = 0; i &lt; T; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; str[i];</span><br><span class="line">        cin &gt;&gt; offset[i];</span><br><span class="line">        offset[i] %= 26;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i = 0; i &lt; T; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(j = 0; j &lt; str[i].length(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(str[i][j] &gt;= &#x27;A&#x27; &amp;&amp; str[i][j] &lt;= &#x27;Z&#x27;)</span><br><span class="line">                str[i][j] = &#x27;A&#x27; + (str[i][j] - &#x27;A&#x27; - offset[i] + 26) % 26;</span><br><span class="line">            else if(str[i][j] &gt;= &#x27;a&#x27; &amp;&amp; str[i][j] &lt;= &#x27;z&#x27;)</span><br><span class="line">                str[i][j] = &#x27;a&#x27; + (str[i][j] - &#x27;a&#x27; - offset[i] + 26) % 26;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; str[i] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-B-Vigenere-密码"><a href="#问题-B-Vigenere-密码" class="headerlink" title="问题 B: Vigenère 密码"></a>问题 B: Vigenère 密码</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>16 世纪法国外交家 Blaise de Vigenère 设计了一种多表密码加密算法——Vigenère 密码。Vigenère 密码的加密解密算法简单易用，且破译难度比较高，曾在美国南北战争中为南军所广泛使用。</p>
+<p>在密码学中，我们称需要加密的信息为明文，用 MM 表示；称加密后的信息为密文，用 CC 表示；而密钥是一种参数，是将明文转换为密文或将密文转换为明文的算法中输入的数据，记为 kk。 在 Vigenère 密码中，密钥 kk 是一个字母串，k&#x3D;k1k2…kn。当明文 M &#x3D; m1m2…mn 时，得到的密文 C &#x3D; c1c2…cn ，其中 ci &#x3D; mi ®  ki，运算 ® 的规则如下表所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191016211706322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>Vigenère 加密在操作时需要注意：</p>
+<p>1 ® 运算忽略参与运算的字母的大小写，并保持字母在明文 MM 中的大小写形式；<br>2 当明文 MM 的长度大于密钥 kk 的长度时，将密钥 kk 重复使用。 例如，明文 M&#x3D;M&#x3D;Helloworld，密钥 k&#x3D;k&#x3D;abc时，密文 C&#x3D;C&#x3D;Hfnlpyosnd。<br><img src="https://img-blog.csdnimg.cn/20191016211749136.png"></p>
+<h2 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h2><p>第一行为一个字符串，表示密钥 kk，长度不超过 100100，其中仅包含大小写字母。</p>
+<p>第二行为一个字符串，表示经加密后的密文，长度不超过 10001000，其中仅包含大小写字母。</p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><p>输出共 11 行，一个字符串，表示输入密钥和密文所对应的明文。</p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>CompleteVictory<br>Yvqgpxaimmklongnzfwpvxmniytm</p>
+</blockquote>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>Wherethereisawillthereisaway</p>
+</blockquote>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>此题就是将输入的字符串传到string类型的变量str中，然后对数组进行操作即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text += &#x27;a&#x27; + (secretText[i] - &#x27;a&#x27; - Key[i % KeyLength] + &#x27;a&#x27; + 26) % 26;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i, KeyLength, secretTextLength;</span><br><span class="line">    string Key, secretText, text;</span><br><span class="line">    cin &gt;&gt; Key;</span><br><span class="line">    cin &gt;&gt; secretText;</span><br><span class="line">    KeyLength = Key.length();</span><br><span class="line">    secretTextLength = secretText.length();</span><br><span class="line">    for(i = 0; i &lt; KeyLength; i++)     //k to all lowwer</span><br><span class="line">    &#123;</span><br><span class="line">        if(Key[i] &gt;= &#x27;A&#x27; &amp;&amp; Key[i] &lt;= &#x27;Z&#x27;)</span><br><span class="line">            Key[i] = Key[i] - &#x27;A&#x27; + &#x27;a&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i = 0; i &lt; secretTextLength; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(secretText[i] &gt;= &#x27;A&#x27; &amp;&amp; secretText[i] &lt;= &#x27;Z&#x27;)</span><br><span class="line">            text += &#x27;A&#x27; + (secretText[i] - &#x27;A&#x27; - Key[i % KeyLength] + &#x27;a&#x27; + 26) % 26;</span><br><span class="line">        else</span><br><span class="line">            text += &#x27;a&#x27; + (secretText[i] - &#x27;a&#x27; - Key[i % KeyLength] + &#x27;a&#x27; + 26) % 26;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; text &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-C-简单的密码"><a href="#问题-C-简单的密码" class="headerlink" title="问题 C: 简单的密码"></a>问题 C: 简单的密码</h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>密码是按特定法则编成，用以对通信双方的信息进行明密变换的符号。密码是隐蔽了真实内容的符号序列。其实就是把用公开的、标准的信息编码表示的信息通过一种变换手段，将其变为除通信双方以外其他人所不能读懂的信息编码，这种独特的信息编码就是密码。<br>现在我们定义一种非常简单的密码，它的长度固定为n（n&lt;&#x3D;30）并且每一位只能由数字0或者数字1组成，但是有一个特殊的要求：一个密码序列中至少要有连续的3个0出现才可以，否则就是无效的。现在给定你密码序列的长度n，你的任务是计算长度为n的序列能产生多少种不同的并且有效的密码？</p>
+<h2 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h2><p>输入包含多组数据，每组数据只有一个正整数n（1&lt;&#x3D;n&lt;&#x3D;30）代表密码序列的长度，单独占一行。</p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><p>对每组数据，输出一个整数，代表长度为n的序列能产生的不同密码的种类数。</p>
+<h2 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>4<br>5<br>6</p>
+</blockquote>
+<h2 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>3<br>8<br>20</p>
+</blockquote>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><p>先给出递推式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f[i] = 2 * f[i - 1] + (1 &lt;&lt; (i - 4)) - f[i - 4];</span><br></pre></td></tr></table></figure>
+
+<p>为什么呢？</p>
+<ol>
+<li>2*f[i-1]上一步如果已经有连续3个0了，那这一步可0可1；</li>
+<li>(1&lt;&lt;(i-4))-f[i-4]什么时候会有除上一种情况之外的解呢？答案是当上一步最后3位为100的时候，这三位（i-1位、i-2位、i-3位）已经定死了，那我们只要考虑到i-4位时不符合条件的数量，即总的减去符合条件的（2^(i-4)-f[i-4]）。</li>
+</ol>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i, n;</span><br><span class="line">    int f[32] = &#123;0, 0, 0, 1&#125;;</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        for(i = 4; i &lt;= 30; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            f[i] = 2 * f[i - 1] + (1 &lt;&lt; (i - 4)) - f[i - 4];</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; f[n] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-D-有趣的素数"><a href="#问题-D-有趣的素数" class="headerlink" title="问题 D: 有趣的素数"></a>问题 D: 有趣的素数</h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>素数被广泛地应用于密码学中，所谓的公钥就是将想要传递的信息在编码时加入砠数，编码之后传给收信人，任何人收到此信息之后，若没有此收信人所拥有的秘钥，则在解密的过程中将会因为分解质因数过久而无法破解信息，可见素数在密码学中的重要性。<br>现在给你n（2&lt;&#x3D;n&lt;&#x3D;16）个正整数1,2,3…n，你的任务是把这n个正整数组成一个环，使得任意相邻的两个整数之和为一个素数，输出有多少种合法方案。</p>
+<h2 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h2><p>多组输入数据，每组数据只有一个正整数n（2&lt;&#x3D;n&lt;&#x3D;16）代表有n个正整数 1,2,3…n</p>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><p>对每组数据，输出一个整数，代表有多少种不同的可行方案数。</p>
+<h2 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>6<br>8</p>
+</blockquote>
+<h2 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>2<br>4</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于输入样例中的6，有以下2种合法方案（首尾相连构成一个环）</p>
+<p>1 4 3 2 5 6</p>
+<p>1 6 5 2 3 4</p>
+<p>对于输入样例中的8，有以下4种合法方案（首尾相连构成一个环）</p>
+<p>1 2 3 8 5 6 7 4</p>
+<p>1 2 5 8 3 4 7 6</p>
+<p>1 4 7 6 5 8 3 2</p>
+<p>1 6 7 4 3 8 5 2</p>
+<h2 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h2><p>当层数等于n时跳出（往回走，即回溯） 判断下首尾加起来是不是素数，若是，则ans++; 否则什么也不做。<br>中间约束剪枝就是判断当前和前面一个加起来是不是素数，不是的话就直接剪。<br>普通的素数判定方法可能会TLE，所以判断素数最好打个表。原问题n最大是16，所以打30多的表就够了（16＋15&#x3D;&#x3D;31）。</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n, ans, last;</span><br><span class="line">bool visited[32];</span><br><span class="line">bool isPrime[40]=&#123;0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0&#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    void pc(int cur);</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        memset(visited, 0, sizeof(visited));</span><br><span class="line">        ans = 0;</span><br><span class="line">        last = 1;</span><br><span class="line">        pc(1);</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">void pc(int cur)</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    if(cur == n &amp;&amp; isPrime[1 + last])</span><br><span class="line">    &#123;</span><br><span class="line">        ans++;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i = 2; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(!visited[i] &amp;&amp; isPrime[last + i])</span><br><span class="line">        &#123;</span><br><span class="line">            int t = last;</span><br><span class="line">            last = i;</span><br><span class="line">            visited[i] = true;</span><br><span class="line">            pc(cur + 1);</span><br><span class="line">            visited[i] = false;</span><br><span class="line">            last = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="问题-E-数据加密"><a href="#问题-E-数据加密" class="headerlink" title="问题 E: 数据加密"></a>问题 E: 数据加密</h1><h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>密码学是研究编制密码和破译密码的技术科学。研究密码变化的客观规律，应用于编制密码以保守通信秘密的，称为编码学；应用于破译密码以获取通信情报的，称为破译学，总称密码学。密码是通信双方按约定的法则进行信息特殊变换的一种重要保密手段。依照这些法则，变明文为密文，称为加密变换；变密文为明文，称为脱密变换。密码在早期仅对文字或数码进行加、脱密变换，随着通信技术的发展，对语音、图像、数据等都可实施加、脱密变换。<br>现在要求你用下面给定的方法对数据实现加密。给定长度为n的字符串S（1&lt;&#x3D;n&lt;&#x3D;2000,S中只有大写字母）作为明文，要求构造一个字符串T作为密文，起初T是一个空串，之后反复执行以下任意操作</p>
+<p>1.从S的头部删除一个字符，加入到T的尾部<br>2.从S的尾部删除一个字符，加入到T的尾部</p>
+<p>最后S会变成空串，T会变成一个长度为n的字符串作为密文。当然并非所有的构造方案都是符合条件的，我们要求构造出的密文T的字典序尽可能小，你能找出这个字典序最小的密文吗？</p>
+<h2 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h2><p>输入包含多组数据，每组数据占两行，第一行为一个整数n（1&lt;&#x3D;n&lt;&#x3D;2000）代表字符串S的长度，第二行为一个长度为n的字符串S代表明文，保证S中只有大写字母</p>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><p>对每组数据，输出一行字符串，代表构造出的字典序最小的密文T</p>
+<h2 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>6<br>ACDBCB</p>
+</blockquote>
+<h2 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>ABCBCD</p>
+</blockquote>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>字典序是指从前往后比较两个字符串大小的方法。首先比较第1个字符，如果不同则第1个字符更小的字符串更小，如果相同则继续比较第2个字符……如此继续，来比较整个字符串的大小</p>
+<h2 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h2><p>当头和尾不等的时候好选，关键就是头和尾一样怎么办？<br>仔细想想，容易发现，假设头指针为i，尾指针为j，如果相同，则比较i+1和j-1，如果再相同，继续下去……<br>我们可以写个循环，如果相同继续比较，不同就跳出。头小flag置为true，否则置为false。<br>其实T字符串根本不用存，直接输出即可。</p>
+<h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n, k;</span><br><span class="line">    char str[2005], ans[2005];</span><br><span class="line">    while(~scanf(&quot;%d&quot;, &amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; str;</span><br><span class="line">        int i = 0, j = n - 1;</span><br><span class="line">        while(i &lt;= j)</span><br><span class="line">        &#123;</span><br><span class="line">            bool flag = false;</span><br><span class="line">            for(k = 0; i + k &lt; j - k; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(str[i + k] &lt; str[j - k])</span><br><span class="line">                &#123;</span><br><span class="line">                    flag = true;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                if(str[i + k] &gt; str[j - k])</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag)</span><br><span class="line">                cout &lt;&lt; str[i++];</span><br><span class="line">            else</span><br><span class="line">                cout &lt;&lt; str[j--];</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>本文参考了下面大佬的文章<br><a target="_blank" rel="noopener" href="https://comydream.github.io/2018/10/20/algorithm-meets-crypt/">https://comydream.github.io/2018/10/20/algorithm-meets-crypt/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/16/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A/" data-id="cl1qb1dxl001vqktu15b3h9wg" data-title="CUMTOJ算法实验作业" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/18/%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B4%E6%96%87%E4%BB%B6%E5%B0%BE%E6%A0%BC%E5%BC%8F%E6%80%BB%E7%BB%93%E5%8F%8A%E5%90%84%E7%B1%BB%E6%96%87%E4%BB%B6%E5%A4%B4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          常见文件文件头文件尾格式总结及各类文件头
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/15/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard%20Template%20Library,STL%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">C++标准模板库（Standard Template Library,STL）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>IDA Pro静态分析dex文件 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 背景中秋佳节，团圆节日，祝大家中秋节快乐哈O(∩_∩)O 今天上午实验室就我一个人，不过终于把困扰我两天的IDA Pro静态分析dex文件搞定了，坤哥yyds(●’◡’●)。 话不多说，分析正式开始，一大波文字加图片来袭中，请做好准备。 2 分析过程2.1 在Android手机中安装apk使用adb命令安装app-release.apk到自己调试用的Android手机中，打开Crackme02">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDA Pro静态分析dex文件">
+<meta property="og:url" content="http://example.com/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="1 背景中秋佳节，团圆节日，祝大家中秋节快乐哈O(∩_∩)O 今天上午实验室就我一个人，不过终于把困扰我两天的IDA Pro静态分析dex文件搞定了，坤哥yyds(●’◡’●)。 话不多说，分析正式开始，一大波文字加图片来袭中，请做好准备。 2 分析过程2.1 在Android手机中安装apk使用adb命令安装app-release.apk到自己调试用的Android手机中，打开Crackme02">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/95390638224c40f780671f3186e3892d.jpg?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/b5477ca3f76f48ebaf49f99c55111042.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/bd71637f051d4da9939083079c6fa856.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/5fdda44481124a29828dd17935573df6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/5a0ce784b0484eb891ab4be101f4279d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ba854edaee1f481cb39b71fc3b573f20.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/69e203536750486fbe9e20bbe65af729.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_17,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9ac0d9bbd5404a6c93bbb745e1bc151e.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1f6419336b0f4489934e771d59d284d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fcb19c09e75b4e67828f7acd625fcd30.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a4a2a7e7e18b469098e67ac8f0082653.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8e9caee4a0ca45249f179ad80add492d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/af3217c30eb943aea9e4150277eddd32.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8949240d405849c38c9228a95013ba9f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f78aa38a356141f2aa37e8804acc0515.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/afa6223a823849c587fba2965a2b8bba.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/cfc15ea163344f788a6e7e0b43c16e18.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/eceaef1b51ac48d5bcab07037c9f4c58.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1aae67de83b2408996a053c5f5012941.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/68254ae4f3cd4ff6a338c3006cd89f08.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/645e3312002d4d4c82662a84906621ea.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_14,color_FFFFFF,t_70,g_se,x_16">
+<meta property="article:published_time" content="2021-09-21T02:03:42.000Z">
+<meta property="article:modified_time" content="2021-09-24T12:45:38.250Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Reverse">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/95390638224c40f780671f3186e3892d.jpg?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-IDA Pro静态分析dex文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2021-09-21T02:03:42.000Z" itemprop="datePublished">2021-09-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      IDA Pro静态分析dex文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>中秋佳节，团圆节日，祝大家中秋节快乐哈O(∩_∩)O</p>
+<p>今天上午实验室就我一个人，不过终于把困扰我两天的<font color=red>IDA Pro静态分析dex文件</font>搞定了，坤哥yyds(●’◡’●)。</p>
+<p>话不多说，分析正式开始，一大波文字加图片来袭中，请做好准备。</p>
+<h1 id="2-分析过程"><a href="#2-分析过程" class="headerlink" title="2 分析过程"></a>2 分析过程</h1><h2 id="2-1-在Android手机中安装apk"><a href="#2-1-在Android手机中安装apk" class="headerlink" title="2.1 在Android手机中安装apk"></a>2.1 在Android手机中安装apk</h2><p>使用<font color=red>adb</font>命令安装app-release.apk到自己调试用的Android手机中，打开Crackme0201后进入注册界面，输入用户名为iReverse和注册码为1234567812345678，接着点击注册按钮，发现错误提示信息<font color=red>无效用户名或注册码</font>，如图1所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/95390638224c40f780671f3186e3892d.jpg?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图1 发现错误提示信息"></p>
+<h2 id="2-2-使用ApkTool工具反编译APK文件"><a href="#2-2-使用ApkTool工具反编译APK文件" class="headerlink" title="2.2 使用ApkTool工具反编译APK文件"></a>2.2 使用ApkTool工具反编译APK文件</h2><p><font color=red>ApkTool</font>是一款常用的跨平台APK文件反编译工具，使用命令<font color=red>apktool d app-release.apk -o outdir</font>可以在当前的outdir目录下生成反编译文件。反编译文件包含一系列目录和文件，<font color=red>smali目录</font>中存放了程序的所有反汇编代码，<font color=red>res目录</font>中存放的则是程序中所有的资源文件，这些目录的子目录和文件的组织结构与开发时源码目录的组织结构是一致的，反编译APK文件的过程如图3所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/b5477ca3f76f48ebaf49f99c55111042.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图2 反编译APK文件"></p>
+<h2 id="2-3-grep分析APK文件"><a href="#2-3-grep分析APK文件" class="headerlink" title="2.3 grep分析APK文件"></a>2.3 grep分析APK文件</h2><p>如何寻找突破口是分析一个程序的关键。对大部分Android程序来说，错误提示信息是指路明灯。错误提示代码附近通常就是程序的核心验证代码，我们可以通过阅读这些代码理解软件的注册流程。</p>
+<p>错误提示属于Android程序中的字符串资源。在开发Android程序时，这些字符串可能会被<font color=red>硬编码</font>到源码中，也可能引用自<font color=red>res&#x2F;values&#x2F;strings.xml</font>文件。</p>
+<p>首先，使用<font color=red>grep</font>命令可以找到错误提示代码所在的字符串资源文件strings.xml中的<font color=red>string类标识</font>，在public.xml找到字符串对应的唯一的int类型的<font color=red>索引值</font>，在outdir&#x2F;smali&#x2F;com&#x2F;iReverse&#x2F;crackme0201&#x2F;MainActivity$1.smali文件中找到错误提示信息对应的id值<font color=red>0x7f0e0055c</font>，如图3所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/bd71637f051d4da9939083079c6fa856.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图3 通过错误提示信息找到关键代码"></p>
+<h2 id="2-4-使用7-Zip工具解压apk"><a href="#2-4-使用7-Zip工具解压apk" class="headerlink" title="2.4 使用7-Zip工具解压apk"></a>2.4 使用7-Zip工具解压apk</h2><p>打开app-release.apk文件所在的文件夹，使用<font color=red>7-Zip</font>将其解压到当前目录下，如图4所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/5fdda44481124a29828dd17935573df6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图4 使用7-Zip工具解压app-release.apk"></p>
+<h2 id="2-5-使用IDAPro静态分析classes-dex文件"><a href="#2-5-使用IDAPro静态分析classes-dex文件" class="headerlink" title="2.5 使用IDAPro静态分析classes.dex文件"></a>2.5 使用IDAPro静态分析classes.dex文件</h2><p>点击classes.dex文件，右键以<font color=red>IDA Pro(64-bit)</font>方式打开，如图5所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/5a0ce784b0484eb891ab4be101f4279d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图5 使用IDA Pro打开classes.dex文件"></p>
+<p>在加载新文件的过程中，加载的文件选择<font color=red>Android DEX file</font>，处理器类型选择<font color=red>Dalvik Virtual Machine [dalvik]</font>，点击OK按钮后便进行加载，这时尽量多等会，以使<font color=red>classes.dex</font>文件被完全加载。</p>
+<p><img src="https://img-blog.csdnimg.cn/ba854edaee1f481cb39b71fc3b573f20.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图6 选择打开的基本配置信息"></p>
+<p>在IDA Pro主窗口按<font color=red>Alt+T</font>快捷键，在弹出的<font color=red>Text search</font>搜索框中输入<font color=red>unsuccessed</font>字符串的ID<font color=red>0x7f0e005c</font>，只勾选<font color=red>Find all occurrences</font>，然后单击OK按钮进行搜索，如图7所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/69e203536750486fbe9e20bbe65af729.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_17,color_FFFFFF,t_70,g_se,x_16" alt="图7 搜索字符串0x7f0e005c"></p>
+<p>稍等片刻就可以定位调用的代码行了，如图8所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/9ac0d9bbd5404a6c93bbb745e1bc151e.png" alt="图8 找到字符串unsuccessed定义的smali指令"></p>
+<p>双击即可进入IDA View-A的流程图视图，右键进入文本视图，以便修改代码，如图9所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/1f6419336b0f4489934e771d59d284d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图9 进入文本视图"></p>
+<p>进入文本视图后，往上滑动，发现关键代码<font color=red>if-nez</font>，如图10所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/fcb19c09e75b4e67828f7acd625fcd30.png" alt="图10 定位关键代码if-nez"></p>
+<p>点击IDA Pro主界面上的<font color=red>Hex-View-1</font>选项卡，发现这行代码的指令为<font color=red>39 03 0F 00</font>，如图11所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/a4a2a7e7e18b469098e67ac8f0082653.png" alt="图11 查看操作码"></p>
+<p>通过查找Dalvik字节码集合的总结<a target="_blank" rel="noopener" href="https://source.android.google.cn/devices/tech/dalvik/dalvik-bytecode?hl=zh-cn">https://source.android.google.cn/devices/tech/dalvik/dalvik-bytecode?hl=zh-cn</a>，得知第一个字节<font color=red>39</font>为<font color=red>if-nez</font>指令的操作码，我们只需将其改成<font color=red>if-eqz</font>指令的操作码。翻看Dalvik指令集列表，得知<font color=red>if-eqz</font>指令的操作码为<font color=red>38</font>。</p>
+<p>下面利用IDA Pro给原文件打补丁，操作方法是：定位需要修改的反汇编行，单击菜单项”Edit” -&gt; “Patch program” -&gt; “Change byte…”，如图12所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/8e9caee4a0ca45249f179ad80add492d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图12 定位需要修改的反汇编行"></p>
+<p>在弹出的修改界面上，将<font color=red>39 03 0F 00 54 23 D1 41 14 01 5C 00 0E 7F 71 30</font>修改为<font color=red>38 03 0F 00 54 23 D1 41 14 01 5C 00 0E 7F 71 30</font>。<br>注意：这里只将第1个字节<font color=red>39</font>修改成了<font color=red>38</font>，其他字节均保持不变。</p>
+<p><img src="https://img-blog.csdnimg.cn/af3217c30eb943aea9e4150277eddd32.png" alt="图13 修改第1个字节"></p>
+<p>修改完成后，单击<font color=red>“Edit”</font> -&gt; <font color=red>“Patch program”</font> -&gt; <font color=red>“Apply patches to input file…”</font>，如图14所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/8949240d405849c38c9228a95013ba9f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图14 保存回原文件"></p>
+<p>确认保存路径无误后，单击OK按钮保存即可，如图15所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/f78aa38a356141f2aa37e8804acc0515.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图15 保存回原文件"></p>
+<p>关闭IDA Pro，发现classes.dex文件已经被修改，如图16所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/afa6223a823849c587fba2965a2b8bba.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图16 经过修改后的classes.dex文件"></p>
+<h2 id="2-6-使用d2j-dex-recompute-checksum修改classes-dex的关键字段"><a href="#2-6-使用d2j-dex-recompute-checksum修改classes-dex的关键字段" class="headerlink" title="2.6 使用d2j-dex-recompute-checksum修改classes.dex的关键字段"></a>2.6 使用d2j-dex-recompute-checksum修改classes.dex的关键字段</h2><p>修改后的<font color=red>classes.dex</font>文件，其<font color=red>DexHeader</font>头部的<font color=red>checksum</font>与<font color=red>signature</font>字段是错误的，需要进行修正。<br>这里，我们使用<font color=red>dex2jar</font>提供的工具<font color=red>d2j-dex-recompute-checksum</font>，在终端提示符下执行如图17中的命令，命令执行后，会在<font color=red>classes.dex</font>的当前目录下生成修正的文件<font color=red>classes-rechecksum.dex</font>。</p>
+<p><img src="https://img-blog.csdnimg.cn/cfc15ea163344f788a6e7e0b43c16e18.png" alt="图17 修改DexHeader头部的checksum与signature字段"></p>
+<h2 id="2-7-使用7-Zip获得压缩包test-zip"><a href="#2-7-使用7-Zip获得压缩包test-zip" class="headerlink" title="2.7 使用7-Zip获得压缩包test.zip"></a>2.7 使用7-Zip获得压缩包test.zip</h2><p>将<font color=red>classes-rechecksum.dex</font>的文件名修改为<font color=red>classes.dex</font>，并将修改文件名后的<font color=red>classes.dex</font>复制到<font color=red>app-release.apk</font>文件解压的文件目录下，然后选定<font color=red>res</font>、<font color=red>AndroidManifest.xml</font>、<font color=red>app-release</font>、<font color=red>classes.dex</font>和<font color=red>resources.arsc</font>文件使用<font color=red>7-Zip</font>文件进行压缩获得<font color=red>test.zip</font>文件，如图18所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/eceaef1b51ac48d5bcab07037c9f4c58.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图18 压缩文件获得压缩包test.zip"></p>
+<h2 id="2-8-使用signapk签名test-apk"><a href="#2-8-使用signapk签名test-apk" class="headerlink" title="2.8 使用signapk签名test.apk"></a>2.8 使用signapk签名test.apk</h2><p>将<font color=red>test.zip</font>文件名修改为<font color=red>test.apk</font>，并使用<font color=red>signapk</font>对其进行签名，最终即可获得经过破解后的apk文件<font color=red>test-sign.apk</font>，如图19所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/1aae67de83b2408996a053c5f5012941.png" alt="图19 签名apk文件"></p>
+<h2 id="2-9-安装apk到Android手机"><a href="#2-9-安装apk到Android手机" class="headerlink" title="2.9 安装apk到Android手机"></a>2.9 安装apk到Android手机</h2><p>下一步，使用<font color=red>adb</font>命令查看Android手机是否连接到电脑上，并使用adb命令将修改后的<font color=red>test-sign.apk</font>安装到Android手机中，如图20所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/68254ae4f3cd4ff6a338c3006cd89f08.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图20 adb安装apk到Android手机"></p>
+<p>最后，在Android手机中，输入用户名为iReverse和注册码为1234567812345678，接着点击注册按钮，发现注册成功，如图21所示。</p>
+<h2 id="2-10-破解成功"><a href="#2-10-破解成功" class="headerlink" title="2.10 破解成功"></a>2.10 破解成功</h2><p><img src="https://img-blog.csdnimg.cn/645e3312002d4d4c82662a84906621ea.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_14,color_FFFFFF,t_70,g_se,x_16" alt="图21 app注册成功"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1><p>本次使用<font color=red>IDA Pro</font>对注册软件<font color=red>Crackme0201.apk</font>进行静态逆向分析，使用了<font color=red>adb</font>、<font color=red>7-Zip</font>、<font color=red>ApkTool</font>、<font color=red>grep</font>、<font color=red>IDAPro</font>、<font color=red>d2j-dex-recompute-checksum</font>和<font color=red>signapk</font>工具，尽管中间过程有些坎坷，但经过坤哥我的努力，终于还是把这个简单的APP给破解了，以后接着搞更难的。(￢︿̫̿￢☆)</p>
+<h1 id="4-参考文章"><a href="#4-参考文章" class="headerlink" title="4  参考文章"></a>4  参考文章</h1><p>《Android软件开发权威指南》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/" data-id="cl1qb1dy1002wqktuagy9e5dn" data-title="IDA Pro静态分析dex文件" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">编写并分析第一个Android应用程序</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

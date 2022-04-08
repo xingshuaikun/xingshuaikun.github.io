@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>网络安全复习 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="背景过几周就要进行网络安全课程的考试了，所以就简单总结一下知识点，供自己复习之用，大神勿喷嘻嘻(#^.^#) 1 绪论1.1 网络安全的基本属性 机密性 完整性 可用性 可靠性 不可抵赖性 隐私性 可说明性 可审计性  1.2 安全威胁 信息泄露 信息破坏 拒绝服务  1.3 网络攻击 阻断攻击 截取攻击 篡改攻击 伪造攻击 重放攻击  1.4 国标信息系统安全等级保护 用户自主保护级 系统审计保">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全复习">
+<meta property="og:url" content="http://example.com/2019/11/11/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="背景过几周就要进行网络安全课程的考试了，所以就简单总结一下知识点，供自己复习之用，大神勿喷嘻嘻(#^.^#) 1 绪论1.1 网络安全的基本属性 机密性 完整性 可用性 可靠性 不可抵赖性 隐私性 可说明性 可审计性  1.2 安全威胁 信息泄露 信息破坏 拒绝服务  1.3 网络攻击 阻断攻击 截取攻击 篡改攻击 伪造攻击 重放攻击  1.4 国标信息系统安全等级保护 用户自主保护级 系统审计保">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191112001521672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191127185838746.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191101120555209.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191101120641970.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191210193738407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191210193824668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191210193850411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191210125936903.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191207172531843.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191207172712135.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-11-11T12:37:43.000Z">
+<meta property="article:modified_time" content="2019-12-10T11:39:09.150Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="网络安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191112001521672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-网络安全复习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/11/11/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2019-11-11T12:37:43.000Z" itemprop="datePublished">2019-11-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      网络安全复习
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>过几周就要进行网络安全课程的考试了，所以就简单总结一下知识点，供自己复习之用，大神勿喷嘻嘻(#^.^#)</p>
+<h2 id="1-绪论"><a href="#1-绪论" class="headerlink" title="1 绪论"></a>1 绪论</h2><h3 id="1-1-网络安全的基本属性"><a href="#1-1-网络安全的基本属性" class="headerlink" title="1.1 网络安全的基本属性"></a>1.1 网络安全的基本属性</h3><ul>
+<li>机密性</li>
+<li>完整性</li>
+<li>可用性</li>
+<li>可靠性</li>
+<li>不可抵赖性</li>
+<li>隐私性</li>
+<li>可说明性</li>
+<li>可审计性</li>
+</ul>
+<h3 id="1-2-安全威胁"><a href="#1-2-安全威胁" class="headerlink" title="1.2 安全威胁"></a>1.2 安全威胁</h3><ul>
+<li>信息泄露</li>
+<li>信息破坏</li>
+<li>拒绝服务</li>
+</ul>
+<h3 id="1-3-网络攻击"><a href="#1-3-网络攻击" class="headerlink" title="1.3 网络攻击"></a>1.3 网络攻击</h3><ul>
+<li>阻断攻击</li>
+<li>截取攻击</li>
+<li>篡改攻击</li>
+<li>伪造攻击</li>
+<li>重放攻击</li>
+</ul>
+<h3 id="1-4-国标信息系统安全等级保护"><a href="#1-4-国标信息系统安全等级保护" class="headerlink" title="1.4 国标信息系统安全等级保护"></a>1.4 国标信息系统安全等级保护</h3><ul>
+<li>用户自主保护级</li>
+<li>系统审计保护级</li>
+<li>安全标记保护级</li>
+<li>结构化保护级</li>
+<li>访问验证保护级</li>
+</ul>
+<h3 id="1-5-OSI安全体系结构中的安全服务"><a href="#1-5-OSI安全体系结构中的安全服务" class="headerlink" title="1.5 OSI安全体系结构中的安全服务"></a>1.5 OSI安全体系结构中的安全服务</h3><ul>
+<li>认证服务</li>
+<li>访问控制服务</li>
+<li>机密性服务</li>
+<li>完整性服务</li>
+<li>不可否认服务</li>
+</ul>
+<h3 id="1-6-OSI安全体系结构中的安全机制"><a href="#1-6-OSI安全体系结构中的安全机制" class="headerlink" title="1.6 OSI安全体系结构中的安全机制"></a>1.6 OSI安全体系结构中的安全机制</h3><ul>
+<li>加密机制</li>
+<li>数字签名机制</li>
+<li>访问控制机制</li>
+<li>信息完整性机制</li>
+<li>鉴别交换机制</li>
+<li>业务量填充机制</li>
+<li>路由控制机制</li>
+<li>公证机制</li>
+</ul>
+<h2 id="2-黑客攻击与渗透测试"><a href="#2-黑客攻击与渗透测试" class="headerlink" title="2 黑客攻击与渗透测试"></a>2 黑客攻击与渗透测试</h2><h3 id="2-1-黑客攻击流程"><a href="#2-1-黑客攻击流程" class="headerlink" title="2.1 黑客攻击流程"></a>2.1 黑客攻击流程</h3><p><img src="https://img-blog.csdnimg.cn/20191112001521672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="黑客攻击流程"></p>
+<h3 id="2-2-踩点"><a href="#2-2-踩点" class="headerlink" title="2.2 踩点"></a>2.2 踩点</h3><h4 id="2-2-1-google-hacking"><a href="#2-2-1-google-hacking" class="headerlink" title="2.2.1 google hacking"></a>2.2.1 google hacking</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“”</td>
+<td>精确匹配；使用引号来搜索一个完全匹配的字词或一组字词</td>
+</tr>
+<tr>
+<td>-</td>
+<td>逻辑非，可排除所有包含该字词的搜索结果</td>
+</tr>
+<tr>
+<td>+</td>
+<td>必须包含该字词的搜索结果</td>
+</tr>
+<tr>
+<td>~</td>
+<td>可同时搜索该字词及其同义词</td>
+</tr>
+<tr>
+<td>*</td>
+<td>搜索词中不确定的部分可以用*代替，google或匹配相关词</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>搜索结果匹配多个搜索字词中的任意一个</td>
+</tr>
+<tr>
+<td>site</td>
+<td>可以限定在某个特定网站中搜索信息；site:和站点名之间，不要带空格</td>
+</tr>
+<tr>
+<td>inurl</td>
+<td>限定在网站url链接中搜索网站信息；后面跟多个关键词时关键词之间是或的关系</td>
+</tr>
+<tr>
+<td>allinurl</td>
+<td>allinurl比url更严格，后面跟多个关键词是关键词之间是与的关系</td>
+</tr>
+<tr>
+<td>intitle</td>
+<td>限定在网页标题中搜索网站信息</td>
+</tr>
+<tr>
+<td>allintitle</td>
+<td>比intitle更严格，后面多个关键词是与的关系</td>
+</tr>
+<tr>
+<td>related</td>
+<td>可以搜索与指定网站有相似内容的网页</td>
+</tr>
+<tr>
+<td>filetype</td>
+<td>限定在文档格式中搜索网页信息</td>
+</tr>
+</tbody></table>
+<h4 id="2-2-2-whois查询和DNS查询"><a href="#2-2-2-whois查询和DNS查询" class="headerlink" title="2.2.2 whois查询和DNS查询"></a>2.2.2 whois查询和DNS查询</h4><h4 id="2-2-3-网络侦查"><a href="#2-2-3-网络侦查" class="headerlink" title="2.2.3 网络侦查"></a>2.2.3 网络侦查</h4><ul>
+<li>Unix&#x2F;Linux系统提供traceroute</li>
+<li>Windows系统提供tracert</li>
+</ul>
+<p>可查询数据包的传输路径，如果部分节点没有返回数据信息，说明这些节点设备（可能是防火墙）阻塞了发送的数据包</p>
+<h3 id="2-3-渗透测试"><a href="#2-3-渗透测试" class="headerlink" title="2.3 渗透测试"></a>2.3 渗透测试</h3><h4 id="2-3-1-渗透测试执行标准"><a href="#2-3-1-渗透测试执行标准" class="headerlink" title="2.3.1 渗透测试执行标准"></a>2.3.1 渗透测试执行标准</h4><ul>
+<li>前期交互阶段</li>
+<li>情报收集阶段</li>
+<li>威胁建模阶段</li>
+<li>漏洞分析阶段</li>
+<li>渗透攻击阶段</li>
+<li>后渗透攻击阶段</li>
+<li>报告阶段</li>
+</ul>
+<h4 id="2-3-2-渗透测试框架（Metasploit-Framework，MSF）"><a href="#2-3-2-渗透测试框架（Metasploit-Framework，MSF）" class="headerlink" title="2.3.2 渗透测试框架（Metasploit Framework，MSF）"></a>2.3.2 渗透测试框架（Metasploit Framework，MSF）</h4><h2 id="3-网络扫描与查点技术"><a href="#3-网络扫描与查点技术" class="headerlink" title="3 网络扫描与查点技术"></a>3 网络扫描与查点技术</h2><h3 id="3-1-网络扫描技术是一种基于因特网的远程监测目标网络或本地主机安全性脆弱点的技术。"><a href="#3-1-网络扫描技术是一种基于因特网的远程监测目标网络或本地主机安全性脆弱点的技术。" class="headerlink" title="3.1 网络扫描技术是一种基于因特网的远程监测目标网络或本地主机安全性脆弱点的技术。"></a>3.1 网络扫描技术是一种基于因特网的远程监测目标网络或本地主机安全性脆弱点的技术。</h3><h3 id="3-2-端口扫描工具Nmap介绍"><a href="#3-2-端口扫描工具Nmap介绍" class="headerlink" title="3.2 端口扫描工具Nmap介绍"></a>3.2 端口扫描工具Nmap介绍</h3><h4 id="3-2-1-简介"><a href="#3-2-1-简介" class="headerlink" title="3.2.1 简介"></a>3.2.1 简介</h4><p>Nmap全称为Network Mapper，是一款开源的网络探测和扫描软件，可用来扫描计算机开放的网络连接、确定运行的服务以及探测操作系统类型等，它是网络管理员用来评估网络系统安全的必用软件之一。Nmap的核心功能有主机发现、端口扫描、版本侦测、操作系统侦测、防火墙&#x2F;入侵检测规避和NSE脚本引擎等。</p>
+<h4 id="3-2-2-主机发现"><a href="#3-2-2-主机发现" class="headerlink" title="3.2.2 主机发现"></a>3.2.2 主机发现</h4><p>主要是发现目标系统是否处于存活状态。</p>
+<h4 id="3-2-3-端口扫描"><a href="#3-2-3-端口扫描" class="headerlink" title="3.2.3 端口扫描"></a>3.2.3 端口扫描</h4><p>用于扫描主机上的端口状态。Nmap支持多种扫描技术，除了前面介绍过的TCP连接扫描、TCP SYN扫描、TCP FIN扫描、TCP ACK扫描、TCP窗口扫描、TCP Maimon扫描、UDP扫描外，还支持FTP代理扫描、认证扫描（Reverse-ident）等。</p>
+<h4 id="3-2-4-版本侦测"><a href="#3-2-4-版本侦测" class="headerlink" title="3.2.4 版本侦测"></a>3.2.4 版本侦测</h4><p>用于识别端口上运行的应用程序与版本信息。</p>
+<h4 id="3-2-5-操作系统侦测"><a href="#3-2-5-操作系统侦测" class="headerlink" title="3.2.5 操作系统侦测"></a>3.2.5 操作系统侦测</h4><p>用于识别目标系统的操作系统类型、版本信息及设备类型等。Nmap可以识别通用PC系统、交换机、路由器等上千种操作系统或设备。</p>
+<h4 id="3-2-6-防火墙-x2F-入侵检测规避"><a href="#3-2-6-防火墙-x2F-入侵检测规避" class="headerlink" title="3.2.6 防火墙&#x2F;入侵检测规避"></a>3.2.6 防火墙&#x2F;入侵检测规避</h4><p>Nmap提供多种机制来规避防火墙、入侵检测的屏蔽和检测，以便于秘密的探测目标系统的信息，如分片、IP伪装、MAC伪装等。</p>
+<h4 id="3-2-7-NSE脚本引擎"><a href="#3-2-7-NSE脚本引擎" class="headerlink" title="3.2.7 NSE脚本引擎"></a>3.2.7 NSE脚本引擎</h4><p>NSE除了可以用来增强前面的1到4项功能外，还可以扩展高级功能，比如Web扫描、漏洞发现、网络爬取、SQL注入攻击、数据库密码检测等。Nmap使用lua语言作为NSE脚本语言，目前已经支持数百个脚本，并能检测多种安全漏洞和系统缺陷。</p>
+<h4 id="3-2-8-nmap端口状态解析"><a href="#3-2-8-nmap端口状态解析" class="headerlink" title="3.2.8 nmap端口状态解析"></a>3.2.8 nmap端口状态解析</h4><blockquote>
+<p>open：应用程序在该端口接收 TCP 连接或者 UDP 报文。<br>closed：关闭的端口对于nmap也是可访问的， 它接收nmap探测报文并作出响应。但没有应用程序在其上监听。<br>filtered：由于包过滤阻止探测报文到达端口，nmap无法确定该端口是否开放。过滤可能来自专业的防火墙设备，路由规则 或者主机上的软件防火墙。<br>unfiltered：未被过滤状态意味着端口可访问，但是nmap无法确定它是开放还是关闭。 只有用于映射防火墙规则集的 ACK 扫描才会把端口分类到这个状态。<br>open | filtered：无法确定端口是开放还是被过滤， 开放的端口不响应就是一个例子。没有响应也可能意味着报文过滤器丢弃了探测报文或者它引发的任何反应。UDP，IP协议,FIN, Null 等扫描会引起。<br>closed | filtered：关闭或者被过滤的）：无法确定端口是关闭的还是被过滤的</p>
+</blockquote>
+<h4 id="3-2-9-常用参数介绍"><a href="#3-2-9-常用参数介绍" class="headerlink" title="3.2.9 常用参数介绍"></a>3.2.9 常用参数介绍</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-sT</td>
+<td>TCP连接扫描</td>
+</tr>
+<tr>
+<td>-sS</td>
+<td>TCP SYN扫描（须root权限）</td>
+</tr>
+<tr>
+<td>-sF、-sN、-sX</td>
+<td>TCP FIN扫描、TCP空扫描和TCP圣诞树扫描</td>
+</tr>
+<tr>
+<td>-sU</td>
+<td>UDP扫描（但扫描结果不可靠）</td>
+</tr>
+<tr>
+<td>-sP</td>
+<td>Ping扫描，Nmap在扫描端口时，默认使用ping扫描，只有主机存活，Nmap才会继续扫描</td>
+</tr>
+<tr>
+<td>-sA</td>
+<td>TCP ACK扫描，主要用来判断防火墙的规则集</td>
+</tr>
+<tr>
+<td>-sR</td>
+<td>RPC扫描</td>
+</tr>
+<tr>
+<td>-sV</td>
+<td>探测端口服务版本</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>FTP代理扫描</td>
+</tr>
+<tr>
+<td>-P0</td>
+<td>扫描前不ping主机</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示详细扫描过程</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>指定扫描端口</td>
+</tr>
+<tr>
+<td>-O</td>
+<td>操作系统探测</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>全面系统探测、启动脚本检测、扫描等</td>
+</tr>
+<tr>
+<td>–script&#x3D;脚本名称</td>
+<td>使用脚本引擎，可以进行漏洞扫描、漏洞利用、目录扫描等功能</td>
+</tr>
+</tbody></table>
+<p>关于Nmap更加详细的讲解可以参见下面两篇博客</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/nmap/p/6232207.html">Nmap基础用法</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/nmap/p/6232969.html">Nmap高级用法</a></p>
+<h3 id="3-3-查点技术"><a href="#3-3-查点技术" class="headerlink" title="3.3 查点技术"></a>3.3 查点技术</h3><p>踩点阶段攻击者已经识别出了存活的主机及其运行的服务，查点就是针对已知的弱点，对识别出来的主机或服务进行更深入的探测。</p>
+<ul>
+<li>Nessus</li>
+<li>OpenVAS</li>
+<li>Nexpose</li>
+<li>netcat</li>
+</ul>
+<h4 id="3-3-1-nc（TCP-x2F-IP-瑞士军刀）"><a href="#3-3-1-nc（TCP-x2F-IP-瑞士军刀）" class="headerlink" title="3.3.1 nc（TCP&#x2F;IP 瑞士军刀）"></a>3.3.1 nc（TCP&#x2F;IP 瑞士军刀）</h4><p>语法：<br>nc [-hlnruz][-g&lt;网关…&gt;][-G&lt;指向器数目&gt;][-i&lt;延迟秒数&gt;][-o&lt;输出文件&gt;][-p&lt;通信端口&gt;][-s&lt;来源位址&gt;][-v…][-w&lt;超时秒数&gt;][主机名称][通信端口…]</p>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-g&lt;网关&gt;</td>
+<td>设置路由器跃程通信网关，最多可设置8个</td>
+</tr>
+<tr>
+<td>-G&lt;指向器数目&gt;</td>
+<td>设置来源路由指向器，其数值为4的倍数</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>使用监听模式，管控传入的资料</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>直接使用IP地址，而不通过域名服务器</td>
+</tr>
+<tr>
+<td>-o&lt;输出文件&gt;</td>
+<td>指定文件名称，把往来传输的数据以16进制字码倾倒成该文件保存</td>
+</tr>
+<tr>
+<td>-p&lt;通信端口&gt;</td>
+<td>设置本地主机使用的通信端口</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>指定本地与远端主机的通信端口</td>
+</tr>
+<tr>
+<td>-s&lt;来源位置&gt;</td>
+<td>设置本地主机送出数据包的IP地址</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>使用UDP传输协议</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示指令执行过程</td>
+</tr>
+<tr>
+<td>-w&lt;超时秒数&gt;</td>
+<td>设置等待连线的时间</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>使用0输入&#x2F;输出模式，只在扫描通信端口时使用</td>
+</tr>
+</tbody></table>
+<h4 id="3-3-2-nslookup"><a href="#3-3-2-nslookup" class="headerlink" title="3.3.2 nslookup"></a>3.3.2 nslookup</h4><h2 id="4-网络嗅探技术"><a href="#4-网络嗅探技术" class="headerlink" title="4 网络嗅探技术"></a>4 网络嗅探技术</h2><h3 id="4-1-网络嗅探概述"><a href="#4-1-网络嗅探概述" class="headerlink" title="4.1 网络嗅探概述"></a>4.1 网络嗅探概述</h3><p>网络嗅探，也叫网络监听，是在网络总通过侦听的方式对通讯数据包进行监视、采集及分析的技术手段。<br>ARP（地址解析协议，Address Resolution Protocol），它负责将IP地址解析为MAC地址，完成网络地址到物理地址的映射。任何一台安装了TCP&#x2F;IP协议的主机中都有一张ARP缓存表，它记录着主机的IP地址和MAC地址的对应关系。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>arp -a</td>
+<td>查看缓存表</td>
+</tr>
+<tr>
+<td>arp -s IP MAC</td>
+<td>建立静态类型的记录</td>
+</tr>
+<tr>
+<td>arp -d</td>
+<td>删除ARP缓存记录或整个缓存表</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-交换式网络嗅探与共享式网络嗅探的区别"><a href="#4-2-交换式网络嗅探与共享式网络嗅探的区别" class="headerlink" title="4.2 交换式网络嗅探与共享式网络嗅探的区别"></a>4.2 交换式网络嗅探与共享式网络嗅探的区别</h3><p>目前，80％的局域网（LAN）是以太网，在局域网中大量地了集线器（HUB）或交换机（Switch）这种连接设备。利用集线器连接的局域网叫共享式局域网，利用交换机连接的局域网叫交换式局域网。那它们二者有何区别呢？大家知道，以太网中采用的工作方式是CSMA／CD（载波监听多点接入／碰撞检测），对于发送端来说，它每发送一个数据信息时，首先对网络进行监听，当它检测到线路正好有空，便立即发送数据，否则继续检测，直到线路空闲时再发送。对于接收端来说，对接收到的信号首先进行确认，如果是发给自己的就接收，否则不予理睬。在介绍集线器与交换机二者区别的时候，我们先来谈谈网络中的共享和交换这两个概念。在此，我们打个比方，同样是10个车道的马路，如果没有给道路标清行车路线，那么车辆就只能在无序的状态下抢道或占道通行，容易发生交通堵塞和反向行驶的车辆对撞，使通行能力降低。为了避免上述情况的发生，就需要在道路上标清行车线，保证每一辆车各行其道、互不干扰。共享式网络就相当于前面所讲的无序状态，当数据和用户数量超出一定的限量时，就会造成碰撞冲突，使网络性能衰退。而交换式网络则避免了共享式网络的不足，交换技术的作用便是根据所传递信息包的目的地址，将每一信息包独立地从端口送至目的端口,避免了与其它端口发生碰撞，提高了网络的实际吞吐量。共享式以太网存在的主要问题是所有用户共享带宽，每个用户的实际可用带宽随网络用户数的增加而递减。这是因为当信息繁忙时，多个用户都可能同进“争用”一个信道，而一个通道在某一时刻只充许一个用户占用，所以大量的经常处于监测等待状态，致使信号在传送时产生抖动、停滞或失真，严重影响了网络的性能。集线器上是一个中继器，而中继器的主要功能是对接收到的信号进行整形再生放大，使被衰减的信号再生（恢复）到发送时的状态，以扩大网络的传输距离，而不具备信号的定向传送能力。交换式以太网中，交换机供给每个用户专用的信息通道，除非两个源端口企图将信息同时发往同一目的端口，否则各个源端口与各自的目的端口之间可同时进行通信而不发生冲突。交换机只是在工作方式上与集线器不同，其它的连接方式、速度选择等则与集线器基本相同。不久的将来，局域网中的交换机将逐取代集线器。</p>
+<h3 id="4-3-嗅探的实现"><a href="#4-3-嗅探的实现" class="headerlink" title="4.3 嗅探的实现"></a>4.3 嗅探的实现</h3><ul>
+<li>基于Unix&#x2F;Linux系统的LibPcap</li>
+<li>基于Windows系统的WinPcap</li>
+</ul>
+<h3 id="4-4-常见嗅探工具"><a href="#4-4-常见嗅探工具" class="headerlink" title="4.4 常见嗅探工具"></a>4.4 常见嗅探工具</h3><ol>
+<li>Wireshark</li>
+<li>Tcpdump</li>
+</ol>
+<h2 id="5-口令破解与防御"><a href="#5-口令破解与防御" class="headerlink" title="5 口令破解与防御"></a>5 口令破解与防御</h2><h3 id="5-1-常用口令破解技术"><a href="#5-1-常用口令破解技术" class="headerlink" title="5.1 常用口令破解技术"></a>5.1 常用口令破解技术</h3><ol>
+<li>暴力破解</li>
+<li>字典攻击</li>
+<li>组合攻击</li>
+<li>社会工程学攻击</li>
+</ol>
+<h3 id="5-2-操作系统口令破解"><a href="#5-2-操作系统口令破解" class="headerlink" title="5.2 操作系统口令破解"></a>5.2 操作系统口令破解</h3><h4 id="5-2-1-Windows系统口令破解"><a href="#5-2-1-Windows系统口令破解" class="headerlink" title="5.2.1 Windows系统口令破解"></a>5.2.1 Windows系统口令破解</h4><ol>
+<li>Pwdump</li>
+<li>L0phtcrack</li>
+<li>Cain</li>
+<li>Ophcrack</li>
+</ol>
+<h4 id="5-2-2-Linux系统口令破解"><a href="#5-2-2-Linux系统口令破解" class="headerlink" title="5.2.2 Linux系统口令破解"></a>5.2.2 Linux系统口令破解</h4><ol>
+<li>John The Ripper</li>
+<li>Johnny</li>
+</ol>
+<h2 id="6-欺骗攻击与防御"><a href="#6-欺骗攻击与防御" class="headerlink" title="6 欺骗攻击与防御"></a>6 欺骗攻击与防御</h2><h3 id="6-1-欺骗攻击概述"><a href="#6-1-欺骗攻击概述" class="headerlink" title="6.1 欺骗攻击概述"></a>6.1 欺骗攻击概述</h3><p>所谓欺骗，是通过更改或伪装的方式使受害者把攻击者当做其他的人或者事物，并以此获取各种信息的攻击手段，简单的说就是一种通过冒充合法用户身份通过认证以骗取信任的攻击方式。</p>
+<h3 id="6-2-ARP欺骗"><a href="#6-2-ARP欺骗" class="headerlink" title="6.2 ARP欺骗"></a>6.2 ARP欺骗</h3><h4 id="6-2-1-ARP欺骗属于中间人攻击，工具如下"><a href="#6-2-1-ARP欺骗属于中间人攻击，工具如下" class="headerlink" title="6.2.1 ARP欺骗属于中间人攻击，工具如下"></a>6.2.1 ARP欺骗属于中间人攻击，工具如下</h4><ul>
+<li>Windows下的工具（Cain、NetFuke、Arp cheat and sniffer）</li>
+<li>Linux下的工具（Ettercap）</li>
+</ul>
+<h4 id="6-2-2-ARP欺骗防御"><a href="#6-2-2-ARP欺骗防御" class="headerlink" title="6.2.2 ARP欺骗防御"></a>6.2.2 ARP欺骗防御</h4><ul>
+<li>静态绑定</li>
+<li>使用ARP防火墙</li>
+</ul>
+<h3 id="6-3-IP欺骗"><a href="#6-3-IP欺骗" class="headerlink" title="6.3 IP欺骗"></a>6.3 IP欺骗</h3><h3 id="6-4-TCP会话劫持"><a href="#6-4-TCP会话劫持" class="headerlink" title="6.4 TCP会话劫持"></a>6.4 TCP会话劫持</h3><h3 id="6-4-1-TCP会话劫持工具"><a href="#6-4-1-TCP会话劫持工具" class="headerlink" title="6.4.1 TCP会话劫持工具"></a>6.4.1 TCP会话劫持工具</h3><ul>
+<li>Juggernaut</li>
+<li>TTYWatcher</li>
+<li>Dsniff</li>
+<li>Hunt</li>
+</ul>
+<h3 id="6-4-2-IP欺骗的防御"><a href="#6-4-2-IP欺骗的防御" class="headerlink" title="6.4.2 IP欺骗的防御"></a>6.4.2 IP欺骗的防御</h3><ol>
+<li>抛弃基于地址的信任策略</li>
+<li>进行包过滤</li>
+<li>使用加密方法</li>
+<li>使用随机化的初始序列号</li>
+</ol>
+<h3 id="6-5-DNS欺骗"><a href="#6-5-DNS欺骗" class="headerlink" title="6.5 DNS欺骗"></a>6.5 DNS欺骗</h3><h4 id="6-5-1-定义"><a href="#6-5-1-定义" class="headerlink" title="6.5.1 定义"></a>6.5.1 定义</h4><p>DNS欺骗，又称DNS域名重定向或域名劫持，是通过拦截域名解析请求或篡改域名服务器上的数据，使得用户在访问相关域名时返回虚假IP地址或使用户的请求失败的攻击方式。</p>
+<h4 id="6-5-2-DNS欺骗的实现"><a href="#6-5-2-DNS欺骗的实现" class="headerlink" title="6.5.2 DNS欺骗的实现"></a>6.5.2 DNS欺骗的实现</h4><p>工具</p>
+<ul>
+<li>Ettercap</li>
+</ul>
+<h4 id="6-5-3-DNS欺骗的防御"><a href="#6-5-3-DNS欺骗的防御" class="headerlink" title="6.5.3 DNS欺骗的防御"></a>6.5.3 DNS欺骗的防御</h4><ol>
+<li>使用最新版本的DNS服务器软件并安装最新补丁</li>
+<li>限制DNS动态更新</li>
+<li>限制区域传送</li>
+<li>关闭DNS服务器的递归查询功能</li>
+</ol>
+<h3 id="6-6-电子邮件欺骗"><a href="#6-6-电子邮件欺骗" class="headerlink" title="6.6 电子邮件欺骗"></a>6.6 电子邮件欺骗</h3><h3 id="6-7-Web欺骗"><a href="#6-7-Web欺骗" class="headerlink" title="6.7 Web欺骗"></a>6.7 Web欺骗</h3><h2 id="7-Web攻击与防御"><a href="#7-Web攻击与防御" class="headerlink" title="7 Web攻击与防御"></a>7 Web攻击与防御</h2><h3 id="7-1-Web安全概述"><a href="#7-1-Web安全概述" class="headerlink" title="7.1 Web安全概述"></a>7.1 Web安全概述</h3><p><img src="https://img-blog.csdnimg.cn/20191127185838746.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="OWASP Top 10"></p>
+<h3 id="7-2-同源策略"><a href="#7-2-同源策略" class="headerlink" title="7.2 同源策略"></a>7.2 同源策略</h3><p>同源策略规定不同域的客户端脚本在没有明确授权的情况下，不能读写对方的资源。<br>同域策略是指两个站点具有相同的协议、域名和端口。</p>
+<h3 id="7-3-SQL注入攻击（SQL-Injection）"><a href="#7-3-SQL注入攻击（SQL-Injection）" class="headerlink" title="7.3 SQL注入攻击（SQL Injection）"></a>7.3 SQL注入攻击（SQL Injection）</h3><h4 id="7-3-1-SQL注入分类："><a href="#7-3-1-SQL注入分类：" class="headerlink" title="7.3.1 SQL注入分类："></a>7.3.1 SQL注入分类：</h4><table>
+<thead>
+<tr>
+<th>分类标准</th>
+<th>包含类别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>注入点数据类型</td>
+<td>数字型注入、字符型注入</td>
+</tr>
+<tr>
+<td>注入点位置</td>
+<td>GET注入、POST注入、Cookie注入、HTTP头注入、搜索注入</td>
+</tr>
+<tr>
+<td>注入方法</td>
+<td>布尔型注入、报错型注入、延时注入、联合查询注入、多语句查询注入</td>
+</tr>
+</tbody></table>
+<h4 id="7-3-2-SQL注入工具SQLMap"><a href="#7-3-2-SQL注入工具SQLMap" class="headerlink" title="7.3.2 SQL注入工具SQLMap"></a>7.3.2 SQL注入工具SQLMap</h4><table>
+<thead>
+<tr>
+<th>命令行参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-u</td>
+<td>指定测试的URL地址（加单引号）</td>
+</tr>
+<tr>
+<td>- -cookie</td>
+<td>指定cookie的值（加单引号）</td>
+</tr>
+<tr>
+<td>- -dbs</td>
+<td>获取数据库信息</td>
+</tr>
+<tr>
+<td>- -current-db</td>
+<td>获取当前应用程序连接的数据库</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>指定数据库</td>
+</tr>
+<tr>
+<td>- -tables</td>
+<td>获取数据库表的信息，一般结合-D参数获取指定数据库的表</td>
+</tr>
+<tr>
+<td>-T</td>
+<td>指定数据库表</td>
+</tr>
+<tr>
+<td>- -columns</td>
+<td>获取表字段的信息，一般结合-T参数获取指定表的字段名</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>指定数据库表的列</td>
+</tr>
+<tr>
+<td>-dump</td>
+<td>转存数据库数据，可结合-D、-T、-C参数获取指定指定数据</td>
+</tr>
+<tr>
+<td>-privileges</td>
+<td>测试用户权限，–privileges -U -sa测试sa用户权限</td>
+</tr>
+<tr>
+<td>- -os-cmd&#x3D;”net user”</td>
+<td>执行net user命令</td>
+</tr>
+<tr>
+<td>- -os-shell</td>
+<td>获取系统交互shell</td>
+</tr>
+</tbody></table>
+<p><img src="https://img-blog.csdnimg.cn/20191101120555209.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="sqlmap帮助1"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191101120641970.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="sqlmap帮助2"></p>
+<h4 id="7-3-3-SQL注入的防御"><a href="#7-3-3-SQL注入的防御" class="headerlink" title="7.3.3 SQL注入的防御"></a>7.3.3 SQL注入的防御</h4><ul>
+<li>对输入数据进行校验</li>
+<li>对输入数据进行编</li>
+<li>使用预编译语句</li>
+<li>配置安全的数据库管理系统</li>
+</ul>
+<h3 id="7-4-XSS攻击（Cross-Site-Scripting）"><a href="#7-4-XSS攻击（Cross-Site-Scripting）" class="headerlink" title="7.4 XSS攻击（Cross-Site Scripting）"></a>7.4 XSS攻击（Cross-Site Scripting）</h3><h4 id="7-4-1-跨站脚本攻击原理"><a href="#7-4-1-跨站脚本攻击原理" class="headerlink" title="7.4.1 跨站脚本攻击原理"></a>7.4.1 跨站脚本攻击原理</h4><p>跨站脚本攻击是指攻击者利用Web服务器中的应用程序或代码的漏洞，在网页中嵌入客户端脚本（通常是一段由JavaScript编写的恶意代码，较少情况下会有使用ActionScript、VBScript等脚本语言编写的恶意代码），当信任此Web服务器的用户访问Web站点中含有恶意脚本代码的页面或者打开收到的URL链接时，该用户的浏览器就会自动加载并执行该恶意代码，从而达到攻击目的。</p>
+<h4 id="7-4-2-反射型XSS"><a href="#7-4-2-反射型XSS" class="headerlink" title="7.4.2 反射型XSS"></a>7.4.2 反射型XSS</h4><p>反射型XSS也被称为非持久性XSS，是最常见的一种XSS。XSS代码出现在URL请求中，当用户访问带有XSS代码的URL请求时，服务器端接收请求并处理，然后将带有XSS代码的数据返回给浏览器，浏览器解析该段带有XSS代码的数据并执行，整个过程就像一次反射，故称为反射型XSS。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191210193738407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="反射型XSS"></p>
+<h4 id="7-4-3-存储型XSS"><a href="#7-4-3-存储型XSS" class="headerlink" title="7.4.3 存储型XSS"></a>7.4.3 存储型XSS</h4><p>存储型XSS又被称为持久性XSS。在存储型XSS中，XSS代码被存储到服务器端，因此允许用户存储数据到服务器端的Web应用程序都可能存在该类型XSS漏洞。攻击者提交一段XSS代码后，服务器接收并存储，当其他用户访问包含该XSS代码的页面时，XSS代码被浏览器解析并执行。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191210193824668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="存储型XSS"></p>
+<h4 id="7-4-4-DOM型XSS"><a href="#7-4-4-DOM型XSS" class="headerlink" title="7.4.4 DOM型XSS"></a>7.4.4 DOM型XSS</h4><p>DOM（Document Object Model）指文档对象模型。DOM常用来表示在HTML和XML中的对象。DOM可以允许程序动态的访问和更新文档的内容、结构等。也就是说，我们通过JavaScript代码控制DOM节点，就可以不经过服务器端的参与重构HTML页面。<br>因此，DOM XSS与前面两种XSS的区别就在于该种类型的XSS攻击的代码不需要与服务器端进行交互，触发XSS是基于浏览器对DOM数据的解析来完成的，也就完全是客户端的事情。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191210193850411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="DOM型XSS"></p>
+<h3 id="7-5-CSRF攻击（Cross-Site-Request-Forgery）"><a href="#7-5-CSRF攻击（Cross-Site-Request-Forgery）" class="headerlink" title="7.5 CSRF攻击（Cross-Site Request Forgery）"></a>7.5 CSRF攻击（Cross-Site Request Forgery）</h3><p>跨站请求伪造</p>
+<h3 id="7-6-SSRF攻击（Server-Side-Request-Forgery，SSRF）"><a href="#7-6-SSRF攻击（Server-Side-Request-Forgery，SSRF）" class="headerlink" title="7.6 SSRF攻击（Server-Side Request Forgery，SSRF）"></a>7.6 SSRF攻击（Server-Side Request Forgery，SSRF）</h3><p>服务端请求伪造</p>
+<h3 id="7-7-文件上传漏洞"><a href="#7-7-文件上传漏洞" class="headerlink" title="7.7 文件上传漏洞"></a>7.7 文件上传漏洞</h3><h3 id="7-8-命令执行漏洞"><a href="#7-8-命令执行漏洞" class="headerlink" title="7.8 命令执行漏洞"></a>7.8 命令执行漏洞</h3><h3 id="7-9-XXE漏洞（XML-External-Entity-injection）"><a href="#7-9-XXE漏洞（XML-External-Entity-injection）" class="headerlink" title="7.9 XXE漏洞（XML External Entity injection）"></a>7.9 XXE漏洞（XML External Entity injection）</h3><p>XML外部实体注入漏洞</p>
+<h2 id="8-缓冲区溢出攻击与防御"><a href="#8-缓冲区溢出攻击与防御" class="headerlink" title="8 缓冲区溢出攻击与防御"></a>8 缓冲区溢出攻击与防御</h2><h3 id="8-1-一个可执行文件根据文件格式被分成若干个数据节，不同的资源被放在不同的节中，各个数据节存放的数据类型大致如下："><a href="#8-1-一个可执行文件根据文件格式被分成若干个数据节，不同的资源被放在不同的节中，各个数据节存放的数据类型大致如下：" class="headerlink" title="8.1 一个可执行文件根据文件格式被分成若干个数据节，不同的资源被放在不同的节中，各个数据节存放的数据类型大致如下："></a>8.1 一个可执行文件根据文件格式被分成若干个数据节，不同的资源被放在不同的节中，各个数据节存放的数据类型大致如下：</h3><ul>
+<li>代码段（.text）：也称文本段，由编译器产生，存放程序的二进制机器代码和只读数据，比如程序的可执行指令；</li>
+<li>已初始化的数据段（.data）：存放全局和静态的已初始化变量；</li>
+<li>未初始化的数据段（.bss）：存放全局和静态的未初始化变量；</li>
+<li>堆（heap）：用来存储程序执行时的变量；</li>
+<li>栈（stack）：用来存储函数调用时的临时信息的数据结构。</li>
+</ul>
+<p>注：堆栈的内存地址增长方向（堆向着内存地址增加的方向增长；栈向着内存地址降低的方向增长）</p>
+<p><img src="https://img-blog.csdnimg.cn/20191210125936903.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="变量在内存的存放区域"></p>
+<h3 id="8-2-缓冲区溢出"><a href="#8-2-缓冲区溢出" class="headerlink" title="8.2 缓冲区溢出"></a>8.2 缓冲区溢出</h3><ul>
+<li>栈溢出</li>
+<li>格式化字符串溢出</li>
+<li>整数溢出</li>
+<li>堆溢出</li>
+</ul>
+<h3 id="8-3-缓冲区溢出攻击的防御"><a href="#8-3-缓冲区溢出攻击的防御" class="headerlink" title="8.3 缓冲区溢出攻击的防御"></a>8.3 缓冲区溢出攻击的防御</h3><ol>
+<li>在系统管理上的防范策略<br>（1）关闭不需要的特权程序<br>（2）及时给程序漏洞打补丁</li>
+<li>在软件开发过程中的防范策略<br>（1）编写正确的代码<br>（2）缓冲区不可执行<br>（3）改进C语言函数库<br>（4）数组边界检测<br>（5）程序指针完整性检查</li>
+</ol>
+<h2 id="9-恶意代码防护技术"><a href="#9-恶意代码防护技术" class="headerlink" title="9 恶意代码防护技术"></a>9 恶意代码防护技术</h2><h2 id="10-拒绝服务攻击与防御"><a href="#10-拒绝服务攻击与防御" class="headerlink" title="10 拒绝服务攻击与防御"></a>10 拒绝服务攻击与防御</h2><h3 id="10-1-拒绝服务攻击的定义"><a href="#10-1-拒绝服务攻击的定义" class="headerlink" title="10.1 拒绝服务攻击的定义"></a>10.1 拒绝服务攻击的定义</h3><p>拒绝服务DoS（Denial of Service）是一种典型的破坏性攻击，它不以获得系统访问权限为目的。其通常利用传输协议弱点、系统漏洞、服务漏洞对目标系统发起大规模进攻，用超出目标处理能力的海量数据包消耗可用系统资源、带宽资源等，或造成程序缓冲区溢出错误，致使其无法处理合法用户的请求，无法提供正常服务，最终致使网络服务瘫痪，甚至系统死机。</p>
+<h3 id="10-2-拒绝服务攻击的分类"><a href="#10-2-拒绝服务攻击的分类" class="headerlink" title="10.2 拒绝服务攻击的分类"></a>10.2 拒绝服务攻击的分类</h3><ol>
+<li>资源消耗（可以消耗的资源包括目标系统的网络带宽、CPU资源、内存资源和存储资源等）</li>
+<li>系统或应用程序缺陷（Ping致死、Land攻击、smurf攻击、IP分片攻击、UDP泛洪、SYN泛洪、ACK泛洪）</li>
+<li>配置修改（修改系统的运行配置，导致网络系统不能正常提供服务）</li>
+</ol>
+<h3 id="10-3-分布式拒绝服务攻击DDoS"><a href="#10-3-分布式拒绝服务攻击DDoS" class="headerlink" title="10.3 分布式拒绝服务攻击DDoS"></a>10.3 分布式拒绝服务攻击DDoS</h3><p>DDoS攻击程序一般由3个分布组成：客户端、服务端和守护程序。<br>这些程序可以完成对分散在各地的计算机的协调工作并完成对目标系统的攻击。</p>
+<h3 id="10-4-DoS-x2F-DDoS攻击的检测与防御"><a href="#10-4-DoS-x2F-DDoS攻击的检测与防御" class="headerlink" title="10.4 DoS&#x2F;DDoS攻击的检测与防御"></a>10.4 DoS&#x2F;DDoS攻击的检测与防御</h3><h4 id="10-4-1-检测"><a href="#10-4-1-检测" class="headerlink" title="10.4.1 检测"></a>10.4.1 检测</h4><ol>
+<li>出现大量的DNS PTR查询请求</li>
+<li>超出网络正常工作时的极限通讯流量</li>
+<li>特大型的ICMP和UDP数据包</li>
+<li>不属于正常连接通讯的TCP和UDP数据包</li>
+<li>数据段内容只包含文字和数字字符（例如，没有空格、标点和控制字符）</li>
+</ol>
+<h4 id="10-4-2-防御"><a href="#10-4-2-防御" class="headerlink" title="10.4.2 防御"></a>10.4.2 防御</h4><ol>
+<li>进行合理的带宽限制</li>
+<li>运行尽可能少的服务，只允许必要的通信</li>
+<li>及时安装系统补丁</li>
+<li>封锁恶意IP地址</li>
+<li>增强系统用户的安全意识，避免成为傀儡主机</li>
+<li>建立健全的DoS&#x2F;DDoS攻击的应急响应机制</li>
+</ol>
+<h2 id="11-身份鉴别与认证"><a href="#11-身份鉴别与认证" class="headerlink" title="11 身份鉴别与认证"></a>11 身份鉴别与认证</h2><h3 id="11-1-身份鉴别与认证概述"><a href="#11-1-身份鉴别与认证概述" class="headerlink" title="11.1 身份鉴别与认证概述"></a>11.1 身份鉴别与认证概述</h3><p>身份认证分为单向认证和双向认证。</p>
+<h3 id="11-2-认证鉴别机制"><a href="#11-2-认证鉴别机制" class="headerlink" title="11.2 认证鉴别机制"></a>11.2 认证鉴别机制</h3><h4 id="11-2-1-基于口令的认证"><a href="#11-2-1-基于口令的认证" class="headerlink" title="11.2.1 基于口令的认证"></a>11.2.1 基于口令的认证</h4><p>11.2.1.1 基于单向哈希函数</p>
+<p>单纯的进行哈希函数运算不能抵抗重放攻击，当前主流做法是结合挑战&#x2F;响应（Challenge&#x2F;Response机制）。认证机制为：客户端计算该口令的哈希函数值后保存并删除明文口令值，然后向认证服务器提出认证请求。认证服务器收到请求后通过伪随机数生成器产生一个随机数并将其作为挑战发给客户端。客户端使用口令的哈希值作为密钥，并通过指定的加密算法对挑战进行加密，得到密文作为应答发送给认证服务器。认证服务器读取初始化过程中存储的口令哈希值，并通过同样的密码算法对应答进行解密得到挑战。如果解密得到的挑战与开始产生的挑战相同，则认证通过，否则认证失败。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191207172531843.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="基于哈希函数和挑战/响应的身份认证过程"></p>
+<p>口令修改过程：首先输入旧口令，系统计算旧口令的哈希函数值。然后要求用户输入新口令，当用户输入新口令后，系统计算新口令的哈希函数值，并以旧口令的哈希函数值作为秘钥，使用认证过程相同的加密算法加密新口令的哈希函数值，得到的结果通过公共信道传输给认证服务器。认证服务器从数据库中读取旧口令的哈希值并用其作为秘钥解密得到新口令的哈希值。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191207172712135.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="基于挑战/响应的认证机制的口令修改过程"></p>
+<p>单纯的进行哈希函数运算不能抵抗重放攻击，通过挑战&#x2F;响应机制可以抵抗重放攻击</p>
+<p>11.2.1.2 加盐口令</p>
+<p>攻击者获得存储口令单向哈希值的文件，字典攻击有效，但是加盐（盐就是一个随机字符串）可使字典攻击更加困难。<br>盐（Salt）只能防止对整个口令文件采用的字典攻击，不能防止对单个口令的字典攻击，此方法也不能抵抗重放攻击。</p>
+<p>11.2.1.3 SKEY机制</p>
+<p>随机数为R，x(1)&#x3D;f(R)，x(2)&#x3D;f(x(1))，x(3)&#x3D;f(x(2))，…，x(n+1)&#x3D;f(x(n))</p>
+<p>11.2.1.4 EKE协议</p>
+<p>在EKE协议中，两个用户执行Diffie-Hellman秘钥交换协议的加密版本，该协议可以抵抗字典攻击。</p>
+<h4 id="11-2-2-基于密码学的认证"><a href="#11-2-2-基于密码学的认证" class="headerlink" title="11.2.2 基于密码学的认证"></a>11.2.2 基于密码学的认证</h4><h4 id="11-2-3-基于生物特征的认证"><a href="#11-2-3-基于生物特征的认证" class="headerlink" title="11.2.3 基于生物特征的认证"></a>11.2.3 基于生物特征的认证</h4><h3 id="11-3-典型认证技术"><a href="#11-3-典型认证技术" class="headerlink" title="11.3 典型认证技术"></a>11.3 典型认证技术</h3><h4 id="11-3-1-Kerberos认证协议"><a href="#11-3-1-Kerberos认证协议" class="headerlink" title="11.3.1 Kerberos认证协议"></a>11.3.1 Kerberos认证协议</h4><h4 id="11-3-2-公钥基础设施PKI"><a href="#11-3-2-公钥基础设施PKI" class="headerlink" title="11.3.2 公钥基础设施PKI"></a>11.3.2 公钥基础设施PKI</h4><h2 id="12-访问控制"><a href="#12-访问控制" class="headerlink" title="12 访问控制"></a>12 访问控制</h2><h3 id="12-1-访问控制的基本概念"><a href="#12-1-访问控制的基本概念" class="headerlink" title="12.1 访问控制的基本概念"></a>12.1 访问控制的基本概念</h3><p>访问控制（Access Control）就是在身份认证的基础上，依据授权对提出的资源访问请求加以控制。</p>
+<h3 id="12-2-访问控制矩阵"><a href="#12-2-访问控制矩阵" class="headerlink" title="12.2 访问控制矩阵"></a>12.2 访问控制矩阵</h3><p>主体、客体、访问权限</p>
+<h3 id="12-3-典型的访问控制策略模型"><a href="#12-3-典型的访问控制策略模型" class="headerlink" title="12.3 典型的访问控制策略模型"></a>12.3 典型的访问控制策略模型</h3><ol>
+<li>自主访问控制（Discretionary Access Control，DAC）</li>
+<li>强制访问控制（Mandatory Access Conntrol，MAC）</li>
+<li>基于角色的访问控制（Role-Based Access Control，RBAC）</li>
+<li>基于属性的访问控制（Attribute-Based Access Control，ABAC）</li>
+</ol>
+<h3 id="12-4-计算机安全形式化模型与多级安全"><a href="#12-4-计算机安全形式化模型与多级安全" class="headerlink" title="12.4 计算机安全形式化模型与多级安全"></a>12.4 计算机安全形式化模型与多级安全</h3><h4 id="12-4-1-Bell-Lapadula模型"><a href="#12-4-1-Bell-Lapadula模型" class="headerlink" title="12.4.1 Bell-Lapadula模型"></a>12.4.1 Bell-Lapadula模型</h4><p>不上读，不下写</p>
+<h4 id="12-4-2-Biba模型"><a href="#12-4-2-Biba模型" class="headerlink" title="12.4.2 Biba模型"></a>12.4.2 Biba模型</h4><p>不下读，不上写</p>
+<h4 id="12-4-3-多级安全"><a href="#12-4-3-多级安全" class="headerlink" title="12.4.3 多级安全"></a>12.4.3 多级安全</h4><p>公开、受限、秘密、机密、绝密</p>
+<h2 id="13-防火墙"><a href="#13-防火墙" class="headerlink" title="13 防火墙"></a>13 防火墙</h2><h3 id="13-1-防火墙概述"><a href="#13-1-防火墙概述" class="headerlink" title="13.1 防火墙概述"></a>13.1 防火墙概述</h3><h4 id="13-1-1-防火墙的概念与功能"><a href="#13-1-1-防火墙的概念与功能" class="headerlink" title="13.1.1 防火墙的概念与功能"></a>13.1.1 防火墙的概念与功能</h4><p>防火墙（Firewall）是一种用来加强网络之间访问控制的特殊网络设备，是一种位于内部网络与外部网络之间的网络安全系统。</p>
+<p>防火墙的功能</p>
+<ol>
+<li>包过滤</li>
+<li>审计和报警机制</li>
+<li>NAT（网络地址转换）</li>
+<li>Proxy（代理）</li>
+<li>流量控制（带宽控制）和统计分析、流量计费</li>
+<li>上网行为管理</li>
+</ol>
+<h4 id="13-1-2-防火墙的基本策略"><a href="#13-1-2-防火墙的基本策略" class="headerlink" title="13.1.2 防火墙的基本策略"></a>13.1.2 防火墙的基本策略</h4><ul>
+<li>拒绝除明确许可以外的任何一种服务</li>
+<li>允许除明确拒绝以外的任何一种服务</li>
+</ul>
+<h3 id="13-2-防火墙的分类"><a href="#13-2-防火墙的分类" class="headerlink" title="13.2 防火墙的分类"></a>13.2 防火墙的分类</h3><ul>
+<li>包过滤防火墙&#x2F;包过滤路由器</li>
+<li>代理技术</li>
+<li>网络地址转换技术</li>
+</ul>
+<p>常见的网络服务和使用的端口</p>
+<table>
+<thead>
+<tr>
+<th>端口号</th>
+<th>端口服务名称</th>
+<th>端口说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>20</td>
+<td>ftp-data</td>
+<td>FTP数据</td>
+</tr>
+<tr>
+<td>21</td>
+<td>ftp</td>
+<td>FTP控制</td>
+</tr>
+<tr>
+<td>22</td>
+<td>ssh</td>
+<td>安全Shell（SSH）服务</td>
+</tr>
+<tr>
+<td>23</td>
+<td>telnet</td>
+<td>Telnet服务</td>
+</tr>
+<tr>
+<td>25</td>
+<td>smtp</td>
+<td>简单邮件传输协议（SMTP）</td>
+</tr>
+<tr>
+<td>53</td>
+<td>dns</td>
+<td>域名服务（如BIND）</td>
+</tr>
+<tr>
+<td>69</td>
+<td>tftp</td>
+<td>小文件传输协议（TFTP）</td>
+</tr>
+<tr>
+<td>70</td>
+<td>gopher</td>
+<td>Gopher互联网文档搜寻和检索</td>
+</tr>
+<tr>
+<td>80</td>
+<td>http</td>
+<td>用于万维网（WWW）服务的超文本传输协议（HTTP）</td>
+</tr>
+<tr>
+<td>110</td>
+<td>pop3</td>
+<td>收emailyong</td>
+</tr>
+<tr>
+<td>137</td>
+<td>netbios-ns</td>
+<td>在红帽企业Linux中被Samba使用的NET BIOS名称服务</td>
+</tr>
+<tr>
+<td>138</td>
+<td>netbios-dgm</td>
+<td>在红帽企业Linux中被Samba使用的NET BIOS数据报服务</td>
+</tr>
+<tr>
+<td>139</td>
+<td>netbios-ssn</td>
+<td>在红帽企业Linux中被Samba使用的NET BIOS会话服务</td>
+</tr>
+<tr>
+<td>143</td>
+<td>imap</td>
+<td>互联网消息存取协议（IMAP）</td>
+</tr>
+<tr>
+<td>161</td>
+<td>snmp</td>
+<td>简单网络管理协议（SNMP）</td>
+</tr>
+<tr>
+<td>162</td>
+<td>snmptrap</td>
+<td>SNMP的陷阱</td>
+</tr>
+<tr>
+<td>179</td>
+<td>bgp</td>
+<td>边界网络协议</td>
+</tr>
+<tr>
+<td>389</td>
+<td>ldap</td>
+<td>轻型目录存取协议（LDAP）</td>
+</tr>
+<tr>
+<td>443</td>
+<td>https</td>
+<td>安全超文本传输协议（HTTP）</td>
+</tr>
+<tr>
+<td>520</td>
+<td>rip</td>
+<td>路由信息协议(RIP)</td>
+</tr>
+<tr>
+<td>546</td>
+<td>dhcpv6-client</td>
+<td>动态主机配置协议（DHCP）版本6客户</td>
+</tr>
+<tr>
+<td>547</td>
+<td>dhcpv6-server</td>
+<td>动态主机配置协议（DHCP）版本6服务</td>
+</tr>
+<tr>
+<td>1701</td>
+<td>l2tp [l2f]</td>
+<td>第2层隧道服务（LT2P）&#x2F;第2层转发（L2F）</td>
+</tr>
+<tr>
+<td>3306</td>
+<td>mysql</td>
+<td>MySQL数据库服务</td>
+</tr>
+<tr>
+<td>3389</td>
+<td>rdp</td>
+<td>远程桌面协议(终端服务RDP)</td>
+</tr>
+</tbody></table>
+<h3 id="13-3-防火墙的配置方案"><a href="#13-3-防火墙的配置方案" class="headerlink" title="13.3 防火墙的配置方案"></a>13.3 防火墙的配置方案</h3><ul>
+<li>屏蔽路由器</li>
+<li>双宿主机</li>
+<li>屏蔽主机</li>
+<li>屏蔽子网</li>
+</ul>
+<h2 id="14-入侵检测与入侵防御"><a href="#14-入侵检测与入侵防御" class="headerlink" title="14 入侵检测与入侵防御"></a>14 入侵检测与入侵防御</h2><h3 id="14-1-入侵检测的基本概念"><a href="#14-1-入侵检测的基本概念" class="headerlink" title="14.1 入侵检测的基本概念"></a>14.1 入侵检测的基本概念</h3><p>入侵检测系统（Intrusion Detection System，IDS）通过从计算机网络或计算机系统的关键点收集信息并进行分析，从中发现网络或系统中是否有违反安全策略的行为和被攻击的迹象并且对其做出反应。有些反应是自动的，它包括通知网络安全管理员（通过控制台、电子邮件），终止入侵进程、关闭系统、断开与互联网的连接，使该用户无效，或者执行一个准备好的命令等。</p>
+<h3 id="14-2-入侵检测系统分类"><a href="#14-2-入侵检测系统分类" class="headerlink" title="14.2 入侵检测系统分类"></a>14.2 入侵检测系统分类</h3><ul>
+<li>基于主机的入侵检测系统（HIDS）</li>
+<li>基于网络的入侵检测系统（NIDS）</li>
+<li>分布式入侵检测系统</li>
+</ul>
+<h3 id="14-3-入侵检测技术"><a href="#14-3-入侵检测技术" class="headerlink" title="14.3 入侵检测技术"></a>14.3 入侵检测技术</h3><h4 id="14-3-1-异常检测技术"><a href="#14-3-1-异常检测技术" class="headerlink" title="14.3.1 异常检测技术"></a>14.3.1 异常检测技术</h4><h4 id="14-3-2-特征检测技术"><a href="#14-3-2-特征检测技术" class="headerlink" title="14.3.2 特征检测技术"></a>14.3.2 特征检测技术</h4><ol>
+<li>URL编码</li>
+<li>斜线问题</li>
+<li>命令问题</li>
+<li>增加目录</li>
+<li>不规则方式</li>
+<li>虚假的请求结束</li>
+<li>长URL</li>
+<li>会话组合</li>
+<li>大小写敏感</li>
+</ol>
+<h3 id="14-4-入侵防御系统"><a href="#14-4-入侵防御系统" class="headerlink" title="14.4 入侵防御系统"></a>14.4 入侵防御系统</h3><ul>
+<li>基于主机的入侵防御系统（HIPS）</li>
+<li>基于网络的入侵防御系统（NIPS）</li>
+<li>应用入侵防御系统（AIPS）</li>
+</ul>
+<h2 id="15-虚拟专用网"><a href="#15-虚拟专用网" class="headerlink" title="15 虚拟专用网"></a>15 虚拟专用网</h2><h3 id="15-1-虚拟专用网概述"><a href="#15-1-虚拟专用网概述" class="headerlink" title="15.1 虚拟专用网概述"></a>15.1 虚拟专用网概述</h3><p>虚拟专用网（Virtual Private Network，VPN）指的是在公用网络上利用加密与访问控制建立专用网络的技术。</p>
+<h3 id="15-2-VPN的分类"><a href="#15-2-VPN的分类" class="headerlink" title="15.2 VPN的分类"></a>15.2 VPN的分类</h3><ul>
+<li>远程访问VPN</li>
+<li>网关-网关VPN</li>
+</ul>
+<h3 id="15-3-典型的虚拟专用网技术"><a href="#15-3-典型的虚拟专用网技术" class="headerlink" title="15.3 典型的虚拟专用网技术"></a>15.3 典型的虚拟专用网技术</h3><h4 id="15-3-1-第二层隧道协议"><a href="#15-3-1-第二层隧道协议" class="headerlink" title="15.3.1 第二层隧道协议"></a>15.3.1 第二层隧道协议</h4><ul>
+<li>点到点隧道协议（Point to Point Tunneling Protocol，PPTP）</li>
+<li>第二层隧道协议（Layer Two Tunneling Protocal，L2TP）</li>
+<li>第二层转发协议（Layer 2 Forwaring，L2F）</li>
+</ul>
+<h4 id="15-3-2-第三层隧道协议"><a href="#15-3-2-第三层隧道协议" class="headerlink" title="15.3.2 第三层隧道协议"></a>15.3.2 第三层隧道协议</h4><ul>
+<li>IP安全（Internet Protocal Security，IPSec）</li>
+</ul>
+<h4 id="15-3-3-第四层隧道协议"><a href="#15-3-3-第四层隧道协议" class="headerlink" title="15.3.3 第四层隧道协议"></a>15.3.3 第四层隧道协议</h4><ul>
+<li>安全套接字（Secure Sockets Layer，SSL）</li>
+<li>传输层安全（Transport Layer Security，TLS）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/11/11/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/" data-id="cl1qb1dzx007wqktu12vs8myc" data-title="网络安全复习" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/11/MySQL%E5%AE%9E%E9%AA%8C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          MySQL实验
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/09/360%E6%9D%AF-Web%E5%AE%9E%E6%88%98-smity_sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">360杯-Web实战-smity_sql堆叠注入</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

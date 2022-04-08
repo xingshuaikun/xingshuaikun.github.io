@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>攻防世界--misc--新手区 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="攻防世界--misc--新手区  1 this_is_flag Most flags are in the form flag{xxx}, for example:flag{th1s_!s_a_d4m0_4la9} flag&amp;#123;th1s_!s_a_d4m0_4la9&amp;#125;  2 ext3 今天是菜狗的生日，他收到了一个linux系统光盘 将linux系统光盘放在linux下，在lin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界--misc--新手区">
+<meta property="og:url" content="http://example.com/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="攻防世界--misc--新手区  1 this_is_flag Most flags are in the form flag{xxx}, for example:flag{th1s_!s_a_d4m0_4la9} flag&amp;#123;th1s_!s_a_d4m0_4la9&amp;#125;  2 ext3 今天是菜狗的生日，他收到了一个linux系统光盘 将linux系统光盘放在linux下，在lin">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-5029a291129eb68d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1128/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-151859448385d89b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1026/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-bffc19e0ebf3558d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/976/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-3d80b9cd625f1e14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-26b031da84ba690b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-cf017a8cb575f275.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/872/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-ea52195e9f4a4a3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1032/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-894072a7ecee79bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1037/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-59b3380c26b6f5c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-7c1946b86f71c069.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1195/format/webp">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9223646-fd6be02463c47d4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/482/format/webp">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1670034/201905/1670034-20190506151011849-378185069.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1207957/201710/1207957-20171002220637021-1619392506.png">
+<meta property="article:published_time" content="2019-10-11T13:15:24.000Z">
+<meta property="article:modified_time" content="2019-12-15T05:06:54.527Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9223646-5029a291129eb68d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1128/format/webp">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-攻防世界--misc--新手区" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/" class="article-date">
+  <time class="dt-published" datetime="2019-10-11T13:15:24.000Z" itemprop="datePublished">2019-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CTF/">CTF</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      攻防世界--misc--新手区
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <section class="ouvJEz"><h1 class="_1RuRku">攻防世界--misc--新手区</h1><div class="rEsl9f"><div class="s-dsoj"><span class="_3tCVn5"><i aria-label="ic-diamond" class="anticon"><svg width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false" class=""><use xlink:href="#ic-diamond"></use></svg></i><span></span></span><time datetime="2019-06-04T16:21:51.000Z"></time><span></span><span></span></div></div><article class="_2rhmJa"><p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fblog.csdn.net%2Fzz_Caleb%2Farticle%2Fdetails%2F89287031" target="_blank"></a><br>
+<a href="" target="_blank"></a></p>
+<h3>1 this_is_flag</h3>
+<p>Most flags are in the form flag{xxx}, for example:flag{th1s_!s_a_d4m0_4la9}</p>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;th1s_!s_a_d4m0_4la9&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>2 ext3</h3>
+<p>今天是菜狗的生日，他收到了一个linux系统光盘</p>
+<p>将linux系统光盘放在linux下，在linux光盘目录下使用<code>strings linux|grep flag</code>，查找与flag相关的文件；root模式下使用<code>mount linux /mnt</code>命令将linux光盘挂载在mnt目录下，切换到mnt目录，使用<code>cat O7avZhikgKgbF/flag.txt</code>命令即可对flag内容进行读取，发现是一个base64编码，解密后得到flag.</p>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 685px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 60.73%;"></div>
+<div class="image-view" data-width="1128" data-height="685"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-5029a291129eb68d.png" data-original-width="1128" data-original-height="685" data-original-format="image/png" data-original-filesize="145162" data-image-index="0" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-5029a291129eb68d.png?imageMogr2/auto-orient/strip|imageView2/2/w/1128/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;sajbcibzskjjcnbhsbvcjbjszcszbkzj&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>3 give_you_flag</h3>
+<p>菜狗找到了文件中的彩蛋很开心，给菜猫发了个表情包</p>
+<p>一个.gif图片，用stegsolve的查看帧的功能模块查看，发现一个缺少三个定位部分的二维码，将其补全，扫一扫即可。</p>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 571px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 55.65%;"></div>
+<div class="image-view" data-width="1026" data-height="571"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-151859448385d89b.png" data-original-width="1026" data-original-height="571" data-original-format="image/png" data-original-filesize="26637" data-image-index="1" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-151859448385d89b.png?imageMogr2/auto-orient/strip|imageView2/2/w/1026/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;e7d478cf6b915f50ab1277f78502a2c5&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 550px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 56.35%;"></div>
+<div class="image-view" data-width="976" data-height="550"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-bffc19e0ebf3558d.png" data-original-width="976" data-original-height="550" data-original-format="image/png" data-original-filesize="94945" data-image-index="2" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-bffc19e0ebf3558d.png?imageMogr2/auto-orient/strip|imageView2/2/w/976/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fcli.im%2Fnews%2Fhelp%2F10601" target="_blank">https://cli.im/news/help/10601</a><br>
+<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fblog.csdn.net%2Fhk_5788%2Farticle%2Fdetails%2F50839790" target="_blank">https://blog.csdn.net/hk_5788/article/details/50839790</a><br>
+<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F21463650" target="_blank">https://zhuanlan.zhihu.com/p/21463650</a><br>
+<a href="https://www.jianshu.com/p/8208aad537bb" target="_blank">https://www.jianshu.com/p/8208aad537bb</a></p>
+<h3>4 pdf</h3>
+<p>菜猫给了菜狗一张图，说图下面什么都没有</p>
+<p>将文件打开，删除掉最外面的图片，flag便显示出来了</p>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 382px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 31.52%;"></div>
+<div class="image-view" data-width="1212" data-height="382"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-3d80b9cd625f1e14.png" data-original-width="1212" data-original-height="382" data-original-format="image/png" data-original-filesize="10623" data-image-index="3" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-3d80b9cd625f1e14.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;security_through_obscurity&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>5 坚持60s</h3>
+<p>菜狗发现最近菜猫不爱理他，反而迷上了菜鸡</p>
+<p>下载发现是一个.jar的游戏，使用java反编译工具，查看源码，得到flag.</p>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 675px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 53.02%;"></div>
+<div class="image-view" data-width="1273" data-height="675"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-26b031da84ba690b.png" data-original-width="1273" data-original-height="675" data-original-format="image/png" data-original-filesize="73447" data-image-index="4" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-26b031da84ba690b.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;RGFqaURhbGlfSmlud2FuQ2hpamk=&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>6 如来十三掌</h3>
+<p>菜狗为了打败菜猫，学了一套如来十三掌。</p>
+<p>在“<a href="https://links.jianshu.com/go?to=http%3A%2F%2Fwww.keyfc.net%2Fbbs%2Ftools%2Ftudoucode.aspx" target="_blank">与佛论禅</a>”解密，得到一段疑似base64的编码，如来十三掌，rot13一下，再base64解密即可得到flag.</p>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 418px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 47.94%;"></div>
+<div class="image-view" data-width="872" data-height="418"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-cf017a8cb575f275.png" data-original-width="872" data-original-height="418" data-original-format="image/png" data-original-filesize="23779" data-image-index="5" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-cf017a8cb575f275.png?imageMogr2/auto-orient/strip|imageView2/2/w/872/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;bdscjhbkzmnfrdhbvckijndskvbkjdsab&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>7 gif</h3>
+<p>菜狗截获了一张菜鸡发给菜猫的动态图，却发现另有玄机</p>
+<p>打开压缩包发现许多张黑白颜色的图片，将黑白图片分别记为1,0，得到01100110011011000110000101100111011110110100011001110101010011100101111101100111011010010100011001111101，转化为字符串形式即可。</p>
+
+
+
+<pre><code>#gif 二进制转字符串
+    import re
+        a = ‘01100110011011000110000101100111011110110100011001110101010011100101111101100111011010010100011001111101’
+        b = re.findall(r’.&#123;8&#125;’,a)
+        flag = ‘’
+        for i in b:
+            flag += chr(int(i,2))
+        print(flag)
+</code></pre>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;FuN_giF&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>8 SimpleRAR</h3>
+<p>菜狗最近学会了拼图，这是他刚拼好的，可是却搞错了一块(ps:双图层)</p>
+<p>将压缩包直接解压，发现压缩包损坏，但得到了一个flag.txt，根据提示flag应该在剩余的文件中，将压缩包放在winhex下，根据flag.txt的内容，补齐图片格式再次解压得到一个空白图片，放在winhex下，发现是一个.gif图片，使用stegsolve帧功能模块，得到两张不同的帧图片，调节颜色，得到两张残缺的二维码图片，合并补齐后，扫一扫即可。</p>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 573px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 55.52%;"></div>
+<div class="image-view" data-width="1032" data-height="573"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-ea52195e9f4a4a3a.png" data-original-width="1032" data-original-height="573" data-original-format="image/png" data-original-filesize="93618" data-image-index="6" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-ea52195e9f4a4a3a.png?imageMogr2/auto-orient/strip|imageView2/2/w/1032/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 606px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 58.440000000000005%;"></div>
+<div class="image-view" data-width="1037" data-height="606"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-894072a7ecee79bb.png" data-original-width="1037" data-original-height="606" data-original-format="image/png" data-original-filesize="20321" data-image-index="7" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-894072a7ecee79bb.png?imageMogr2/auto-orient/strip|imageView2/2/w/1037/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;yanji4n_bu_we1shi&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>9 stegano</h3>
+<p>菜狗收到了图后很开心，玩起了pdf(flag格式为大写)</p>
+<p>用google浏览器中打开pdf文件，然后Ctrl+A选中所有文字，在Ctrl+C复制，接着粘贴到一个txt文本中<code></code>，得到一串AB编码而成的字符串，将A变为 . ，B变为 - ，摩斯解密为CONGRATULATIONSnullFLAGnull1NV151BL3M3554G3，即flag为1NV151BL3M3554G3</p>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 611px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 45.29%;"></div>
+<div class="image-view" data-width="1349" data-height="611"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-59b3380c26b6f5c8.png" data-original-width="1349" data-original-height="611" data-original-format="image/png" data-original-filesize="393191" data-image-index="8" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-59b3380c26b6f5c8.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;1NV151BL3M3554G3&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>10 掀桌子</h3>
+<p>菜狗截获了一份报文如下c8e9aca0c6f2e5f3e8c4efe7a1a0d4e8e5a0e6ece1e7a0e9f3baa0e8eafae3f9e4eafae2eae4e3eaebfaebe3f5e7e9f3e4e3e8eaf9eaf3e2e4e6f2，生气地掀翻了桌子(╯°□°）╯︵ ┻━┻</p>
+<p>通过观察，试着将16进制字符转为字符串，发现不能直接转化，试着将ascii码值减去128再转化，得到flag.</p>
+<pre class="line-numbers  language-python"><code class="  language-python"><span class="token comment">#
+#掀桌子脚本，十六进制转字符串
+import re
+a = ‘c8e9aca0c6f2e5f3e8c4efe7a1a0d4e8e5a0e6ece1e7a0e9f3baa0e8eafae3f9e4eafae2eae4e3eaebfaebe3f5e7e9f3e4e3e8eaf9eaf3e2e4e6f2’
+b = re.findall(r’.&#123;2&#125;’,a)
+flag = ‘’
+for i in b:
+flag += chr(int(int(i,16)-128))
+print(flag)
+
+</span>
+
+<p><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;hjzcydjzbjdcjkzkcugisdchjyjsbdfr&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>11 功夫再高也怕菜刀</h3>
+<p>菜狗决定用菜刀和菜鸡决一死战</p>
+<p>foremost分离文件，得到一个加密的压缩包，点进去查看发现一个flag.txt文件，wireshark下查找flag.txt字符串，追踪TCP流，最终在第1150个包发现一段图片的16进制编码，将其用winhex另存为一个图片，得到压缩包的密码，解压得到flag.</p>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 622px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 52.05%;"></div>
+<div class="image-view" data-width="1195" data-height="622"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-7c1946b86f71c069.png" data-original-width="1195" data-original-height="622" data-original-format="image/png" data-original-filesize="117686" data-image-index="9" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-7c1946b86f71c069.png?imageMogr2/auto-orient/strip|imageView2/2/w/1195/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<blockquote>
+<div class="image-package">
+<div class="image-container" style="max-width: 482px; max-height: 313px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 64.94%;"></div>
+<div class="image-view" data-width="482" data-height="313"><img data-original-src="//upload-images.jianshu.io/upload_images/9223646-fd6be02463c47d4d.png" data-original-width="482" data-original-height="313" data-original-format="image/jpeg" data-original-filesize="102226" data-image-index="10" class="" style="cursor: zoom-in;" src="//upload-images.jianshu.io/upload_images/9223646-fd6be02463c47d4d.png?imageMogr2/auto-orient/strip|imageView2/2/w/482/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+</blockquote>
+<pre class="line-numbers  language-undefined"><code class="  language-undefined">flag&#123;3OpWdJ-JP6FzK-koCMAK-VkfWBq-75Un2z&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>12 base64stego</h3>
+<div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>今天在攻防世界上看见了一道关于base64隐写的题目，题目链接如下：</p>
+<p><a target="_blank" rel="noopener" href="https://adworld.xctf.org.cn/media/task/attachments/787798f51ce441dd9961405c1aff8893.zip">题目链接</a></p>
+<p> 打开压缩包提示需要输入密码，就打开压缩包的详细信息，但是什么都没有，然后就打开binwalk，查看发现没有隐藏文件。</p>
+<p>然后想到可能是zip伪加密：</p>
+<pre><code>      zip文件有三个部分组成：压缩源文件数据区(第一个50 4B)+压缩源文件目录区(第二个50 4B)+压缩源文件目录结束标志(第三个50 4B)
+
+      伪加密一般存在于压缩源文件目录区，也就是第二个50 4B之后。
+
+      压缩源文件目录区：50 4B 01 02：目录中文件文件头标记
+
+                                        3F 03：压缩使用的 pkware版本
+
+                                        14 03：解压文件所需 pkware 版本
+
+                                        09 00：全局方式位标记（有无加密，这个更改这里进行伪加密，改为00 08打开就会提示有密码了）
+
+      使用winhex（或者C32ASM）打开文件后，找到第二个50 4B，往后数第七个和第八个，正常情况下应该是00 08，但这里是09 00；
+</code></pre>
+<img src="https://img2018.cnblogs.com/blog/1670034/201905/1670034-20190506151011849-378185069.png" alt="">
+     修改完之后就可以正常解压了 ，打开txt之后，发现内容是base64加密过的
+     
+<blockquote>
+<p>U3RlZ2Fub2dyYXBoeSBpcyB0aGUgYXJ0IGFuZCBzY2llbmNlIG9m<br>IHdyaXRpbmcgaGlkZGVuIG1lc3NhZ2VzIGluIHN1Y2ggYSB3YXkgdGhhdCBubyBvbmV&#x3D;<br>LCBhcGFydCBmcm9tIHRoZSBzZW5kZXIgYW5kIGludGVuZGVkIHJlY2lwaWVudCwgc3VzcGU&#x3D;<br>Y3RzIHRoZSBleGlzdGVuY2Ugb2YgdGhlIG1lc3M&#x3D;<br>YWdlLCBhIGZvcm0gb2Ygc2VjdXJpdHkgdGhyb3VnaCBvYnNjdXJpdHkuIFS&#x3D;<br>aGUgd29yZCBzdGVnYW5vZ3JhcGh5IGlzIG9mIEdyZWVrIG9yaWdpbiBhbmQgbWVhbnMgImNvbmNlYW&#x3D;&#x3D;<br>bGVkIHdyaXRpbmciIGZyb20gdGhlIEdyZWVrIHdvcmRzIHN0ZWdhbm9zIG1lYW5pbmcgImNv<br>dmVyZWQgb3IgcHJvdGVjdGVkIiwgYW5kIGdyYXBoZWluIG1lYW5pbmcgInRvIHc&#x3D;<br>cml0ZSIuIFRoZSBmaXJzdCByZWNvcmRlZCB1c2Ugb2YgdGhlIHRlcm0gd2FzIGluIDE0OTkgYnkgSm9o<br>YW5uZXMgVHJpdGhlbWl1cyBpbiBoaXMgU3RlZ2Fub2dyYXBoaWEsIGEgdHJlYV&#x3D;&#x3D;<br>dGlzZSBvbiBjcnlwdG9ncmFwaHkgYW5kIHN0ZWdhbm9ncmFwaHkgZGlzZ8&#x3D;&#x3D;<br>dWlzZWQgYXMgYSBib29rIG9uIG1hZ2ljLiBHZW5lcmFsbHksIG1lc3P&#x3D;<br>YWdlcyB3aWxsIGFwcGVhciB0byBiZSBzb21ldGhpbmcgZWxzZTogaW1hZ2VzLCBhcnRp<br>Y2xlcywgc2hvcHBpbmcgbGlzdHMsIG9yIHNvbWUgb3R&#x3D;<br>aGVyIGNvdmVydGV4dCBhbmQsIGNsYXNzaWNhbGx5LCB0aGUgaGlkZGVuIG1lc3NhZ2UgbWF5IGJlIGluIGludmm&#x3D;<br>c2libGUgaW5rIGJldHdlZW4gdGhlIHZpc2libGUgbGluZXMgb2YgYSBwcml2YXRlIGxldHRlci4NCg0KVGhl<br>IGFkdmFudGFnZSBvZiBzdGVnYW5vZ3JhcGh5LCBvdmVyIGNy<br>eXB0b2dyYXBoeSBhbG9uZSwgaXMgdGhhdCBtZXNzYWdlcyBkbyBub3QgYXR0cmFjdCBhdHRlbnRpb25&#x3D;<br>IHRvIHRoZW1zZWx2ZXMuIFBsYWlubHkgdmlzaWJsZSBlbmNyeXB0ZWQgbWVzc2FnZXOXbm8gbWF0dGVyIF&#x3D;&#x3D;<br>aG93IHVuYnJlYWthYmxll3dpbGwgYXJvdXNlIHN&#x3D;<br>dXNwaWNpb24sIGFuZCBtYXkgaW4gdGhlbXNlbHZlcyBiZSBpbmNyaW1pbmF0aW5nIP&#x3D;&#x3D;<br>aW4gY291bnRyaWVzIHdoZXJlIGVuY3J5cHRpb24gaXMgaWxsZWdhbC4gVGhlcmVmb3JlLH&#x3D;&#x3D;<br>IHdoZXJlYXMgY3J5cHRvZ3JhcGh5IHByb3RlY3RzIHRoZSBjb250ZW50cyBvZj&#x3D;&#x3D;<br>IGEgbWVzc2FnZSwgc3RlZ2Fub2dyYXBoeSBjYW4gYmUgc2FpZCB0byBwcm90ZWN0IGJ&#x3D;<br>b3RoIG1lc3NhZ2VzIGFuZCBjb21tdW5pY2F0aW5nIHBhcnRpZXMuDQoNClN0ZWdhbm9ncmFwaHkgaW5jbHW&#x3D;<br>ZGVzIHRoZSBjb25jZWFsbWVudCBvZiBpbmZvcm1hdGlvbiB3aXRoaW4gY29t<br>cHV0ZXIgZmlsZXMuIEluIGRpZ2l0YWwgc3RlZ2Fub2dyYXBoeSwgZWxlY3Ryb25pYyBjb21tdW5pY2F0aW9u<br>cyBtYXkgaW5jbHVkZSBzdGVnYW5vZ3JhcGhpYyBjb2RpbmcgaW5zaZ&#x3D;&#x3D;<br>ZGUgb2YgYSB0cmFuc3BvcnQgbGF5ZXIsIHN1Y2ggYXMgYSBkb2N1bWVudCBmaWxlLCBpbWFnZSBmaWx&#x3D;<br>ZSwgcHJvZ3JhbSBvciBwcm90b2NvbC4gTWVkaWEg<br>ZmlsZXMgYXJlIGlkZWFsIGZvciBzdGVnYW5vZ3JhcGhpYyB0cmFuc21pc3Npb+&#x3D;&#x3D;<br>biBiZWNhdXNlIG9mIHRoZWlyIGxhcmdlIHNpemUuIEFzIB&#x3D;&#x3D;<br>YSBzaW1wbGUgZXhhbXBsZSwgYSBzZW5kZXIgbWlnaHQgc3RhcnQgd2l0aCBh<br>biBpbm5vY3VvdXMgaW1hZ2UgZmlsZSBhbmQgYWRqdXN0IHRoZSBjb2xvciBvZiBldmVyeSAxMDB0aCBwaXhlbCD&#x3D;<br>dG8gY29ycmVzcG9uZCB0byBhIGxldHRlciBpbiB0aGUgYWxwaGFiZXQsIGF&#x3D;<br>IGNoYW5nZSBzbyBzdWJ0bGUgdGhhdCBzb21lb25lIG5vdCBzcGVjaWZpY2FsbHkgbG9va2luZyBm<br>b3IgaXQgaXMgdW5saWtlbHkgdG8gbm90aWNlIGl0Lg0KDQpUaGU&#x3D;<br>IGZpcnN0IHJlY29yZGVkIHVzZXMgb2Ygc3RlZ2Fub2dyYXBoeSBjYW4gYmUgdHJ&#x3D;<br>YWNlZCBiYWNrIHRvIDQ0MCBCQyB3aGVuIEhlcm9kb3R1cyBtZW50aW9ucyB0d28gZXhhbXBsZXMgb+&#x3D;&#x3D;<br>ZiBzdGVnYW5vZ3JhcGh5IGluIFRoZSBIaXN0b3JpZXMgb2Yg<br>SGVyb2RvdHVzLiBEZW1hcmF0dXMgc2VudCBhIHdhcm5pbmcgYWJvdXQgYSB&#x3D;<br>Zm9ydGhjb21pbmcgYXR0YWNrIHRvIEdyZWVjZSBieSB3<br>cml0aW5nIGl0IGRpcmVjdGx5IG9uIHRoZSB3b29kZW4gYmFja2luZyBvZiBhIHdheCB0YWJsZXQgYmVm<br>b3JlIGFwcGx5aW5nIGl0cyBiZWVzd2F4IHN1cmZhY2UuIFdheCB0YWJsZXRzIHdlcmUgaW4gY29tbW9uIHVzZV&#x3D;&#x3D;<br>IHRoZW4gYXMgcmV1c2FibGUgd3JpdGluZyBzdXJmYWNlcywgc29tZXRpbWX&#x3D;<br>cyB1c2VkIGZvciBzaG9ydGhhbmQuIEFub3RoZXIgYW5jaWVudCBleGFtcGxlIGlzIHRoYXQgb9&#x3D;&#x3D;<br>ZiBIaXN0aWFldXMsIHdobyBzaGF2ZWQgdGhlIGhlYWQgb2YgaGlzIG1vc3QgdHJ1c3RlZCBz<br>bGF2ZSBhbmQgdGF0dG9vZWQgYSBtZXNzYWdlIG9uIGl0LiBBZnRlciBoaXMgaGFpciBoYWQgZ5&#x3D;&#x3D;<br>cm93biB0aGUgbWVzc2FnZSB3YXMgaGlkZGVuLiBUaGUgcHVycG9zZSB3YXMgdG+&#x3D;<br>IGluc3RpZ2F0ZSBhIHJldm9sdCBhZ2FpbnN0IHRoZSBQZXJzaWFucy4NCg0KU3RlZ2Fub2dyYXBoeSBoYXMgYm&#x3D;&#x3D;<br>ZWVuIHdpZGVseSB1c2VkLCBpbmNsdWRpbmcgaW4gcmVjZW50IGhpc3RvcmljYWwgdGltZXMgYW5kIHT&#x3D;<br>aGUgcHJlc2VudCBkYXkuIFBvc3NpYmxlIHBlcm11dGF0aW9ucyBhcmUgZW5kbGVzcyBhbmT&#x3D;<br>IGtub3duIGV4YW1wbGVzIGluY2x1ZGU6DQoqIEhpZGRlbiBtZXNzYWdlcyB3aXRoaW4gd2F4IHRh<br>YmxldHM6IGluIGFuY2llbnQgR3JlZWNlLCBwZW9wbGUgd3JvdGUgbWV&#x3D;<br>c3NhZ2VzIG9uIHRoZSB3b29kLCB0aGVuIGNvdmVyZWQgaXQgd2l0aCB3YXggdXBvbiB3aGljaCBhbiBpbm5vY2Vu<br>dCBjb3ZlcmluZyBtZXNzYWdlIHdhcyB3cml0dGVu<br>Lg0KKiBIaWRkZW4gbWVzc2FnZXMgb24gbWVzc2VuZ2VyJ3MgYm9keTogYWxzbyB1c2VkIGluIGFuY2llbt&#x3D;&#x3D;<br>dCBHcmVlY2UuIEhlcm9kb3R1cyB0ZWxscyB0aGUgc3Rvcnkgb1&#x3D;&#x3D;<br>ZiBhIG1lc3NhZ2UgdGF0dG9vZWQgb24gYSBzbGF2ZSdzIHNoYXZlZCBoZWFkLCBoaWRkZW4gYnkgdGhl<br>IGdyb3d0aCBvZiBoaXMgaGFpciwgYW5kIGV4cG9zZWQgYnkgc2hhdmluZyBoaXMgaGVhZM&#x3D;&#x3D;<br>IGFnYWluLiBUaGUgbWVzc2FnZSBhbGxlZ2VkbHkgY2FycmllZCBhIHdhcm5pbmcgdG8gR3JlZWNlIGFib5&#x3D;&#x3D;<br>dXQgUGVyc2lhbiBpbnZhc2lvbiBwbGFucy4gVGh&#x3D;<br>aXMgbWV0aG9kIGhhcyBvYnZpb3VzIGRyYXdiYWNrcyz&#x3D;<br>IHN1Y2ggYXMgZGVsYXllZCB0cmFuc21pc3Npb24gd2hpbGUgd2FpdGluZyBmb3IgdGhlIHP&#x3D;<br>bGF2ZSdzIGhhaXIgdG8gZ3JvdywgYW5kIHRoZSByZXN0cmljdGlvbnMgb3&#x3D;&#x3D;<br>biB0aGUgbnVtYmVyIGFuZCBzaXplIG9mIG1lc3M&#x3D;<br>YWdlcyB0aGF0IGNhbiBiZSBlbmNvZGVkIG9uIG9uZSBwZXJzb24&#x3D;<br>J3Mgc2NhbHAuDQoqIEluIFdXSUksIHRoZSBGcmVuY2ggUmVzaXN0YW5jZSBzZW50IHNvbWUgbWVzc2FnZXMgd2&#x3D;&#x3D;<br>cml0dGVuIG9uIHRoZSBiYWNrcyBvZiBjb3VyaWVycyD&#x3D;<br>dXNpbmcgaW52aXNpYmxlIGluay4NCiogSGlkZGVuIG1lc3NhZ2VzIG9uIHBhcGVyIHdy<br>aXR0ZW4gaW4gc2VjcmV0IGlua3MsIHVuZGVyIG90aGVyIG1lc3NhZ2Vz<br>IG9yIG9uIHRoZSBibGFuayBwYXJ0cyBvZiBvdGhlct&#x3D;&#x3D;<br>IG1lc3NhZ2VzLg0KKiBNZXNzYWdlcyB3cml0dGVuIGluIE1vcnNlIGNvZGUgb24ga25pdHRpbmcgeWFybiBhbmQg<br>dGhlbiBrbml0dGVkIGludG8gYSBwaWVjZSBvZiBjbG90aGluZyB3b3K&#x3D;<br>biBieSBhIGNvdXJpZXIuDQoqIE1lc3NhZ2VzIHdyaXR0ZW4gb24gdGhlIGJhY2sgb5&#x3D;&#x3D;<br>ZiBwb3N0YWdlIHN0YW1wcy4NCiogRHVyaW5nIGFuZCBhZnRlcm&#x3D;&#x3D;<br>IFdvcmxkIFdhciBJSSwgZXNwaW9uYWdlIGFnZW50cyB1c2VkIHBob3RvZ3JhcGhpY2FsbHkgcO&#x3D;&#x3D;<br>cm9kdWNlZCBtaWNyb2RvdHMgdG8gc2VuZCBpbmZvcm1hdGlvbiBiYWNrIGFuZH&#x3D;&#x3D;<br>IGZvcnRoLiBNaWNyb2RvdHMgd2VyZSB0eXBpY2FsbHkg<br>bWludXRlLCBhcHByb3hpbWF0ZWx5IGxlc3MgdGhhbiB0aGUgc2l6ZSBvZiB0aGUgcGVyaW9kIHByb2R&#x3D;<br>dWNlZCBieSBhIHR5cGV3cml0ZXIuIFdXSUkgbWljcm9kb3RzIG5lZWRlZCB0byBiZSBlbWJlZGRlZB&#x3D;&#x3D;<br>IGluIHRoZSBwYXBlciBhbmQgY292ZXJlZCB3aXRoIGFuIGFkaGVzaXZlIChzdWNoIGFzIGNvbGxvZGlvbikuIFR&#x3D;<br>aGlzIHdhcyByZWZsZWN0aXZlIGFuZCB0aHVzIGRldGVjdGFibGUg<br>Ynkgdmlld2luZyBhZ2FpbnN0IGdsYW5jaW5nIGxpZ2h0LiBBbHRlcm5hdGl2ZSB0ZWNobmlxdWVzIGluY2x1ZGVk<br>IGluc2VydGluZyBtaWNyb2RvdHMgaW50byBzbGl0cyBjdXQgaW50byB0aGUgZWRnZSBvZv&#x3D;&#x3D;<br>IHBvc3QgY2FyZHMuDQoqIER1cmluZyBXb3JsZCBXYXIgSUksIGEgc3B5IGZvciB&#x3D;<br>SmFwYW4gaW4gTmV3IFlvcmsgQ2l0eSwgVmVsdmFsZWW&#x3D;<br>IERpY2tpbnNvbiwgc2VudCBpbmZvcm1hdGlvbiB0byBhY2NvbW1vZGF0aW9&#x3D;<br>biBhZGRyZXNzZXMgaW4gbmV1dHJhbCBTb3V0aCBBbWVyaWO&#x3D;<br>YS4gU2hlIHdhcyBhIGRlYWxlciBpbiBkb2xscywgYW5kIG&#x3D;&#x3D;<br>aGVyIGxldHRlcnMgZGlzY3Vzc2VkIGhvdyBtYW55IG9mIHRoaXMgb3IgdGhhdCBkb2xs<br>IHRvIHNoaXAuIFRoZSBzdGVnb3RleHQgd2FzIHRoZSBkb2xsIG9yZGVycywgd2hpbGUgdGhl<br>IGNvbmNlYWxlZCAicGxhaW50ZXh0IiB3YXMgaXRzZWxmIGVuY2+&#x3D;<br>ZGVkIGFuZCBnYXZlIGluZm9ybWF0aW9uIGFib3V0IHNoaXAgbW92ZW1lbnRzLF&#x3D;&#x3D;<br>IGV0Yy4gSGVyIGNhc2UgYmVjYW1lIHNvbWV3aGF0IGZh<br>bW91cyBhbmQgc2hlIGJlY2FtZSBrbm93biBhcyB0aGX&#x3D;<br>IERvbGwgV29tYW4uDQoqIENvbGQgV2FyIGNvdW50<br>ZXItcHJvcGFnYW5kYS4gSW4gMTk2OCwgY3JldyBtZW1iZW&#x3D;&#x3D;<br>cnMgb2YgdGhlIFVTUyBQdWVibG8gKEFHRVItMikgaW50ZWxsaWdlbmNlIHNoaXAgaGVsZCBhcyBwcm&#x3D;&#x3D;<br>aXNvbmVycyBieSBOb3J0aCBLb3JlYSwgY29tbXVuaWNhdGVkIGluIHNpZ25&#x3D;<br>IGxhbmd1YWdlIGR1cmluZyBzdGFnZWQgcGhvdG8gb3Bwb3J0<br>dW5pdGllcywgaW5mb3JtaW5nIHRoZSBVbml0ZWQgU3RhdGVzIHRoZXkg<br>d2VyZSBub3QgZGVmZWN0b3JzIGJ1dCByYXRoZXIgd2VyZSBiZWluZyBoZWxkIGNh<br>cHRpdmUgYnkgdGhlIE5vcnRoIEtvcmVhbnMuIEluIG90aGVyIHBob3Rv<br>cyBwcmVzZW50ZWQgdG8gdGhlIFVTLCBjcmV3IG1lbWJlcnMgZ2F2ZSAidGhlIGZpbmdlciIgdG8g<br>dGhlIHVuc3VzcGVjdGluZyBOb3J0aCBLb3JlYW5zLCBpbiBhbiBhdHRlbXB0IHRvIE&#x3D;&#x3D;<br>ZGlzY3JlZGl0IHBob3RvcyB0aGF0IHNob3dlZCB0aGVtIHNtaQ&#x3D;&#x3D;<br>bGluZyBhbmQgY29tZm9ydGFibGUuDQoNCi0tDQpodHRwOi8vZW4ud2lraXBlZGlhLm9yZw&#x3D;&#x3D;<br>L3dpa2kvU3RlZ2Fub2dyYXBoeQ0K</p>
+</blockquote>
+<p>解密之后发现是一篇关于介绍隐写术的文章：</p>
+<blockquote>
+<p>Steganography is the art and science of writing hidden messages in<br>such a way that no one, apart from the sender and intended recipient,<br>suspeage, <br>a form of security through obscurity. The word<br>steganography is of Greek origin and means “concealed writing” from<br>the Greek words steganos meaning <br>“covered or protected”, and<br>graphein meaning “to write”. The first recorded use of the term was in<br>1499 by Johannes Trithemius in his Steganographia,<br> a treatise on<br>cryptography and steganography disguised as a book on magic.<br>Generally, messages will appear to be something else: images,<br>articles, <br>shopping lists, or some other covertext and,<br>classically, the hidden message may be in invisible ink between the<br>visible lines of a private letter. The advantage of steganography,<br>over cryptography alone, is that messages do not attract attention to<br>themselves. Plainly visible encrypted messages <br>no matter how<br>unbreakable will arouse suspicion, and may in themselves be<br>incriminating in countries where encryption is illegal. Therefore,<br>whereas <br>cryptography protects the contents of a message,<br>steganography can be said to protect both messages and communicating<br>parties. Steganography includes the concealment of information within<br>computer files. In digital steganography, electronic communications<br>may include steganographic <br>coding inside of a transport layer,<br>such as a document file, image filn because of their large size. As a<br>simple example, a sender might start with<br> an innocuous image file<br>and adjust the color of every 100th pixel to correspond to a letter in<br>the alphabet, a change so subtle that someone not<br> specifically<br>looking for it is unlikely to notice it. The first recorded uses of<br>steganography can be traced back to 440 BC when Herodotus mentions two<br>examples of steganography in The Histories <br>of Herodotus. Demaratus<br>sent a warning about a forthcoming attack to Greece by writing it<br>directly on the wooden backing of a wax tablet before<br> applying its<br>beeswax surface. Wax tablets were in common use then as reusable<br>writing surfaces, sometimes used for shorthand. Another ancient<br><br>example is that of Histiaeus, who shaved the head of his most<br>trusted slave and tattooed a message on it. After his hair had grown<br>the message <br>was hidden. The purpose was to instigate a revolt<br>against the Persians. Steganography has been widely used, including in<br>recent historical times and the present day. Possible permutations are<br>endless and known examples include:</p>
+<ul>
+<li>Hidden messages within wax tablets: in ancient Greece, people wrote messages on the wood, then covered it with wax upon which an<br>innocent<br> covering message was written</li>
+<li>Hidden messages on messenger’s body: also used in ancient Greece. Herodotus tells the story of a message tattooed on a slave’s shaved<br>head,<br> hidden by the growth of his hair, and exposed by shaving his<br>head again. The message allegedly carried a warning to Greece abois<br>method has<br> obvious drawbacks, such as delayed transmission while<br>waiting for the sn the number and size of messages that can be encoded<br>on one person’s scalp.</li>
+<li>In WWII, the French Resistance sent some messages written on the backs of couriers using invisible ink.</li>
+<li>Hidden messages on paper written in secret inks, under other messages or on the blank parts of other messages.</li>
+<li>Messages written in Morse code on knitting yarn and then knitted into a piece of clothing worn by a courier.</li>
+<li>Messages written on the back of postage stamps.</li>
+<li>During and after World War II, espionage agents used photographically produced microdots to send information back and<br>forth. Microdots<br> were typically minute, approximately less than<br>the size of the period produced by a typewriter. WWII microdots needed<br>to be embedded in<br> the paper and covered with an adhesive (such as<br>collodion). This was reflective and thus detectable by viewing against<br>glancing light. <br>Alternative techniques included inserting<br>microdots into slits cut into the edge of post cards.</li>
+<li>During World War II, a spy for Japan in New York City, Velvalee Dickinson, sent information to accommodation addresses in neutral<br>South America. <br>She was a dealer in dolls, and her letters<br>discussed how many of this or that doll to ship. The stegotext was the<br>doll orders, while the <br>concealed “plaintext” was itself encoded<br>and gave information about ship movements, etc. Her case became<br>somewhat famous and she became <br>known as the Doll Woman.</li>
+<li>Cold War counter-propaganda. In 1968, crew members of the USS Pueblo (AGER-2) intelligence ship held as prisoners by North Korea,<br><br>communicated in sign language during staged photo opportunities,<br>informing the United States they were not defectors but rather<br>were<br> being held captive by the North Koreans. In other photos<br>presented to the US, crew members gave “the finger” to the<br>unsuspecting <br>North Koreans, in an attempt to discredit photos that<br>showed them smiling and comfortable.</li>
+</ul>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Steganography">http://en.wikipedia.org/wiki/Steganography</a><br>          在线翻译了一下：</p>
+<blockquote>
+<p>隐写术是一门艺术和科学，它以一种除了发送者和预期接收者之外，任何人都无法通过隐藏的方式来书写隐藏的信息。“隐写术”一词源于希腊语，意为“隐藏的写作”，<br>源于希腊语单词steganos，意为“覆盖或保护”，而graphein意为“写作”。1499年，约翰内斯·特里特米乌斯(Johannes<br>Trithemius)在他的《隐写术》(Steganographia)一书中首次使用了这个词。<br>一般情况下，信息会以其他形式出现:图像、文章、购物清单或其他一些隐藏文本，通常，隐藏的信息可能是私人信件可见行之间的隐形墨水。<br>与密码学相比，隐写术的优势在于，消息本身不会引起注意。显而易见的加密信息，无论多么牢不可破，都会引起怀疑，而且在加密非法的国家，这些信息本身就可能构成犯罪。<br>因此，虽然密码学保护消息的内容，但是隐写术可以同时保护消息和通信方。<br>隐写术包括在计算机文件中隐藏信息。在数字隐写术中，由于传输层(如文档文件、图像文件)的大尺寸，电子通信可能包括传输层内部的隐写编码。举个简单的例子，<br>发送者可能从一个无害的图像文件开始，每100个像素调整一次颜色，使之与字母表中的一个字母相对应，这种变化如此细微，以至于没有专门查找它的人不太可能注意到它。<br>有记录的第一次使用隐写术可以追溯到公元前440年，希罗多德在他的历史中提到了两个隐写术的例子。德玛拉图斯在涂上蜂蜡表面之前，直接把它写在一块蜡板的木制底座上，<br>警告希腊即将受到攻击。蜡片当时普遍用作可重复使用的书写表面，有时也用于速记。另一个古老的例子是希斯提厄斯，他剃光了他最信任的奴隶的头，并在上面纹了一条信息。<br>他的头发长了以后，这条信息就被藏了起来。目的是煽动对波斯人的起义。<br>隐写术已被广泛应用，包括在最近的历史时期和今天。可能的排列是无穷无尽的，已知的例子包括:<br>*蜡版内的隐藏信息:在古希腊，人们把信息写在木头上，然后用蜡把木头盖上，在上面写上一个无辜的信息<br>*信使身体上的隐藏信息:也用于古希腊。希罗多德讲了一个故事，一个奴隶剃光了头，上面纹着一条信息，隐藏在他的头发后面，再剃一次头就露出来了。<br>据称，这条信息带有向希腊发出警告的信息，abois方法有明显的缺陷，比如在等待sn时传输延迟。sn是可以在一个人的头皮上编码的信息的数量和大小。<br>*二战期间，法国抵抗运动用隐形墨水在信使的背上写了一些信息。<br>*用秘密墨水写在纸上的隐藏信息，在其他信息下面或其他信息的空白部分。<br>*用莫尔斯电码写在针织纱线上的信息，然后编织成快递员穿的衣服。 写在邮票背面的信息。<br>*在第二次世界大战期间和之后，间谍人员使用照相制作的微粒来来回传送信息。微粒通常是微小的，大约比打字机产生的周期的大小还要小。第二次世界大战的微粒需要嵌入在纸上，<br>并覆盖上粘合剂(如胶棉)。这是反射的，因此可以通过对光的观察来检测。其他的技术包括将微粒插入明信片边缘的缝隙中。<br>*第二次世界大战期间，驻纽约的日本间谍维瓦利·迪金森(Velvalee Dickinson)将信息发送到中立的南美的住宿地址。她是一个玩偶经销商，她在信中讨论了要运送多少个这样或那样的玩偶。<br>隐写文本是娃娃的命令，而隐藏的“明文”本身是编码的，并提供有关船只移动等信息。她的情况变得有点出名，她成为众所周知的娃娃女人。<br>*冷战反宣传。1968年，被朝鲜扣押的美国普韦布洛号(USS Pueblo, AGER-2)号情报舰的船员在拍照时用手语交流，告知美国他们不是叛逃者，而是被朝鲜扣押的。在提交给美国的其他照片中，<br>机组人员向毫无戒心的朝鲜人竖起了“手指”，试图抹掉他们微笑和舒适的照片。</p>
+</blockquote>
+<p>–<br><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Steganography">http://en.wikipedia.org/wiki/Steganography</a><br> 之后就没有思路了，然后看了wp，发现需要写一个base64解密的脚本，我晕，解密工具果然还是有不足之处的。</p>
+<p>下面就是关于base64隐写的介绍了：</p>
+<p>大家可以从上面的图片看到一个字母A对应的ascll值有八位，而base64的一个字母只占6位（原因如下：<img src="https://images2017.cnblogs.com/blog/1207957/201710/1207957-20171002220637021-1619392506.png" alt="">大家可以看到base64的所有加密后的内容也就这63个字符，也就是说用二进制的话6位就足够了！！）</p>
+<p>所以一一对应过去我们发现每一个字母都多出来了两个空位，又因为3*8=4*6，所以一班base64都是用四个一组表示三个字母，如果字母不足三个，比如上上图的BC我们用base64表示就是QkM=，就是因为空出来的地方用‘=’表示了。在知道了这些之后呢我们就进入了正题。</p>
+<p>&nbsp;</p>
+<p>在这里如果我们想隐藏一些内容需要怎么办呢？大家应该知道，base64在解码的时候是根据等号的个数进行的。也就是说我有一个等号，我就会去掉八个0-------------例如：上图的A对应的二进制位为01000001，补全之后为01000001 &nbsp; &nbsp;0000，对应的base64的编码为QQ（010000 &nbsp; &nbsp; 010000），所以之后有两个‘=’。在解码的时候我就要在去掉=对应的6个零的同时在去掉4个0，也就是解码的时候会解析01000001而不是010000010000。这时候我们会发现了，我们去掉的这四个0是不是可以用来隐藏信息？？？反正解码的时候会被裁剪掉，那我干脆就在后面做一些手脚，用base64来混淆视听。</p>
+<p>&nbsp;</p>
+<p>hhhh讲到这里大家是不是有所领悟呢？也就是说我前面放的txt内容其实都是被混淆过的！！所以想得到真正的base64就应该把题目中的密文解密然后在加密。对比后就得到了隐藏内容。</p>
+<p>&nbsp;</p>
+<p>下面放上py脚本</p>
+
+<pre><code>def get_base64_diff_value(s1, s2):
+    base64chars = &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#39;
+    res = 0
+    for i in xrange(len(s1)):
+        if s1[i] != s2[i]:
+            return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))
+    return res
+
+def solve_stego():
+
+    with open(&quot;D:/CTF Practice/stego.txt&quot;, &quot;rb&quot;) as f:
+        file_lines = f.readlines()
+
+    bin_str = &#39;&#39;
+    for line in file_lines:
+        steg_line = line.replace(&#39;\n&#39;, &#39;&#39;)
+        norm_line = line.replace(&#39;\n&#39;, &#39;&#39;).decode(&#39;base64&#39;).encode(&#39;base64&#39;).replace(&#39;\n&#39;, &#39;&#39;)
+        diff = get_base64_diff_value(steg_line, norm_line)
+
+        pads_num = steg_line.count(&#39;=&#39;)
+        if diff:
+            bin_str += bin(diff)[2:].zfill(pads_num * 2)
+
+        else:
+            bin_str += &#39;0&#39; * pads_num * 2
+
+    res_str = &#39;&#39;
+
+    for i in xrange(0, len(bin_str), 8):
+
+        res_str += chr(int(bin_str[i:i+8], 2))
+    print res_str
+
+solve_stego()
+</code></pre>
+<p>这个脚本也是git上的，不是我原创的哈（声明下）。</p>
+<p>我在这里解释下这个脚本。</p>
+<p></p>
+<p>steg_line = line.replace('\n', '')</p>
+<p>norm_line = line.replace('\n', '').decode('base64').encode('base64').replace('\n', '')</p>
+<p>这个是我们应该第一个注意的地方，第二个norm_line为何先decode又encode？？这就是我刚才提到的解密后去掉多余0，然后加密后真正的base64就还原了。之后才可以对比</p>
+<p><em style="font-family: 'Courier New'; font-size: 12px;"><em><em>&nbsp;</em></em></em></p>
+<p>&nbsp;<em id="__mceDel"><em id="__mceDel"><em id="__mceDel" style="font-family: 'Courier New'; font-size: 12px;">def get_base64_diff_value(s1, s2):</em></em></em></p>
+<p><em><em style="font-family: 'Courier New'; font-size: 12px;">这个函数就是用来比较差异然后得出来差异的位数的。比如加密之后的最后一位是g，原密码为m，这个函数就得出来m与g相差6，也就是110.之后在主函数里在110前面补上一个0，补的原理是把=个数乘2，得到位数。例如：2*2=4，那么110前面就要补一个0编程0110</em></em></p>
+<p>&nbsp;</p>
+<p>嗯。。。。这里就讲完了这次比赛的一道题。我是有所收获的，希望带给大家一些灵感。谢谢~~</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Made By &nbsp;Pinging！！！~~</p>
+<p>BXS Come On~~~！！！！</p>
+<p>&nbsp;</p>
+</div>
+<div id="MySignature" style="display: block;">因为菜，所以仍在努力。</div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="EntryTag">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/" data-id="cl1qb1dzp0075qktua9vhbvqp" data-title="攻防世界--misc--新手区" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%955/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          JavaScript学习记录5
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">攻防世界--web--新手区</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>C++标准模板库（Standard Template Library,STL） | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="背景下周数据结构实验就要开始考试了，所以总结一点C++的标准模板库来学习，希望下周考试能轻松度过(〃’▽’〃)(〃’▽’〃)(〃’▽’〃) 1 什么是标准模板库（STL）？1.1 C++标准模板库与C++标准库的关系C++标准模板库其实属于C++标准库的一部分，C++标准模板库主要是定义了标准模板的定义与声明，而这些模板主要都是类模板，我们可以调用这些模板来定义一个具体的类；与之前的自己手动创建一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++标准模板库（Standard Template Library,STL）">
+<meta property="og:url" content="http://example.com/2019/10/15/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard%20Template%20Library,STL%EF%BC%89/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="背景下周数据结构实验就要开始考试了，所以总结一点C++的标准模板库来学习，希望下周考试能轻松度过(〃’▽’〃)(〃’▽’〃)(〃’▽’〃) 1 什么是标准模板库（STL）？1.1 C++标准模板库与C++标准库的关系C++标准模板库其实属于C++标准库的一部分，C++标准模板库主要是定义了标准模板的定义与声明，而这些模板主要都是类模板，我们可以调用这些模板来定义一个具体的类；与之前的自己手动创建一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015200355618.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015203210384.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015205117226.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191015215709119.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-10-15T09:07:34.000Z">
+<meta property="article:modified_time" content="2019-12-15T05:49:53.093Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="库与模块">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191015200355618.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-C++标准模板库（Standard Template Library,STL）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/15/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard%20Template%20Library,STL%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-10-15T09:07:34.000Z" itemprop="datePublished">2019-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cpp/">Cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      C++标准模板库（Standard Template Library,STL）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>下周数据结构实验就要开始考试了，所以总结一点C++的标准模板库来学习，希望下周考试能轻松度过<br>(〃’▽’〃)(〃’▽’〃)(〃’▽’〃)</p>
+<h1 id="1-什么是标准模板库（STL）？"><a href="#1-什么是标准模板库（STL）？" class="headerlink" title="1 什么是标准模板库（STL）？"></a>1 什么是标准模板库（STL）？</h1><h2 id="1-1-C-标准模板库与C-标准库的关系"><a href="#1-1-C-标准模板库与C-标准库的关系" class="headerlink" title="1.1 C++标准模板库与C++标准库的关系"></a>1.1 C++标准模板库与C++标准库的关系</h2><p>C++标准模板库其实属于C++标准库的一部分，C++标准模板库主要是定义了标准模板的定义与声明，而这些模板主要都是类模板，我们可以调用这些模板来定义一个具体的类；与之前的自己手动创建一个函数模版或者是类模板不一样，我们使用STL就不用自己来创建模板了，这些模板都定义在标准模板库中，我们只需要学会怎么使用这些类模板来定义一个具体的类，然后能够使用类提供的各种方法来处理数据。</p>
+<h2 id="1-2-STL六大组件"><a href="#1-2-STL六大组件" class="headerlink" title="1.2 STL六大组件"></a>1.2 STL六大组件</h2><p>容器（containers）、算法（algorithms）、迭代器（iterators）、函数对象（functors）、适配器（adapters）、分配器（allocators）</p>
+<h1 id="2-容器分类"><a href="#2-容器分类" class="headerlink" title="2 容器分类"></a>2 容器分类</h1><p>STL对定义的通用容器分三类：顺序性容器、关联式容器和容器适配器。</p>
+<ul>
+<li>顺序性容器：vector、deque、list</li>
+<li>关联性容器：set、multiset、map、multimap</li>
+<li>容器适配器：stack、queue</li>
+</ul>
+<h2 id="2-1-vector-容器"><a href="#2-1-vector-容器" class="headerlink" title="2.1 vector 容器"></a>2.1 vector 容器</h2><p>vector向量是一种顺序性容器。相当于数组，但其大小可以不预先指定，并且自动扩展。它可以像数组一样被操作，由于它的特性我们完全可以将vector 看作动态数组。</p>
+<p>在创建一个vector后，它会自动在内存中分配一块连续的内存空间进行数据存储，初始的空间大小可以预先指定也可以由vector 默认指定。当存储的数据超过分配的空间时，vector会重新分配一块内存块，但这样的分配是很耗时的，在重新分配空间时它会做这样的动作：</p>
+<ul>
+<li>首先，vector 会申请一块更大的内存块；</li>
+<li>然后，将原来的数据拷贝到新的内存块中；</li>
+<li>其次，销毁掉原内存块中的对象（调用对象的析构函数）；</li>
+<li>最后，将原来的内存空间释放掉。</li>
+</ul>
+<p>当vector保存的数据量很大时，如果此时进行插入数据导致需要更大的空间来存放这些数据量，那么将会大大的影响程序运行的效率，所以我们应该合理的使用vector。</p>
+<h3 id="2-1-1-初始化vector对象的方式："><a href="#2-1-1-初始化vector对象的方式：" class="headerlink" title="2.1.1 初始化vector对象的方式："></a>2.1.1 初始化vector对象的方式：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;T&gt; v1;         // 默认的初始化方式，内容为空</span><br><span class="line">vector&lt;T&gt; v2(v1);     // v2是v1的一个副本</span><br><span class="line">vector&lt;T&gt; v3(n, i)    // v3中包含了n个数值为i的元素</span><br><span class="line">vector&lt;T&gt; v4(n);      // v4中包含了n个元素，每个元素的值都是0</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-2-vector常用函数"><a href="#2-1-2-vector常用函数" class="headerlink" title="2.1.2 vector常用函数"></a>2.1.2 vector常用函数</h3><blockquote>
+<p>empty()：判断向量是否为空，为空返回真，否则为假<br>begin()：返回向量（数组）的首元素地址<br>end()： 返回向量（数组）的末元素的下一个元素的地址<br>clear()：清空向量<br>front()：返回得到向量的第一个元素的数据<br>back()：返回得到向量的最后一个元素的数据<br>size()：返回得到向量中元素的个数<br>push_back(数据)：将数据插入到向量的尾部<br>pop_back()：删除向量尾部的数据</p>
+</blockquote>
+<h3 id="2-1-3-遍历方式"><a href="#2-1-3-遍历方式" class="headerlink" title="2.1.3 遍历方式"></a>2.1.3 遍历方式</h3><p>vector向量支持两种方式遍历，因为可以认为vector是一种动态数组，所以可以使用数组下标的方式，也可以使用迭代器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    vector&lt;int&gt; vec;</span><br><span class="line"></span><br><span class="line">    vec.push_back(1);</span><br><span class="line">    vec.push_back(2);</span><br><span class="line">    vec.push_back(3);</span><br><span class="line">    vec.push_back(4);</span><br><span class="line">    vec.push_back(5);</span><br><span class="line">	</span><br><span class="line">    cout &lt;&lt; &quot;向量的大小：&quot; &lt;&lt; vec.size() &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 数组下标方式遍历vector</span><br><span class="line">    for (int i = 0; i &lt; vec.size(); i++)</span><br><span class="line">        cout &lt;&lt; vec[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 迭代器方式遍历vector</span><br><span class="line">    vector&lt;int&gt;::iterator itor = vec.begin();</span><br><span class="line">    for (; itor != vec.end(); itor++)</span><br><span class="line">        cout &lt;&lt; *itor &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015200355618.png"></p>
+<h2 id="2-2-双向链表list"><a href="#2-2-双向链表list" class="headerlink" title="2.2 双向链表list"></a>2.2 双向链表list</h2><p>学过数据结构的同学都知道，对于一个双向链表来说主要包括3个元素：</p>
+<ul>
+<li>指向前一个链表节点的前向指针</li>
+<li>有效数据</li>
+<li>指向后一个链表节点的后向指针</li>
+</ul>
+<p>链表相对于vector向量来说的优点在于：</p>
+<p>(1)动态的分配内存，当需要添加数据的时候不会像vector那样，先将现有的内存空间释放，再次分配更大的空间，这样的话效率就比较低了。<br>(2)支持内部插入、头部插入和尾部插入</p>
+<p>缺点：不能随机访问，不支持[]方式和vector.at()、占用的内存会多于vector（非有效数据占用的内存空间）</p>
+<h3 id="2-2-1-初始化list对象的方式："><a href="#2-2-1-初始化list对象的方式：" class="headerlink" title="2.2.1 初始化list对象的方式："></a>2.2.1 初始化list对象的方式：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list&lt;int&gt; L0;                         //空链表</span><br><span class="line">list&lt;int&gt; L1(3);                      //建一个含三个默认值是0的元素的链表</span><br><span class="line">list&lt;int&gt; L2(5, 2);                    //建一个含五个元素的链表，值都是2</span><br><span class="line">list&lt;int&gt; L3(L2);                     //L3是L2的副本</span><br><span class="line">list&lt;int&gt; L4(L1.begin(), L1.end());    //L4含L1一个区域的元素[begin, end]。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-2-list常用函数"><a href="#2-2-2-list常用函数" class="headerlink" title="2.2.2 list常用函数"></a>2.2.2 list常用函数</h3><blockquote>
+<p>begin()：返回list容器的第一个元素的地址<br>end()：返回list容器的最后一个元素之后的地址<br>rbegin()：返回逆向链表的第一个元素的地址（也就是最后一个元素的地址）<br>rend()：返回逆向链表的最后一个元素之后的地址（也就是第一个元素再往前的位置）<br>front()：返回链表中第一个数据值<br>back()：返回链表中最后一个数据值<br>empty()：判断链表是否为空<br>size()：返回链表容器的元素个数<br>clear()：清除容器中所有元素<br>insert(pos, num)：将数据num插入到pos位置处（pos是一个地址）<br>insert(pos, n, num)：在pos位置处插入n个元素num<br>erase(pos)：删除pos位置处的元素<br>push_back(num)：在链表尾部插入数据num<br>pop_back()：删除链表尾部的元素<br>push_front(num)：在链表头部插入数据num<br>pop_front()：删除链表头部的元素<br>sort()：将链表排序，默认升序<br>……</p>
+</blockquote>
+<h3 id="2-2-3-遍历方式"><a href="#2-2-3-遍历方式" class="headerlink" title="2.2.3 遍历方式"></a>2.2.3 遍历方式</h3><p>双向链表list支持使用迭代器正向的遍历，也支持迭代器逆向的遍历，但是不能使用 [] 索引的方式进行遍历。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;list&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    list&lt;int&gt; l1;</span><br><span class="line">	</span><br><span class="line">    // 插入元素方式演示</span><br><span class="line">    l1.push_front(1);            // 头部插入</span><br><span class="line">    l1.push_back(2);             // 尾部插入</span><br><span class="line">    l1.insert(l1.begin(), 3);    // 开始位置插入</span><br><span class="line">    l1.insert(l1.end(), 4);        // 结束位置插入</span><br><span class="line">	</span><br><span class="line">    cout &lt;&lt; &quot;list链表是否为空：&quot; &lt;&lt; l1.empty() &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;list链表中元素个数：&quot; &lt;&lt; l1.size() &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;list链表第一个元素：&quot; &lt;&lt; l1.front() &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;list链表最后一个元素：&quot; &lt;&lt; l1.back() &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 遍历链表正向</span><br><span class="line">    list&lt;int&gt;::iterator itor = l1.begin();</span><br><span class="line">    for (; itor != l1.end(); itor++)</span><br><span class="line">        cout &lt;&lt; *itor &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 遍历链表逆向</span><br><span class="line">    list&lt;int&gt;::reverse_iterator reitor = l1.rbegin();</span><br><span class="line">    for (; reitor != l1.rend(); reitor++)</span><br><span class="line">        cout &lt;&lt; *reitor &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 将链表排序</span><br><span class="line">    l1.sort();</span><br><span class="line">    itor = l1.begin();</span><br><span class="line">    cout &lt;&lt; &quot;重新排序之后正向遍历：&quot;;</span><br><span class="line">    for (; itor != l1.end(); itor++)</span><br><span class="line">        cout &lt;&lt; *itor &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 清除容器中的所有元素</span><br><span class="line">    l1.clear();</span><br><span class="line">    cout &lt;&lt; &quot;清除容器所有元素之后大小：&quot; &lt;&lt; l1.size() &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015203210384.png"></p>
+<h2 id="2-3-stack"><a href="#2-3-stack" class="headerlink" title="2.3 stack"></a>2.3 stack</h2><p>std::stack 类是容器适配器，它给予程序员栈的功能——特别是 FILO （先进后出）数据结构。</p>
+<h3 id="2-3-1-stack常用函数"><a href="#2-3-1-stack常用函数" class="headerlink" title="2.3.1 stack常用函数"></a>2.3.1 stack常用函数</h3><blockquote>
+<p>empty()：检查底层的容器是否为空<br>top()：访问栈顶元素<br>size()：返回容纳的元素数<br>push()：向栈顶插入元素<br>pop()：删除栈顶元素<br>swap()：交换内容</p>
+</blockquote>
+<h3 id="2-3-2-常用函数的使用"><a href="#2-3-2-常用函数的使用" class="headerlink" title="2.3.2 常用函数的使用"></a>2.3.2 常用函数的使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	//创建栈 s</span><br><span class="line">	stack&lt;int&gt; s;</span><br><span class="line">	</span><br><span class="line">	//将元素压入栈</span><br><span class="line">	for(i = 0; i &lt; 10; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		s.push(i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;栈s中元素的个数为：&quot; &lt;&lt; s.size() &lt;&lt; endl;</span><br><span class="line">	while(!s.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; s.top() &lt;&lt; &quot; &quot;;								//获取栈顶元素</span><br><span class="line">		s.pop();											//弹出栈顶元素</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	if(s.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;栈s现在为空&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015205117226.png"></p>
+<h2 id="2-4-queue容器"><a href="#2-4-queue容器" class="headerlink" title="2.4 queue容器"></a>2.4 queue容器</h2><p>C++队列queue模板类的定义在<queue>头文件中,queue模板类需要两个模板参数，一个是元素类型，一个容器类型，元素类型是必要的，容器类型是可选的，默认为deque类型。<br>C++队列Queue是一种容器适配器，它给予程序员一种先进先出(FIFO)的数据结构。</p>
+<h3 id="2-4-1-初始化list对象的方式："><a href="#2-4-1-初始化list对象的方式：" class="headerlink" title="2.4.1 初始化list对象的方式："></a>2.4.1 初始化list对象的方式：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;int&gt; q1;</span><br><span class="line">queue&lt;double&gt; q2;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-2-queue常用函数"><a href="#2-4-2-queue常用函数" class="headerlink" title="2.4.2 queue常用函数"></a>2.4.2 queue常用函数</h3><blockquote>
+<p>top：访问队头元素<br>empty()：如果queue中没有元素的话，返回true。<br>size()：返回queue中元素的个数。<br>front()：返回queue中第一个元素的引用，若queue是常量，返回一个常引用，若queue为空，返回值是未定义的。<br>back()：返回queue中最后一个元素的引用，若queue是常量，返回一个常引用，若queue为空，返回值是未定义的。<br>push()：在queue的尾部添加一个元素的副本。这是通过调用底层容器的成员函数push_back()来完成的。<br>pop()：删除queue中的第一个元素。<br>swap(queue<T> &amp;other_q)：将当前queue中的元素和参数queue中<br>的元素交换。它们需要包含相同类型的元素。也可以调用全局函数模板 swap(q1, q2) 来将当前q1中的元素和q1中的元素中的元素交换</p>
+</blockquote>
+<h3 id="2-4-3-队列使用"><a href="#2-4-3-队列使用" class="headerlink" title="2.4.3 队列使用"></a>2.4.3 队列使用</h3><p>对queue进行遍历，可以将其赋予一个副本，然后将副本边输出，边弹出元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int e, n, m, i;</span><br><span class="line">    queue&lt;int&gt; q1, q2;</span><br><span class="line">	queue&lt;int&gt; q3, q4;</span><br><span class="line"></span><br><span class="line">    for(i = 0; i &lt; 10; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		q1.push(i);</span><br><span class="line">		q3.push(i);</span><br><span class="line">		q2.push(i + 10);</span><br><span class="line">		q4.push(i + 10);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;队列q1\n&quot;;</span><br><span class="line">    if(!q1.empty())</span><br><span class="line">		cout &lt;&lt; &quot;dui lie  bu kong\n&quot;;</span><br><span class="line">    n = q1.size();</span><br><span class="line">    cout &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    m = q1.back();</span><br><span class="line">    cout &lt;&lt; m &lt;&lt; endl;</span><br><span class="line">    for(i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		e = q1.front();</span><br><span class="line">		cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">		q1.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    if(q1.empty())</span><br><span class="line">		cout &lt;&lt; &quot;dui lie  bu kong\n&quot;;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;队列q2\n&quot;;</span><br><span class="line">	if(!q2.empty())</span><br><span class="line">		cout &lt;&lt; &quot;dui lie  bu kong\n&quot;;</span><br><span class="line">    n = q2.size();</span><br><span class="line">    cout &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    m = q2.back();</span><br><span class="line">    cout &lt;&lt; m &lt;&lt; endl;</span><br><span class="line">    for(i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		e = q2.front();</span><br><span class="line">		cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">		q2.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    if(q2.empty())</span><br><span class="line">		cout &lt;&lt; &quot;dui lie  bu kong\n&quot;;</span><br><span class="line"></span><br><span class="line">	swap(q3, q4);</span><br><span class="line">	cout &lt;&lt; &quot;队列q1与队列q2交换后\n&quot;;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;队列q1\n&quot;;</span><br><span class="line">	for(i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		e = q3.front();</span><br><span class="line">		cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">		q3.pop();</span><br><span class="line">    &#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;队列q2\n&quot;;</span><br><span class="line">	for(i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		e = q4.front();</span><br><span class="line">		cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">		q4.pop();</span><br><span class="line">    &#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015215709119.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="2-4-4-优先队列使用"><a href="#2-4-4-优先队列使用" class="headerlink" title="2.4.4 优先队列使用"></a>2.4.4 优先队列使用</h3><blockquote>
+<p>priority_queue&lt;Type, Container, Functional&gt;</p>
+</blockquote>
+<p>Type为数据类型， Container为保存数据的容器，Functional为元素比较方式。<br>如果不写后两个参数，那么容器默认用的是vector，比较方式默认用operator&lt;，也就是优先队列是大顶堆，队头元素最大。</p>
+<h4 id="2-4-4-1-优先输出大数据"><a href="#2-4-4-1-优先输出大数据" class="headerlink" title="2.4.4.1 优先输出大数据"></a>2.4.4.1 优先输出大数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    priority_queue&lt;int&gt; p;</span><br><span class="line">    p.push(1);</span><br><span class="line">    p.push(2);</span><br><span class="line">    p.push(8);</span><br><span class="line">    p.push(5);</span><br><span class="line">    p.push(43);</span><br><span class="line">    for(int i = 0; i &lt; 5; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; p.top() &lt;&lt; endl;</span><br><span class="line">        p.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<blockquote>
+<p>43<br>8<br>5<br>2<br>1</p>
+</blockquote>
+<h4 id="2-4-4-2-优先输出小数据"><a href="#2-4-4-2-优先输出小数据" class="headerlink" title="2.4.4.2 优先输出小数据"></a>2.4.4.2 优先输出小数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt; &gt;p;</span><br><span class="line">    p.push(1);</span><br><span class="line">    p.push(2);</span><br><span class="line">    p.push(8);</span><br><span class="line">    p.push(5);</span><br><span class="line">    p.push(43);</span><br><span class="line">    for(int i = 0; i &lt; 5; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; p.top() &lt;&lt; endl;</span><br><span class="line">        p.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<blockquote>
+<p>1<br>2<br>5<br>8<br>43</p>
+</blockquote>
+<h4 id="2-4-4-3-自定义优先级，重载默认的-lt-符号"><a href="#2-4-4-3-自定义优先级，重载默认的-lt-符号" class="headerlink" title="2.4.4.3 自定义优先级，重载默认的  &lt; 符号"></a>2.4.4.3 自定义优先级，重载默认的  &lt; 符号</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct Node</span><br><span class="line">&#123;</span><br><span class="line">    int x, y;</span><br><span class="line">    Node(int a = 0, int b = 0) : x(a), y(b) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">struct cmp</span><br><span class="line">&#123;</span><br><span class="line">    bool operator() (Node a, Node b)</span><br><span class="line">    &#123;</span><br><span class="line">        if(a.x == b.x)</span><br><span class="line">            return a.y &gt; b.y;</span><br><span class="line">        return a.x &gt; b.x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    priority_queue&lt;Node, vector&lt;Node&gt;, cmp&gt; p;</span><br><span class="line">    for(int i = 0; i &lt; 10; ++i)</span><br><span class="line">        p.push(Node(rand(), rand()));   </span><br><span class="line">    while(!p.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; p.top().x &lt;&lt; &#x27; &#x27; &lt;&lt; p.top().y &lt;&lt; endl;</span><br><span class="line">        p.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<blockquote>
+<p>491 9961<br>5436 4827<br>11942 2995<br>15724 19169<br>16827 23281<br>18467 41<br>24464 26962<br>26500 6334<br>28145 5705<br>29358 11478</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/15/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard%20Template%20Library,STL%EF%BC%89/" data-id="cl1qb1dxa000yqktuboqsfo2v" data-title="C++标准模板库（Standard Template Library,STL）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/16/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          CUMTOJ算法实验作业
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/15/C++%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">C++常用方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

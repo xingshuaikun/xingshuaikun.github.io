@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CUMTOJ数据结构实验内容3-4 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="问题 A: 子网掩码题目描述子网掩码是用来判断任意两台计算机的IP地址是否属于同一子网络的根据。最为简单的理解就是两台计算机各自的IP地址与子网掩码进行AND运算后，如果得出的结果是相同的，则说明这两台计算机是处于同一个子网络上的，可以进行直接的通讯。就这么简单。 请看以下示例： 运算演示之一：IP地址　   192.168.0.1子网掩码　 255.255.255.0  转化为二进制进行运算：I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMTOJ数据结构实验内容3-4">
+<meta property="og:url" content="http://example.com/2019/10/12/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B93-4/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="问题 A: 子网掩码题目描述子网掩码是用来判断任意两台计算机的IP地址是否属于同一子网络的根据。最为简单的理解就是两台计算机各自的IP地址与子网掩码进行AND运算后，如果得出的结果是相同的，则说明这两台计算机是处于同一个子网络上的，可以进行直接的通讯。就这么简单。 请看以下示例： 运算演示之一：IP地址　   192.168.0.1子网掩码　 255.255.255.0  转化为二进制进行运算：I">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019092116070650.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190921162838113.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190921164333252.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-10-11T16:36:49.000Z">
+<meta property="article:modified_time" content="2020-01-10T01:57:26.870Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019092116070650.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CUMTOJ数据结构实验内容3-4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/12/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B93-4/" class="article-date">
+  <time class="dt-published" datetime="2019-10-11T16:36:49.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      CUMTOJ数据结构实验内容3-4
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="问题-A-子网掩码"><a href="#问题-A-子网掩码" class="headerlink" title="问题 A: 子网掩码"></a>问题 A: 子网掩码</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>子网掩码是用来判断任意两台计算机的IP地址是否属于同一子网络的根据。<br>最为简单的理解就是两台计算机各自的IP地址与子网掩码进行AND运算后，如果得出的结果是相同的，则说明这两台计算机是处于同一个子网络上的，可以进行直接的通讯。就这么简单。</p>
+<p>请看以下示例：</p>
+<p>运算演示之一：<br>IP地址　   192.168.0.1<br>子网掩码　 255.255.255.0 </p>
+<p>转化为二进制进行运算：<br>IP地址　  11010000.10101000.00000000.00000001<br>子网掩码　11111111.11111111.11111111.00000000 </p>
+<p>AND运算：<br>　　　　　11010000.10101000.00000000.00000000 </p>
+<p>转化为十进制后为：<br>　　　　　　192.168.0.0</p>
+<p>运算演示之二：<br>IP地址　   192.168.0.254<br>子网掩码　 255.255.255.0 </p>
+<p>转化为二进制进行运算：<br>IP地址　  11010000.10101000.00000000.11111110<br>子网掩码　11111111.11111111.11111111.00000000 </p>
+<p>AND运算：<br>　　　　　11010000.10101000.00000000.00000000 </p>
+<p>转化为十进制后为：<br>　　　　　　192.168.0.0</p>
+<p>运算演示之三：<br>IP地址　   192.168.0.4<br>子网掩码　 255.255.255.0</p>
+<p>转化为二进制进行运算：<br>IP地址　  11010000.10101000.00000000.00000100<br>子网掩码　11111111.11111111.11111111.00000000 </p>
+<p>AND运算：<br>　　　　　11010000.10101000.00000000.00000000 </p>
+<p>转化为十进制后为：<br>　　　　　　192.168.0.0</p>
+<p>通过以上对三组计算机IP地址与子网掩码的AND运算后，我们可以看到它运算结果是一样的，均为192.168.0.0，所以计算机就会把这三台计算机视为在同一子网络。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>输入的第一行是本机IP地址；<br>第二行是子网掩码；<br>第三行是一个整数N，表示后面有N个IP地址；<br>接下来N行：<br>第1个IP地址<br>…<br>…<br>第N个IP地址</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>计算并输出N个IP地址是否与本机在同一子网内。对于在同一子网的输出“INNER”，对于在不同子网的输出“OUTER”。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>192.168.0.1<br>255.255.255.0<br>3<br>192.168.0.2<br>192.168.0.254<br>192.168.1.2</p>
+</blockquote>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>INNER<br>INNER<br>OUTER</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>首先，利用scanf的特殊输入方式去除小数点，将输入的ip地址存储在数组中，然后，利用&amp;进行与操作，最后进行比较即可</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int local_ip[4] , subnet_mask[4] , test_ip[4];</span><br><span class="line">	int local_ip_subnet_mask[4] , test_ip_subnet_mask[4];</span><br><span class="line">	scanf(&quot;%d.%d.%d.%d&quot; , &amp;local_ip[0] , &amp;local_ip[1] , &amp;local_ip[2] , &amp;local_ip[3]);</span><br><span class="line">	scanf(&quot;%d.%d.%d.%d&quot; , &amp;subnet_mask[0] , &amp;subnet_mask[1] , &amp;subnet_mask[2] , &amp;subnet_mask[3]);</span><br><span class="line">	int i = 0;</span><br><span class="line">	while(i &lt; 4) &#123;</span><br><span class="line">		local_ip_subnet_mask[i] = local_ip[i] &amp; subnet_mask[i];</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	int N;</span><br><span class="line">	cin &gt;&gt; N;</span><br><span class="line">	for(int j = 0;j &lt; N;j++) &#123;</span><br><span class="line">		scanf(&quot;%d.%d.%d.%d&quot; , &amp;test_ip[0] , &amp;test_ip[1] , &amp;test_ip[2] , &amp;test_ip[3]);</span><br><span class="line">		i = 0;</span><br><span class="line">		while(i &lt; 4) &#123;</span><br><span class="line">			test_ip_subnet_mask[i] = subnet_mask[i] &amp; test_ip[i];</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		int k = 0;</span><br><span class="line">		for(i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">			if(test_ip_subnet_mask[i] != local_ip_subnet_mask[i]) &#123;</span><br><span class="line">				k = 1;</span><br><span class="line">				cout &lt;&lt; &quot;OUTER&quot; &lt;&lt; endl;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(!k)</span><br><span class="line">			cout &lt;&lt; &quot;INNER&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-B-快来秒杀我"><a href="#问题-B-快来秒杀我" class="headerlink" title="问题 B: 快来秒杀我"></a>问题 B: 快来秒杀我</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>根据前几次竞赛的情况，这次为了给新手们一点信心，特提供这道秒杀题来让大家杀。<br>ASCII码大家应该都学过了，现在给你一个很简单的任务，输入数字，表示ASCII码，输出对应的文本内容。</p>
+<h2 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h2><p>输入的第一行是一个整数T（1&lt;&#x3D;T&lt;&#x3D;100）。<br>接下来输入T个正整数，这些数之间用空格、换行或Tab键来分隔。<br>测试数据保证输入的整数都在ASCII码范围内，并且不小于32。</p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><p>在一行中输出对应的文本内容。</p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>13<br>72 101 108 108 111 44<br>32 119 111 114 108 100 33</p>
+</blockquote>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>Hello, world!</p>
+</blockquote>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>首先，用source_num存储刚刚输入的数字，然后，立即强制将其转化成字符形式即可</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int T = 0 , source_num;</span><br><span class="line">	cin &gt;&gt; T;</span><br><span class="line">	int tmp = 0;</span><br><span class="line">	for(; tmp &lt; T; tmp++) &#123;</span><br><span class="line">		cin &gt;&gt; source_num;</span><br><span class="line">		cout &lt;&lt; (char)(source_num);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-C-最短路径1"><a href="#问题-C-最短路径1" class="headerlink" title="问题 C: 最短路径1"></a>问题 C: 最短路径1</h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>有n个城市m条道路（n&lt;1000, m&lt;10000），每条道路有个长度，请找到从起点s到终点t的最短距离和经过的城市名。</p>
+<h2 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h2><p>输入包含多组测试数据。</p>
+<p>每组第一行输入四个数，分别为n，m，s，t。</p>
+<p>接下来m行，每行三个数，分别为两个城市名和距离。</p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><p>每组输出占两行。</p>
+<p>第一行输出起点到终点的最短距离。</p>
+<p>第二行输出最短路径上经过的城市名，如果有多条最短路径，输出字典序最小的那条。若不存在从起点到终点的路径，则输出“can’t arrive”。</p>
+<h2 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>3 3 1 3<br>1 3 3<br>1 2 1<br>2 3 1</p>
+</blockquote>
+<h2 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>2<br>1 2 3</p>
+</blockquote>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><p>首先，利用while循环输入n m s t，然后，利用一个队列存储城市名及其间距，最后利用Dijkstra算法求出最短路径</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">#define _CRT_SECURE_NO_WARNINGS</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">#include &lt;cfloat&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">const int INF = 1000000;</span><br><span class="line">const int max_num = 1010;</span><br><span class="line">using namespace std;</span><br><span class="line">struct node &#123;</span><br><span class="line">    int w;</span><br><span class="line">    int v;</span><br><span class="line">    node(int a , int b) : v(a) , w(b) &#123;  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">int des[max_num] , pre[max_num];</span><br><span class="line">vector&lt;node&gt; G[max_num];</span><br><span class="line">bool visited[max_num];</span><br><span class="line">int N;</span><br><span class="line">void Dijkstra(int s) &#123;</span><br><span class="line">    fill(des , des + N + 1 , INF);</span><br><span class="line">    for (int i = 0; i &lt; N; i++)</span><br><span class="line">		pre[i] = i;</span><br><span class="line">    memset(visited , 0 , N + 1);</span><br><span class="line">    des[s] = 0;</span><br><span class="line">    for (int i = 1 , Min , u; i &lt;= N; i++) &#123;</span><br><span class="line">        Min = INF;</span><br><span class="line">		u = -1;</span><br><span class="line">        for (int k = 1; k &lt;= N; k++) &#123;</span><br><span class="line">            if (!visited[k] &amp;&amp; Min &gt; des[k]) &#123;</span><br><span class="line">                Min = des[k];</span><br><span class="line">                u = k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u == -1)</span><br><span class="line">			return;</span><br><span class="line">        visited[u] = true;</span><br><span class="line">        for (int k = 0; k &lt; G[u].size(); k++) &#123;</span><br><span class="line">            int v = G[u][k].v;</span><br><span class="line">            if(!visited[v]) &#123;</span><br><span class="line">                if (des[v] &gt; des[u] + G[u][k].w) &#123;</span><br><span class="line">                    des[v] = des[u] + G[u][k].w;</span><br><span class="line">                    pre[v] = u;</span><br><span class="line">                &#125;</span><br><span class="line">                else if (des[v] == des[u] + G[u][k].w &amp;&amp; pre[v] &gt; u)</span><br><span class="line">                    pre[v] = u;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void DFS(int s , int e) &#123;</span><br><span class="line">    if (s == e) &#123;</span><br><span class="line">        cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    DFS(s , pre[e]);</span><br><span class="line">    cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    #ifdef _DEBUG</span><br><span class="line">    freopen(&quot;data.txt&quot;, &quot;r+&quot;, stdin);</span><br><span class="line">	#endif // _DEBUG</span><br><span class="line">    std::ios::sync_with_stdio(false);</span><br><span class="line">    int M , s , t;</span><br><span class="line">    while(cin &gt;&gt; N &gt;&gt; M &gt;&gt; s &gt;&gt; t) &#123;</span><br><span class="line">        for (int i = 1; i &lt;= N; i++)</span><br><span class="line">            G[i].clear();</span><br><span class="line">        for (int i = 0, d = 1; i &lt; M; i++ , d *= 2) &#123;</span><br><span class="line">            int u , v , w;</span><br><span class="line">            cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">            G[u].push_back(node(v , w));</span><br><span class="line">            G[v].push_back(node(u , w));</span><br><span class="line">        &#125;</span><br><span class="line">        Dijkstra(s);</span><br><span class="line">        if (des[t] != INF) &#123;</span><br><span class="line">            cout &lt;&lt; des[t] &lt;&lt; endl;</span><br><span class="line">            DFS(s, t);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            cout &lt;&lt; &quot;can&#x27;t arrive&quot;;</span><br><span class="line">       cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-D-二叉排序树"><a href="#问题-D-二叉排序树" class="headerlink" title="问题 D: 二叉排序树"></a>问题 D: 二叉排序树</h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一系列整数，建立二叉排序数，并进行前序，中序，后序遍历。</p>
+<h2 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h2><p>输入第一行包括一个整数n(1&lt;&#x3D;n&lt;&#x3D;100)。接下来的一行包括n个整数。</p>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><p>可能有多组测试数据，对于每组数据，将题目所给数据建立一个二叉排序树，并对二叉排序树进行前序、中序和后序遍历。每种遍历结果输出一行。每行最后一个数据之后有一个空格。</p>
+<h2 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>1<br>2<br>2<br>8 15<br>4<br>21 10 5 39 </p>
+</blockquote>
+<h2 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>2<br>2<br>2<br>8 15<br>8 15<br>15 8<br>21 10 5 39<br>5 10 21 39<br>5 10 39 21 </p>
+</blockquote>
+<h2 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h2><p>首先，将输入的数据建立一棵二叉排序树，然后，进行前序、中序、后序遍历即可</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct node &#123;</span><br><span class="line">	int data;</span><br><span class="line">	node *left , *right;</span><br><span class="line">&#125;;</span><br><span class="line">void insert(node* &amp;root , int x) &#123;</span><br><span class="line">	if (root == NULL) &#123;</span><br><span class="line">		root = new node;</span><br><span class="line">		root-&gt;data = x;</span><br><span class="line">		root-&gt;left = root-&gt;right = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (x == root-&gt;data) </span><br><span class="line">		return;</span><br><span class="line">	else if (x &lt; root-&gt;data)</span><br><span class="line">		insert(root-&gt;left , x);</span><br><span class="line">	else</span><br><span class="line">		insert(root-&gt;right , x);</span><br><span class="line">&#125;</span><br><span class="line">void preorder(node* root) &#123;</span><br><span class="line">	if (root == NULL)</span><br><span class="line">		return;</span><br><span class="line">	cout &lt;&lt; root-&gt;data &lt;&lt; &quot; &quot;;</span><br><span class="line">	preorder(root-&gt;left);</span><br><span class="line">	preorder(root-&gt;right);</span><br><span class="line">&#125;</span><br><span class="line">void inorder(node* root) &#123;</span><br><span class="line">	if (root == NULL)</span><br><span class="line">		return;</span><br><span class="line">	inorder(root-&gt;left);</span><br><span class="line">	cout &lt;&lt; root-&gt;data &lt;&lt; &quot; &quot;;</span><br><span class="line">	inorder(root-&gt;right);</span><br><span class="line">&#125;</span><br><span class="line">void postorder(node* root) &#123;</span><br><span class="line">	if (root == NULL)</span><br><span class="line">		return;</span><br><span class="line">	postorder(root-&gt;left);</span><br><span class="line">	postorder(root-&gt;right);</span><br><span class="line">	cout &lt;&lt; root-&gt;data &lt;&lt; &quot; &quot;;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n , x;</span><br><span class="line">	while (cin &gt;&gt; n) &#123;</span><br><span class="line">		node *root = NULL;</span><br><span class="line">		for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">			cin &gt;&gt; x;</span><br><span class="line">			insert(root , x);</span><br><span class="line">		&#125;</span><br><span class="line">		preorder(root);</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">		inorder(root);</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">		postorder(root);</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="知识延伸"><a href="#知识延伸" class="headerlink" title="知识延伸"></a>知识延伸</h2><ol>
+<li>二叉排序树或者是一棵空树，或者是具有下列性质的二叉树：<br>（1）若左子树不空，则左子树上所有节点的值均小于它的根节点的值；<br>（2）若右子树不空，则右子树上所有节点的值均大于它的根节点的值；<br>（3）左、右子树也分别为二叉排序树；<br>（4）没有键值相等的节点。</li>
+<li>前序、中序、后序</li>
+</ol>
+<ul>
+<li><p>前序遍历（根–&gt;左–&gt;右）</p>
+<pre><code>  (1) 访问根节点 
+
+  (2) 前序遍历左子树 
+
+  (3) 前序遍历右子树
+</code></pre>
+</li>
+<li><p>中序遍历（左–&gt;根–&gt;右）</p>
+<pre><code>  (1)中序遍历左子树
+
+  (2) 访问根节点
+
+  (3) 中序遍历右子树
+</code></pre>
+</li>
+<li><p>后序遍历（左–&gt;右–&gt;根）</p>
+<pre><code>  (1) 后序遍历左子树
+
+  (2) 后序遍历右子树
+
+  (3) 访问根节点
+</code></pre>
+</li>
+</ul>
+<h1 id="问题-E-密码锁"><a href="#问题-E-密码锁" class="headerlink" title="问题 E: 密码锁"></a>问题 E: 密码锁</h1><h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>玛雅人有一种密码，如果字符串中出现连续的2012四个数字就能解开密码。给一个长度为N的字符串，（2&#x3D;&lt;N&lt;&#x3D;13）该字符串中只含有0,1,2三种数字，问这个字符串要移位几次才能解开密码，每次只能移动相邻的两个数字。例如02120经过一次移位，可以得到20120,01220,02210,02102，其中20120符合要求，因此输出为1.如果无论移位多少次都解不开密码，输出-1。</p>
+<h2 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h2><p>第一行输入N，第二行输入N个数字，只包含0，1，2</p>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><h2 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>5<br>02120</p>
+</blockquote>
+<h2 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>1</p>
+</blockquote>
+<h2 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h2><p>首先，利用一个双端队列record记录输入的输入的012字符串，然后，比较即可</p>
+<h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;deque&gt;</span><br><span class="line">#include &lt;memory.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">string str;</span><br><span class="line">int N;</span><br><span class="line">bool visited[1600000];</span><br><span class="line">int main() &#123;</span><br><span class="line">	bool match(const string &amp;str1);</span><br><span class="line">	int hash_func(string cur);</span><br><span class="line">    while(scanf(&quot;%d&quot; , &amp;N) != EOF) &#123;</span><br><span class="line">        cin &gt;&gt; str;</span><br><span class="line">        memset(visited , 0 , sizeof(visited));</span><br><span class="line">        deque&lt;string&gt; record;</span><br><span class="line">        record.push_back(str);</span><br><span class="line">        int cur_lel = 1 , nxt_lel = 0 , ret = 0;</span><br><span class="line">        bool found = false;</span><br><span class="line">        while(!record.empty()) &#123;</span><br><span class="line">            string cur = record.front();</span><br><span class="line">            record.pop_front();</span><br><span class="line">            cur_lel --;</span><br><span class="line">            if(match(cur)) &#123;</span><br><span class="line">                found = true;</span><br><span class="line">                cout &lt;&lt; ret &lt;&lt; endl;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            for(int i = 0; i &lt; N - 1; i ++) &#123;</span><br><span class="line">                swap(cur[i] , cur[i+1]);</span><br><span class="line">                int hash_val = hash_func(cur);</span><br><span class="line">                if(!visited[hash_val]) &#123;</span><br><span class="line">                    visited[hash_val] = true;</span><br><span class="line">                    record.push_back(cur);</span><br><span class="line">                    nxt_lel ++;</span><br><span class="line">                &#125;</span><br><span class="line">                swap(cur[i] , cur[i+1]);</span><br><span class="line">            &#125;</span><br><span class="line">            if(cur_lel == 0) &#123;</span><br><span class="line">                cur_lel = nxt_lel;</span><br><span class="line">                nxt_lel = 0;</span><br><span class="line">                ret ++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(!found)</span><br><span class="line">            cout &lt;&lt; -1 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">bool match(const string &amp;str1) &#123;</span><br><span class="line">    for(int i = 0; i &lt;= N - 4; i ++) &#123;</span><br><span class="line">        if(str1.substr(i, 4) == &quot;2012&quot;)</span><br><span class="line">            return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">int hash_func(string cur) &#123;</span><br><span class="line">    int res = 0;</span><br><span class="line">    for(int i = 0; i &lt; N; i ++)</span><br><span class="line">        res = res * 3 + cur[i] - &#x27;0&#x27;;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="知识延伸-1"><a href="#知识延伸-1" class="headerlink" title="知识延伸"></a>知识延伸</h2><ol>
+<li>string类的使用<br>string的子串：<br>string substr(int pos &#x3D; 0,int n &#x3D; npos) const;&#x2F;&#x2F;返回pos开始的n个字符组成的字符串<br>string的交换：<br>void swap(string &amp;s2);    &#x2F;&#x2F;交换当前字符串与s2的值</li>
+<li>memset的使用<br>函数原型：void *memset(void *s , int ch , size_t  n )<br>函数解释：将s中的前n个字节用ch替换并且返回s<br>函数作用：在一段内存块中填充某一个给定的值，常用于较大的对结构体和数组的清零操作。</li>
+<li>deque<br>void push_front(const T&amp; x):双端队列头部增加一个元素x<br>void push_back(const T&amp; x):双端队列尾部增加一个元素x<br>void pop_front():删除双端队列中最前一个元素<br>void pop_back():删除双端队列中最后一个元素<br>void clear():清空双端队列中最后一个元素<br>void swap(deque&amp;):交换两个同类型向量的数据</li>
+</ol>
+<h1 id="问题-F-算法10-6-10-8：快速排序"><a href="#问题-F-算法10-6-10-8：快速排序" class="headerlink" title="问题 F: 算法10-6~10-8：快速排序"></a>问题 F: 算法10-6~10-8：快速排序</h1><h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>快速排序是对起泡排序的一种改进。它的基本思想是，通过一趟排序将待排序的记录分割成两个独立的部分，其中一部分记录的关键字均比另一部分的关键字小，在分成两个部分之后则可以分别对这两个部分继续进行排序，从而使整个序列有序。<br>快速排序的算法可以描述如下：<br><img src="https://img-blog.csdnimg.cn/2019092116070650.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"><br>在本题中，读入一串整数，将其使用以上描述的快速排序的方法从小到大排序，并输出。</p>
+<h2 id="输入-5"><a href="#输入-5" class="headerlink" title="输入"></a>输入</h2><p>输入的第一行包含1个正整数n，表示共有n个整数需要参与排序。其中n不超过100000。<br>第二行包含n个用空格隔开的正整数，表示n个需要排序的整数。</p>
+<h2 id="输出-5"><a href="#输出-5" class="headerlink" title="输出"></a>输出</h2><p>只有1行，包含n个整数，表示从小到大排序完毕的所有整数。<br>请在每个整数后输出一个空格，并请注意行尾输出换行。</p>
+<h2 id="样例输入-5"><a href="#样例输入-5" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>10<br>2 8 4 6 1 10 7 3 5 9</p>
+</blockquote>
+<h2 id="样例输出-5"><a href="#样例输出-5" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>1 2 3 4 5 6 7 8 9 10 </p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>在本题中，需要按照题目描述中的算法完成快速排序的算法。</p>
+<p>快速排序是一种十分常用的排序算法，其平均时间复杂度为O(knlnn)，其中n为待排序序列中记录的个数，k为常数。大量的实际应用证明，在所有同数量级的此类排序算法中，快速排序的常数因子k是最小的，因此，就平均时间而言，快速排序是目前被认为最好的一种内部排序方法。</p>
+<p>而在C语言的常用编译器中，qsort函数是一个非常常用的快速排序函数。</p>
+<h2 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h2><p>首先，利用一个大数组存储输入的待排序数字，然后，利用qsort函数进行处理，最后，输出即可。</p>
+<h2 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int cmp(const void *a , const void *b);</span><br><span class="line">	int arr[100000];</span><br><span class="line">	int n;</span><br><span class="line">	scanf(&quot;%d&quot; , &amp;n);</span><br><span class="line">	int tmp;</span><br><span class="line">	for(tmp = 0; tmp &lt; n; tmp++)</span><br><span class="line">		scanf(&quot;%d&quot; , &amp;arr[tmp]);</span><br><span class="line">	qsort(arr , n , sizeof(arr[0]) , cmp);</span><br><span class="line">	for(tmp = 0; tmp &lt; n - 1; tmp++)</span><br><span class="line">		printf(&quot;%d &quot; , arr[tmp]);</span><br><span class="line">	printf(&quot;%d\n&quot; , arr[tmp]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int cmp(const void *a , const void *b) &#123;</span><br><span class="line">  return *(int *)a - *(int *)b; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h2 id="知识延伸-2"><a href="#知识延伸-2" class="headerlink" title="知识延伸"></a>知识延伸</h2><p>qsort函数包含在&lt;stdlib.h&gt;中</p>
+<p>qsort函数声明如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void qsort(void * base,size_t nmemb,size_t size ,int(*compar)(const void *,const void *));</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>base,要排序的数组<br>nmemb,数组中元素的数目<br>size,每个数组元素占用的内存空间，可使用sizeof函数获得</p>
+<h1 id="问题-G-算法10-2：折半插入排序"><a href="#问题-G-算法10-2：折半插入排序" class="headerlink" title="问题 G: 算法10-2：折半插入排序"></a>问题 G: 算法10-2：折半插入排序</h1><h2 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h2><p>折半插入排序同样是一种非常简单的排序方法，它的基本操作是在一个已经排好序的有序表中进行查找和插入。不难发现这个查找的过程可以十分自然的修改成折半查找的方式进行实现。<br>折半插入排序的算法可以描述如下：<br><img src="https://img-blog.csdnimg.cn/20190921162838113.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"><br>在本题中，读入一串整数，将其使用以上描述的折半插入排序的方法从小到大排序，并输出。</p>
+<h2 id="输入-6"><a href="#输入-6" class="headerlink" title="输入"></a>输入</h2><p>输入的第一行包含1个正整数n，表示共有n个整数需要参与排序。其中n不超过1000。<br>第二行包含n个用空格隔开的正整数，表示n个需要排序的整数。</p>
+<h2 id="输出-6"><a href="#输出-6" class="headerlink" title="输出"></a>输出</h2><p>只有1行，包含n个整数，表示从小到大排序完毕的所有整数。<br>请在每个整数后输出一个空格，并请注意行尾输出换行。</p>
+<h2 id="样例输入-6"><a href="#样例输入-6" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>10<br>2 8 4 6 1 10 7 3 5 9</p>
+</blockquote>
+<h2 id="样例输出-6"><a href="#样例输出-6" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>1 2 3 4 5 6 7 8 9 10 </p>
+</blockquote>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>在本题中，需要按照题目描述中的算法完成折半插入排序的算法。与直接插入排序算法不同，折半插入排序算法在查找插入位置时采用了折半查找的方案，减少了关键字之间的比较次数，但是记录的移动次数并没有发生改变，因此折半插入排序的时间复杂度依旧为O(n2)，同样不是一种非常高效的排序方法。</p>
+<h2 id="思路-6"><a href="#思路-6" class="headerlink" title="思路"></a>思路</h2><p>首先，利用一个大数组arr存储输入的待排序数字，然后，调用BInsertSort函数进行处理，最后，输出即可。</p>
+<h2 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int arr[1000] , n;</span><br><span class="line">int main() &#123;</span><br><span class="line">	void BInsertSort();</span><br><span class="line"> 	while(cin &gt;&gt; n) &#123;</span><br><span class="line"> 		for(int i = 0; i &lt; n; i++)</span><br><span class="line"> 			cin &gt;&gt; arr[i];</span><br><span class="line"> 		BInsertSort();</span><br><span class="line"> 		for(int i = 0; i &lt; n; i++)</span><br><span class="line"> 			cout&lt;&lt; arr[i] &lt;&lt;&quot; &quot;;</span><br><span class="line"> 		cout &lt;&lt; endl;</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	return 0;</span><br><span class="line">&#125;</span><br><span class="line">void BInsertSort() &#123;</span><br><span class="line">	for(int i = 1; i &lt; n; i++) &#123;</span><br><span class="line"> 		int low = 0 , high = i - 1 , mid;</span><br><span class="line"> 		while(low &lt;= high) &#123;</span><br><span class="line"> 			mid = (low + high) / 2;</span><br><span class="line">	 		if(arr[mid] &gt;= arr[i])</span><br><span class="line">	  			high = mid - 1;</span><br><span class="line">	 		else</span><br><span class="line">	  			low = mid + 1;	</span><br><span class="line">		&#125;</span><br><span class="line">		int temp = arr[i];</span><br><span class="line">		for(int j = i; j &gt; low; j--)</span><br><span class="line">	 		arr[j] = arr[j - 1];</span><br><span class="line">		arr[low] = temp;</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-H-算法7-9：最小生成树"><a href="#问题-H-算法7-9：最小生成树" class="headerlink" title="问题 H: 算法7-9：最小生成树"></a>问题 H: 算法7-9：最小生成树</h1><h2 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h2><p>最小生成树问题是实际生产生活中十分重要的一类问题。假设需要在n个城市之间建立通信联络网，则连通n个城市只需要n-1条线路。这时，自然需要考虑这样一个问题，即如何在最节省经费的前提下建立这个通信网。<br>可以用连通网来表示n个城市以及n个城市之间可能设置的通信线路，其中网的顶点表示城市，边表示两个城市之间的线路，赋于边的权值表示相应的代价。对于n个顶点的连通网可以建立许多不同的生成树，每一棵生成树都可以是一个通信网。现在，需要选择一棵生成树，使总的耗费最小。这个问题就是构造连通网的最小代价生成树，简称最小生成树。一棵生成树的代价就是树上各边的代价之和。<br>而在常用的最小生成树构造算法中，普里姆（Prim）算法是一种非常常用的算法。以下是其算法的大致结构：<br><img src="https://img-blog.csdnimg.cn/20190921164333252.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"><br>在本题中，读入一个无向图的邻接矩阵（即数组表示），建立无向图并按照以上描述中的算法建立最小生成树，并输出最小生成树的代价。</p>
+<h2 id="输入-7"><a href="#输入-7" class="headerlink" title="输入"></a>输入</h2><p>输入的第一行包含一个正整数n，表示图中共有n个顶点。其中n不超过50。<br>以后的n行中每行有n个用空格隔开的整数，对于第i行的第j个整数，如果不为0，则表示第i个顶点和第j个顶点有直接连接且代价为相应的值，0表示没有直接连接。当i和j相等的时候，保证对应的整数为0。<br>输入保证邻接矩阵为对称矩阵，即输入的图一定是无向图，且保证图中只有一个连通分量。</p>
+<h2 id="输出-7"><a href="#输出-7" class="headerlink" title="输出"></a>输出</h2><p>只有一个整数，即最小生成树的总代价。请注意行尾输出换行。</p>
+<h2 id="样例输入-7"><a href="#样例输入-7" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>4<br>0 2 4 0<br>2 0 3 5<br>4 3 0 1<br>0 5 1 0</p>
+</blockquote>
+<h2 id="样例输出-7"><a href="#样例输出-7" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>6</p>
+</blockquote>
+<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><p>在本题中，需要掌握图的深度优先遍历的方法，并需要掌握无向图的连通性问题的本质。通过求出无向图的连通分量和对应的生成树，应该能够对图的连通性建立更加直观和清晰的概念。</p>
+<h2 id="思路-7"><a href="#思路-7" class="headerlink" title="思路"></a>思路</h2><p>首先，利用GetM()函数将邻接矩阵输入并存储在Arrow结构体中，然后，调用MiniSpanTree()函数生成最小生成树，最后，运算并输出最小生成树的代价。</p>
+<h2 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define MAXLEN 100</span><br><span class="line">int Flag[MAXLEN] = &#123;0&#125;;</span><br><span class="line">int flag;</span><br><span class="line">int N;</span><br><span class="line">int Count;</span><br><span class="line">typedef struct &#123;</span><br><span class="line">    int len;</span><br><span class="line">	int NodeA;</span><br><span class="line">	int NodeB;</span><br><span class="line">&#125; arrow;</span><br><span class="line">arrow Arrow[MAXLEN * MAXLEN];</span><br><span class="line">int main() &#123;</span><br><span class="line">	void GetM();</span><br><span class="line">	void MiniSpanTree(); </span><br><span class="line">    GetM();</span><br><span class="line">	MiniSpanTree();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">void GetM() &#123;</span><br><span class="line">	cin &gt;&gt; N;</span><br><span class="line">	int temp;</span><br><span class="line">	Count = 0;</span><br><span class="line">	for(int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">	    for(int j = 0; j &lt; N; j++) &#123;</span><br><span class="line">		     cin &gt;&gt; temp;</span><br><span class="line">			 if(temp != 0 &amp;&amp; i &gt;= j) &#123;</span><br><span class="line">			     Arrow[Count].len = temp;</span><br><span class="line">				 Arrow[Count].NodeA = i;</span><br><span class="line">				 Arrow[Count].NodeB = j;</span><br><span class="line">				 Count++;</span><br><span class="line">			 &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void MiniSpanTree() &#123;</span><br><span class="line">    arrow Temp;</span><br><span class="line">	int LenNum = 0;</span><br><span class="line">	int Sum = 0;</span><br><span class="line">	int i;</span><br><span class="line">	for(i = 0; i &lt; Count; i++) &#123;</span><br><span class="line">	    for(int j = i; j &lt; Count; j++) &#123;</span><br><span class="line">		    if(Arrow[i].len &gt; Arrow[j].len) &#123;</span><br><span class="line">				Temp.len = Arrow[i].len;</span><br><span class="line">				Temp.NodeA = Arrow[i].NodeA;</span><br><span class="line">				Temp.NodeB = Arrow[i].NodeB;</span><br><span class="line">				Arrow[i].len = Arrow[j].len;</span><br><span class="line">				Arrow[i].NodeA = Arrow[j].NodeA;</span><br><span class="line">				Arrow[i].NodeB = Arrow[j].NodeB;</span><br><span class="line">				Arrow[j].len = Temp.len;</span><br><span class="line">				Arrow[j].NodeA = Temp.NodeA;</span><br><span class="line">				Arrow[j].NodeB = Temp.NodeB;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    flag = 0;</span><br><span class="line">    int a , b;</span><br><span class="line">	for(int i = 0; i &lt; Count &amp;&amp; LenNum &lt; N - 1; i++) &#123;</span><br><span class="line">        a = Arrow[i].NodeA;</span><br><span class="line">        b = Arrow[i].NodeB;</span><br><span class="line">        if(Flag[a] == 0 &amp;&amp; Flag[b] == 0) &#123;</span><br><span class="line">                Sum += Arrow[i].len;</span><br><span class="line">                LenNum++;</span><br><span class="line">                flag++;</span><br><span class="line">                Flag[a] = flag;</span><br><span class="line">                Flag[b] = flag;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(Flag[a] == 0 &amp;&amp; Flag[b] != 0) &#123;</span><br><span class="line">            Sum += Arrow[i].len;</span><br><span class="line">            LenNum++;</span><br><span class="line">            Flag[a] = Flag[b];</span><br><span class="line">        &#125;</span><br><span class="line">        else if(Flag[a] != 0 &amp;&amp; Flag[b] == 0) &#123;</span><br><span class="line">            Sum += Arrow[i].len;</span><br><span class="line">            LenNum++;</span><br><span class="line">            Flag[b] = Flag[a];</span><br><span class="line">        &#125;</span><br><span class="line">        else if(Flag[a] != 0 &amp;&amp; Flag[b] != 0 &amp;&amp; Flag[a] != Flag[b]) &#123;</span><br><span class="line">            Sum += Arrow[i].len;</span><br><span class="line">            LenNum++;</span><br><span class="line">            int t = Flag[b];</span><br><span class="line">            Flag[b] = Flag[a];</span><br><span class="line">            for(int j = 0; j &lt; N; j++) &#123;</span><br><span class="line">                if(Flag[j] == t)</span><br><span class="line">                    Flag[j] = Flag[a];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	cout &lt;&lt; Sum &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-I-8-5-11-Disk-Tree"><a href="#问题-I-8-5-11-Disk-Tree" class="headerlink" title="问题 I: 8.5.11 Disk Tree"></a>问题 I: 8.5.11 Disk Tree</h1><h2 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h2><p>Hacker Bill has accidentally lost all the information from his workstation’s hard drive and he has no backup copies of its contents. He does not regret for the loss of the files themselves, but for the very nice and convenient directory structure that he had created and cherished during years of work. Fortunately, Bill has several copies of directory listings from his hard drive. Using those listings he was able to recover full paths (like “WINNT\SYSTEM32\CERTSRV\CERTCO~1\X86”) for some directories. He put all of them in a file by writing each path he has found on a separate line. Your task is to write a program that will help Bill to restore his state of the art directory structure by providing nicely formatted directory tree.</p>
+<h2 id="输入-8"><a href="#输入-8" class="headerlink" title="输入"></a>输入</h2><p>The first line of the input file contains single integer number N (1 &lt;&#x3D; N &lt;&#x3D; 500) that denotes a total number of distinct directory paths. Then N lines with directory paths follow. Each directory path occupies a single line and does not contain any spaces, including leading or trailing ones. No path exceeds 80 characters. Each path is listed once and consists of a number of directory names separated by a back slash (“&quot;). </p>
+<p>Each directory name consists of 1 to 8 uppercase letters, numbers, or the special characters from the following list: exclamation mark, number sign, dollar sign, percent sign, ampersand, apostrophe, opening and closing parenthesis, hyphen sign, commercial at, circumflex accent, underscore, grave accent, opening and closing curly bracket, and tilde (“!#$%&amp;’()-@^_&#96;{}~”). </p>
+<h2 id="输出-8"><a href="#输出-8" class="headerlink" title="输出"></a>输出</h2><p>Write to the output file the formatted directory tree. Each directory name shall be listed on its own line preceded by a number of spaces that indicate its depth in the directory hierarchy. The subdirectories shall be listed in lexicographic order immediately after their parent directories preceded by one more space than their parent directory. Top level directories shall have no spaces printed before their names and shall be listed in lexicographic order. See sample below for clarification of the output format.</p>
+<h2 id="样例输入-8"><a href="#样例输入-8" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>7<br>WINNT\SYSTEM32\CONFIG<br>GAMES<br>WINNT\DRIVERS<br>HOME<br>WIN\SOFT<br>GAMES\DRIVERS<br>WINNT\SYSTEM32\CERTSRV\CERTCO~1\X86</p>
+</blockquote>
+<h2 id="样例输出-8"><a href="#样例输出-8" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>GAMES<br>DRIVERS<br>HOME<br>WIN<br>SOFT<br>WINNT<br>DRIVERS<br>SYSTEM32<br>CERTSRV<br>CERTCO~1<br>X86<br>CONFIG</p>
+</blockquote>
+<h2 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h2><h2 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define MAXNODE 20000</span><br><span class="line">#define MAXLEN 85</span><br><span class="line">#define MAXWORD 45</span><br><span class="line">map&lt;string , int&gt; m[MAXNODE];</span><br><span class="line">void preOder_traversal(int midx , int indentation) &#123;</span><br><span class="line">	for (map&lt;string , int&gt;::iterator i = m[midx].begin(); i != m[midx].end(); ++i) &#123;</span><br><span class="line">		for (int i = 0; i &lt; indentation; ++i)</span><br><span class="line">			printf(&quot; &quot;);</span><br><span class="line">		printf(&quot;%s\n&quot; , (i-&gt;first).c_str());</span><br><span class="line">		preOder_traversal(i-&gt;second , indentation+1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n , i , j , midx , midx_counter = 0;</span><br><span class="line">	char str[MAXLEN];</span><br><span class="line">	int word_init[MAXWORD];</span><br><span class="line">	string current_str;</span><br><span class="line">	scanf(&quot;%d&quot; , &amp;n);</span><br><span class="line">	while (n--) &#123;</span><br><span class="line">		scanf(&quot;%s&quot;, str);</span><br><span class="line">		word_init[0] = 0;</span><br><span class="line">		j = 1;</span><br><span class="line">		for (i = 0; str[i]; ++i) &#123;</span><br><span class="line">			if(str[i] == &#x27;\\&#x27;) &#123;</span><br><span class="line">				str[i] = 0;</span><br><span class="line">				word_init[j++] = i + 1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		midx = 0;</span><br><span class="line">		for (i = 0; i &lt; j; ++i) &#123;</span><br><span class="line">			current_str = str + word_init[i];</span><br><span class="line">			if(!m[midx].count(current_str))</span><br><span class="line">				m[midx][current_str] = (++midx_counter);</span><br><span class="line">			midx = m[midx][current_str];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	preOder_traversal(0 , 0);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/12/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B93-4/" data-id="cl1qb1dxc0013qktubk984vf2" data-title="CUMTOJ数据结构实验内容3-4" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/12/%E5%8C%BA%E5%9D%97%E9%93%BE%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          区块链详解（转）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/12/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">JavaScript学习记录1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

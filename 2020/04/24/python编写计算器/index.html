@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>python编写计算器 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 背景大三了，朱老师说如果想不上python前半部分的语法课程，需要做出来点东西让他看看，思虑再三，我选择了计算器这个应用，个人感觉可能稍微好做一点吧(#^.^#)(#^.^#) 2 设计思路程序的流程图如图1所示，首先利用tkinter模块创建窗口并初始化界面，然后再窗口中添加控件并进行合理的布局，此外，还得实现对应按钮的回调函数的功能，最后，让窗口不停的循环，使其处于一直显示的效果，这样，G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python编写计算器">
+<meta property="og:url" content="http://example.com/2020/04/24/python%E7%BC%96%E5%86%99%E8%AE%A1%E7%AE%97%E5%99%A8/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="1 背景大三了，朱老师说如果想不上python前半部分的语法课程，需要做出来点东西让他看看，思虑再三，我选择了计算器这个应用，个人感觉可能稍微好做一点吧(#^.^#)(#^.^#) 2 设计思路程序的流程图如图1所示，首先利用tkinter模块创建窗口并初始化界面，然后再窗口中添加控件并进行合理的布局，此外，还得实现对应按钮的回调函数的功能，最后，让窗口不停的循环，使其处于一直显示的效果，这样，G">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200424162243415.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020042416234624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200424162514515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200424162551803.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200424162627583.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200424162728466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200424162747375.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200424162812116.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200424162925264.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200424163217231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-04-24T08:17:42.000Z">
+<meta property="article:modified_time" content="2020-04-24T09:40:24.265Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200424162243415.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-python编写计算器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/24/python%E7%BC%96%E5%86%99%E8%AE%A1%E7%AE%97%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2020-04-24T08:17:42.000Z" itemprop="datePublished">2020-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      python编写计算器
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>大三了，朱老师说如果想不上python前半部分的语法课程，需要做出来点东西让他看看，思虑再三，我选择了计算器这个应用，个人感觉可能稍微好做一点吧(#^.^#)(#^.^#)</p>
+<h1 id="2-设计思路"><a href="#2-设计思路" class="headerlink" title="2 设计思路"></a>2 设计思路</h1><p>程序的流程图如图1所示，首先利用tkinter模块创建窗口并初始化界面，然后再窗口中添加控件并进行合理的布局，此外，还得实现对应按钮的回调函数的功能，最后，让窗口不停的循环，使其处于一直显示的效果，这样，GUI界面的配置就完成了。</p>
+<p>另外，就是输入运算式的处理过程了。首先，我们通过鼠标点击对应按钮显示出运算式，然后将运算式的内容存储在格式化列表中，接着先计算乘除，后计算加减，最后，就可以输出运算结果了。此外，我们还可以通过点击按钮Mc实现清零操作和Mr实现调出上次运算的结果。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162243415.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图1 计算器流程图"></p>
+<h1 id="3-开发环境配置"><a href="#3-开发环境配置" class="headerlink" title="3 开发环境配置"></a>3 开发环境配置</h1><p>在pycharm2019版中，我进行代码的编辑和审计。在运行过程中，我还安装了python代码的模块re，模块re（Regular Expression正则表达式）可以实现提供各种正则表达式的匹配操作，在文本解析、复杂字符串分析和信息提取时是一个非常有用的工具，安装过程如图2所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/2020042416234624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图2 python模块re的安装"></p>
+<h1 id="4-运行使用方法"><a href="#4-运行使用方法" class="headerlink" title="4 运行使用方法"></a>4 运行使用方法</h1><p>为了演示方便，我分别在Windows 10和Linux（Kali）的命令行中进行演示，最终发现除了运行界面的图标有些许差异，效果相同。</p>
+<h1 id="5-运行效果截屏"><a href="#5-运行效果截屏" class="headerlink" title="5 运行效果截屏"></a>5 运行效果截屏</h1><p>在Windows10的命令行下，输入python3 demo.py运行程序，效果如图3所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162514515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3 windows下的计算功能"></p>
+<p>点击按钮Mc即可实现清零操作，效果如图4所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162551803.png" alt="图4 清零"></p>
+<p>点击按钮Mr实现调出上一次的运算结果，效果如图5所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162627583.png" alt="图5 调出上次的运算结果"></p>
+<p>在Linux（Kali）的命令行下，输入python3 demo.py运行程序，效果如图6所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162728466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图6 Linux下的计算功能"></p>
+<p>点击按钮Mc即可实现清零操作，效果如图7所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162747375.png" alt="图7 清零"></p>
+<p>点击按钮Mr实现调出上一次的运算结果，效果如图8所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162812116.png" alt="图8 调出上次的运算结果"></p>
+<h1 id="6-运行效果分析总结"><a href="#6-运行效果分析总结" class="headerlink" title="6 运行效果分析总结"></a>6 运行效果分析总结</h1><h2 id="6-1-缺陷"><a href="#6-1-缺陷" class="headerlink" title="6.1 缺陷"></a>6.1 缺陷</h2><p>为了方便显示，我就利用python的tkinter模块来做成了GUI界面，而且只能用鼠标点击对应按钮进行算式运算，因为自己没有学习过基于Windows或者Linux平台上的软件开发，所以就没有进一步将其做成可执行程序。<br>开发过程中的程序算法还有一定的缺陷，就是不能计算两个负数向乘或者向除的结果，例如<font color=red>(-2)&#x2F;(-5)</font>或者<font color=red>(-2)*(-5)</font><br>类似的运算，win10执行结果如图9所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162925264.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图9 错误界面"></p>
+<h2 id="6-2-改进方法"><a href="#6-2-改进方法" class="headerlink" title="6.2 改进方法"></a>6.2 改进方法</h2><p>经过调试后，我发现原来出现错误的代码是由于两个负数-2和-3相乘后，结果列表的存储为<font color=red>[‘+’,’6’]</font>，而<font color=red>sum &#x3D; float(eq[0])</font>试图将列表中的’+’转化为浮点数，结果爆出错误<font color=red>ValueError: could not convert string to float: ‘+’</font>，如果将判断条件改为<font color=red>if eq[0] !&#x3D; ‘-‘ and eq[0] !&#x3D; ‘+’:</font>就可以避免列表的第一项为’+’而导致强制类型转换错误的存在，改进后可以运算两个负数相乘的结果，改进后的效果如图10所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424163217231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图10 错误界面改进"></p>
+<h1 id="7-源代码"><a href="#7-源代码" class="headerlink" title="7 源代码"></a>7 源代码</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line">#coding: utf-8</span><br><span class="line">#Filename: calculator_GUI.py</span><br><span class="line">#author：邢帅坤</span><br><span class="line"></span><br><span class="line">import tkinter as TK</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">def change(eq,count):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param eq: 刚去完括号或者乘除后的格式化列表</span><br><span class="line">    :param count: 发生变化的元素的索引</span><br><span class="line">    :return: 返回一个不存在 &#x27;+-&#x27; ,&#x27;--&#x27;类的格式化列表</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    if eq[count] == &#x27;-&#x27;:</span><br><span class="line">        if eq[count-1] == &#x27;-&#x27;:</span><br><span class="line">            eq[count-1] = &#x27;+&#x27;</span><br><span class="line">            del eq[count]</span><br><span class="line">        elif eq[count-1] == &#x27;+&#x27;:</span><br><span class="line">            eq[count-1] = &#x27;-&#x27;</span><br><span class="line">            del eq[count]</span><br><span class="line">    return eq</span><br><span class="line"></span><br><span class="line">def remove_multiplication_division(eq):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param eq: 带有乘除号的格式化列表</span><br><span class="line">    :return: 去除了乘除号的格式化列表</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    count = 0</span><br><span class="line">    for i in eq:</span><br><span class="line">        if i == &#x27;*&#x27;:</span><br><span class="line">            if eq[count+1] != &#x27;-&#x27;:</span><br><span class="line">                eq[count-1] = float(eq[count-1]) * float(eq[count+1])</span><br><span class="line">                del(eq[count])</span><br><span class="line">                del(eq[count])</span><br><span class="line">            elif eq[count+1] == &#x27;-&#x27;:</span><br><span class="line">                eq[count] = float(eq[count-1]) * float(eq[count+2])</span><br><span class="line">                eq[count-1] = &#x27;-&#x27;</span><br><span class="line">                del(eq[count+1])</span><br><span class="line">                del(eq[count+1])</span><br><span class="line">            eq = change(eq,count-1)</span><br><span class="line">            return remove_multiplication_division(eq)</span><br><span class="line">        elif i == &#x27;/&#x27;:</span><br><span class="line">            if eq[count+1] != &#x27;-&#x27;:</span><br><span class="line">                eq[count-1] = float(eq[count-1]) / float(eq[count+1])</span><br><span class="line">                del(eq[count])</span><br><span class="line">                del(eq[count])</span><br><span class="line">            elif eq[count+1] == &#x27;-&#x27;:</span><br><span class="line">                eq[count] = float(eq[count-1]) / float(eq[count+2])</span><br><span class="line">                eq[count-1] = &#x27;-&#x27;</span><br><span class="line">                del(eq[count+1])</span><br><span class="line">                del(eq[count+1])</span><br><span class="line">            eq = change(eq,count-1)</span><br><span class="line">            return remove_multiplication_division(eq)</span><br><span class="line">        count = count + 1</span><br><span class="line">    return eq</span><br><span class="line"></span><br><span class="line">def remove_plus_minus(eq):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param eq: 只带有加减号的格式化列表</span><br><span class="line">    :return: 计算出整个列表的结果</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    count = 0</span><br><span class="line">    if eq[0] != &#x27;-&#x27; and eq[0] != &#x27;+&#x27;:</span><br><span class="line">        sum = float(eq[0])</span><br><span class="line">    else:</span><br><span class="line">        sum = 0.0</span><br><span class="line">    for i in eq:</span><br><span class="line">        if i == &#x27;-&#x27;:</span><br><span class="line">            sum = sum - float(eq[count+1])</span><br><span class="line">        elif i == &#x27;+&#x27;:</span><br><span class="line">            sum = sum + float(eq[count+1])</span><br><span class="line">        count = count + 1</span><br><span class="line">    if sum &gt;= 0:</span><br><span class="line">        eq = [str(sum)]</span><br><span class="line">    else:</span><br><span class="line">        eq = [&#x27;-&#x27;,str(-sum)]</span><br><span class="line">    return eq</span><br><span class="line"></span><br><span class="line">def calculate(s_eq):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param s_eq: 不带括号的格式化列表</span><br><span class="line">    :return: 计算结果</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    if &#x27;*&#x27; or &#x27;/&#x27; in s_eq:</span><br><span class="line">        s_eq = remove_multiplication_division(s_eq)</span><br><span class="line">    if &#x27;+&#x27; or &#x27;-&#x27; in s_eq:</span><br><span class="line">        s_eq = remove_plus_minus(s_eq)</span><br><span class="line">    return s_eq</span><br><span class="line"></span><br><span class="line">def simplify(format_list):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param format_list: 输入的算式格式化列表如[&#x27;60&#x27;,&#x27;+&#x27;,&#x27;7&#x27;,&#x27;*&#x27;,&#x27;8&#x27;]</span><br><span class="line">    :return: 通过递归去括号，返回简化后的列表</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">    bracket = 0     # 用于存放左括号在格式化列表中的索引</span><br><span class="line">    count = 0</span><br><span class="line">    for i in format_list:</span><br><span class="line">        if i == &#x27;(&#x27;:</span><br><span class="line">            bracket = count</span><br><span class="line">        elif i == &#x27;)&#x27;:</span><br><span class="line">            temp = format_list[bracket + 1 : count]</span><br><span class="line">            new_temp = calculate(temp)</span><br><span class="line">            format_list = format_list[:bracket] + new_temp + format_list[count+1:]</span><br><span class="line">            format_list = change(format_list,bracket)     # 解决去括号后会出现的--  +- 问题</span><br><span class="line">            return simplify(format_list)            # 递归去括号</span><br><span class="line">        count = count + 1</span><br><span class="line">    return format_list                     # 当递归到最后一层的时候，不再有括号，因此返回列表</span><br><span class="line"></span><br><span class="line">def caculator(eq):</span><br><span class="line">    format_list = eq_format(eq)</span><br><span class="line">    s_eq = simplify(format_list)</span><br><span class="line">    ans = calculate(s_eq)</span><br><span class="line">    if len(ans) == 2:</span><br><span class="line">        ans = -float(ans[1])</span><br><span class="line">    else:</span><br><span class="line">        ans = float(ans[0])</span><br><span class="line">    return ans</span><br><span class="line"></span><br><span class="line"># 获得按下的数字或者符号</span><br><span class="line">def getnum(num):</span><br><span class="line">    temp = equation.get()</span><br><span class="line">    temp2 = result.get()</span><br><span class="line">    print(temp)</span><br><span class="line">    print(temp2)</span><br><span class="line">    if temp2 != &#x27; &#x27;:</span><br><span class="line">        temp = &#x27;0&#x27;</span><br><span class="line">        temp2 = &#x27; &#x27;</span><br><span class="line">        result.set(temp2)</span><br><span class="line">    if (temp==&#x27;0&#x27;):</span><br><span class="line">        temp = &#x27;&#x27;</span><br><span class="line">    temp = temp + num</span><br><span class="line">    equation.set(temp)</span><br><span class="line">    print(equation)</span><br><span class="line"></span><br><span class="line"># 按下Mc键时，去除最后一个字符</span><br><span class="line">def clear():</span><br><span class="line">    equation.set(&#x27;0&#x27;)</span><br><span class="line">    result.set(&#x27;0&#x27;)</span><br><span class="line"></span><br><span class="line"># 按下Mr时，调出上次运算的结果</span><br><span class="line">def get_last_result():</span><br><span class="line">    equation.set(last_result)</span><br><span class="line">    result.set(0)</span><br><span class="line"></span><br><span class="line"># 按下等于号时计算结果</span><br><span class="line">def run():</span><br><span class="line">    global last_result</span><br><span class="line">    temp = equation.get()</span><br><span class="line">    temp = temp.replace(&#x27;x&#x27;,&#x27;*&#x27;)</span><br><span class="line">    temp = temp.replace(&#x27;÷&#x27;,&#x27;/&#x27;)</span><br><span class="line">    print(temp)</span><br><span class="line">    answer = caculator(temp)</span><br><span class="line">    answer = &#x27;%.2f&#x27;%answer</span><br><span class="line">    result.set(str(answer))</span><br><span class="line">    last_result = answer</span><br><span class="line"></span><br><span class="line">def eq_format(eq):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param eq: 输入的算式字符串</span><br><span class="line">    :return: 格式化以后的列表，如[&#x27;60&#x27;,&#x27;+&#x27;,&#x27;7&#x27;,&#x27;*&#x27;,&#x27;8&#x27;]</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    format_list = re.findall(&#x27;[\d\.]+|\(|\+|\-|\*|\/|\)&#x27;,eq)</span><br><span class="line">    return format_list</span><br><span class="line"></span><br><span class="line"># 主窗口</span><br><span class="line">root = TK.Tk()                  # 创建TK实例</span><br><span class="line">root.title(&quot;邢帅坤的计算器&quot;)     # 设置窗口的显示名字</span><br><span class="line">root.resizable(0,0)             # 设置主窗口的宽度和高度是否可以通过鼠标进行拉伸改变，此处设置为不能</span><br><span class="line">root.geometry(&#x27;320x420&#x27;)        # 这里设置主窗口的初始尺寸，因为我们在上面设定了主窗口大小  不可变，因此这个尺寸也就是主窗口一直不变的尺寸了</span><br><span class="line"></span><br><span class="line">result = TK.StringVar()         # 用来显示结果的可变文本</span><br><span class="line">equation = TK.StringVar()       # 用来显示算式的可变文本</span><br><span class="line">result.set(&#x27; &#x27;)                 # 赋初始值</span><br><span class="line">equation.set(&#x27;0&#x27;)               # 赋初始值</span><br><span class="line"></span><br><span class="line"># 结果显示框</span><br><span class="line">show_uresult = TK.Label(root,bg=&#x27;white&#x27;,fg = &#x27;black&#x27;,font = (&#x27;Arail&#x27;,&#x27;15&#x27;),bd=&#x27;0&#x27;,textvariable =equation,anchor=&#x27;se&#x27;)</span><br><span class="line">show_dresult = TK.Label(root,bg=&#x27;white&#x27;,fg = &#x27;black&#x27;,font = (&#x27;Arail&#x27;,&#x27;30&#x27;),bd=&#x27;0&#x27;,textvariable=result,anchor=&#x27;se&#x27;)</span><br><span class="line">show_uresult.place(x=&#x27;10&#x27;,y=&#x27;10&#x27;,width=&#x27;300&#x27;,height=&#x27;50&#x27;)</span><br><span class="line">show_dresult.place(x=&#x27;10&#x27;,y=&#x27;60&#x27;,width=&#x27;300&#x27;,height=&#x27;50&#x27;)</span><br><span class="line"></span><br><span class="line"># 按钮</span><br><span class="line"># 第一行按钮</span><br><span class="line">button_Mc =TK.Button(root,text=&#x27;Mc&#x27;,bg=&#x27;DarkGray&#x27;,command=clear)</span><br><span class="line">button_Mc.place(x = &#x27;10&#x27;,y=&#x27;150&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_Mr =TK.Button(root,text=&#x27;Mr&#x27;,bg=&#x27;DarkGray&#x27;,command = get_last_result)</span><br><span class="line">button_Mr.place(x = &#x27;90&#x27;,y=&#x27;150&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_lbracket=TK.Button(root,text=&#x27;(&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;(&#x27;))</span><br><span class="line">button_lbracket.place(x = &#x27;170&#x27;,y=&#x27;150&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_rbracket=TK.Button(root,text=&#x27;)&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;)&#x27;))</span><br><span class="line">button_rbracket.place(x = &#x27;250&#x27;,y=&#x27;150&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"># 第二行按钮</span><br><span class="line">button_7 =TK.Button(root,text=&#x27;7&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;7&#x27;))</span><br><span class="line">button_7.place(x = &#x27;10&#x27;,y=&#x27;205&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_8 =TK.Button(root,text=&#x27;8&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;8&#x27;))</span><br><span class="line">button_8.place(x = &#x27;90&#x27;,y=&#x27;205&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_9 =TK.Button(root,text=&#x27;9&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;9&#x27;))</span><br><span class="line">button_9.place(x = &#x27;170&#x27;,y=&#x27;205&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_division =TK.Button(root,text=&#x27;÷&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;÷&#x27;))</span><br><span class="line">button_division.place(x = &#x27;250&#x27;,y=&#x27;205&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"># 第三行按钮</span><br><span class="line">button_4 =TK.Button(root,text=&#x27;4&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;4&#x27;))</span><br><span class="line">button_4.place(x = &#x27;10&#x27;,y=&#x27;260&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_5 =TK.Button(root,text=&#x27;5&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;5&#x27;))</span><br><span class="line">button_5.place(x = &#x27;90&#x27;,y=&#x27;260&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_6 =TK.Button(root,text=&#x27;6&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;6&#x27;))</span><br><span class="line">button_6.place(x = &#x27;170&#x27;,y=&#x27;260&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_multiplication =TK.Button(root,text=&#x27;X&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;x&#x27;))</span><br><span class="line">button_multiplication.place(x = &#x27;250&#x27;,y=&#x27;260&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"># 第四行按钮</span><br><span class="line">button_1 =TK.Button(root,text=&#x27;1&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda :getnum(&#x27;1&#x27;))</span><br><span class="line">button_1.place(x = &#x27;10&#x27;,y=&#x27;315&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_2 =TK.Button(root,text=&#x27;2&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;2&#x27;))</span><br><span class="line">button_2.place(x = &#x27;90&#x27;,y=&#x27;315&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_3 =TK.Button(root,text=&#x27;3&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;3&#x27;))</span><br><span class="line">button_3.place(x = &#x27;170&#x27;,y=&#x27;315&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_minus =TK.Button(root,text=&#x27;—&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;-&#x27;))</span><br><span class="line">button_minus.place(x = &#x27;250&#x27;,y=&#x27;315&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"># 第五行按钮</span><br><span class="line">button_0 =TK.Button(root,text=&#x27;0&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;0&#x27;))</span><br><span class="line">button_0.place(x = &#x27;10&#x27;,y=&#x27;370&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_point =TK.Button(root,text=&#x27;.&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;.&#x27;))</span><br><span class="line">button_point.place(x = &#x27;90&#x27;,y=&#x27;370&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_equal=TK.Button(root,text=&#x27;=&#x27;,bg=&#x27;DarkGray&#x27;,command= run)</span><br><span class="line">button_equal.place(x = &#x27;170&#x27;,y=&#x27;370&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_plus =TK.Button(root,text=&#x27;+&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;+&#x27;))</span><br><span class="line">button_plus.place(x = &#x27;250&#x27;,y=&#x27;370&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"></span><br><span class="line"># 在编写完所有的GUI与相关函数后，我们要让这个窗口不断的循环，做成一直显示的效果，如果没有这一行，主窗口会出现一瞬间然后消失，像是程序没有运行一样</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+
+<h1 id="8-参考文章"><a href="#8-参考文章" class="headerlink" title="8 参考文章"></a>8 参考文章</h1><p>本文在创作过程中参考了下面大佬的文章：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a971956955/article/details/81634767">https://blog.csdn.net/a971956955/article/details/81634767</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/04/24/python%E7%BC%96%E5%86%99%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="cl1qb1dyq004uqktu0qigflzg" data-title="python编写计算器" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/25/%E7%89%A9%E8%81%94%E7%BD%91%E5%BA%94%E7%94%A8%E5%B1%82CoAP%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8%E5%AE%9E%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          物联网应用层CoAP通信安全实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/10/%E5%9F%BA%E4%BA%8EAPP%20Inventor%E7%9A%84GPS%E4%BD%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">基于APP Inventor的GPS位置应用开发</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

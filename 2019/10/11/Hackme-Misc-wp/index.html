@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hackme-Misc-wp | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="背景：这几天老师要求我们把hackme的题目做出来，于是便开始了新的征程，一定把全部flag找出来fighting…… 题目及解题思路1 Flag All flags are in this format: FLAG{This is flag’s format}  题目描述中就是flag  2 corgi can fly Corgi is cute, right?Pillow (Python) a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hackme-Misc-wp">
+<meta property="og:url" content="http://example.com/2019/10/11/Hackme-Misc-wp/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="背景：这几天老师要求我们把hackme的题目做出来，于是便开始了新的征程，一定把全部flag找出来fighting…… 题目及解题思路1 Flag All flags are in this format: FLAG{This is flag’s format}  题目描述中就是flag  2 corgi can fly Corgi is cute, right?Pillow (Python) a">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913143247733.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913143346832.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913143430130.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913143437988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913143507801.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019091314364095.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913143705821.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913143714220.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913143724782.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913143733610.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914113853371.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914114105733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914114317971.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190913175523826.png">
+<meta property="article:published_time" content="2019-10-11T13:04:39.000Z">
+<meta property="article:modified_time" content="2020-01-10T02:55:40.918Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190913143247733.png">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Hackme-Misc-wp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/11/Hackme-Misc-wp/" class="article-date">
+  <time class="dt-published" datetime="2019-10-11T13:04:39.000Z" itemprop="datePublished">2019-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CTF/">CTF</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Hackme-Misc-wp
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h1><p>这几天老师要求我们把hackme的题目做出来，于是便开始了新的征程，一定把全部flag找出来<br>fighting……</p>
+<h1 id="题目及解题思路"><a href="#题目及解题思路" class="headerlink" title="题目及解题思路"></a>题目及解题思路</h1><h2 id="1-Flag"><a href="#1-Flag" class="headerlink" title="1 Flag"></a>1 Flag</h2><blockquote>
+<p>All flags are in this format:<br> FLAG{This is flag’s format}</p>
+</blockquote>
+<p>题目描述中就是flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913143247733.png"></p>
+<h2 id="2-corgi-can-fly"><a href="#2-corgi-can-fly" class="headerlink" title="2 corgi can fly"></a>2 corgi can fly</h2><blockquote>
+<p>Corgi is cute, right?<br>Pillow (Python) and Bitmap (.NET) are your friends.<br>(Maybe you can try stegsolve)</p>
+</blockquote>
+<p>打开链接后是一只小柯基，而看完题目描述后有了思路，题目提示我们用stegsolve做题</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913143346832.png"></p>
+<p>用stegsolve还真的发现了一个二维码</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913143430130.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>扫完之后出现flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913143437988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h3><p>stegsolve的使用</p>
+<h2 id="3-Television"><a href="#3-Television" class="headerlink" title="3 Television"></a>3 Television</h2><blockquote>
+<p>Looks like my television was broken</p>
+</blockquote>
+<p>打开题目链接后是一张bmp图片，估计就是图片隐写的题目，下载下来后用binwalk没发现异样，然后用C32ASM搜索flag时找到了答案</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913143507801.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展-1"><a href="#知识扩展-1" class="headerlink" title="知识扩展"></a>知识扩展</h3><p>C32ASM的使用</p>
+<h2 id="4-meow"><a href="#4-meow" class="headerlink" title="4 meow"></a>4 meow</h2><blockquote>
+<p>Pusheen is cute!</p>
+</blockquote>
+<p>题目给我们一个png图片，在kali中先binwalk一波，发现有好多文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binwalk meow.png</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/2019091314364095.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"><br>然后，就用foremost命令分离出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foremost meow.png</span><br></pre></td></tr></table></figure>
+
+<p>发现只有png文件夹下有一个00000000.png，zip文件夹下有一个00000094.zip，然而这个压缩包需要密码，先分析一下这个zip文件，运行下面命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip -v 00000094.zip</span><br></pre></td></tr></table></figure>
+
+<p>发现压缩包中还有个png图片，其CRC32值是cdad52bd</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913143705821.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>而原来00000000.png的CRC32值也是cdad52bd<br>这里的00000000.png的CRC32值是先通过运行下面两行命令得到的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip plain.zip 00000000.png</span><br><span class="line">unzip -v plain.zip</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190913143714220.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>于是这个zip存在明文攻击，于是把压缩00000000.png得到的plain.zip和00000094.zip放到pkcrack的文件夹下，利用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./pkcrack -C 00000094.zip -c meow/t39.1997-6/p296x100/10173502_279586372215628_1950740854_n.png -P plain.zip  -p 00000000.png -d result.zip -a</span><br></pre></td></tr></table></figure>
+
+<p>得到一个result.zip</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913143724782.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>result.zip里面就有我们要找到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913143733610.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190914113853371.png"></p>
+<h3 id="知识扩展："><a href="#知识扩展：" class="headerlink" title="知识扩展："></a>知识扩展：</h3><ul>
+<li>kali命令的使用binwalk、foremost、zip<br>举个栗子：<br>zip plain.zip 00000000.png<br>上述命令的意思是把00000000.png这个图片压缩成一个名为plain.zip的压缩包<br>unzip -v plain.zip的意思是分析这个plain.zip压缩包中有什么文件</li>
+<li>明文攻击<br>这是一种较为高效的攻击手段，大致原理是当你不知道一个zip的密码，但是你有zip中的一个已知文件（文件大小要大于12Byte）或者已经通过其他手段知道zip加密文件中的某些内容时，因为同一个zip压缩包里的所有文件都是使用同一个加密密钥来加密的，所以可以用已知文件来找加密密钥，利用密钥来解锁其他加密文件，此时我们可以尝试用ARCHPR或者pkcrack进行明文攻击~</li>
+<li>pkcrack<br>pkcrack的安装<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash -ex</span><br><span class="line">wget https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack/pkcrack-1.2.2.tar.gz</span><br><span class="line">tar xzf pkcrack-1.2.2.tar.gz</span><br><span class="line">cd pkcrack-1.2.2/src</span><br><span class="line">make</span><br><span class="line">mkdir -p ../../bin</span><br><span class="line">cp extract findkey makekey pkcrack zipdecrypt ../../bin</span><br><span class="line">cd ../../</span><br></pre></td></tr></table></figure>
+  上面为安装pkcrack的shell脚本，我们先运行上面的脚本后<br>  chmod u+x install.sh<br>  再运行上述命令给予其适当的权限即可使用pkcrack<br>  pkcrack的使用<br>  -C:要破解的目标文件(含路径)<br>  -c:破解文件中的明文文件的名字(其路径不包括系统路径,从zip文件一层开始)<br>  -P:压缩后的明文文件<br>  -p:压缩的明文文件中明文文件的名字(也就是readme.txt在readme.zip中的位置)</li>
+</ul>
+<h2 id="5-where-is-flag"><a href="#5-where-is-flag" class="headerlink" title="5 where is flag"></a>5 where is flag</h2><blockquote>
+<p>Do you know regular expression?</p>
+</blockquote>
+<p>打开题目链接后会下载一个flag.xz的压缩包，在kali中解压得到一个名为flag的文件，估计flag就藏在里面，于是运行下面的命令得到了好多flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat flag|grep -oP &quot;FLAG&#123;[^&#123;&#125;]+?&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>个人比较笨，将这些flag一个一个试，也算是找到了flag<br>参考了一下大佬们的博客，都是说用下面的命令也可以得到flag，命令的大概意思是匹配出所有FLAG{}的内容，其中花括号中的内容可以是a-z、A-Z和0-9的任何字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat flag | grep -oP FLAG&#123;[a-zA-Z0-9]*&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20190914114105733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="知识扩展：-1"><a href="#知识扩展：-1" class="headerlink" title="知识扩展："></a>知识扩展：</h3><ul>
+<li>正则表达式<br>正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些符合某个模式的文本。<br>具体语法参见下面这位大佬的博客<br><a target="_blank" rel="noopener" href="http://idc.wanyunshuju.com/cym/30.html">http://idc.wanyunshuju.com/cym/30.html</a></li>
+</ul>
+<h2 id="6-encoder"><a href="#6-encoder" class="headerlink" title="6 encoder"></a>6 encoder</h2><blockquote>
+<p>Can you decode this?</p>
+</blockquote>
+<p>打开题目链接后又是一个压缩包，在kali中解压得到encoder文件夹，里面包含着encoder.py和flag.enc文件，用pycharm打开encoder.py后，发现是好几个加密的函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"></span><br><span class="line">import random</span><br><span class="line">import string</span><br><span class="line"></span><br><span class="line">def rot13(s):</span><br><span class="line">    return s.translate(string.maketrans(string.uppercase + string.lowercase,</span><br><span class="line">        string.uppercase[13:] + string.uppercase[:13] +</span><br><span class="line">        string.lowercase[13:] + string.lowercase[:13]))</span><br><span class="line"></span><br><span class="line">def base64(s):</span><br><span class="line">    return &#x27;&#x27;.join(s.encode(&#x27;base64&#x27;).split())</span><br><span class="line"></span><br><span class="line">def hex(s):</span><br><span class="line">    return s.encode(&#x27;hex&#x27;)</span><br><span class="line"></span><br><span class="line">def upsidedown(s):</span><br><span class="line">    return s.translate(string.maketrans(string.uppercase + string.lowercase,</span><br><span class="line">        string.lowercase + string.uppercase))</span><br><span class="line"></span><br><span class="line">flag = &#x27;FLAG&#123;.....................&#125;&#x27;  # try to recover flag</span><br><span class="line"></span><br><span class="line">E = (rot13, base64, hex, upsidedown)</span><br><span class="line"></span><br><span class="line">for i in range(random.randint(30, 50)):</span><br><span class="line">    print i</span><br><span class="line">    c = random.randint(0, len(E) - 1)</span><br><span class="line">    flag = &#x27;%d%s&#x27; % (c, E[c](flag))</span><br><span class="line"></span><br><span class="line">open(&#x27;flag.enc&#x27;, &#x27;w&#x27;).write(flag)</span><br></pre></td></tr></table></figure>
+
+<p>根据上述代码，可将其改为解密的函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from binascii import unhexlify</span><br><span class="line">from base64 import b64decode</span><br><span class="line">import string</span><br><span class="line"></span><br><span class="line">def unrot13(s):</span><br><span class="line">     return s.translate(str.maketrans(string.ascii_uppercase[13:] + string.ascii_uppercase[:13] +</span><br><span class="line">                                         string.ascii_lowercase[13:] + string.ascii_lowercase[:13],</span><br><span class="line">                                         string.ascii_uppercase + string.ascii_lowercase))</span><br><span class="line"></span><br><span class="line">def unupsidedown(s):</span><br><span class="line">     return s.translate(str.maketrans(string.ascii_lowercase + string.ascii_uppercase,</span><br><span class="line">                                         string.ascii_uppercase + string.ascii_lowercase))</span><br><span class="line"></span><br><span class="line">def unbase64(s):</span><br><span class="line">    return b64decode(s).decode()</span><br><span class="line"></span><br><span class="line">def unhex(s):</span><br><span class="line">    return unhexlify(s).decode()</span><br><span class="line"></span><br><span class="line">with open(&#x27;D:/CTF Practice/encoder/flag.enc&#x27;) as f:</span><br><span class="line">    data = f.read()</span><br><span class="line"></span><br><span class="line">E = (unrot13, unbase64, unhex, unupsidedown)</span><br><span class="line"></span><br><span class="line">for i in range(50):</span><br><span class="line">    c, data = int(data[0]), data[1:]</span><br><span class="line">    data = E[c](data)</span><br><span class="line">    if data.startswith(&#x27;FLAG&#x27;):</span><br><span class="line">        print(data)</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+
+<p>运行之后即可得到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190914114317971.png"></p>
+<h2 id="7-slow"><a href="#7-slow" class="headerlink" title="7 slow"></a>7 slow</h2><blockquote>
+<p>nc hackme.inndy.tw 7708<br>OMG, It’s slow.</p>
+</blockquote>
+<p>这道题到现在都不懂，先把别人的wp拿过来，日后在好好研究吧，朋友们说是时序攻击的题目，需要跑特别半个多小时，我在自己电脑上连这些代码都不能完全调试正确，的确是太菜了，所以这一题就不给大家提供flag了<br>代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line">from pwn import *</span><br><span class="line">import time</span><br><span class="line">#context.log_level = &#x27;debug&#x27;</span><br><span class="line">string = &#x27;ABCDEFGHIIJKLMNOPQRSTUVWXYZ0123456789_&#x27;</span><br><span class="line">flag1 = [&#x27;F&#x27;,&#x27;L&#x27;,&#x27;A&#x27;,&#x27;G&#x27;,&#x27;&#123;&#x27;]</span><br><span class="line">flag2 = &#x27;&#125;&#x27;</span><br><span class="line">start_delay = 6</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    for i in string:</span><br><span class="line">        p = remote(&#x27;hackme.inndy.tw&#x27;, 7708)</span><br><span class="line">        temp = p.recv()</span><br><span class="line">        #print temp</span><br><span class="line">        a = time.time()</span><br><span class="line">        payload = &#x27;&#x27;.join(flag1)+i+flag2</span><br><span class="line">        print i</span><br><span class="line">        p.sendline(payload)</span><br><span class="line">        s = p.recvline()</span><br><span class="line">        #print s</span><br><span class="line">        b = time.time()</span><br><span class="line">        print &quot;[+] Delay:&quot;, int(b-a), &#x27;s&#x27;</span><br><span class="line">        p.close()</span><br><span class="line">        if (start_delay) != len(flag1)+1:</span><br><span class="line">            #p.close()</span><br><span class="line">            print &#x27;ooooooooooooo_has_some_bug_repeating...&#x27;</span><br><span class="line">            time.sleep(0.8)</span><br><span class="line">            p = remote(&#x27;hackme.inndy.tw&#x27;, 7708)</span><br><span class="line">            temp = p.recv()</span><br><span class="line">            a = time.time()</span><br><span class="line">            p.sendline(payload)</span><br><span class="line">            s = p.recvline()</span><br><span class="line">            b = time.time()</span><br><span class="line">            print &quot;[+] Delay:&quot;, int(b-a), &#x27;s&#x27; </span><br><span class="line">            p.close()</span><br><span class="line"></span><br><span class="line">        if (start_delay+1) == int(b-a):</span><br><span class="line">            print payload</span><br><span class="line">            flag1.append(i)</span><br><span class="line">            start_delay += 1</span><br><span class="line">            break</span><br><span class="line">        time.sleep(0.2)</span><br><span class="line">    if start_delay == 30:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+
+<h3 id="知识扩展：-2"><a href="#知识扩展：-2" class="headerlink" title="知识扩展："></a>知识扩展：</h3><p>时序攻击：</p>
+<blockquote>
+<p>在密码学中,时序攻击是一种侧信道攻击,攻击者试图通过分析加密算法的时间执行来推导出密码。每一个逻辑运算在计算机需要时间来执行,根据输入不同,精确测量执行时间,根据执行时间反推出密码。</p>
+</blockquote>
+<h2 id="8-pusheen-txt"><a href="#8-pusheen-txt" class="headerlink" title="8 pusheen.txt"></a>8 pusheen.txt</h2><blockquote>
+<p>Do you think pusheen is cute?</p>
+</blockquote>
+<p>题目txt文件中只有两种格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -oP &quot;(▄▀▀▒██▒██▒)|(▄▀▀ ██ ██ )&quot; pusheen.txt|xargs echo -n|sed &#x27;s/▄▀▀▒██▒██▒/1/g;s/▄▀▀ ██ ██/0/g;s/ //g&#x27;|rax2 -bt</span><br></pre></td></tr></table></figure>
+
+<p>于是将其替换成1和0，然后转换成ASCII，出现了flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20190913175523826.png"></p>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>本文在参考下面各位大佬的博客的得到的部分wp，谢谢各位朋友</p>
+<p><a target="_blank" rel="noopener" href="https://www.aloxaf.com/2018/07/hackme_inndy/">https://www.aloxaf.com/2018/07/hackme_inndy&#x2F;</a><br><a target="_blank" rel="noopener" href="https://sp4rta.github.io/2018/12/01/inndy-writeup/">https://sp4rta.github.io/2018/12/01/inndy-writeup/</a><br><a target="_blank" rel="noopener" href="https://sp4rta.github.io/2018/12/01/inndy-writeup/">https://sp4rta.github.io/2018/12/01/inndy-writeup/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/11/Hackme-Misc-wp/" data-id="cl1qb1dxu002kqktu8y1lhdnn" data-title="Hackme-Misc-wp" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/11/Hackme-Web-wp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Hackme-Web-wp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/11/kali%E5%AD%A6%E4%B9%A0-msf-%E4%BD%BF%E7%94%A8msfvenom%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC%E7%94%A8%E4%BA%8E%E6%B8%97%E9%80%8F%E8%99%9A%E6%8B%9F%E6%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">kali学习-msf-使用msfvenom生成木马用于渗透虚拟机</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

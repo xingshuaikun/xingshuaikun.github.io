@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="iHui">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="iHui">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-计算机考研复试--牛客网--C语言练习--Day2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day2/" class="article-date">
+  <time class="dt-published" datetime="2021-01-02T13:13:49.000Z" itemprop="datePublished">2021-01-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day2/">计算机考研复试--牛客网--C语言练习--Day2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>第2天的题目略微有点难，不过没事，还是能拿下来的，哼……</p>
+<h1 id="2-题目：skew数"><a href="#2-题目：skew数" class="headerlink" title="2 题目：skew数"></a>2 题目：skew数</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在 skew binary 表示中，第 k 位的值 x[k] 表示 x[k]×(2^(k+1)-1)。每个位上的可能数字是 0 或 1，最后面一个非零位可以是 2，例如，10120(skew) &#x3D; 1×(2^5-1) + 0×(2^4-1) + 1×(2^3-1) + 2×(2^2-1) + 0×(2^1-1) &#x3D; 31 + 0 + 7 + 6 + 0 &#x3D; 44。前十个 skew 数是 0、1、2、10、11、12、20、100、101、以及 102。</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><blockquote>
+<p>输入包括多组数据，每组数据包含一个 skew 数。</p>
+</blockquote>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><blockquote>
+<p>对应每一组数据，输出相应的十进制形式。结果不超过 2^31-1。</p>
+</blockquote>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><blockquote>
+<p>10120<br>200000000000000000000000000000<br>10<br>1000000000000000000000000000000<br>11<br>100<br>11111000001110000101101102000</p>
+</blockquote>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><blockquote>
+<p>44<br>2147483646<br>3<br>2147483647<br>4<br>7<br>1041110737</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;                          //pow可计算2^k的值</span><br><span class="line">char skew[1000] = &#123; 0 &#125;;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int i, charLength, result;</span><br><span class="line">    while(scanf(&quot;%s&quot;, &amp;skew) != EOF) &#123;     //输入的字符不是&#x27;\0&#x27;</span><br><span class="line">        i = 0;</span><br><span class="line">        result = 0;                        //记录结果</span><br><span class="line">        while(skew[i] != &#x27;\0&#x27;)             //skew数组存储输入的字符</span><br><span class="line">            i++;</span><br><span class="line">        charLength = i;                                              //当前字符串长度为charLength</span><br><span class="line">        for(int j = 0; j &lt; i; j++) &#123;</span><br><span class="line">            //数字字符的ASCII码与大小相差48</span><br><span class="line">            result += (skew[j] - 48) * (pow(2 , charLength) - 1);</span><br><span class="line">            charLength--;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;, result);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-分析"><a href="#3-分析" class="headerlink" title="3 分析"></a>3 分析</h1><p>通过此题可以掌握几个方法：</p>
+<ul>
+<li>不确定输入的字符串长度时可以用一个字符数组<font color=red>char skew[1000] &#x3D; { 0 };</font>来存储待输入的字符串</li>
+<li>利用EOF来表示没有输入结束，比如<font color=red>while(scanf(“%s”, &amp;skew) !&#x3D; EOF)</font></li>
+<li><font color=red>#include &lt;math.h&gt;</font>有一个函数<font color=red>pow(基数，指数)</font>可以计算基数的指数次方</li>
+<li>ASCII表中<font color=red>数字字符减去48</font>记得对应数字的大小</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day2/" data-id="cl1qb1e02008hqktufjti8j2k" data-title="计算机考研复试--牛客网--C语言练习--Day2" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机考研复试--牛客网--C语言练习--Day1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day1/" class="article-date">
+  <time class="dt-published" datetime="2021-01-01T01:43:16.000Z" itemprop="datePublished">2021-01-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day1/">计算机考研复试--牛客网--C语言练习--Day1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>以前在Github Pages上搭建的博客听说因为Github对于Github Pages的DNS污染计划需要配置本地DNS才能访问，于是自己一狠心，决定把自己的博客全部迁移到Gitee上运行，第1天就从牛客网的C语言刷题开始吧(●’◡’●)</p>
+<h1 id="2-题目：abc"><a href="#2-题目：abc" class="headerlink" title="2 题目：abc"></a>2 题目：abc</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>设a、b、c均是0到9之间的数字，abc、bcc是两个三位数，且有：abc+bcc&#x3D;532。求满足条件的所有a、b、c的值。</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><blockquote>
+<p>题目没有任何输入。</p>
+</blockquote>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><blockquote>
+<p>请输出所有满足题目条件的a、b、c的值。<br>a、b、c之间用空格隔开。<br>每个输出占一行。</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int a , b, c;</span><br><span class="line">    int abc, bcc, sum;</span><br><span class="line">    for(a = 1; a &lt; 10; a++)</span><br><span class="line">        for(b = 1; b &lt; 10; b++)</span><br><span class="line">            for(c = 1; c &lt; 10; c++)</span><br><span class="line">            &#123;</span><br><span class="line">                abc = a * 100 + b * 10 + c;</span><br><span class="line">                bcc = b * 100 + c * 10 + c;</span><br><span class="line">                sum = abc + bcc;</span><br><span class="line">                if(sum == 532)</span><br><span class="line">                    printf(&quot;%d %d %d\n&quot;, a, b, c);</span><br><span class="line">            &#125;</span><br><span class="line">    return 0;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-分析"><a href="#3-分析" class="headerlink" title="3 分析"></a>3 分析</h1><p>此代码利用穷举的思想，时间复杂度较高。<br>而因为只使用了几个局部变量，空间复杂度为O(1)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day1/" data-id="cl1qb1e000089qktuay2b8z5f" data-title="计算机考研复试--牛客网--C语言练习--Day1" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Github Pages无法访问的解决方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/30/Github%20Pages%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2020-12-30T12:07:16.000Z" itemprop="datePublished">2020-12-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/12/30/Github%20Pages%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">Github Pages无法访问的解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>最近一年都在准备考研，没时间写博客，前几天终于结束了，心里也能放松一下了。不过，这几天一看自己的Github Pages竟然不能访问了，这让我很无奈，我这几天访问的时候就一直是下面这个鬼样子，给我气的啊，不过幸好找到解决办法了。┭┮﹏┭┮</p>
+<p><img src="https://img-blog.csdnimg.cn/20201230201626131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图1 无法访问Github Pages"></p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><h2 id="ping域名"><a href="#ping域名" class="headerlink" title="ping域名"></a>ping域名</h2><p>自己打开命令行ping了一下自己的域名，结果找不到主机</p>
+<p><img src="https://img-blog.csdnimg.cn/20201230202412256.png" alt="图2 ping域名"></p>
+<h2 id="修改首选DNS服务器的IP地址"><a href="#修改首选DNS服务器的IP地址" class="headerlink" title="修改首选DNS服务器的IP地址"></a>修改首选DNS服务器的IP地址</h2><p>依次点击<font color=red>控制面板</font>、<font color=red>网络和Internet</font>、<font color=red>网络和共享中心</font>、<font color=red>WLAN</font>、<font color=red>属性</font>、<font color=red>Internet协议版本4（TCP&#x2F;IPv4）</font>、<font color=red>属性</font>、<font color=red>使用下面的DNS服务器地址</font>，并将其修改为<font color=red>114.114.114.114</font></p>
+<p><img src="https://img-blog.csdnimg.cn/20201230202958687.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3 解决方法"></p>
+<blockquote>
+<p>如果上述方法不能仍然不能访问Github Pages，也可以将首选DNS的后两行改为<font color=red>223.5.5.5</font>和<font color=red>223.6.6.6</font></p>
+</blockquote>
+<h2 id="再次ping域名"><a href="#再次ping域名" class="headerlink" title="再次ping域名"></a>再次ping域名</h2><p>问题解决，开心到飞起O(∩_∩)O哈哈</p>
+<p><img src="https://img-blog.csdnimg.cn/20201230203811541.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图4 再次ping域名"></p>
+<h1 id="年末总结"><a href="#年末总结" class="headerlink" title="年末总结"></a>年末总结</h1><p>考研已经结束，新的生活又将开始，从今天开始，接着写博客吧，为自己的研究生之路打下基础！！！</p>
+<p><font color=red>fighting……</font></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/30/Github%20Pages%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-id="cl1qb1dxr002dqktu2n3c260o" data-title="Github Pages无法访问的解决方法" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-物联网应用层CoAP通信安全实现" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/05/25/%E7%89%A9%E8%81%94%E7%BD%91%E5%BA%94%E7%94%A8%E5%B1%82CoAP%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8%E5%AE%9E%E7%8E%B0/" class="article-date">
+  <time class="dt-published" datetime="2020-05-25T11:11:43.000Z" itemprop="datePublished">2020-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/05/25/%E7%89%A9%E8%81%94%E7%BD%91%E5%BA%94%E7%94%A8%E5%B1%82CoAP%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8%E5%AE%9E%E7%8E%B0/">物联网应用层CoAP通信安全实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="实验目的及要求"><a href="#实验目的及要求" class="headerlink" title="实验目的及要求"></a>实验目的及要求</h1><p>CoAP协议是物联网应用中重要的应用层协议，上一次实验开展了CoAP协议的分析，对CoAP协议的交互机制进行了分析。但如果CoAP协议不进行安全实现，黑客可以恶意发布信息给服务器，特别是在工业、交通等物联网应用场合后果不堪设想。本实验旨构建CoAP协议安全通信。</p>
+<h1 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h1><ol>
+<li>掌握CoAP的安全通信的基本原理；</li>
+<li>设计CoAP安全通信的安全措施；</li>
+<li>实现基于DTLS的CoAP通信。</li>
+</ol>
+<h1 id="实验基本步骤"><a href="#实验基本步骤" class="headerlink" title="实验基本步骤"></a>实验基本步骤</h1><p>Step1：CoAP安全通信的基本原理<br>Step2：设计CoAP安全通信的安全措施<br>Step3：实现基于DTLS的CoAP通信</p>
+<h1 id="实验过程、分析及有关程序代码"><a href="#实验过程、分析及有关程序代码" class="headerlink" title="实验过程、分析及有关程序代码"></a>实验过程、分析及有关程序代码</h1><h2 id="1-CoAP安全通信的基本原理"><a href="#1-CoAP安全通信的基本原理" class="headerlink" title="1 CoAP安全通信的基本原理"></a>1 CoAP安全通信的基本原理</h2><h3 id="1-1-简单介绍"><a href="#1-1-简单介绍" class="headerlink" title="1.1 简单介绍"></a>1.1 简单介绍</h3><p>根据CoAP协议所遭受的安全威胁，CoAP协议标准规定需要依靠DTLS协议来提供相关安全保障，并为CoAP协议定义了三种安全模式，DTLS协议与CoAP协议的关系如图1.1所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525191916109.png" alt="图1.1 DTLS协议与CoAP协议的关系"></p>
+<p>CoAP协议标准RFC7252中对协议的安全模式描述如下：</p>
+<ul>
+<li>NoSec模式：没有安全性（DTLS协议被禁用），即应用层和传输层并没有加入安全机制，此时可以采用其他的安全技术保障其安全性；</li>
+<li>Pre Shared Key模式：（DTLS协议启用），在通信双方预存储一个预共享密钥的列表，其中每个密钥都对应着一个相应的标识；</li>
+<li>Raw Public Key模式：（DTLS协议启用），通信双方拥有公私钥对，但是没有X.509证书。通信双方使用公钥类型字段作为证书的载荷，从而降低构造证书签名所带来的开销；</li>
+<li>Certificate X.509模式：（DTLS协议启用），通信双方拥有公私钥对，并且引入第三方信任中心(CA)构造X.509证书，将构造的证书发送到它的请求方，通信双方通过验证证书来完成认证。</li>
+</ul>
+<h2 id="2-设计CoAP安全通信的安全措施"><a href="#2-设计CoAP安全通信的安全措施" class="headerlink" title="2 设计CoAP安全通信的安全措施"></a>2 设计CoAP安全通信的安全措施</h2><h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p>DTLS的目标应用主要是C&#x2F;S及其变体。这也是TLS的设计目标并且已很好工作。展示的安全模型中，server通过DNS名称和IP地址被认证，Client是匿名的或者被其他形式认证，典型的是在应用层通过用户名&#x2F;密码来处理。</p>
+<p>这个实现并不真正安全。然而，应用程序的设计者们，向在添加安全性的时候尽量能够维护他们的协议和实现架构。这个实现制造了一个类似于TLS或IPSec的有吸引力的信道安全协议，因为改动之非常小。从这个观点看来，理想的数据报信道安全协议应该取代对Server的DNS和基于IP认证的强加密认证，而是把client认证留给应用层协议。</p>
+<h3 id="2-2-握手协议"><a href="#2-2-握手协议" class="headerlink" title="2.2 握手协议"></a>2.2 握手协议</h3><p>Handshake协议最主要的作用就是完成通信双方的认证过程，DTLS协议的Handshake协议相比TLS协议增加了Cookie机制和消息重传的功能。Handshake协议采用了Cookie交换机制，在客户端发送的第一条报文Client Hello中Cookie值为空。资源服务器接收到第一条请求报文后，会生成一个Cookie值填充至响应报文Hello_ Verify Request中。客户端接收到响应报文后，提取此Cookie值，再次发送至资源服务器。资源服务器接收后与自身的Cookie值进对比，如果对比结果相同，オ可以进行下一步通信，其交换过程如图2.1所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192158609.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图2.1 Cookie交换模型"></p>
+<p>在完成了Cookie校验机制后，DTLS协议开始端到端的握手过程，其完整的握手过程如图2.2所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192223811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图2.2 DTLS协议握手交互过程"></p>
+<p>DTLS协议完整的握手交互过程解释如下：</p>
+<ol>
+<li>Client_Hello：报文中含有Cookie的值，此时Cookie值为空；</li>
+<li>Hello_Verify_Request：客户端检验接收到的Client_Hello报文中Cookie值是否为空，如果为空则说明之前并未建立过连接，服务器会生成一个Cookie值返回至客户端中；</li>
+<li>Client_Hello：此时客户端接收服务器发来的报文，提取出Cookie值填入此次报文中；</li>
+<li>Server_Hello：服务器接收客户端报文后，提取Cookie值与自身的值进行验证，验证通过则继续握手连接；</li>
+<li>Server Certificate：此报文段包含一个证书字段，用来验证服务器的身份（如果使用对称密钥算法则此条报文忽略）；</li>
+<li>Server Key Exchange：此过程为密钥交换的过程，即采用上一段报文中所选择的密钥协商算法进行通信双方的密钥协商；</li>
+<li>Certificate Request：如果通信双方采用的是基于证书的认证模式，此条报文要求客户端要回应一个自身构造的证书，双方通过基于证书的认证签名机制来完成认证的过程（如果使用对称密钥算法，则此条报文忽略）；</li>
+<li>Server Hello Done：此条表示服务器端操作完成，将上述三条报文打包发送至客户端，等待客户端；</li>
+<li>Client Certificates：客户端接收到上述报文后，如果双方使用了证书模式，则按照要求进行证书的验证以及签名等操作（如果使用对称密钥算法，则此条报文忽略）；</li>
+<li>Client Key Exchange：如果客户端与资源服务器采用的是对称密钥算法，则此条报文用来协商生成会话密钥；</li>
+<li>Certificate Verif：此条报文对服务器端构造的证书进行解签名验证（如果使用对称密钥算法，则此条报文忽略）；</li>
+<li>Change Cipher Spec：此消息用来告知资源服务器端所生成的会话密钥或者告知资源服务器双方的认证已经完成；</li>
+<li>Client Finished：此条报文表示客户端的操作已经完成，将上述三条报文打包发送至资源服务器；</li>
+<li>Change Cipher Spec Server：此消息用来完成会话密钥的生成或者证书的验证；</li>
+<li>Server Finished：此消息表示资源服务器端的操作已经全部完成，双方可以通过协商的会话密钥或者公私钥进行消息的加密。</li>
+</ol>
+<h2 id="3-实现基于DTLS的CoAP通信"><a href="#3-实现基于DTLS的CoAP通信" class="headerlink" title="3.实现基于DTLS的CoAP通信"></a>3.实现基于DTLS的CoAP通信</h2><h3 id="3-1-简单实现"><a href="#3-1-简单实现" class="headerlink" title="3.1 简单实现"></a>3.1 简单实现</h3><p>首先，我在kali中打开一个终端，使用下面的命令克隆FreeCoAP的源码，然后安装相关的依赖包和工具autoconf、libtool-bin、libgnutls-dev和wireshark-qt，如图3.1所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192454196.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3.1 安装依赖包"></p>
+<p>详细安装步骤可以参考下面的文章</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/keith-cullen/FreeCoAP">https://github.com/keith-cullen/FreeCoAP</a></p>
+<p>然后，在kali中打开另一个终端，通过调用tcpdump捕获通信数据包，如图3.2所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192525452.png" alt="图3.2 捕获通信数据包"></p>
+<p>接着，再打开一个新的终端运行Demo的服务器，如图3.3所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192557411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3.3 运行服务器"></p>
+<p>最后，打开最后一个终端，运行Demo的客户端，如图3.4所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192630743.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3.4 运行客户端"></p>
+<h3 id="3-2-用wireshark分析"><a href="#3-2-用wireshark分析" class="headerlink" title="3.2 用wireshark分析"></a>3.2 用wireshark分析</h3><p>首先，用wireshark打开在3.1中用tcpdump捕获的通信数据包，发现了DTLSv1.2协议和信息通信的过程，如图3.5所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192709551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3.5 捕获的数据包"></p>
+<p>然后，在预共享密钥模式下，在应用层和UDP之间引入DTLS协议，将预共享密钥机制与DTLS协议中密码规则协议相结合，采用TLS_ECDHE_ECDSA_WITH_AES_128_GSM_SHA256算法,实现可信的端到端安全关联和数据的加密，如图3.6所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192741735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3.6 加密算法"></p>
+<p>接着，在密钥交换的过程中，利用Diffie-Hellman密钥交换协议巧妙确定对称密钥，达到安全通信的目的。另外，该过程还利用ecdsa_secp256r1_sha256算法对通信的数据进行签名，获得长度为71的签名，如图3.7所示。</p>
+<p>密码规则协议中使用PSK预共享机制有以下两个原因：</p>
+<ul>
+<li>在网络资源受限的环境下，使用PSK预共享密钥算法相比公私钥等模式造成的开销较低；</li>
+<li>预共享密钥机制相比其他密码学算法的配置过程更加简洁，比如在一个封闭的网络环境中，大多数操作都是预先手动配置的，而配置PSK预共享密钥相比RSA公钥证书模式要更方便。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200525192837849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3.7 密钥交换和签名"></p>
+<p>下一步，就是证书的验证过程，就是利用相同的签名算法进行验证，得到与上一过程相同的签名，如图3.8所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192904398.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3.8 验证签名"></p>
+<p>改变密码规则协议此协议是起到一个标志的作用，用来告知客户端和资源服务器已经完成了密钥的交换等过程，如图3.9所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525192931977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3.9 改变密码规则"></p>
+<p>警告协议Alert协议是一种返回机制，即通信双方在交互的时候如果发生错误或者安全威胁，就会通知通信双方，通信双方会结束会话避免信息的泄露，如图3.10所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525193002528.png" alt="图3.10 警告协议Alert"></p>
+<p>最后，在上面过程的基础上，服务器和客户端就可以传输加密的握手包信息和加密数据了，如图3.11所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525193032942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3.11 传输数据"></p>
+<h3 id="3-3-代码展示"><a href="#3-3-代码展示" class="headerlink" title="3.3 代码展示"></a>3.3 代码展示</h3><p>服务器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;errno.h&gt;</span><br><span class="line">#include &lt;arpa/inet.h&gt;</span><br><span class="line">#ifdef COAP_DTLS_EN</span><br><span class="line">#include &lt;gnutls/gnutls.h&gt;</span><br><span class="line">#endif</span><br><span class="line">#include &quot;reg_server.h&quot;</span><br><span class="line">#include &quot;coap_msg.h&quot;</span><br><span class="line">#include &quot;coap_mem.h&quot;</span><br><span class="line">#include &quot;coap_log.h&quot;</span><br><span class="line">#define REG_SERVER_URI_PATH_BUF_LEN 32</span><br><span class="line">#define REG_SERVER_PAYLOAD_LEN 32</span><br><span class="line">/**&lt; Number of buffers in the small memory allocator */</span><br><span class="line">#define REG_SERVER_SMALL_BUF_NUM 128</span><br><span class="line">/**&lt; Length of each buffer in the small memory allocator */</span><br><span class="line">#define REG_SERVER_SMALL_BUF_LEN 256</span><br><span class="line">/**&lt; Number of buffers in the medium memory allocator */</span><br><span class="line">#define REG_SERVER_MEDIUM_BUF_NUM 128</span><br><span class="line">/**&lt; Length of each buffer in the medium memory allocator */</span><br><span class="line">#define REG_SERVER_MEDIUM_BUF_LEN 1024</span><br><span class="line">/**&lt; Number of buffers in the large memory allocator */</span><br><span class="line">#define REG_SERVER_LARGE_BUF_NUM 32</span><br><span class="line">/**&lt; Length of each buffer in the large memory allocator */</span><br><span class="line">#define REG_SERVER_LARGE_BUF_LEN 8192</span><br><span class="line">static void reg_server_log_registrar(reg_server_t *server)</span><br><span class="line">&#123;</span><br><span class="line">    registrar_entry_t *entry = NULL;</span><br><span class="line">    int i = 0;</span><br><span class="line">    entry = registrar_get_first(&amp;server-&gt;registrar);</span><br><span class="line">    while (entry != NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_info(&quot;registrar[%d]: id=&#x27;%s&#x27;, addr=&#x27;%s&#x27;&quot;,</span><br><span class="line">                      i, registrar_entry_get_id(entry),</span><br><span class="line">                      registrar_entry_get_addr(entry));</span><br><span class="line">        i++;</span><br><span class="line">        entry = registrar_entry_get_next(entry);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">static int reg_server_handle_client_id(coap_server_trans_t *trans, coap_msg_t *req, coap_msg_t *resp)</span><br><span class="line">&#123;</span><br><span class="line">    reg_server_t *server = (reg_server_t *)trans-&gt;server;</span><br><span class="line">    registrar_t *registrar = &amp;server-&gt;registrar;</span><br><span class="line">    const char *p = NULL;</span><br><span class="line">    unsigned code_detail = 0;</span><br><span class="line">    size_t n = 0;</span><br><span class="line">    char payload[REG_SERVER_PAYLOAD_LEN] = &#123;0&#125;;</span><br><span class="line">    char addr[COAP_IPV_INET_ADDRSTRLEN] = &#123;0&#125;;</span><br><span class="line">    int created = 0;</span><br><span class="line">    int ret = 0;</span><br><span class="line">    code_detail = coap_msg_get_code_detail(req);</span><br><span class="line">    if (code_detail == COAP_MSG_POST)</span><br><span class="line">    &#123;</span><br><span class="line">        /* process request */</span><br><span class="line">        coap_log_info(&quot;Received request method: POST&quot;);</span><br><span class="line">        p = inet_ntop(COAP_IPV_AF_INET, &amp;trans-&gt;client_sin.COAP_IPV_SIN_ADDR, addr, sizeof(addr));</span><br><span class="line">        if (p == NULL)</span><br><span class="line">        &#123;</span><br><span class="line">            coap_log_warn(&quot;Could not resolve client address: %s&quot;, strerror(errno));</span><br><span class="line">            return coap_msg_set_code(resp, COAP_MSG_SERVER_ERR, COAP_MSG_INT_SERVER_ERR);</span><br><span class="line">        &#125;</span><br><span class="line">        addr[sizeof(addr) - 1] = &#x27;\0&#x27;;</span><br><span class="line">        coap_log_info(&quot;Received request from address: %s&quot;, addr);</span><br><span class="line">        p = coap_msg_get_payload(req);</span><br><span class="line">        n = coap_msg_get_payload_len(req);</span><br><span class="line">        if ((p == NULL) || (n == 0))</span><br><span class="line">        &#123;</span><br><span class="line">            coap_log_warn(&quot;Received request message without payload&quot;);</span><br><span class="line">            return coap_msg_set_code(resp, COAP_MSG_CLIENT_ERR, COAP_MSG_BAD_REQ);</span><br><span class="line">        &#125;</span><br><span class="line">        if ((n + 1) &gt; sizeof(payload))</span><br><span class="line">        &#123;</span><br><span class="line">            coap_log_warn(&quot;Payload buffer too small by %zd bytes&quot;, (n + 1) - sizeof(payload));</span><br><span class="line">            return coap_msg_set_code(resp, COAP_MSG_SERVER_ERR, COAP_MSG_INT_SERVER_ERR);</span><br><span class="line">        &#125;</span><br><span class="line">        memcpy(payload, p, n);</span><br><span class="line">        memset(payload + n, 0, sizeof(payload) - n);</span><br><span class="line">        coap_log_info(&quot;Received request payload: &#x27;%s&#x27;&quot;, payload);</span><br><span class="line">        /* action */</span><br><span class="line">        ret = registrar_add(registrar, payload, addr);</span><br><span class="line">        if (ret &lt; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            return ret;</span><br><span class="line">        &#125;</span><br><span class="line">        if (ret == 0)</span><br><span class="line">        &#123;</span><br><span class="line">            created = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        reg_server_log_registrar(server);</span><br><span class="line">        /* generate response */</span><br><span class="line">        if (created)</span><br><span class="line">            coap_msg_set_code(resp, COAP_MSG_SUCCESS, COAP_MSG_CREATED);</span><br><span class="line">        else</span><br><span class="line">            coap_msg_set_code(resp, COAP_MSG_SUCCESS, COAP_MSG_CHANGED);</span><br><span class="line">        ret = coap_msg_add_op(resp, COAP_MSG_URI_PATH, 6, &quot;client&quot;);</span><br><span class="line">        if (ret &lt; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            coap_log_warn(&quot;Failed to set URI path in response message&quot;);</span><br><span class="line">            return ret;</span><br><span class="line">        &#125;</span><br><span class="line">        ret = coap_msg_add_op(resp, COAP_MSG_URI_PATH, 2, &quot;id&quot;);</span><br><span class="line">        if (ret &lt; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            coap_log_warn(&quot;Failed to set URI path in response message&quot;);</span><br><span class="line">            return ret;</span><br><span class="line">        &#125;</span><br><span class="line">        memcpy(payload, &quot;OK&quot;, 2);</span><br><span class="line">        memset(payload + 2, 0, sizeof(payload) - 2);</span><br><span class="line">        ret = coap_msg_set_payload(resp, payload, 2);</span><br><span class="line">        if (ret &lt; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            coap_log_warn(&quot;Failed to set payload in response message&quot;);</span><br><span class="line">            return ret;</span><br><span class="line">        &#125;</span><br><span class="line">        coap_log_info(&quot;Sent %s /client/id response with payload: &#x27;%s&#x27;&quot;,</span><br><span class="line">                      created ? &quot;CREATED&quot; : &quot;CHANGED&quot;, payload);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    coap_log_warn(&quot;Received request message with unsupported code detail: %d&quot;, code_detail);</span><br><span class="line">    return coap_msg_set_code(resp, COAP_MSG_SERVER_ERR, COAP_MSG_NOT_IMPL);</span><br><span class="line">&#125;</span><br><span class="line">static int reg_server_handle(coap_server_trans_t *trans, coap_msg_t *req, coap_msg_t *resp)</span><br><span class="line">&#123;</span><br><span class="line">    size_t n = 0;</span><br><span class="line">    char uri_path[REG_SERVER_URI_PATH_BUF_LEN] = &#123;0&#125;;</span><br><span class="line">    if (coap_msg_get_ver(req) != COAP_MSG_VER)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_warn(&quot;Received request message with invalid version: %d&quot;, coap_msg_get_ver(req));</span><br><span class="line">        return -EBADMSG;</span><br><span class="line">    &#125;</span><br><span class="line">    n = coap_msg_uri_path_to_str(req, uri_path, sizeof(uri_path));</span><br><span class="line">    if ((n + 1) &gt; sizeof(uri_path))</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_warn(&quot;URI path buffer too small by %zd bytes&quot;, (n + 1) - sizeof(uri_path));</span><br><span class="line">        return -ENOSPC;</span><br><span class="line">    &#125;</span><br><span class="line">    coap_log_info(&quot;Received request URI path: &#x27;%s&#x27;&quot;, uri_path);</span><br><span class="line">    if (strcmp(uri_path, &quot;/client/id&quot;) != 0)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_warn(&quot;URI path not recognised&quot;);</span><br><span class="line">        return coap_msg_set_code(resp, COAP_MSG_CLIENT_ERR, COAP_MSG_NOT_FOUND);</span><br><span class="line">    &#125;</span><br><span class="line">    return reg_server_handle_client_id(trans, req, resp);</span><br><span class="line">&#125;</span><br><span class="line">/* one-time initialisation */</span><br><span class="line">int reg_server_init(void)</span><br><span class="line">&#123;</span><br><span class="line">#ifdef COAP_DTLS_EN</span><br><span class="line">    const char *gnutls_ver = NULL;</span><br><span class="line">#endif</span><br><span class="line">    int ret = 0;</span><br><span class="line">    coap_log_set_level(COAP_LOG_INFO);</span><br><span class="line">    ret = coap_mem_all_create(REG_SERVER_SMALL_BUF_NUM, REG_SERVER_SMALL_BUF_LEN, REG_SERVER_MEDIUM_BUF_NUM, REG_SERVER_MEDIUM_BUF_LEN, REG_SERVER_LARGE_BUF_NUM, REG_SERVER_LARGE_BUF_LEN);</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;%s&quot;, strerror(-ret));</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">#ifdef COAP_DTLS_EN</span><br><span class="line">    gnutls_ver = gnutls_check_version(NULL);</span><br><span class="line">    if (gnutls_ver == NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Unable to determine GnuTLS version&quot;);</span><br><span class="line">        coap_mem_all_destroy();</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    coap_log_info(&quot;GnuTLS version: %s&quot;, gnutls_ver);</span><br><span class="line">#endif</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">void reg_server_deinit(void)</span><br><span class="line">&#123;</span><br><span class="line">    coap_mem_all_destroy();</span><br><span class="line">&#125;</span><br><span class="line">int reg_server_create(reg_server_t *server,</span><br><span class="line">                      const char *host,</span><br><span class="line">                      const char *port,</span><br><span class="line">                      const char *key_file_name,</span><br><span class="line">                      const char *cert_file_name,</span><br><span class="line">                      const char *trust_file_name,</span><br><span class="line">                      const char *crl_file_name)</span><br><span class="line">&#123;</span><br><span class="line">    int ret = 0;</span><br><span class="line">    memset(server, 0, sizeof(reg_server_t));</span><br><span class="line">#ifdef COAP_DTLS_EN</span><br><span class="line">    ret = coap_server_create(&amp;server-&gt;coap_server,</span><br><span class="line">                             reg_server_handle,</span><br><span class="line">                             host,</span><br><span class="line">                             port,</span><br><span class="line">                             key_file_name,</span><br><span class="line">                             cert_file_name,</span><br><span class="line">                             trust_file_name,</span><br><span class="line">                             crl_file_name);</span><br><span class="line">#else</span><br><span class="line">    ret = coap_server_create(&amp;server-&gt;coap_server,</span><br><span class="line">                             reg_server_handle,</span><br><span class="line">                             host,</span><br><span class="line">                             port);</span><br><span class="line">#endif</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        if (ret != -1)</span><br><span class="line">        &#123;</span><br><span class="line">            /* a return value of -1 indicates a DTLS failure which has already been logged */</span><br><span class="line">            coap_log_error(&quot;%s&quot;, strerror(-ret));</span><br><span class="line">        &#125;</span><br><span class="line">        memset(server, 0, sizeof(reg_server_t));</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    registrar_create(&amp;server-&gt;registrar);</span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br><span class="line">void reg_server_destroy(reg_server_t *server)</span><br><span class="line">&#123;</span><br><span class="line">    registrar_destroy(&amp;server-&gt;registrar);</span><br><span class="line">    coap_server_destroy(&amp;server-&gt;coap_server);</span><br><span class="line">    memset(server, 0, sizeof(reg_server_t));</span><br><span class="line">&#125;</span><br><span class="line">int reg_server_run(reg_server_t *server)</span><br><span class="line">&#123;</span><br><span class="line">    int ret = 0;</span><br><span class="line">    ret = coap_server_run(&amp;server-&gt;coap_server);</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        if (ret != -1)</span><br><span class="line">        &#123;</span><br><span class="line">            /* a return value of -1 indicates a DTLS failure which has already been logged */</span><br><span class="line">            coap_log_error(&quot;%s&quot;, strerror(-ret));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>客户端：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;errno.h&gt;</span><br><span class="line">#ifdef COAP_DTLS_EN</span><br><span class="line">#include &lt;gnutls/gnutls.h&gt;</span><br><span class="line">#endif</span><br><span class="line">#include &quot;reg_client.h&quot;</span><br><span class="line">#include &quot;coap_msg.h&quot;</span><br><span class="line">#include &quot;coap_mem.h&quot;</span><br><span class="line">#include &quot;coap_log.h&quot;</span><br><span class="line">#define REG_CLIENT_URI_PATH_BUF_LEN 32</span><br><span class="line">/**&lt; Number of buffers in the small memory allocator */</span><br><span class="line">#define REG_CLIENT_SMALL_BUF_NUM 128</span><br><span class="line">/**&lt; Length of each buffer in the small memory allocator */</span><br><span class="line">#define REG_CLIENT_SMALL_BUF_LEN 256</span><br><span class="line">/**&lt; Number of buffers in the medium memory allocator */</span><br><span class="line">#define REG_CLIENT_MEDIUM_BUF_NUM 128</span><br><span class="line">/**&lt; Length of each buffer in the medium memory allocator */</span><br><span class="line">#define REG_CLIENT_MEDIUM_BUF_LEN 1024</span><br><span class="line">/**&lt; Number of buffers in the large memory allocator */</span><br><span class="line">#define REG_CLIENT_LARGE_BUF_NUM 32</span><br><span class="line">/**&lt; Length of each buffer in the large memory allocator */</span><br><span class="line">#define REG_CLIENT_LARGE_BUF_LEN 8192</span><br><span class="line">/* one-time initialisation */</span><br><span class="line">int reg_client_init(void)</span><br><span class="line">&#123;</span><br><span class="line">#ifdef COAP_DTLS_EN</span><br><span class="line">    const char *gnutls_ver = NULL;</span><br><span class="line">#endif</span><br><span class="line">    int ret = 0;</span><br><span class="line">    coap_log_set_level(COAP_LOG_INFO);</span><br><span class="line">    ret = coap_mem_all_create(REG_CLIENT_SMALL_BUF_NUM, REG_CLIENT_SMALL_BUF_LEN,</span><br><span class="line">                              REG_CLIENT_MEDIUM_BUF_NUM, REG_CLIENT_MEDIUM_BUF_LEN,</span><br><span class="line">                              REG_CLIENT_LARGE_BUF_NUM, REG_CLIENT_LARGE_BUF_LEN);</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;%s&quot;, strerror(-ret));</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">#ifdef COAP_DTLS_EN</span><br><span class="line">    gnutls_ver = gnutls_check_version(NULL);</span><br><span class="line">    if (gnutls_ver == NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Unable to determine GnuTLS version&quot;);</span><br><span class="line">        coap_mem_all_destroy();</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    coap_log_info(&quot;GnuTLS version: %s&quot;, gnutls_ver);</span><br><span class="line">#endif</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">void reg_client_deinit(void)</span><br><span class="line">&#123;</span><br><span class="line">    coap_mem_all_destroy();</span><br><span class="line">&#125;</span><br><span class="line">int reg_client_create(reg_client_t *client,</span><br><span class="line">                      const char *host,</span><br><span class="line">                      const char *port,</span><br><span class="line">                      const char *key_file_name,</span><br><span class="line">                      const char *cert_file_name,</span><br><span class="line">                      const char *trust_file_name,</span><br><span class="line">                      const char *crl_file_name,</span><br><span class="line">                      const char *common_name)</span><br><span class="line">&#123;</span><br><span class="line">    int ret = 0;</span><br><span class="line">    memset(client, 0, sizeof(reg_client_t));</span><br><span class="line">#ifdef COAP_DTLS_EN</span><br><span class="line">    ret = coap_client_create(&amp;client-&gt;coap_client,</span><br><span class="line">                             host,</span><br><span class="line">                             port,</span><br><span class="line">                             key_file_name,</span><br><span class="line">                             cert_file_name,</span><br><span class="line">                             trust_file_name,</span><br><span class="line">                             crl_file_name,</span><br><span class="line">                             common_name);</span><br><span class="line">#else</span><br><span class="line">    ret = coap_client_create(&amp;client-&gt;coap_client,</span><br><span class="line">                             host,</span><br><span class="line">                             port);</span><br><span class="line">#endif</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;%s&quot;, strerror(-ret));</span><br><span class="line">        memset(client, 0, sizeof(reg_client_t));</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">void reg_client_destroy(reg_client_t *client)</span><br><span class="line">&#123;</span><br><span class="line">    coap_client_destroy(&amp;client-&gt;coap_client);</span><br><span class="line">    memset(client, 0, sizeof(reg_client_t));</span><br><span class="line">&#125;</span><br><span class="line">int reg_client_register(reg_client_t *client, char *buf, size_t len)</span><br><span class="line">&#123;</span><br><span class="line">    coap_msg_t resp = &#123;0&#125;;</span><br><span class="line">    coap_msg_t req = &#123;0&#125;;</span><br><span class="line">    size_t n = 0;</span><br><span class="line">    char *p = NULL;</span><br><span class="line">    char uri_path[REG_CLIENT_URI_PATH_BUF_LEN] = &#123;0&#125;;</span><br><span class="line">    int created = 0;</span><br><span class="line">    int ret = 0;</span><br><span class="line">    /* generate request */</span><br><span class="line">    coap_msg_create(&amp;req);</span><br><span class="line">    coap_msg_set_type(&amp;req, COAP_MSG_CON);</span><br><span class="line">    coap_msg_set_code(&amp;req, COAP_MSG_REQ, COAP_MSG_POST);</span><br><span class="line">    coap_log_info(&quot;Sending POST /client/id request with payload: &#x27;%s&#x27;&quot;, buf);</span><br><span class="line">    ret = coap_msg_add_op(&amp;req, COAP_MSG_URI_PATH, 6, &quot;client&quot;);</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Failed to set URI path in request message&quot;);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    ret = coap_msg_add_op(&amp;req, COAP_MSG_URI_PATH, 2, &quot;id&quot;);</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Failed to set URI path in request message&quot;);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    ret = coap_msg_set_payload(&amp;req, buf, strlen(buf));</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Failed to set payload in request message&quot;);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    /* exchange */</span><br><span class="line">    coap_msg_create(&amp;resp);</span><br><span class="line">    ret = coap_client_exchange(&amp;client-&gt;coap_client, &amp;req, &amp;resp);</span><br><span class="line">    if (ret &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        if (ret != -1)</span><br><span class="line">        &#123;</span><br><span class="line">            /* a return value of -1 indicates a DTLS failure which has already been logged */</span><br><span class="line">            coap_log_error(&quot;%s&quot;, strerror(-ret));</span><br><span class="line">        &#125;</span><br><span class="line">        coap_msg_destroy(&amp;resp);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    /* process response */</span><br><span class="line">    if (coap_msg_get_ver(&amp;req) != coap_msg_get_ver(&amp;resp))</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Received response message with invalid version: %d&quot;, coap_msg_get_ver(&amp;resp));</span><br><span class="line">        coap_msg_destroy(&amp;resp);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return -EBADMSG;</span><br><span class="line">    &#125;</span><br><span class="line">    if ((coap_msg_get_code_class(&amp;resp) != COAP_MSG_SUCCESS)</span><br><span class="line">     || ((coap_msg_get_code_detail(&amp;resp) != COAP_MSG_CREATED) &amp;&amp; (coap_msg_get_code_detail(&amp;resp) != COAP_MSG_CHANGED)))</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Received response message with invalid code class: %d, code detail: %d&quot;,</span><br><span class="line">                       coap_msg_get_code_class(&amp;resp), coap_msg_get_code_detail(&amp;resp));</span><br><span class="line">        coap_msg_destroy(&amp;resp);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return -EBADMSG;</span><br><span class="line">    &#125;</span><br><span class="line">    created = coap_msg_get_code_detail(&amp;resp) == COAP_MSG_CREATED;</span><br><span class="line">    n = coap_msg_uri_path_to_str(&amp;resp, uri_path, sizeof(uri_path));</span><br><span class="line">    if ((n + 1) &gt; sizeof(uri_path))</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;URI path buffer too small by %zd bytes&quot;, (n + 1) - sizeof(uri_path));</span><br><span class="line">        coap_msg_destroy(&amp;resp);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return -ENOSPC;</span><br><span class="line">    &#125;</span><br><span class="line">    if (strcmp(uri_path, &quot;/client/id&quot;) != 0)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Received response message with invalid URI path: &#x27;%s&#x27;&quot;, uri_path);</span><br><span class="line">        coap_msg_destroy(&amp;resp);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return -EBADMSG;</span><br><span class="line">    &#125;</span><br><span class="line">    p = coap_msg_get_payload(&amp;resp);</span><br><span class="line">    n = coap_msg_get_payload_len(&amp;resp);</span><br><span class="line">    if ((p == NULL) || (n == 0))</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Received response message with invalid payload&quot;);</span><br><span class="line">        coap_msg_destroy(&amp;resp);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return -EBADMSG;</span><br><span class="line">    &#125;</span><br><span class="line">    if ((n + 1) &gt; len)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Payload buffer too small by %zd bytes&quot;, (n + 1) - len);</span><br><span class="line">        coap_msg_destroy(&amp;resp);</span><br><span class="line">        coap_msg_destroy(&amp;req);</span><br><span class="line">        return -ENOSPC;</span><br><span class="line">    &#125;</span><br><span class="line">    memcpy(buf, p, n);</span><br><span class="line">    memset(buf + n, 0, len - n);</span><br><span class="line">    coap_msg_destroy(&amp;resp);</span><br><span class="line">    coap_msg_destroy(&amp;req);</span><br><span class="line">    if (strcmp(buf, &quot;OK&quot;) != 0)</span><br><span class="line">    &#123;</span><br><span class="line">        coap_log_error(&quot;Received response message with unexpected payload: &#x27;%s&#x27;&quot;, buf);</span><br><span class="line">        return -EBADMSG;</span><br><span class="line">    &#125;</span><br><span class="line">    coap_log_info(&quot;Received %s %s response with payload: &#x27;%s&#x27;&quot;,</span><br><span class="line">                  created ? &quot;CREATED&quot; : &quot;CHANGED&quot;, uri_path, buf);</span><br><span class="line">    return n;&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="实验体会"><a href="#实验体会" class="headerlink" title="实验体会"></a>实验体会</h1><p>在这次实验中，我和同学遇到了极大的困难，对我来说，这次实验堪称大学以来最难做的实验，但是，通过我和舍友一起翻阅资料，还是能够按时完成实验。</p>
+<p>通过这次实验，我又一步加深了对C语言的理解，使用C语言实现CoAP服务器和客户端的加密通信。同时，查阅了RFC7252中对CoAP的安全模式，理解了DTLS协议和CoAP协议在计算机网络中的层次，深入分析CoAP协议的基本原理，明白了客户端和服务器之间利用预共享密钥机制之间的密钥协商过程。另外，通过在kali中使用tcpdump捕获通信数据包，并用wireshark进行分析流量包，进一步理解了握手过程中Cookie机制和通信双方的认证过程。</p>
+<p>最后，这次实验是对我进入矿大后的一次总结吧，充分利用了平常自己和老师在课上教授的各种知识，做到了学以致用。</p>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>本文创作时参考的文章如下：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hylaking/article/details/89473172">https://blog.csdn.net/hylaking/article/details/89473172</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/05/25/%E7%89%A9%E8%81%94%E7%BD%91%E5%BA%94%E7%94%A8%E5%B1%82CoAP%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8%E5%AE%9E%E7%8E%B0/" data-id="cl1qb1dzu007lqktuc961hf11" data-title="物联网应用层CoAP通信安全实现" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-python编写计算器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/24/python%E7%BC%96%E5%86%99%E8%AE%A1%E7%AE%97%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2020-04-24T08:17:42.000Z" itemprop="datePublished">2020-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/04/24/python%E7%BC%96%E5%86%99%E8%AE%A1%E7%AE%97%E5%99%A8/">python编写计算器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>大三了，朱老师说如果想不上python前半部分的语法课程，需要做出来点东西让他看看，思虑再三，我选择了计算器这个应用，个人感觉可能稍微好做一点吧(#^.^#)(#^.^#)</p>
+<h1 id="2-设计思路"><a href="#2-设计思路" class="headerlink" title="2 设计思路"></a>2 设计思路</h1><p>程序的流程图如图1所示，首先利用tkinter模块创建窗口并初始化界面，然后再窗口中添加控件并进行合理的布局，此外，还得实现对应按钮的回调函数的功能，最后，让窗口不停的循环，使其处于一直显示的效果，这样，GUI界面的配置就完成了。</p>
+<p>另外，就是输入运算式的处理过程了。首先，我们通过鼠标点击对应按钮显示出运算式，然后将运算式的内容存储在格式化列表中，接着先计算乘除，后计算加减，最后，就可以输出运算结果了。此外，我们还可以通过点击按钮Mc实现清零操作和Mr实现调出上次运算的结果。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162243415.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图1 计算器流程图"></p>
+<h1 id="3-开发环境配置"><a href="#3-开发环境配置" class="headerlink" title="3 开发环境配置"></a>3 开发环境配置</h1><p>在pycharm2019版中，我进行代码的编辑和审计。在运行过程中，我还安装了python代码的模块re，模块re（Regular Expression正则表达式）可以实现提供各种正则表达式的匹配操作，在文本解析、复杂字符串分析和信息提取时是一个非常有用的工具，安装过程如图2所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/2020042416234624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图2 python模块re的安装"></p>
+<h1 id="4-运行使用方法"><a href="#4-运行使用方法" class="headerlink" title="4 运行使用方法"></a>4 运行使用方法</h1><p>为了演示方便，我分别在Windows 10和Linux（Kali）的命令行中进行演示，最终发现除了运行界面的图标有些许差异，效果相同。</p>
+<h1 id="5-运行效果截屏"><a href="#5-运行效果截屏" class="headerlink" title="5 运行效果截屏"></a>5 运行效果截屏</h1><p>在Windows10的命令行下，输入python3 demo.py运行程序，效果如图3所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162514515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图3 windows下的计算功能"></p>
+<p>点击按钮Mc即可实现清零操作，效果如图4所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162551803.png" alt="图4 清零"></p>
+<p>点击按钮Mr实现调出上一次的运算结果，效果如图5所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162627583.png" alt="图5 调出上次的运算结果"></p>
+<p>在Linux（Kali）的命令行下，输入python3 demo.py运行程序，效果如图6所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162728466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图6 Linux下的计算功能"></p>
+<p>点击按钮Mc即可实现清零操作，效果如图7所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162747375.png" alt="图7 清零"></p>
+<p>点击按钮Mr实现调出上一次的运算结果，效果如图8所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162812116.png" alt="图8 调出上次的运算结果"></p>
+<h1 id="6-运行效果分析总结"><a href="#6-运行效果分析总结" class="headerlink" title="6 运行效果分析总结"></a>6 运行效果分析总结</h1><h2 id="6-1-缺陷"><a href="#6-1-缺陷" class="headerlink" title="6.1 缺陷"></a>6.1 缺陷</h2><p>为了方便显示，我就利用python的tkinter模块来做成了GUI界面，而且只能用鼠标点击对应按钮进行算式运算，因为自己没有学习过基于Windows或者Linux平台上的软件开发，所以就没有进一步将其做成可执行程序。<br>开发过程中的程序算法还有一定的缺陷，就是不能计算两个负数向乘或者向除的结果，例如<font color=red>(-2)&#x2F;(-5)</font>或者<font color=red>(-2)*(-5)</font><br>类似的运算，win10执行结果如图9所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424162925264.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图9 错误界面"></p>
+<h2 id="6-2-改进方法"><a href="#6-2-改进方法" class="headerlink" title="6.2 改进方法"></a>6.2 改进方法</h2><p>经过调试后，我发现原来出现错误的代码是由于两个负数-2和-3相乘后，结果列表的存储为<font color=red>[‘+’,’6’]</font>，而<font color=red>sum &#x3D; float(eq[0])</font>试图将列表中的’+’转化为浮点数，结果爆出错误<font color=red>ValueError: could not convert string to float: ‘+’</font>，如果将判断条件改为<font color=red>if eq[0] !&#x3D; ‘-‘ and eq[0] !&#x3D; ‘+’:</font>就可以避免列表的第一项为’+’而导致强制类型转换错误的存在，改进后可以运算两个负数相乘的结果，改进后的效果如图10所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200424163217231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="图10 错误界面改进"></p>
+<h1 id="7-源代码"><a href="#7-源代码" class="headerlink" title="7 源代码"></a>7 源代码</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line">#coding: utf-8</span><br><span class="line">#Filename: calculator_GUI.py</span><br><span class="line">#author：邢帅坤</span><br><span class="line"></span><br><span class="line">import tkinter as TK</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">def change(eq,count):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param eq: 刚去完括号或者乘除后的格式化列表</span><br><span class="line">    :param count: 发生变化的元素的索引</span><br><span class="line">    :return: 返回一个不存在 &#x27;+-&#x27; ,&#x27;--&#x27;类的格式化列表</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    if eq[count] == &#x27;-&#x27;:</span><br><span class="line">        if eq[count-1] == &#x27;-&#x27;:</span><br><span class="line">            eq[count-1] = &#x27;+&#x27;</span><br><span class="line">            del eq[count]</span><br><span class="line">        elif eq[count-1] == &#x27;+&#x27;:</span><br><span class="line">            eq[count-1] = &#x27;-&#x27;</span><br><span class="line">            del eq[count]</span><br><span class="line">    return eq</span><br><span class="line"></span><br><span class="line">def remove_multiplication_division(eq):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param eq: 带有乘除号的格式化列表</span><br><span class="line">    :return: 去除了乘除号的格式化列表</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    count = 0</span><br><span class="line">    for i in eq:</span><br><span class="line">        if i == &#x27;*&#x27;:</span><br><span class="line">            if eq[count+1] != &#x27;-&#x27;:</span><br><span class="line">                eq[count-1] = float(eq[count-1]) * float(eq[count+1])</span><br><span class="line">                del(eq[count])</span><br><span class="line">                del(eq[count])</span><br><span class="line">            elif eq[count+1] == &#x27;-&#x27;:</span><br><span class="line">                eq[count] = float(eq[count-1]) * float(eq[count+2])</span><br><span class="line">                eq[count-1] = &#x27;-&#x27;</span><br><span class="line">                del(eq[count+1])</span><br><span class="line">                del(eq[count+1])</span><br><span class="line">            eq = change(eq,count-1)</span><br><span class="line">            return remove_multiplication_division(eq)</span><br><span class="line">        elif i == &#x27;/&#x27;:</span><br><span class="line">            if eq[count+1] != &#x27;-&#x27;:</span><br><span class="line">                eq[count-1] = float(eq[count-1]) / float(eq[count+1])</span><br><span class="line">                del(eq[count])</span><br><span class="line">                del(eq[count])</span><br><span class="line">            elif eq[count+1] == &#x27;-&#x27;:</span><br><span class="line">                eq[count] = float(eq[count-1]) / float(eq[count+2])</span><br><span class="line">                eq[count-1] = &#x27;-&#x27;</span><br><span class="line">                del(eq[count+1])</span><br><span class="line">                del(eq[count+1])</span><br><span class="line">            eq = change(eq,count-1)</span><br><span class="line">            return remove_multiplication_division(eq)</span><br><span class="line">        count = count + 1</span><br><span class="line">    return eq</span><br><span class="line"></span><br><span class="line">def remove_plus_minus(eq):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param eq: 只带有加减号的格式化列表</span><br><span class="line">    :return: 计算出整个列表的结果</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    count = 0</span><br><span class="line">    if eq[0] != &#x27;-&#x27; and eq[0] != &#x27;+&#x27;:</span><br><span class="line">        sum = float(eq[0])</span><br><span class="line">    else:</span><br><span class="line">        sum = 0.0</span><br><span class="line">    for i in eq:</span><br><span class="line">        if i == &#x27;-&#x27;:</span><br><span class="line">            sum = sum - float(eq[count+1])</span><br><span class="line">        elif i == &#x27;+&#x27;:</span><br><span class="line">            sum = sum + float(eq[count+1])</span><br><span class="line">        count = count + 1</span><br><span class="line">    if sum &gt;= 0:</span><br><span class="line">        eq = [str(sum)]</span><br><span class="line">    else:</span><br><span class="line">        eq = [&#x27;-&#x27;,str(-sum)]</span><br><span class="line">    return eq</span><br><span class="line"></span><br><span class="line">def calculate(s_eq):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param s_eq: 不带括号的格式化列表</span><br><span class="line">    :return: 计算结果</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    if &#x27;*&#x27; or &#x27;/&#x27; in s_eq:</span><br><span class="line">        s_eq = remove_multiplication_division(s_eq)</span><br><span class="line">    if &#x27;+&#x27; or &#x27;-&#x27; in s_eq:</span><br><span class="line">        s_eq = remove_plus_minus(s_eq)</span><br><span class="line">    return s_eq</span><br><span class="line"></span><br><span class="line">def simplify(format_list):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param format_list: 输入的算式格式化列表如[&#x27;60&#x27;,&#x27;+&#x27;,&#x27;7&#x27;,&#x27;*&#x27;,&#x27;8&#x27;]</span><br><span class="line">    :return: 通过递归去括号，返回简化后的列表</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">    bracket = 0     # 用于存放左括号在格式化列表中的索引</span><br><span class="line">    count = 0</span><br><span class="line">    for i in format_list:</span><br><span class="line">        if i == &#x27;(&#x27;:</span><br><span class="line">            bracket = count</span><br><span class="line">        elif i == &#x27;)&#x27;:</span><br><span class="line">            temp = format_list[bracket + 1 : count]</span><br><span class="line">            new_temp = calculate(temp)</span><br><span class="line">            format_list = format_list[:bracket] + new_temp + format_list[count+1:]</span><br><span class="line">            format_list = change(format_list,bracket)     # 解决去括号后会出现的--  +- 问题</span><br><span class="line">            return simplify(format_list)            # 递归去括号</span><br><span class="line">        count = count + 1</span><br><span class="line">    return format_list                     # 当递归到最后一层的时候，不再有括号，因此返回列表</span><br><span class="line"></span><br><span class="line">def caculator(eq):</span><br><span class="line">    format_list = eq_format(eq)</span><br><span class="line">    s_eq = simplify(format_list)</span><br><span class="line">    ans = calculate(s_eq)</span><br><span class="line">    if len(ans) == 2:</span><br><span class="line">        ans = -float(ans[1])</span><br><span class="line">    else:</span><br><span class="line">        ans = float(ans[0])</span><br><span class="line">    return ans</span><br><span class="line"></span><br><span class="line"># 获得按下的数字或者符号</span><br><span class="line">def getnum(num):</span><br><span class="line">    temp = equation.get()</span><br><span class="line">    temp2 = result.get()</span><br><span class="line">    print(temp)</span><br><span class="line">    print(temp2)</span><br><span class="line">    if temp2 != &#x27; &#x27;:</span><br><span class="line">        temp = &#x27;0&#x27;</span><br><span class="line">        temp2 = &#x27; &#x27;</span><br><span class="line">        result.set(temp2)</span><br><span class="line">    if (temp==&#x27;0&#x27;):</span><br><span class="line">        temp = &#x27;&#x27;</span><br><span class="line">    temp = temp + num</span><br><span class="line">    equation.set(temp)</span><br><span class="line">    print(equation)</span><br><span class="line"></span><br><span class="line"># 按下Mc键时，去除最后一个字符</span><br><span class="line">def clear():</span><br><span class="line">    equation.set(&#x27;0&#x27;)</span><br><span class="line">    result.set(&#x27;0&#x27;)</span><br><span class="line"></span><br><span class="line"># 按下Mr时，调出上次运算的结果</span><br><span class="line">def get_last_result():</span><br><span class="line">    equation.set(last_result)</span><br><span class="line">    result.set(0)</span><br><span class="line"></span><br><span class="line"># 按下等于号时计算结果</span><br><span class="line">def run():</span><br><span class="line">    global last_result</span><br><span class="line">    temp = equation.get()</span><br><span class="line">    temp = temp.replace(&#x27;x&#x27;,&#x27;*&#x27;)</span><br><span class="line">    temp = temp.replace(&#x27;÷&#x27;,&#x27;/&#x27;)</span><br><span class="line">    print(temp)</span><br><span class="line">    answer = caculator(temp)</span><br><span class="line">    answer = &#x27;%.2f&#x27;%answer</span><br><span class="line">    result.set(str(answer))</span><br><span class="line">    last_result = answer</span><br><span class="line"></span><br><span class="line">def eq_format(eq):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    :param eq: 输入的算式字符串</span><br><span class="line">    :return: 格式化以后的列表，如[&#x27;60&#x27;,&#x27;+&#x27;,&#x27;7&#x27;,&#x27;*&#x27;,&#x27;8&#x27;]</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    format_list = re.findall(&#x27;[\d\.]+|\(|\+|\-|\*|\/|\)&#x27;,eq)</span><br><span class="line">    return format_list</span><br><span class="line"></span><br><span class="line"># 主窗口</span><br><span class="line">root = TK.Tk()                  # 创建TK实例</span><br><span class="line">root.title(&quot;邢帅坤的计算器&quot;)     # 设置窗口的显示名字</span><br><span class="line">root.resizable(0,0)             # 设置主窗口的宽度和高度是否可以通过鼠标进行拉伸改变，此处设置为不能</span><br><span class="line">root.geometry(&#x27;320x420&#x27;)        # 这里设置主窗口的初始尺寸，因为我们在上面设定了主窗口大小  不可变，因此这个尺寸也就是主窗口一直不变的尺寸了</span><br><span class="line"></span><br><span class="line">result = TK.StringVar()         # 用来显示结果的可变文本</span><br><span class="line">equation = TK.StringVar()       # 用来显示算式的可变文本</span><br><span class="line">result.set(&#x27; &#x27;)                 # 赋初始值</span><br><span class="line">equation.set(&#x27;0&#x27;)               # 赋初始值</span><br><span class="line"></span><br><span class="line"># 结果显示框</span><br><span class="line">show_uresult = TK.Label(root,bg=&#x27;white&#x27;,fg = &#x27;black&#x27;,font = (&#x27;Arail&#x27;,&#x27;15&#x27;),bd=&#x27;0&#x27;,textvariable =equation,anchor=&#x27;se&#x27;)</span><br><span class="line">show_dresult = TK.Label(root,bg=&#x27;white&#x27;,fg = &#x27;black&#x27;,font = (&#x27;Arail&#x27;,&#x27;30&#x27;),bd=&#x27;0&#x27;,textvariable=result,anchor=&#x27;se&#x27;)</span><br><span class="line">show_uresult.place(x=&#x27;10&#x27;,y=&#x27;10&#x27;,width=&#x27;300&#x27;,height=&#x27;50&#x27;)</span><br><span class="line">show_dresult.place(x=&#x27;10&#x27;,y=&#x27;60&#x27;,width=&#x27;300&#x27;,height=&#x27;50&#x27;)</span><br><span class="line"></span><br><span class="line"># 按钮</span><br><span class="line"># 第一行按钮</span><br><span class="line">button_Mc =TK.Button(root,text=&#x27;Mc&#x27;,bg=&#x27;DarkGray&#x27;,command=clear)</span><br><span class="line">button_Mc.place(x = &#x27;10&#x27;,y=&#x27;150&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_Mr =TK.Button(root,text=&#x27;Mr&#x27;,bg=&#x27;DarkGray&#x27;,command = get_last_result)</span><br><span class="line">button_Mr.place(x = &#x27;90&#x27;,y=&#x27;150&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_lbracket=TK.Button(root,text=&#x27;(&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;(&#x27;))</span><br><span class="line">button_lbracket.place(x = &#x27;170&#x27;,y=&#x27;150&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_rbracket=TK.Button(root,text=&#x27;)&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;)&#x27;))</span><br><span class="line">button_rbracket.place(x = &#x27;250&#x27;,y=&#x27;150&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"># 第二行按钮</span><br><span class="line">button_7 =TK.Button(root,text=&#x27;7&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;7&#x27;))</span><br><span class="line">button_7.place(x = &#x27;10&#x27;,y=&#x27;205&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_8 =TK.Button(root,text=&#x27;8&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;8&#x27;))</span><br><span class="line">button_8.place(x = &#x27;90&#x27;,y=&#x27;205&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_9 =TK.Button(root,text=&#x27;9&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;9&#x27;))</span><br><span class="line">button_9.place(x = &#x27;170&#x27;,y=&#x27;205&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_division =TK.Button(root,text=&#x27;÷&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;÷&#x27;))</span><br><span class="line">button_division.place(x = &#x27;250&#x27;,y=&#x27;205&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"># 第三行按钮</span><br><span class="line">button_4 =TK.Button(root,text=&#x27;4&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;4&#x27;))</span><br><span class="line">button_4.place(x = &#x27;10&#x27;,y=&#x27;260&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_5 =TK.Button(root,text=&#x27;5&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;5&#x27;))</span><br><span class="line">button_5.place(x = &#x27;90&#x27;,y=&#x27;260&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_6 =TK.Button(root,text=&#x27;6&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;6&#x27;))</span><br><span class="line">button_6.place(x = &#x27;170&#x27;,y=&#x27;260&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_multiplication =TK.Button(root,text=&#x27;X&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;x&#x27;))</span><br><span class="line">button_multiplication.place(x = &#x27;250&#x27;,y=&#x27;260&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"># 第四行按钮</span><br><span class="line">button_1 =TK.Button(root,text=&#x27;1&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda :getnum(&#x27;1&#x27;))</span><br><span class="line">button_1.place(x = &#x27;10&#x27;,y=&#x27;315&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_2 =TK.Button(root,text=&#x27;2&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;2&#x27;))</span><br><span class="line">button_2.place(x = &#x27;90&#x27;,y=&#x27;315&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_3 =TK.Button(root,text=&#x27;3&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;3&#x27;))</span><br><span class="line">button_3.place(x = &#x27;170&#x27;,y=&#x27;315&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_minus =TK.Button(root,text=&#x27;—&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;-&#x27;))</span><br><span class="line">button_minus.place(x = &#x27;250&#x27;,y=&#x27;315&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"># 第五行按钮</span><br><span class="line">button_0 =TK.Button(root,text=&#x27;0&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;0&#x27;))</span><br><span class="line">button_0.place(x = &#x27;10&#x27;,y=&#x27;370&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_point =TK.Button(root,text=&#x27;.&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;.&#x27;))</span><br><span class="line">button_point.place(x = &#x27;90&#x27;,y=&#x27;370&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_equal=TK.Button(root,text=&#x27;=&#x27;,bg=&#x27;DarkGray&#x27;,command= run)</span><br><span class="line">button_equal.place(x = &#x27;170&#x27;,y=&#x27;370&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line">button_plus =TK.Button(root,text=&#x27;+&#x27;,bg=&#x27;DarkGray&#x27;,command= lambda : getnum(&#x27;+&#x27;))</span><br><span class="line">button_plus.place(x = &#x27;250&#x27;,y=&#x27;370&#x27;,width = &#x27;60&#x27;,height=&#x27;40&#x27;)</span><br><span class="line"></span><br><span class="line"># 在编写完所有的GUI与相关函数后，我们要让这个窗口不断的循环，做成一直显示的效果，如果没有这一行，主窗口会出现一瞬间然后消失，像是程序没有运行一样</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+
+<h1 id="8-参考文章"><a href="#8-参考文章" class="headerlink" title="8 参考文章"></a>8 参考文章</h1><p>本文在创作过程中参考了下面大佬的文章：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a971956955/article/details/81634767">https://blog.csdn.net/a971956955/article/details/81634767</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/04/24/python%E7%BC%96%E5%86%99%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="cl1qb1dyq004uqktu0qigflzg" data-title="python编写计算器" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-基于APP Inventor的GPS位置应用开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/10/%E5%9F%BA%E4%BA%8EAPP%20Inventor%E7%9A%84GPS%E4%BD%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2020-04-10T13:15:43.000Z" itemprop="datePublished">2020-04-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/04/10/%E5%9F%BA%E4%BA%8EAPP%20Inventor%E7%9A%84GPS%E4%BD%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">基于APP Inventor的GPS位置应用开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>疫情期间，物联网老师又开始“找事”了，这次让利用位置传感器做一个软件，随意发挥，我花费了两天时间解决了这次的作业，简单记录下吧。</p>
+<h1 id="组件设计"><a href="#组件设计" class="headerlink" title="组件设计"></a>组件设计</h1><p>同样，我为了让自己做的软件的界面更好看点，于是就在里面加了点内容，设计如下图所示</p>
+<p><img src="https://img-blog.csdnimg.cn/20200410211925967.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="天气预报"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200410212044303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="地理信息"></p>
+<p>从上面的界面中，我设计的组件列表如下所示</p>
+<p><img src="https://img-blog.csdnimg.cn/20200410212127140.png" alt="屏幕1组件列表"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020041021220475.png" alt="屏幕2组件列表"></p>
+<h1 id="逻辑设计"><a href="#逻辑设计" class="headerlink" title="逻辑设计"></a>逻辑设计</h1><p>我利用的是和风天气的API接口，因为自己是借鉴的别人的代码，所以就没有申请和风天气的账号。如图所示，天气数据的获取方式是HTTP GET，返回的数据格式是Json。<br>具体的代码部分可以查看我在下面分享的aia项目文件。</p>
+<h1 id="手机配置"><a href="#手机配置" class="headerlink" title="手机配置"></a>手机配置</h1><p>我用的是Redmi note7 pro，在官网上找到了手机的参数，支持GPS、GLONASS、北斗定位和A-GPS技术。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200410213342741.png" alt="手机配置"></p>
+<h1 id="演示视频与项目文件"><a href="#演示视频与项目文件" class="headerlink" title="演示视频与项目文件"></a>演示视频与项目文件</h1><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1nr1MQTTiWQf9KGCORqU98Q">https://pan.baidu.com/s/1nr1MQTTiWQf9KGCORqU98Q</a><br>提取码：0zg5</p>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>本文创作时参考的文章如下：</p>
+<ol>
+<li><img src="https://img-blog.csdnimg.cn/20200410212542994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="老巫婆的博客"></li>
+<li><img src="https://img-blog.csdnimg.cn/20200410212651262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="知网论文"></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/04/10/%E5%9F%BA%E4%BA%8EAPP%20Inventor%E7%9A%84GPS%E4%BD%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" data-id="cl1qb1dzc0065qktu4m073htk" data-title="基于APP Inventor的GPS位置应用开发" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-基于APP Inventor的蓝牙文本通信应用开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/10/%E5%9F%BA%E4%BA%8EAPP%20Inventor%E7%9A%84%E8%93%9D%E7%89%99%E6%96%87%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2020-04-10T08:08:01.000Z" itemprop="datePublished">2020-04-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/04/10/%E5%9F%BA%E4%BA%8EAPP%20Inventor%E7%9A%84%E8%93%9D%E7%89%99%E6%96%87%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">基于APP Inventor的蓝牙文本通信应用开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>前几周，老师让利用APP Inventor做一个蓝牙文本通信应用，于是我便开始了我的安卓开发之行，过程还挺顺利的，啥都不说了，开始记录吧！！！</p>
+<h1 id="组件设计"><a href="#组件设计" class="headerlink" title="组件设计"></a>组件设计</h1><p>为了视觉上的享受，我把软件的界面做的稍微好看一点，设计如下图所示</p>
+<p><img src="https://img-blog.csdnimg.cn/20200410161558396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="界面设计"></p>
+<p>从上面的界面中，我设计的组件列表如下所示</p>
+<p><img src="https://img-blog.csdnimg.cn/20200410204332584.png" alt="组件列表"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020041020450326.png" alt="组件列表"></p>
+<h1 id="逻辑设计"><a href="#逻辑设计" class="headerlink" title="逻辑设计"></a>逻辑设计</h1><h2 id="蓝牙服务器"><a href="#蓝牙服务器" class="headerlink" title="蓝牙服务器"></a>蓝牙服务器</h2><p><img src="https://img-blog.csdnimg.cn/20200410204649980.png" alt="蓝牙服务器第1部分代码"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200410204740697.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="蓝牙服务器第2部分代码"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200410204808421.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="蓝牙服务器第3部分代码"></p>
+<h2 id="蓝牙客户端"><a href="#蓝牙客户端" class="headerlink" title="蓝牙客户端"></a>蓝牙客户端</h2><p><img src="https://img-blog.csdnimg.cn/20200410204852642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="蓝牙客户端"></p>
+<h2 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h2><p><img src="https://img-blog.csdnimg.cn/20200410204949279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="发送消息第1部分代码"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200410205035177.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="发送消息第2部分代码"></p>
+<h2 id="接收消息"><a href="#接收消息" class="headerlink" title="接收消息"></a>接收消息</h2><p><img src="https://img-blog.csdnimg.cn/20200410205104466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="接收消息"></p>
+<h2 id="清空聊天记录"><a href="#清空聊天记录" class="headerlink" title="清空聊天记录"></a>清空聊天记录</h2><p><img src="https://img-blog.csdnimg.cn/20200410205148651.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="清空聊天记录"></p>
+<h1 id="演示视频与项目文件"><a href="#演示视频与项目文件" class="headerlink" title="演示视频与项目文件"></a>演示视频与项目文件</h1><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/18KvXJqXn_jFN6msdd1byfg">https://pan.baidu.com/s/18KvXJqXn_jFN6msdd1byfg</a><br>提取码：dba5</p>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>本文创作时参考的文章如下：<br><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_62218b990102v65p.html">http://blog.sina.com.cn/s/blog_62218b990102v65p.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/04/10/%E5%9F%BA%E4%BA%8EAPP%20Inventor%E7%9A%84%E8%93%9D%E7%89%99%E6%96%87%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" data-id="cl1qb1dza0061qktu493vaky8" data-title="基于APP Inventor的蓝牙文本通信应用开发" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2020安恒杯元旦月赛" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/22/2020%E5%AE%89%E6%81%92%E6%9D%AF%E5%85%83%E6%97%A6%E6%9C%88%E8%B5%9B/" class="article-date">
+  <time class="dt-published" datetime="2020-02-22T07:15:42.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CTF/">CTF</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/02/22/2020%E5%AE%89%E6%81%92%E6%9D%AF%E5%85%83%E6%97%A6%E6%9C%88%E8%B5%9B/">2020安恒杯元旦月赛</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="守护"><a href="#守护" class="headerlink" title="守护"></a>守护</h2><h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3><p>点击start开始抓包分析，然后等到游戏失败，一直放包到抓取f1ag.php</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222151642523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="发现record"></p>
+<p>在比赛群里的了解到需要达到1000分，接着修改record的值为1001，发到Repeater，点击Go，就得到了flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222151719620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="得到flag"></p>
+<h2 id="地图"><a href="#地图" class="headerlink" title="地图"></a>地图</h2><h3 id="解题思路：-1"><a href="#解题思路：-1" class="headerlink" title="解题思路："></a>解题思路：</h3><p>进去后发现是个高大上的界面，如下所示，不过fuzz之后，只有<font color=red>运维设备</font>能点击</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222151826559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="fuzz发现可疑选项"></p>
+<p>进去后是的界面的url是<br><a target="_blank" rel="noopener" href="http://183.129.189.60:10002/index.php">http://183.129.189.60:10002/index.php</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20200222151909665.png" alt="工控系统"></p>
+<p>看见page，就把上面的url改成<br><a target="_blank" rel="noopener" href="http://183.129.189.60:10002/index.php?page=index.php">http://183.129.189.60:10002/index.php?page=index.php</a><br>发现如下界面，多了个ok</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222151942776.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="Ok"></p>
+<p>而我再次用php内置协议直接读取代码<br>&#x2F;index.php?page&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;index.php<br>但是还是不行，给我返回来not base</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222152016968.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="php内置协议"></p>
+<p>最终，感觉是文件包含，所以就使用下面的url得到了flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222152042262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="得到flag"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/02/22/2020%E5%AE%89%E6%81%92%E6%9D%AF%E5%85%83%E6%97%A6%E6%9C%88%E8%B5%9B/" data-id="cl1qb1dwn0002qktuhm9j6fn0" data-title="2020安恒杯元旦月赛" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-密码学课程设计-Hash函数-MD5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-Hash%E5%87%BD%E6%95%B0-MD5/" class="article-date">
+  <time class="dt-published" datetime="2020-02-22T07:12:42.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-Hash%E5%87%BD%E6%95%B0-MD5/">密码学课程设计-Hash函数-MD5</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><p>MD5算法是美国麻省理工学院著名密码学家Rivest设计的，MD(Message Digest)是消息摘要的意思。Rivest于1992年想IETF提交的RFC1321中对MD5作了详尽的阐述。MD5是在MD2、MD3和MD4基础上发展而来的，尤其在MD4上增加了Safety-Belts，所以，MD5又被称为是“系有安全带的MD4”，它虽然比MD4要慢一些，但更为安全。</p>
+<h1 id="2-算法原理与设计思路"><a href="#2-算法原理与设计思路" class="headerlink" title="2 算法原理与设计思路"></a>2 算法原理与设计思路</h1><p>MD5的加密过程可分为附加填充位、初始化链接变量、分组处理和步函数四个部分，下面依次介绍这四个过程。</p>
+<h2 id="2-1-附加填充位"><a href="#2-1-附加填充位" class="headerlink" title="2.1 附加填充位"></a>2.1 附加填充位</h2><p>填充一个“1”和若干个“0”使消息长度模512与448同余，然后再将原始消息长度以64比特表示附加在填充结果的后面，从而使得消息长度恰好为512比特的整数倍。</p>
+<h2 id="2-2-初始化链接变量"><a href="#2-2-初始化链接变量" class="headerlink" title="2.2 初始化链接变量"></a>2.2 初始化链接变量</h2><p>MD5使用4个32位的寄存器A、B、C和D，最开始存放4个固定的32位的整数参数，即初始链接变量，这些参数用于第1轮迭代<br>A&#x3D;0x01234567,B&#x3D;0x89ABCDEF,C&#x3D;0xFEDCBA98,D&#x3D;0x76543210</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222150732527.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="MD5运算过程"></p>
+<h2 id="2-3-分组处理"><a href="#2-3-分组处理" class="headerlink" title="2.3 分组处理"></a>2.3 分组处理</h2><p><img src="https://img-blog.csdnimg.cn/2020022215083858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="分组处理"></p>
+<h2 id="2-4-步函数"><a href="#2-4-步函数" class="headerlink" title="2.4 步函数"></a>2.4 步函数</h2><p><img src="https://img-blog.csdnimg.cn/20200222150916197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="步函数"></p>
+<h1 id="3-关键算法分析"><a href="#3-关键算法分析" class="headerlink" title="3 关键算法分析"></a>3 关键算法分析</h1><p><img src="https://img-blog.csdnimg.cn/20200222150939437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="关键算法分析"></p>
+<h1 id="4-运行结果"><a href="#4-运行结果" class="headerlink" title="4 运行结果"></a>4 运行结果</h1><p>完整代码如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br><span class="line"></span><br><span class="line"># Initial Variable A, B, C, D</span><br><span class="line">IV_A = 0x67452301</span><br><span class="line">IV_B = 0xefcdab89</span><br><span class="line">IV_C = 0x98badcfe</span><br><span class="line">IV_D = 0x10325476</span><br><span class="line"></span><br><span class="line"># Nonlinear function</span><br><span class="line">F = lambda x, y, z:((x &amp; y) | ((~x) &amp; z))</span><br><span class="line">G = lambda x, y, z:((x &amp; z) | (y &amp; (~z)))</span><br><span class="line">H = lambda x, y, z:(x ^ y ^ z)</span><br><span class="line">I = lambda x, y, z:(y ^ (x | (~z)))</span><br><span class="line"></span><br><span class="line"># Loop Left Shift</span><br><span class="line">L = lambda x, n:(((x &lt;&lt; n) | (x &gt;&gt; (32 - n))) &amp; (0xffffffff))</span><br><span class="line"></span><br><span class="line"># 每次循环左移的位数</span><br><span class="line">Shi = ((7, 12, 17, 22) * 4,</span><br><span class="line">       (5, 9, 14, 20) * 4,</span><br><span class="line">       (4, 11, 16, 23) * 4,</span><br><span class="line">       (6, 10, 15, 21) * 4)</span><br><span class="line"></span><br><span class="line"># 每次 M[i]（消息分片）次序。</span><br><span class="line">M = ((0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15),</span><br><span class="line">     (1,6,11,0,5,10,15,4,9,14,3,8,13,2,7,12),</span><br><span class="line">     (5,8,11,14,1,4,7,10,13,0,3,6,9,12,15,2),</span><br><span class="line">     (0,7,14,5,12,3,10,1,8,15,6,13,4,11,2,9))</span><br><span class="line"></span><br><span class="line"># 将大端序二进制/十六进制字符串转成小端序</span><br><span class="line">def LittleEndian(s, Hex):</span><br><span class="line">    l = len(s)</span><br><span class="line">    ans = &quot;&quot;</span><br><span class="line">    if Hex == False:</span><br><span class="line">        i = l - 8</span><br><span class="line">        while i &gt;= 0:</span><br><span class="line">            ans += s[i:i + 8]</span><br><span class="line">            i -= 8</span><br><span class="line">    else:</span><br><span class="line">        i = l-2</span><br><span class="line">        while i &gt;= 0:</span><br><span class="line">            ans += s[i:i + 2]</span><br><span class="line">            i -= 2</span><br><span class="line">    return ans</span><br><span class="line"></span><br><span class="line"># 将字符串转成二进制字符串</span><br><span class="line">def str2Bin(m):</span><br><span class="line">    return &quot;&quot;.join(&#x27;&#123;:08b&#125;&#x27;.format(ord(x)) for x in m)</span><br><span class="line"></span><br><span class="line"># 模2的32次方加</span><br><span class="line">def addMod2_32(a, b):</span><br><span class="line">    return (a + b) % (2 ** 32)</span><br><span class="line"></span><br><span class="line"># 产生常数T[i]，常数有可能超过32位，需要&amp;0xffffffff操作</span><br><span class="line"># 返回的是十进制的数。</span><br><span class="line">def T(i):</span><br><span class="line">    result = (int(4294967296 * abs(math.sin(i)))) &amp; 0xffffffff</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">def MD5(m):</span><br><span class="line">    ## str to binstr</span><br><span class="line">    m = str2Bin(m)</span><br><span class="line">    lm = len(m)</span><br><span class="line">    ## Padding</span><br><span class="line">    lm_mod = lm % 512</span><br><span class="line">    ### 若原始消息长度刚好满足模512与448同余</span><br><span class="line">    ### 则还需要填充512位</span><br><span class="line">    if lm_mod == 448:</span><br><span class="line">        FillLength = 512</span><br><span class="line">    elif lm_mod &gt; 448:</span><br><span class="line">        FillLength = 512 + 448 - lm_mod</span><br><span class="line">    else:</span><br><span class="line">        FillLength = 448 - lm_mod</span><br><span class="line">    m += &#x27;1&#x27; + (FillLength - 1) * &#x27;0&#x27;</span><br><span class="line">    # Padding length</span><br><span class="line">    length = LittleEndian(bin(lm % (2 ** 64))[2:].zfill(64), False)</span><br><span class="line">    m += length</span><br><span class="line">    lm = len(m)</span><br><span class="line">    ## Generate Initial Variable(IV)</span><br><span class="line">    A, B, C, D = IV_A, IV_B, IV_C, IV_D</span><br><span class="line">    for i in range(0, lm, 512):</span><br><span class="line">        Y = m[i:i + 512]</span><br><span class="line">        for j in range(4):  # 共4轮</span><br><span class="line">            for k in range(16): # 每轮16个步骤</span><br><span class="line">                # A, B, C, D Backup</span><br><span class="line">                AA, BB, CC, DD = A, B, C, D</span><br><span class="line">                ## Nonlinear function</span><br><span class="line">                if j == 0:</span><br><span class="line">                    t = F(B, C, D)</span><br><span class="line">                elif j == 1:</span><br><span class="line">                    t = G(B, C, D)</span><br><span class="line">                elif j == 2:</span><br><span class="line">                    t = H(B, C, D)</span><br><span class="line">                else:</span><br><span class="line">                    t = I(B, C, D)</span><br><span class="line">                T_i = T(16 * j + k + 1)</span><br><span class="line">                M_j = LittleEndian(Y[M[j][k] * 32:M[j][k] * 32 + 32], False)</span><br><span class="line">                A, C, D = DD, BB, CC</span><br><span class="line">                B = addMod2_32(AA, t)</span><br><span class="line">                B = addMod2_32(B, int(M_j, 2))</span><br><span class="line">                B = addMod2_32(B, T_i)</span><br><span class="line">                B = L(B, Shi[j][k])</span><br><span class="line">                B = addMod2_32(B, BB)</span><br><span class="line">    ans1 = LittleEndian(hex(addMod2_32(A, IV_A))[2:-1], True).zfill(8)</span><br><span class="line">    ans2 = LittleEndian(hex(addMod2_32(B, IV_B))[2:-1], True).zfill(8)</span><br><span class="line">    ans3 = LittleEndian(hex(addMod2_32(C, IV_C))[2:-1], True).zfill(8)</span><br><span class="line">    ans4 = LittleEndian(hex(addMod2_32(D, IV_D))[2:-1], True).zfill(8)</span><br><span class="line">    return ans1 + ans2 + ans3 + ans4</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    m = input(&quot;请输入明文: &quot;)</span><br><span class="line">    ans = MD5(m)</span><br><span class="line">    print(&quot;明文加密后的密文是:\n&quot; + MD5(m) + &quot; (Lowercase)\n&quot; + ans.upper() + &quot; (Uppercase)&quot;)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>运行效果如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020022215112890.png" alt="运行效果"></p>
+<h1 id="5-密码安全性分析"><a href="#5-密码安全性分析" class="headerlink" title="5 密码安全性分析"></a>5 密码安全性分析</h1><p><img src="https://img-blog.csdnimg.cn/20200222151201719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="密码安全性分析"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-Hash%E5%87%BD%E6%95%B0-MD5/" data-id="cl1qb1dzf006dqktub2ur1ds6" data-title="密码学课程设计-Hash函数-MD5" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-密码学课程设计-公钥密码-RSA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81-RSA/" class="article-date">
+  <time class="dt-published" datetime="2020-02-22T07:05:42.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81-RSA/">密码学课程设计-公钥密码-RSA</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><p>在Diffie和Hellman提出公钥密码体制的设想后，Merkle和Hellman首先共同提出MH背包公钥加密体制，随后Rivest、Shamir和Adleman联合提出RSA公钥加密体制。RSA虽晚于MH背包公钥加密体制，但它是第一个安全、实用的公钥加密算法，已经成为国际标准，是目前应用广泛的公钥加密体制。RSA的基础是数论的欧拉定理，它的安全性依赖于大整数因子分解的困难性。因为加解密次序可换，RSA公钥加密体制既可用于加密，也可用于设计数字签名体制，加密体制又可以分为密钥生成算法、加密算法和解密算三部分。</p>
+<h1 id="2-算法原理与设计思路"><a href="#2-算法原理与设计思路" class="headerlink" title="2 算法原理与设计思路"></a>2 算法原理与设计思路</h1><p><img src="https://img-blog.csdnimg.cn/2020022215030263.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="算法原理与设计思路"></p>
+<h1 id="3-关键算法分析"><a href="#3-关键算法分析" class="headerlink" title="3 关键算法分析"></a>3 关键算法分析</h1><p><img src="https://img-blog.csdnimg.cn/20200222150334263.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="关键算法分析"></p>
+<h1 id="4-运行结果"><a href="#4-运行结果" class="headerlink" title="4 运行结果"></a>4 运行结果</h1><p>完整代码如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import time</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line"># 幂模运算，快速计算(p^q) mod (n)，这里采用了蒙哥马利算法</span><br><span class="line">def pow_mod(p, q, n):</span><br><span class="line">    res = 1</span><br><span class="line">    while q:</span><br><span class="line">        if q &amp; 1:</span><br><span class="line">            res = (res * p) % n</span><br><span class="line">        q &gt;&gt;= 1         # 右移1位</span><br><span class="line">        p = (p * p) % n</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line"># 欧几里得算法求最大公约数</span><br><span class="line">def gcd(a, b):</span><br><span class="line">    while a != 0:</span><br><span class="line">        a, b = b % a, a</span><br><span class="line">    return b</span><br><span class="line"></span><br><span class="line"># 扩展欧几里得算法求模逆，取模负1的算法:计算x2= x^-1 (mod n)的值</span><br><span class="line">def mod_1(x, n):</span><br><span class="line">    x0 = x</span><br><span class="line">    y0 = n</span><br><span class="line">    x1 = 0</span><br><span class="line">    y1 = 1</span><br><span class="line">    x2 = 1</span><br><span class="line">    y2 = 0</span><br><span class="line">    while n != 0:</span><br><span class="line">        q = x // n</span><br><span class="line">        (x, n) = (n, x % n)</span><br><span class="line">        (x1, x2) = ((x2 - (q * x1)), x1)</span><br><span class="line">        (y1, y2) = ((y2 - (q * y1)), y1)</span><br><span class="line">    if x2 &lt; 0:</span><br><span class="line">        x2 += y0</span><br><span class="line">    if y2 &lt; 0:</span><br><span class="line">        y2 += x0</span><br><span class="line">    return x2</span><br><span class="line"></span><br><span class="line"># 随机产生一个非常大的奇数，w表示希望产生的位数</span><br><span class="line">def largeOddNumber(w):</span><br><span class="line">    list = []</span><br><span class="line">    list.append(&#x27;1&#x27;)  # 最高位定为1</span><br><span class="line">    for i in range(w - 2):</span><br><span class="line">        c = random.choice([&#x27;0&#x27;, &#x27;1&#x27;])</span><br><span class="line">        list.append(c)</span><br><span class="line">    list.append(&#x27;1&#x27;)  # 最低位定为1</span><br><span class="line">    res = int(&#x27;&#x27;.join(list), 2)</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line"># 检测n是否为素数</span><br><span class="line">def primeMillerRabin(a, n):</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    第一步，模100以内的素数，初步排除很显然的合数</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    # 100以内的素数，初步排除很显然的合数</span><br><span class="line">    Sushubiao = (2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97)</span><br><span class="line">    for y in Sushubiao:</span><br><span class="line">        if n % y == 0:</span><br><span class="line">            return False</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    第二步 用miller_rabin算法对n进行检测</span><br><span class="line">    &#x27;&#x27;&#x27;</span><br><span class="line">    # 费马小定理</span><br><span class="line">    if pow_mod(a, n - 1, n) == 1:  # 如果a^(n-1)!= 1 mod n, 说明n为合数</span><br><span class="line">        d = n - 1  # n-1 = (2^q )* m, 求q和m的值，用来判断二次定理</span><br><span class="line">        q = 0</span><br><span class="line">        while not (d &amp; 1):  # 末尾是0</span><br><span class="line">            q = q + 1</span><br><span class="line">            d &gt;&gt;= 1         # 右移1位</span><br><span class="line">        m = d</span><br><span class="line"></span><br><span class="line">        for i in range(q):  # 0~q-1, 我们先找到最小的a^u，再逐步扩大到a^((n-1)/2)</span><br><span class="line">            u = m * (2 ** i)  # u = 2^i * m</span><br><span class="line">            tmp = pow_mod(a, u, n)</span><br><span class="line">            if tmp == 1 or tmp == n - 1:    # 如果满足，则a^(n−1) = 1 (mod n)有解。</span><br><span class="line">                # 满足条件</span><br><span class="line">                return True</span><br><span class="line">        return False</span><br><span class="line">    else:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line"># 随机产生k个a，检验其是否都满足费马小定理和二次定理</span><br><span class="line">def prime_test(n, k):</span><br><span class="line">    while k &gt; 0:</span><br><span class="line">        a = random.randint(2, n - 1)</span><br><span class="line">        if not primeMillerRabin(a, n):</span><br><span class="line">            return False</span><br><span class="line">        k = k - 1</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line"># 产生一个大素数(bit位)</span><br><span class="line">def get_prime(bit):</span><br><span class="line">    while True:</span><br><span class="line">        prime_number = largeOddNumber(512)      # 产生一个512位的大奇数</span><br><span class="line">        for i in range(50):  # 伪素数附近50个奇数都没有真素数的话，重新再产生一个伪素数</span><br><span class="line">            u = prime_test(prime_number, 5)</span><br><span class="line">            if u:</span><br><span class="line">                break</span><br><span class="line">            else:</span><br><span class="line">                prime_number = prime_number + 2 * i</span><br><span class="line">        if u:</span><br><span class="line">            return prime_number</span><br><span class="line">        else:</span><br><span class="line">            continue</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    # 密钥p</span><br><span class="line">    p = get_prime(500)</span><br><span class="line">    # 密钥q</span><br><span class="line">    q = get_prime(550)</span><br><span class="line">    # 公开n</span><br><span class="line">    n = p * q</span><br><span class="line">    # 欧拉函数</span><br><span class="line">    Euler = (p - 1) * (q - 1)</span><br><span class="line">    # 取一个合适的e，而且e和(p-1)*(q-1)互素</span><br><span class="line">    while True:</span><br><span class="line">        e = 65537</span><br><span class="line">        if gcd(e, Euler) == 1:</span><br><span class="line">            break</span><br><span class="line">        else:</span><br><span class="line">            e = e - 1</span><br><span class="line">    d = mod_1(e, Euler)</span><br><span class="line">    print(&#x27;私钥p, q, d分别为:&#x27;)</span><br><span class="line">    print(&#x27;p:&#x27;, p)</span><br><span class="line">    print(&#x27;q:&#x27;, q)</span><br><span class="line">    print(&#x27;d:&#x27;, d)</span><br><span class="line">    print()</span><br><span class="line">    print(&#x27;公钥n, e分别为:&#x27;)</span><br><span class="line">    print(&#x27;n:&#x27;, n)</span><br><span class="line">    print(&#x27;e:&#x27;, e)</span><br><span class="line">    print()</span><br><span class="line">    plaintext = input(&quot;请输入待加密的明文:&quot;)</span><br><span class="line">    M = []</span><br><span class="line">    for i in range(len(plaintext)):</span><br><span class="line">        M.append(ord(plaintext[i]))</span><br><span class="line">    print()</span><br><span class="line">    # 加密</span><br><span class="line">    ciphertext = []</span><br><span class="line">    for i in range(len(plaintext)):</span><br><span class="line">        ciphertext.append(pow_mod(M[i], e, n))</span><br><span class="line">    print(&#x27;加密完成，得到的密文为:&#x27;)</span><br><span class="line">    print(ciphertext)</span><br><span class="line">    print()</span><br><span class="line">    # 解密</span><br><span class="line">    mingWen = &#x27;&#x27;</span><br><span class="line">    for i in range(len(plaintext)):</span><br><span class="line">        mingWen += chr(pow_mod(ciphertext[i], d, n))</span><br><span class="line">    print(&#x27;解密完成，得到的明文为:&#x27;)</span><br><span class="line">    print(mingWen)</span><br></pre></td></tr></table></figure>
+
+<p>运行效果如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222150429365.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="运行效果"></p>
+<h1 id="5-密码安全性分析"><a href="#5-密码安全性分析" class="headerlink" title="5 密码安全性分析"></a>5 密码安全性分析</h1><p><img src="https://img-blog.csdnimg.cn/20200222150458267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="密码安全性分析"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81-RSA/" data-id="cl1qb1dzh006hqktudmhe7e7e" data-title="密码学课程设计-公钥密码-RSA" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

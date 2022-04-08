@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>密码学课程设计-Hash函数-MD5 | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 概述MD5算法是美国麻省理工学院著名密码学家Rivest设计的，MD(Message Digest)是消息摘要的意思。Rivest于1992年想IETF提交的RFC1321中对MD5作了详尽的阐述。MD5是在MD2、MD3和MD4基础上发展而来的，尤其在MD4上增加了Safety-Belts，所以，MD5又被称为是“系有安全带的MD4”，它虽然比MD4要慢一些，但更为安全。 2 算法原理与设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学课程设计-Hash函数-MD5">
+<meta property="og:url" content="http://example.com/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-Hash%E5%87%BD%E6%95%B0-MD5/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="1 概述MD5算法是美国麻省理工学院著名密码学家Rivest设计的，MD(Message Digest)是消息摘要的意思。Rivest于1992年想IETF提交的RFC1321中对MD5作了详尽的阐述。MD5是在MD2、MD3和MD4基础上发展而来的，尤其在MD4上增加了Safety-Belts，所以，MD5又被称为是“系有安全带的MD4”，它虽然比MD4要慢一些，但更为安全。 2 算法原理与设计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200222150732527.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020022215083858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200222150916197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200222150939437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020022215112890.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200222151201719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-02-22T07:12:42.000Z">
+<meta property="article:modified_time" content="2020-02-22T07:12:21.213Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200222150732527.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-密码学课程设计-Hash函数-MD5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-Hash%E5%87%BD%E6%95%B0-MD5/" class="article-date">
+  <time class="dt-published" datetime="2020-02-22T07:12:42.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      密码学课程设计-Hash函数-MD5
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><p>MD5算法是美国麻省理工学院著名密码学家Rivest设计的，MD(Message Digest)是消息摘要的意思。Rivest于1992年想IETF提交的RFC1321中对MD5作了详尽的阐述。MD5是在MD2、MD3和MD4基础上发展而来的，尤其在MD4上增加了Safety-Belts，所以，MD5又被称为是“系有安全带的MD4”，它虽然比MD4要慢一些，但更为安全。</p>
+<h1 id="2-算法原理与设计思路"><a href="#2-算法原理与设计思路" class="headerlink" title="2 算法原理与设计思路"></a>2 算法原理与设计思路</h1><p>MD5的加密过程可分为附加填充位、初始化链接变量、分组处理和步函数四个部分，下面依次介绍这四个过程。</p>
+<h2 id="2-1-附加填充位"><a href="#2-1-附加填充位" class="headerlink" title="2.1 附加填充位"></a>2.1 附加填充位</h2><p>填充一个“1”和若干个“0”使消息长度模512与448同余，然后再将原始消息长度以64比特表示附加在填充结果的后面，从而使得消息长度恰好为512比特的整数倍。</p>
+<h2 id="2-2-初始化链接变量"><a href="#2-2-初始化链接变量" class="headerlink" title="2.2 初始化链接变量"></a>2.2 初始化链接变量</h2><p>MD5使用4个32位的寄存器A、B、C和D，最开始存放4个固定的32位的整数参数，即初始链接变量，这些参数用于第1轮迭代<br>A&#x3D;0x01234567,B&#x3D;0x89ABCDEF,C&#x3D;0xFEDCBA98,D&#x3D;0x76543210</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222150732527.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="MD5运算过程"></p>
+<h2 id="2-3-分组处理"><a href="#2-3-分组处理" class="headerlink" title="2.3 分组处理"></a>2.3 分组处理</h2><p><img src="https://img-blog.csdnimg.cn/2020022215083858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="分组处理"></p>
+<h2 id="2-4-步函数"><a href="#2-4-步函数" class="headerlink" title="2.4 步函数"></a>2.4 步函数</h2><p><img src="https://img-blog.csdnimg.cn/20200222150916197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="步函数"></p>
+<h1 id="3-关键算法分析"><a href="#3-关键算法分析" class="headerlink" title="3 关键算法分析"></a>3 关键算法分析</h1><p><img src="https://img-blog.csdnimg.cn/20200222150939437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="关键算法分析"></p>
+<h1 id="4-运行结果"><a href="#4-运行结果" class="headerlink" title="4 运行结果"></a>4 运行结果</h1><p>完整代码如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br><span class="line"></span><br><span class="line"># Initial Variable A, B, C, D</span><br><span class="line">IV_A = 0x67452301</span><br><span class="line">IV_B = 0xefcdab89</span><br><span class="line">IV_C = 0x98badcfe</span><br><span class="line">IV_D = 0x10325476</span><br><span class="line"></span><br><span class="line"># Nonlinear function</span><br><span class="line">F = lambda x, y, z:((x &amp; y) | ((~x) &amp; z))</span><br><span class="line">G = lambda x, y, z:((x &amp; z) | (y &amp; (~z)))</span><br><span class="line">H = lambda x, y, z:(x ^ y ^ z)</span><br><span class="line">I = lambda x, y, z:(y ^ (x | (~z)))</span><br><span class="line"></span><br><span class="line"># Loop Left Shift</span><br><span class="line">L = lambda x, n:(((x &lt;&lt; n) | (x &gt;&gt; (32 - n))) &amp; (0xffffffff))</span><br><span class="line"></span><br><span class="line"># 每次循环左移的位数</span><br><span class="line">Shi = ((7, 12, 17, 22) * 4,</span><br><span class="line">       (5, 9, 14, 20) * 4,</span><br><span class="line">       (4, 11, 16, 23) * 4,</span><br><span class="line">       (6, 10, 15, 21) * 4)</span><br><span class="line"></span><br><span class="line"># 每次 M[i]（消息分片）次序。</span><br><span class="line">M = ((0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15),</span><br><span class="line">     (1,6,11,0,5,10,15,4,9,14,3,8,13,2,7,12),</span><br><span class="line">     (5,8,11,14,1,4,7,10,13,0,3,6,9,12,15,2),</span><br><span class="line">     (0,7,14,5,12,3,10,1,8,15,6,13,4,11,2,9))</span><br><span class="line"></span><br><span class="line"># 将大端序二进制/十六进制字符串转成小端序</span><br><span class="line">def LittleEndian(s, Hex):</span><br><span class="line">    l = len(s)</span><br><span class="line">    ans = &quot;&quot;</span><br><span class="line">    if Hex == False:</span><br><span class="line">        i = l - 8</span><br><span class="line">        while i &gt;= 0:</span><br><span class="line">            ans += s[i:i + 8]</span><br><span class="line">            i -= 8</span><br><span class="line">    else:</span><br><span class="line">        i = l-2</span><br><span class="line">        while i &gt;= 0:</span><br><span class="line">            ans += s[i:i + 2]</span><br><span class="line">            i -= 2</span><br><span class="line">    return ans</span><br><span class="line"></span><br><span class="line"># 将字符串转成二进制字符串</span><br><span class="line">def str2Bin(m):</span><br><span class="line">    return &quot;&quot;.join(&#x27;&#123;:08b&#125;&#x27;.format(ord(x)) for x in m)</span><br><span class="line"></span><br><span class="line"># 模2的32次方加</span><br><span class="line">def addMod2_32(a, b):</span><br><span class="line">    return (a + b) % (2 ** 32)</span><br><span class="line"></span><br><span class="line"># 产生常数T[i]，常数有可能超过32位，需要&amp;0xffffffff操作</span><br><span class="line"># 返回的是十进制的数。</span><br><span class="line">def T(i):</span><br><span class="line">    result = (int(4294967296 * abs(math.sin(i)))) &amp; 0xffffffff</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">def MD5(m):</span><br><span class="line">    ## str to binstr</span><br><span class="line">    m = str2Bin(m)</span><br><span class="line">    lm = len(m)</span><br><span class="line">    ## Padding</span><br><span class="line">    lm_mod = lm % 512</span><br><span class="line">    ### 若原始消息长度刚好满足模512与448同余</span><br><span class="line">    ### 则还需要填充512位</span><br><span class="line">    if lm_mod == 448:</span><br><span class="line">        FillLength = 512</span><br><span class="line">    elif lm_mod &gt; 448:</span><br><span class="line">        FillLength = 512 + 448 - lm_mod</span><br><span class="line">    else:</span><br><span class="line">        FillLength = 448 - lm_mod</span><br><span class="line">    m += &#x27;1&#x27; + (FillLength - 1) * &#x27;0&#x27;</span><br><span class="line">    # Padding length</span><br><span class="line">    length = LittleEndian(bin(lm % (2 ** 64))[2:].zfill(64), False)</span><br><span class="line">    m += length</span><br><span class="line">    lm = len(m)</span><br><span class="line">    ## Generate Initial Variable(IV)</span><br><span class="line">    A, B, C, D = IV_A, IV_B, IV_C, IV_D</span><br><span class="line">    for i in range(0, lm, 512):</span><br><span class="line">        Y = m[i:i + 512]</span><br><span class="line">        for j in range(4):  # 共4轮</span><br><span class="line">            for k in range(16): # 每轮16个步骤</span><br><span class="line">                # A, B, C, D Backup</span><br><span class="line">                AA, BB, CC, DD = A, B, C, D</span><br><span class="line">                ## Nonlinear function</span><br><span class="line">                if j == 0:</span><br><span class="line">                    t = F(B, C, D)</span><br><span class="line">                elif j == 1:</span><br><span class="line">                    t = G(B, C, D)</span><br><span class="line">                elif j == 2:</span><br><span class="line">                    t = H(B, C, D)</span><br><span class="line">                else:</span><br><span class="line">                    t = I(B, C, D)</span><br><span class="line">                T_i = T(16 * j + k + 1)</span><br><span class="line">                M_j = LittleEndian(Y[M[j][k] * 32:M[j][k] * 32 + 32], False)</span><br><span class="line">                A, C, D = DD, BB, CC</span><br><span class="line">                B = addMod2_32(AA, t)</span><br><span class="line">                B = addMod2_32(B, int(M_j, 2))</span><br><span class="line">                B = addMod2_32(B, T_i)</span><br><span class="line">                B = L(B, Shi[j][k])</span><br><span class="line">                B = addMod2_32(B, BB)</span><br><span class="line">    ans1 = LittleEndian(hex(addMod2_32(A, IV_A))[2:-1], True).zfill(8)</span><br><span class="line">    ans2 = LittleEndian(hex(addMod2_32(B, IV_B))[2:-1], True).zfill(8)</span><br><span class="line">    ans3 = LittleEndian(hex(addMod2_32(C, IV_C))[2:-1], True).zfill(8)</span><br><span class="line">    ans4 = LittleEndian(hex(addMod2_32(D, IV_D))[2:-1], True).zfill(8)</span><br><span class="line">    return ans1 + ans2 + ans3 + ans4</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    m = input(&quot;请输入明文: &quot;)</span><br><span class="line">    ans = MD5(m)</span><br><span class="line">    print(&quot;明文加密后的密文是:\n&quot; + MD5(m) + &quot; (Lowercase)\n&quot; + ans.upper() + &quot; (Uppercase)&quot;)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>运行效果如下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020022215112890.png" alt="运行效果"></p>
+<h1 id="5-密码安全性分析"><a href="#5-密码安全性分析" class="headerlink" title="5 密码安全性分析"></a>5 密码安全性分析</h1><p><img src="https://img-blog.csdnimg.cn/20200222151201719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="密码安全性分析"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-Hash%E5%87%BD%E6%95%B0-MD5/" data-id="cl1qb1dzf006dqktub2ur1ds6" data-title="密码学课程设计-Hash函数-MD5" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/22/2020%E5%AE%89%E6%81%92%E6%9D%AF%E5%85%83%E6%97%A6%E6%9C%88%E8%B5%9B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          2020安恒杯元旦月赛
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81-RSA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">密码学课程设计-公钥密码-RSA</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

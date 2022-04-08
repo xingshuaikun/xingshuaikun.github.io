@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>base64隐写（转） | iHui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1 声明本文的base64部分参考了下面的文章 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;48fe4dd3e5ce 2 背景圣诞节前做了北京工业大学的CTF，其中有一道base64隐写的题目，这里记录一下原理，以供日后方便查看。 3 原理 base64是怎么编码的？   字符对应ASCII转换成八位二进制( base64的基础单位是 38bit的二进制，若是不够38bit则在后面添加0字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="base64隐写（转）">
+<meta property="og:url" content="http://example.com/2020/01/09/base64%E9%9A%90%E5%86%99%EF%BC%88%E8%BD%AC%EF%BC%89/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="1 声明本文的base64部分参考了下面的文章 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;48fe4dd3e5ce 2 背景圣诞节前做了北京工业大学的CTF，其中有一道base64隐写的题目，这里记录一下原理，以供日后方便查看。 3 原理 base64是怎么编码的？   字符对应ASCII转换成八位二进制( base64的基础单位是 38bit的二进制，若是不够38bit则在后面添加0字">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109104904229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191225170834945.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109103829892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200109104301863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-01-09T02:45:43.000Z">
+<meta property="article:modified_time" content="2020-01-10T01:34:33.953Z">
+<meta property="article:author" content="iHui">
+<meta property="article:tag" content="经验">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200109104904229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="iHui" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">iHui</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-base64隐写（转）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/01/09/base64%E9%9A%90%E5%86%99%EF%BC%88%E8%BD%AC%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2020-01-09T02:45:43.000Z" itemprop="datePublished">2020-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      base64隐写（转）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-声明"><a href="#1-声明" class="headerlink" title="1 声明"></a>1 声明</h1><p>本文的base64部分参考了下面的文章</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/48fe4dd3e5ce">https://www.jianshu.com/p/48fe4dd3e5ce</a></p>
+<h1 id="2-背景"><a href="#2-背景" class="headerlink" title="2 背景"></a>2 背景</h1><p>圣诞节前做了北京工业大学的CTF，其中有一道base64隐写的题目，这里记录一下原理，以供日后方便查看。</p>
+<h1 id="3-原理"><a href="#3-原理" class="headerlink" title="3 原理"></a>3 原理</h1><ul>
+<li>base64是怎么编码的？</li>
+</ul>
+<ol>
+<li>字符对应ASCII转换成八位二进制( base64的基础单位是 3<em>8bit的二进制，若是不够3</em>8bit则在后面添加0字节（padding）直至满足)(例如：字符A–&gt;八位二进制01000001不够3<em>8即不够24位后面补0直到满足3</em>8即 01000001 00000000 00000000)</li>
+<li>3<em>8bit的二进制转换成4</em>6bit的二进制(01000001 00000000 00000000–&gt;010000 010000 000000 000000)</li>
+<li>4*6bit的二进制转换成十进制(010000 010000 000000 000000–&gt;16 16 0 0)(注意后面的两个0在下一步不会变成base64对照表里的A而是你自己加上去的要变成等号(&#x3D;))</li>
+<li>对照base64表把十进制转换成字符(16 16 0 0–&gt;Q Q &#x3D; &#x3D; )<br>就是说3个字符的字符串base64编码之后会转成4个字符的base64编码</li>
+</ol>
+<ul>
+<li>base64是怎么解码</li>
+</ul>
+<ol>
+<li>检查base64编码后面有几个等于号</li>
+<li>把字符串按照base64表转换成4*6的倍数位数二进制</li>
+<li>删除等于号的个数*8的bit</li>
+<li>按照6个bit一组转成字符</li>
+</ol>
+<p>关键就是，解码的时候，会删除等于号的个数 <em>8的bit，而且我们只用6个bit表示一个等于号(000000)，那么，意思就是我们可以控制等于号</em>2bit的字符<br>看图片上的两个例子：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109104904229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="base64隐写"></p>
+<p>如图，那么我们就可以在加粗的0的位子用二进制隐写(改成其他的二进制数)。这样子做，不影响原文的还原(因为解码的时候加粗位置被改的数是要被删除的)，唯一的区别就是，上图的QQ&#x3D;&#x3D;中第二个Q会变化，QkM&#x3D;的M会变化，所以base64可以用于隐写</p>
+<h1 id="4-示例"><a href="#4-示例" class="headerlink" title="4 示例"></a>4 示例</h1><h2 id="4-1-解码"><a href="#4-1-解码" class="headerlink" title="4.1 解码"></a>4.1 解码</h2><p>下面的代码是对 UX&#x3D;&#x3D;(X取A到Z)进行base64解码（python2.7）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">b = &#x27;&#x27;</span><br><span class="line">for i in range(26):</span><br><span class="line">    b = &#x27;U&#x27; + chr(65 + i) + &#x27;==&#x27;</span><br><span class="line">    print b</span><br><span class="line">    print base64.b64decode(b)</span><br></pre></td></tr></table></figure>
+
+<p>显示的结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">E:\App\py_workspace\venv\Scripts\python.exe E:/App/py_workspace/asdf.py</span><br><span class="line">UA==</span><br><span class="line">P</span><br><span class="line">UB==</span><br><span class="line">P</span><br><span class="line">UC==</span><br><span class="line">P</span><br><span class="line">UD==</span><br><span class="line">P</span><br><span class="line">UE==</span><br><span class="line">P</span><br><span class="line">UF==</span><br><span class="line">P</span><br><span class="line">UG==</span><br><span class="line">P</span><br><span class="line">UH==</span><br><span class="line">P</span><br><span class="line">UI==</span><br><span class="line">P</span><br><span class="line">UJ==</span><br><span class="line">P</span><br><span class="line">UK==</span><br><span class="line">P</span><br><span class="line">UL==</span><br><span class="line">P</span><br><span class="line">UM==</span><br><span class="line">P</span><br><span class="line">UN==</span><br><span class="line">P</span><br><span class="line">UO==</span><br><span class="line">P</span><br><span class="line">UP==</span><br><span class="line">P</span><br><span class="line">UQ==</span><br><span class="line">Q</span><br><span class="line">UR==</span><br><span class="line">Q</span><br><span class="line">US==</span><br><span class="line">Q</span><br><span class="line">UT==</span><br><span class="line">Q</span><br><span class="line">UU==</span><br><span class="line">Q</span><br><span class="line">UV==</span><br><span class="line">Q</span><br><span class="line">UW==</span><br><span class="line">Q</span><br><span class="line">UX==</span><br><span class="line">Q</span><br><span class="line">UY==</span><br><span class="line">Q</span><br><span class="line">UZ==</span><br><span class="line">Q</span><br></pre></td></tr></table></figure>
+
+<p>看出来啥了没<br>如果我要发给你一个Q那么我发UZ&#x3D;&#x3D;可以，但是发UY&#x3D;&#x3D;也可以，<br>看代码↓</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"># coding:UTF8</span><br><span class="line"># import base64</span><br><span class="line">import string</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def decode(flag1):  # 把需要隐藏的密文变成二进制字符串</span><br><span class="line">    list_flag1 = list(flag1)  # 把密文转为list例如：[&#x27;I&#x27;, &#x27; &#x27;, &#x27;a&#x27;, &#x27;m&#x27;, &#x27; &#x27;, &#x27;a&#x27;, &#x27; &#x27;, &#x27;C&#x27;, &#x27;T&#x27;, &#x27;F&#x27;, &#x27;e&#x27;, &#x27;r&#x27;]</span><br><span class="line">    list_dec_flag1 = []  # 十进制密文例如：[73, 32, 97, 109, 32, 97, 32, 67, 84, 70, 101, 114]</span><br><span class="line">    for j in range(len(list_flag1)):  # 把ascii码密文转换为十进制密文list</span><br><span class="line">        list_dec_flag1.append(ord(list_flag1[j]))</span><br><span class="line">    list_bin_flag1 = []</span><br><span class="line">    # 二进制密文例如：[&#x27;1001001&#x27;, &#x27;100000&#x27;, &#x27;1100001&#x27;, &#x27;1101101&#x27;, &#x27;100000&#x27;, &#x27;1100001&#x27;, &#x27;100000&#x27;, &#x27;1000011&#x27;,&#x27;1010100&#x27;...]</span><br><span class="line">    for j in range(len(list_dec_flag1)):  # 把十进制密文转化为二进制密文</span><br><span class="line">        list_bin_flag1.append((bin(list_dec_flag1[j])[2:]).zfill(8))</span><br><span class="line">    str_bin_flag1 = &#x27;&#x27;.join(list_bin_flag1)  # 把二进制密文list拼接成str</span><br><span class="line">    # 例如：010010010010000001100001011011010010000001100001001000000100001101010100010001100110010101110010</span><br><span class="line">    list_bin_every_flag1 = list(str_bin_flag1)  # 把str二进制密文转换成list</span><br><span class="line">    # 例如：[&#x27;1&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;1&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;1&#x27;, &#x27;1&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;1&#x27;, &#x27;1&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;1&#x27;...]</span><br><span class="line">    return list_bin_every_flag1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    dic = string.uppercase+string.lowercase+string.digits+&#x27;+/&#x27;</span><br><span class="line">    # a = raw_input()</span><br><span class="line">    flag = &#x27;I am a CTFer&#x27;</span><br><span class="line">    list_bin_every_flag = decode(flag)  # list二进制密文</span><br><span class="line">    # print len(list_bin_every_flag)</span><br><span class="line">    # 例如：[&#x27;1&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;1&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;1&#x27;, &#x27;1&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;1&#x27;, &#x27;1&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;0&#x27;, &#x27;1&#x27;...]</span><br><span class="line">    tip = 0  # 定义一个指针指向要写入base64的list二进制密文</span><br><span class="line">    # tt = 0</span><br><span class="line">    with open(&#x27;hello.txt&#x27;, &#x27;rb&#x27;) as h:  # 打开明文</span><br><span class="line">        file_lines = h.readlines()  # 把明文读取成一行</span><br><span class="line">        # 例如：[&#x27;#include &lt;stdio.h&gt;\r\n&#x27;, &#x27;#include &lt;stdlib.h&gt;\r\n&#x27;, &#x27;main()&#123;int i,n[]=&#123;(((1 &lt;&lt;1)&lt;&lt; (1&lt;&lt;1)...]</span><br><span class="line">        for line in file_lines:  # 接下来是正文了</span><br><span class="line">            normal_line = line.replace(&#x27;\r\n&#x27;, &#x27;&#x27;)  # 每一行的明文</span><br><span class="line">            # print normal_line</span><br><span class="line">            # 例如：#include &lt;stdio.h&gt;\r</span><br><span class="line">            equal_sign_num = 3 - (len(normal_line) % 3)  # 每行base64加密后的等号数量</span><br><span class="line">            if equal_sign_num == 3:  # 如果是3的倍数说明这一句没法进行隐写</span><br><span class="line">                equal_sign_num = 0  # 设其等号数量为0</span><br><span class="line">            # print &#x27;equal_sign_num&#x27;, equal_sign_num</span><br><span class="line">            # tt += equal_sign_num * 2</span><br><span class="line">            # print tt, &#x27;tt&#x27;</span><br><span class="line">            list_normal_line = decode(normal_line)  # 把明文也装换为list_bin_every_明文</span><br><span class="line">            # print list_normal_line</span><br><span class="line">            if equal_sign_num == 1:  # 一个等号</span><br><span class="line">                for i in range(2):</span><br><span class="line">                    # print &#x27;tip&#x27;, tip, &#x27;list_bin_every_flag[tip]&#x27;,list_bin_every_flag[tip]</span><br><span class="line">                    list_normal_line.append(list_bin_every_flag[tip])</span><br><span class="line">                    tip += 1</span><br><span class="line">                # print list_normal_line</span><br><span class="line">            elif equal_sign_num == 2:  # 两个等号</span><br><span class="line">                for i in range(4):</span><br><span class="line">                    # print &#x27;tip&#x27;, tip, &#x27;list_bin_every_flag[tip]&#x27;, list_bin_every_flag[tip]</span><br><span class="line">                    list_normal_line.append(list_bin_every_flag[tip])</span><br><span class="line">                    tip += 1</span><br><span class="line">                # print list_normal_line</span><br><span class="line">            # print tt</span><br><span class="line">            str_bin_normal_line = &#x27;&#x27;.join(list_normal_line)</span><br><span class="line">            # print str_bin_normal_line</span><br><span class="line">            b64 = &#x27;&#x27;</span><br><span class="line">            for i in range(0, len(str_bin_normal_line), 6):</span><br><span class="line">                b64 += dic[int(str_bin_normal_line[i: i+6], 2)]  # 以6位为单位对照base64编码表</span><br><span class="line">            if equal_sign_num == 1:</span><br><span class="line">                b64 += &#x27;=&#x27;</span><br><span class="line">            elif equal_sign_num == 2:</span><br><span class="line">                b64 += &#x27;==&#x27;</span><br><span class="line">            print b64</span><br></pre></td></tr></table></figure>
+
+<p>效果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">E:\App\py_workspace\venv\Scripts\python.exe E:/App/py_workspace/mybase64隐写.py</span><br><span class="line">I2luY2x1ZGU8c3RkaW8uaD5=</span><br><span class="line">I2luY2x1ZGUgPHN0ZGxpYi5oPi==</span><br><span class="line">bWFpbigpe2ludCBpLG5bXT17KCgoMSA8PDEpPDwoMTw8MSk8PCgxPDx=</span><br><span class="line">ICAgICAgIDEpPDwoMTw8KDE+PjEpKSkrKCgxPDwxKTw8KDE8PDEpKSksICgoKDE=</span><br><span class="line">ICAgICAgIDw8MSk8PCgxPDwxKTw8KDE8PDEpPDwoMTw8MSkpLSgoMTw8MSk8PCi=</span><br><span class="line">ICAgIAkxPDwxKTw8KDE8PDEpKSsoKDE8PDEpPDwoMTw8KDE+PjEpKSkrKDE8PCgxPj4xKSkpLA==</span><br><span class="line">ICAgICAgICgoKDE8PDEpPDwoMTw8MSk8PCgxPDwxKTw8KDE8PDEpKS0oKDEgPDwxKW==</span><br><span class="line">ICAgICAgIDw8KDE8PDEpIDw8KDE8PCgxPj4xKSkpLSgoMTw8MSk8PCgxPDwoMT4+MSkpKSkgLB==</span><br><span class="line">ICAgICAgICgoKDE8PDEpPDwoMTw8MSk8PCgxPDwxKTw8KCAxPDwxKSktKCgxIDw8MSk8PG==</span><br><span class="line">ICAgICAgICAoMTw8MSk8PCgxIDw8KDE+PjEpKSktKCgxPDwxKTw8KDE8PCgxPj4xKSkpKSAgLN==</span><br><span class="line">ICAgICAgICAoKCgxPDwxKTw8KDE8PDEpPDwoMTw8MSk8PCgxPDwxKSktKCgxPDwxKSA8PC==</span><br><span class="line">ICAgICAgICAoMTw8MSk8PCgxPDwoMT4+MSkpKS0oMTw8KDE+PjEpKSksKCgoMTw8MSk8PA==</span><br><span class="line">ICAgICAgICAoMTw8MSk8PCgxPDwxKSkrKCgxPDwxKTw8KDE8PDEpPDwoMTw8KDE+PjEpKSkgLW==</span><br><span class="line">ICAgICAgICAoKDE8PDEpPDwoMTw8KDE+PjEpKSkpLCgoMTw8MSk8PCgxPDwxKTw8KDE8PDEpKR==</span><br><span class="line">ICAgICAgICwoKCgxPDwxKTw8KDE8PDEpPDwoMTw8MSk8PCgxPDwxKSktKCgxPDwxKTw8KDE8PDEpKS==</span><br><span class="line">ICAgICAgIC0oMTw8KDE+PjEpKSksKCgoMTw8MSk8PCgxPDwxKTw8KDE8PDEpPDwoMTw8MSkpLSgoMQ==</span><br><span class="line">ICAgICAgIDw8MSk8PCgxPDwxKTw8KDE8PCgxPj4xKSkpLSgxPDwoMT4+MSkpKSwgICgoKDE8PDF=</span><br><span class="line">ICAgICAgICk8PCgxPDwxKTw8KDE8PDEpPDwoMTw8MSkpLSgoMTw8MSk8PCAoMQ==</span><br><span class="line">ICAgICAgIDw8MSk8PCgxPDwoMT4+MSkpKSsoMTw8MSkpLCgoKDE8PDEpPDwoMTw8MSAgKd==</span><br><span class="line">ICAgICAgIDw8KDE8PDEpPDwoMTw8MSkpLSgoMTw8MSk8PCgxPDwxKTw8KDE8PCgxPj4xKSkpLV==</span><br><span class="line">ICAgICAgICgoMTw8MSk8PCgxPDwoMT4+MSkpKSksKCgoMTw8MSk8PCgxPDwxKSA8PCgxPDwxKR==</span><br><span class="line">ICAgICAgIDw8KDE8PDEpKS0oKDE8PDEpPDwoMTw8MSk8PCgxPDwxKSkrICgoMR==</span><br><span class="line">ICAgICAgIDw8MSk8PCgxPDwoMT4+MSkpKSksKCgoMTw8MSk8PCgxPDwxKSAgPDwoMZ==</span><br><span class="line">ICAgICAgIDw8MSkpKygxPDwoMT4+MSkpKSwoKCgxPDwxKTw8KDE8PDEpKSAgKygoMZ==</span><br><span class="line">ICAgICAgIDw8MSk8PCAoMTw8KDE+PjEpKSkgKygxPDwgKDE+PjEpKSl9O2Zvcl==</span><br><span class="line">ICAgICAgIChpPSgxPj4xKTtpPCgoKDE8PDEpPDwoMTw8MSkpKygoMSAgPDwxKTw8KM==</span><br><span class="line">ICAgICAgIDE8PCgxPj4xKSkpKygxPDwxKSk7aSsrKSAgIHByaW50ZigiJWMiLG5baV0pO32=</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-加解密程序"><a href="#4-2-加解密程序" class="headerlink" title="4.2 加解密程序"></a>4.2 加解密程序</h2><p>附送大家一个输出hello，world的c语言程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">main()&#123;int i,n[]=&#123;(((1 &lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;</span><br><span class="line">       1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))+((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))), (((1</span><br><span class="line">       &lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))-((1&lt;&lt;1)&lt;&lt;(</span><br><span class="line">        1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))+((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))+(1&lt;&lt;(1&gt;&gt;1))),</span><br><span class="line">       (((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))-((1 &lt;&lt;1)</span><br><span class="line">       &lt;&lt;(1&lt;&lt;1) &lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))-((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))) ,</span><br><span class="line">       (((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;( 1&lt;&lt;1))-((1 &lt;&lt;1)&lt;&lt;</span><br><span class="line">        (1&lt;&lt;1)&lt;&lt;(1 &lt;&lt;(1&gt;&gt;1)))-((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1))))  ,</span><br><span class="line">        (((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))-((1&lt;&lt;1) &lt;&lt;</span><br><span class="line">        (1&lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))-(1&lt;&lt;(1&gt;&gt;1))),(((1&lt;&lt;1)&lt;&lt;</span><br><span class="line">        (1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))+((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1))) -</span><br><span class="line">        ((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))),((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))</span><br><span class="line">       ,(((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))-((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))</span><br><span class="line">       -(1&lt;&lt;(1&gt;&gt;1))),(((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))-((1</span><br><span class="line">       &lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))-(1&lt;&lt;(1&gt;&gt;1))),  (((1&lt;&lt;1</span><br><span class="line">       )&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))-((1&lt;&lt;1)&lt;&lt; (1</span><br><span class="line">       &lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))+(1&lt;&lt;1)),(((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1  )</span><br><span class="line">       &lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))-((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))-</span><br><span class="line">       ((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))),(((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1) &lt;&lt;(1&lt;&lt;1)</span><br><span class="line">       &lt;&lt;(1&lt;&lt;1))-((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))+ ((1</span><br><span class="line">       &lt;&lt;1)&lt;&lt;(1&lt;&lt;(1&gt;&gt;1)))),(((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1)  &lt;&lt;(1</span><br><span class="line">       &lt;&lt;1))+(1&lt;&lt;(1&gt;&gt;1))),(((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))  +((1</span><br><span class="line">       &lt;&lt;1)&lt;&lt; (1&lt;&lt;(1&gt;&gt;1))) +(1&lt;&lt; (1&gt;&gt;1)))&#125;;for</span><br><span class="line">       (i=(1&gt;&gt;1);i&lt;(((1&lt;&lt;1)&lt;&lt;(1&lt;&lt;1))+((1  &lt;&lt;1)&lt;&lt;(</span><br><span class="line">       1&lt;&lt;(1&gt;&gt;1)))+(1&lt;&lt;1));i++)   printf(&quot;%c&quot;,n[i]);&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解密的脚本如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">def get_base64_diff_value(s1, s2):</span><br><span class="line">    base64chars = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span><br><span class="line">    res = 0</span><br><span class="line">    for i in xrange(len(s2)):</span><br><span class="line">        if s1[i] != s2[i]:</span><br><span class="line">            return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def solve_stego():</span><br><span class="line">    with open(&#x27;3.txt&#x27;, &#x27;rb&#x27;) as f:</span><br><span class="line">        file_lines = f.readlines()</span><br><span class="line">        bin_str = &#x27;&#x27;</span><br><span class="line">        for line in file_lines:</span><br><span class="line">            steg_line = line.replace(&#x27;\n&#x27;, &#x27;&#x27;)</span><br><span class="line">            norm_line = line.replace(&#x27;\n&#x27;, &#x27;&#x27;).decode(&#x27;base64&#x27;).encode(&#x27;base64&#x27;).replace(&#x27;\n&#x27;, &#x27;&#x27;)</span><br><span class="line">            diff = get_base64_diff_value(steg_line, norm_line)</span><br><span class="line">            print diff</span><br><span class="line">            pads_num = steg_line.count(&#x27;=&#x27;)</span><br><span class="line">            if diff:</span><br><span class="line">                bin_str += bin(diff)[2:].zfill(pads_num * 2)</span><br><span class="line">            else:</span><br><span class="line">                bin_str += &#x27;0&#x27; * pads_num * 2</span><br><span class="line">            print goflag(bin_str)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def goflag(bin_str):</span><br><span class="line">    res_str = &#x27;&#x27;</span><br><span class="line">    for i in xrange(0, len(bin_str), 8):</span><br><span class="line">        res_str += chr(int(bin_str[i:i + 8], 2))</span><br><span class="line">    return res_str</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    solve_stego()</span><br></pre></td></tr></table></figure>
+
+<p>效果↓</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">E:\App\py_workspace\venv\Scripts\python.exe E:/App/py_workspace/Tools/base64隐写解密.py</span><br><span class="line">1</span><br><span class="line">�</span><br><span class="line">2</span><br><span class="line">�</span><br><span class="line">1</span><br><span class="line">I</span><br><span class="line">0</span><br><span class="line">I </span><br><span class="line">2</span><br><span class="line">I�</span><br><span class="line">0</span><br><span class="line">I </span><br><span class="line">6</span><br><span class="line">I �</span><br><span class="line">1</span><br><span class="line">I a</span><br><span class="line">6</span><br><span class="line">I a�</span><br><span class="line">13</span><br><span class="line">I am</span><br><span class="line">2</span><br><span class="line">I am�</span><br><span class="line">0</span><br><span class="line">I am </span><br><span class="line">6</span><br><span class="line">I am �</span><br><span class="line">1</span><br><span class="line">I am a</span><br><span class="line">2</span><br><span class="line">I am a�</span><br><span class="line">0</span><br><span class="line">I am a </span><br><span class="line">1</span><br><span class="line">I am a �</span><br><span class="line">0</span><br><span class="line">I am a �</span><br><span class="line">13</span><br><span class="line">I am a C�</span><br><span class="line">5</span><br><span class="line">I am a C�</span><br><span class="line">1</span><br><span class="line">I am a CT�</span><br><span class="line">1</span><br><span class="line">I am a CT�</span><br><span class="line">9</span><br><span class="line">I am a CTF�</span><br><span class="line">9</span><br><span class="line">I am a CTF�</span><br><span class="line">5</span><br><span class="line">I am a CTFe�</span><br><span class="line">12</span><br><span class="line">I am a CTFe�</span><br><span class="line">2</span><br><span class="line">I am a CTFer</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-3-具体题目"><a href="#4-3-具体题目" class="headerlink" title="4.3 具体题目"></a>4.3 具体题目</h2><h3 id="SXMgdGhpcyBiYXNlPw-x3D-x3D"><a href="#SXMgdGhpcyBiYXNlPw-x3D-x3D" class="headerlink" title="SXMgdGhpcyBiYXNlPw&#x3D;&#x3D;"></a>SXMgdGhpcyBiYXNlPw&#x3D;&#x3D;</h3><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><h4 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h4><p>题目base64解密之后的结果如下所示</p>
+<p><img src="https://img-blog.csdnimg.cn/20191225170834945.png" alt="题目解密"></p>
+<p>然后，对它进行base64解密，得到的是莫扎特的一首音乐歌词，有兴趣的朋友可以听听看！</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109103829892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="莫扎特歌曲"></p>
+<p>关于base64隐写的介绍，大家可以看我的另一篇文章</p>
+<p><a target="_blank" rel="noopener" href="https://xingshuaikun.github.io/2020/01/09/base64%E9%9A%90%E5%86%99%EF%BC%88%E8%BD%AC%EF%BC%89/">base64隐写</a></p>
+<p>看完上面的文章后，我这里直接从上面文章中拿来脚本如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def get_base64_diff_value(s1, s2):</span><br><span class="line">    base64chars = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span><br><span class="line">    res = 0</span><br><span class="line">    for i in xrange(len(s2)):</span><br><span class="line">        if s1[i] != s2[i]:</span><br><span class="line">            return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def solve_stego():</span><br><span class="line">    with open(&#x27;D:/bjutCTF/MISC/flag.txt&#x27;, &#x27;rb&#x27;) as f:</span><br><span class="line">        file_lines = f.readlines()</span><br><span class="line">        bin_str = &#x27;&#x27;</span><br><span class="line">        for line in file_lines:</span><br><span class="line">            steg_line = line.replace(&#x27;\n&#x27;, &#x27;&#x27;)</span><br><span class="line">            norm_line = line.replace(&#x27;\n&#x27;, &#x27;&#x27;).decode(&#x27;base64&#x27;).encode(&#x27;base64&#x27;).replace(&#x27;\n&#x27;, &#x27;&#x27;)</span><br><span class="line">            diff = get_base64_diff_value(steg_line, norm_line)</span><br><span class="line">            print diff</span><br><span class="line">            pads_num = steg_line.count(&#x27;=&#x27;)</span><br><span class="line">            if diff:</span><br><span class="line">                bin_str += bin(diff)[2:].zfill(pads_num * 2)</span><br><span class="line">            else:</span><br><span class="line">                bin_str += &#x27;0&#x27; * pads_num * 2</span><br><span class="line">            print goflag(bin_str)</span><br><span class="line"></span><br><span class="line">def goflag(bin_str):</span><br><span class="line">    res_str = &#x27;&#x27;</span><br><span class="line">    for i in xrange(0, len(bin_str), 8):</span><br><span class="line">        res_str += chr(int(bin_str[i:i + 8], 2))</span><br><span class="line">    return res_str</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    solve_stego()</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20200109104301863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="得到flag"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/01/09/base64%E9%9A%90%E5%86%99%EF%BC%88%E8%BD%AC%EF%BC%89/" data-id="cl1qb1dyi0049qktu6dr18ygd" data-title="base64隐写（转）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/10/Java%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Java课程实践
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/04/kali%E5%AD%A6%E4%B9%A0-msf-shodan-%E8%8E%B7%E5%8F%96%E6%91%84%E5%83%8F%E5%A4%B4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">kali学习-msf-使用msfvenom生成木马用于渗透虚拟机</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSharp/">CSharp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cpp/">Cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DVWA/">DVWA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP-Inventor/" rel="tag">APP Inventor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSharp/" rel="tag">CSharp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVWA/" rel="tag">DVWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Misc/" rel="tag">Misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" rel="tag">信息安全数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" rel="tag">库与模块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" rel="tag">拒绝服务攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" rel="tag">教材答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" rel="tag">牛客网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" rel="tag">计算机考研复试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APP-Inventor/" style="font-size: 10.83px;">APP Inventor</a> <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/C/" style="font-size: 16.67px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CSharp/" style="font-size: 10px;">CSharp</a> <a href="/tags/CTF/" style="font-size: 19.17px;">CTF</a> <a href="/tags/DVWA/" style="font-size: 12.5px;">DVWA</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 14.17px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Misc/" style="font-size: 10px;">Misc</a> <a href="/tags/MySQL/" style="font-size: 10.83px;">MySQL</a> <a href="/tags/Reverse/" style="font-size: 11.67px;">Reverse</a> <a href="/tags/Web/" style="font-size: 17.5px;">Web</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/writeup/" style="font-size: 18.33px;">writeup</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6/" style="font-size: 10.83px;">信息安全数学</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14.17px;">前端</a> <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" style="font-size: 10px;">区块链</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 10.83px;">协议</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 15.83px;">密码学</a> <a href="/tags/%E5%BA%93%E4%B8%8E%E6%A8%A1%E5%9D%97/" style="font-size: 13.33px;">库与模块</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" style="font-size: 10.83px;">拒绝服务攻击</a> <a href="/tags/%E6%95%99%E6%9D%90%E7%AD%94%E6%A1%88/" style="font-size: 10px;">教材答案</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E7%BD%91/" style="font-size: 15px;">牛客网</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/tags/%E7%BB%8F%E9%AA%8C/" style="font-size: 16.67px;">经验</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.83px;">网络安全</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.83px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" style="font-size: 15.83px;">计算机考研复试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/">IDA Pro静态分析dex文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">编写并分析第一个Android应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">Android四大组件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">中国矿业大学本科生涯总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/">北京工业大学考研--复试--机试刷题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 iHui<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
