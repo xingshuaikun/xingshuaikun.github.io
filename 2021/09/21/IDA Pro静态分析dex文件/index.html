@@ -142,7 +142,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(94)</small>
+                <small>(95)</small>
             
         </div>
     </li>
@@ -265,7 +265,7 @@
                     <div data-rel="Android">
                         
                         Android
-                        <small>(5)</small>
+                        <small>(6)</small>
                         
                     </div>
                     
@@ -433,7 +433,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="94">
+<input type="hidden" id="yelog_site_posts_number" value="95">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -624,6 +624,14 @@
            data-author="" >
             <span class="post-title" title="博客声明">博客声明</span>
             <span class="post-date" title="2019-10-11 16:49:47">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/04/11/Dalvik%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%A0%BC%E5%BC%8F%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E8%A7%84%E8%8C%83/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="Dalvik可执行格式与字节码规范">Dalvik可执行格式与字节码规范</span>
+            <span class="post-date" title="2022-04-11 15:50:42">2022/04/11</span>
         </a>
         
         <a  class="全部文章 Android "
@@ -947,18 +955,18 @@
         </a>
         
         <a  class="全部文章 DVWA "
-           href="/2019/10/28/DVWA-Impossible-wp/"
-           data-tag="writeup,Web,DVWA"
-           data-author="" >
-            <span class="post-title" title="DVWA-Impossible-wp">DVWA-Impossible-wp</span>
-            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
-        </a>
-        
-        <a  class="全部文章 DVWA "
            href="/2019/10/28/DVWA-High-wp/"
            data-tag="writeup,Web,DVWA"
            data-author="" >
             <span class="post-title" title="DVWA-High-wp">DVWA-High-wp</span>
+            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
+        </a>
+        
+        <a  class="全部文章 DVWA "
+           href="/2019/10/28/DVWA-Impossible-wp/"
+           data-tag="writeup,Web,DVWA"
+           data-author="" >
+            <span class="post-title" title="DVWA-Impossible-wp">DVWA-Impossible-wp</span>
             <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
         </a>
         
@@ -1416,7 +1424,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-09-24 20:45:38'>2021-09-21 10:03</time>
+            发布时间 : <time class="date" title='最后更新: 2022-04-11 18:19:39'>2021-09-21 10:03</time>
         
     </div>
     <div class="article-meta">
@@ -1438,7 +1446,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%86%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-text">2 分析过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%9C%A8Android%E6%89%8B%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85apk"><span class="toc-text">2.1 在Android手机中安装apk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E4%BD%BF%E7%94%A8ApkTool%E5%B7%A5%E5%85%B7%E5%8F%8D%E7%BC%96%E8%AF%91APK%E6%96%87%E4%BB%B6"><span class="toc-text">2.2 使用ApkTool工具反编译APK文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-grep%E5%88%86%E6%9E%90APK%E6%96%87%E4%BB%B6"><span class="toc-text">2.3 grep分析APK文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E4%BD%BF%E7%94%A87-Zip%E5%B7%A5%E5%85%B7%E8%A7%A3%E5%8E%8Bapk"><span class="toc-text">2.4 使用7-Zip工具解压apk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E4%BD%BF%E7%94%A8IDAPro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90classes-dex%E6%96%87%E4%BB%B6"><span class="toc-text">2.5 使用IDAPro静态分析classes.dex文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-%E4%BD%BF%E7%94%A8d2j-dex-recompute-checksum%E4%BF%AE%E6%94%B9classes-dex%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E6%AE%B5"><span class="toc-text">2.6 使用d2j-dex-recompute-checksum修改classes.dex的关键字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-%E4%BD%BF%E7%94%A87-Zip%E8%8E%B7%E5%BE%97%E5%8E%8B%E7%BC%A9%E5%8C%85test-zip"><span class="toc-text">2.7 使用7-Zip获得压缩包test.zip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-%E4%BD%BF%E7%94%A8signapk%E7%AD%BE%E5%90%8Dtest-apk"><span class="toc-text">2.8 使用signapk签名test.apk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-%E5%AE%89%E8%A3%85apk%E5%88%B0Android%E6%89%8B%E6%9C%BA"><span class="toc-text">2.9 安装apk到Android手机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-%E7%A0%B4%E8%A7%A3%E6%88%90%E5%8A%9F"><span class="toc-text">2.10 破解成功</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%80%BB%E7%BB%93"><span class="toc-text">3 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">4  参考文章</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%86%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-text">2 分析过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%9C%A8Android%E6%89%8B%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85apk"><span class="toc-text">2.1 在Android手机中安装apk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E4%BD%BF%E7%94%A8ApkTool%E5%B7%A5%E5%85%B7%E5%8F%8D%E7%BC%96%E8%AF%91APK%E6%96%87%E4%BB%B6"><span class="toc-text">2.2 使用ApkTool工具反编译APK文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-grep%E5%88%86%E6%9E%90APK%E6%96%87%E4%BB%B6"><span class="toc-text">2.3 grep分析APK文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E4%BD%BF%E7%94%A87-Zip%E5%B7%A5%E5%85%B7%E8%A7%A3%E5%8E%8Bapk"><span class="toc-text">2.4 使用7-Zip工具解压apk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E4%BD%BF%E7%94%A8IDAPro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90classes-dex%E6%96%87%E4%BB%B6"><span class="toc-text">2.5 使用IDAPro静态分析classes.dex文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-%E4%BD%BF%E7%94%A8d2j-dex-recompute-checksum%E4%BF%AE%E6%94%B9classes-dex%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E6%AE%B5"><span class="toc-text">2.6 使用d2j-dex-recompute-checksum修改classes.dex的关键字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-%E4%BD%BF%E7%94%A87-Zip%E8%8E%B7%E5%BE%97%E5%8E%8B%E7%BC%A9%E5%8C%85test-zip"><span class="toc-text">2.7 使用7-Zip获得压缩包test.zip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-%E4%BD%BF%E7%94%A8signapk%E7%AD%BE%E5%90%8Dtest-apk"><span class="toc-text">2.8 使用signapk签名test.apk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-%E5%AE%89%E8%A3%85apk%E5%88%B0Android%E6%89%8B%E6%9C%BA"><span class="toc-text">2.9 安装apk到Android手机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-%E7%A0%B4%E8%A7%A3%E6%88%90%E5%8A%9F"><span class="toc-text">2.10 破解成功</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%80%BB%E7%BB%93"><span class="toc-text">3 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">4  参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1503,7 +1511,7 @@
 <p>最后，在Android手机中，输入用户名为iReverse和注册码为1234567812345678，接着点击注册按钮，发现注册成功，如图21所示。</p>
 <h2 id="2-10-破解成功"><a href="#2-10-破解成功" class="headerlink" title="2.10 破解成功"></a>2.10 破解成功</h2><p><img src="https://img-blog.csdnimg.cn/645e3312002d4d4c82662a84906621ea.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_14,color_FFFFFF,t_70,g_se,x_16" alt="图21 app注册成功"></p>
 <h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1><p>本次使用<font color=red>IDA Pro</font>对注册软件<font color=red>Crackme0201.apk</font>进行静态逆向分析，使用了<font color=red>adb</font>、<font color=red>7-Zip</font>、<font color=red>ApkTool</font>、<font color=red>grep</font>、<font color=red>IDAPro</font>、<font color=red>d2j-dex-recompute-checksum</font>和<font color=red>signapk</font>工具，尽管中间过程有些坎坷，但经过坤哥我的努力，终于还是把这个简单的APP给破解了，以后接着搞更难的。(￢︿̫̿￢☆)</p>
-<h1 id="4-参考文章"><a href="#4-参考文章" class="headerlink" title="4  参考文章"></a>4  参考文章</h1><p>《Android软件开发权威指南》</p>
+<h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4  参考文献"></a>4  参考文献</h1><p>[1]丰生强. Android软件安全权威指南[M]. 电子工业出版社, 2019.</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 xingshuaikun@163.com </span>
