@@ -1267,18 +1267,18 @@
         </a>
         
         <a  class="全部文章 JavaScript "
-           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
-           data-tag="JavaScript,前端"
-           data-author="" >
-            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
-            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 JavaScript "
            href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
            data-tag="JavaScript,前端"
            data-author="" >
             <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
             <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
         </a>
         
@@ -1432,7 +1432,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-04-16 15:29:27'>2022-04-14 18:43</time>
+            发布时间 : <time class="date" title='最后更新: 2022-04-16 15:57:24'>2022-04-14 18:43</time>
         
     </div>
     <div class="article-meta">
@@ -1489,13 +1489,11 @@
 <p>具体的编译流程如下所示：</p>
 <ol>
 <li>使用<font color=red>aapt(Android Asset Packaging Tool)</font>打包程序资源文件，处理项目中的AndroidManifest.xml文件和XML布局文件，并生成<font color=red>R.java文件</font>和<font color=red>resources.arsc文件</font>；</li>
-<li>使用<font color=red>aidl工具</font>将所有的aidl接口转化为对应的<font color=red>Java接口</font>；</li>
-</ol>
-<ul>
+<li>使用<font color=red>aidl工具</font>将所有的aidl接口转化为对应的<font color=red>Java接口</font>；<ul>
 <li>没使用aidl的工程可以跳过，工具aidl跟aapt在同一目录。</li>
 <li>aidl是<font color=red>Android内部进程通信接口</font>的描述语言，我们可以通过它定义进程间的通信接口。</li>
 </ul>
-<ol start="3">
+</li>
 <li>所有的Java代码，包括R.java和Java接口都会被Java编译器编译成<font color=red>class文件</font></li>
 <li>使用<font color=red>dx</font>将所有的class文件与jar包打包生成<font color=red>DEX文件</font>；</li>
 <li>调用<font color=red>apkbuilder</font>将上述DEX文件、资源与class文件打包成<font color=red>APK文件</font>；</li>

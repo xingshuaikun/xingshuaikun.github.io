@@ -1267,18 +1267,18 @@
         </a>
         
         <a  class="全部文章 JavaScript "
-           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
-           data-tag="JavaScript,前端"
-           data-author="" >
-            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
-            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 JavaScript "
            href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
            data-tag="JavaScript,前端"
            data-author="" >
             <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
             <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
         </a>
         
@@ -1432,7 +1432,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-04-16 10:51:24'>2022-04-11 15:50</time>
+            发布时间 : <time class="date" title='最后更新: 2022-04-16 15:57:01'>2022-04-11 15:50</time>
         
     </div>
     <div class="article-meta">
@@ -1508,39 +1508,35 @@
 <p>与图2类似，Android系统另一种架构图如图3所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/f2809dafb87643c78da2dece5bd776f1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图3 Android系统架构图"></p>
 <h2 id="3-2-Android分区加载机制"><a href="#3-2-Android分区加载机制" class="headerlink" title="3.2 Android分区加载机制"></a>3.2 Android分区加载机制</h2><ol>
-<li>系统分区：只读分区，包含操作系统内核、系统函数库、实时运行框架、应用框架与系统应用程序等。</li>
-<li>Cache分区&#x2F;目录分区：</li>
-</ol>
-<ul>
+<li><font color=red>系统分区</font>：只读分区，包含操作系统内核、系统函数库、实时运行框架、应用框架与系统应用程序等。</li>
+<li><font color=red>Cache分区&#x2F;目录分区</font>：<ul>
 <li>&#x2F;system&#x2F;app：系统自带应用程序apk</li>
 <li>&#x2F;system&#x2F;lib：系统库文件</li>
 <li>&#x2F;system&#x2F;bin &amp; &#x2F;system&#x2F;xbin：系统管理命令</li>
 <li>&#x2F;system&#x2F;framework：Android系统应用框架的JAR文件</li>
 </ul>
-<ol start="3">
-<li>数据分区：各类用户数据与应用程序</li>
-</ol>
-<ul>
+</li>
+<li><font color=red>数据分区</font>：各类用户数据与应用程序<ul>
 <li>&#x2F;data&#x2F;data：所有apk程序数据。每个APK在改目录有一个与Package名字一样的目录，APK只能在此目录下操作</li>
 <li>&#x2F;data&#x2F;app：保存用户安装的APK</li>
 <li>&#x2F;data&#x2F;system：packages.xml、packages.list、appwidgets.xml等文件，记录安装软件及widget信息</li>
 <li>&#x2F;data&#x2F;misc：保存WIFI账号及VPN设置等</li>
 </ul>
-<ol start="4">
-<li>SD卡分区</li>
+</li>
+<li><font color=red>SD卡分区</font></li>
 </ol>
 <h2 id="3-3-Dalvik虚拟机执行流程"><a href="#3-3-Dalvik虚拟机执行流程" class="headerlink" title="3.3 Dalvik虚拟机执行流程"></a>3.3 Dalvik虚拟机执行流程</h2><p>Android系统启动加载内核后，首先执行init进程（进程ID&#x3D;1）:</p>
 <ul>
 <li>设备初始化</li>
-<li>读取init.rc配置文件并启动重要外部程序Zygote（所有进程的孵化器进程）</li>
-</ul>
-<ol>
+<li>读取init.rc配置文件并启动重要外部程序Zygote（所有进程的孵化器进程）<ol>
 <li>初始化Dalvik虚拟机</li>
 <li>启动system_server并进入Zygote模式，通过socket等候命令</li>
 <li>执行Android程序时，system_server通过Binder IPC方式发送命令给Zygote</li>
 <li>Zygote收到命令后通过fork自身创建一个Dalvik虚拟机实例来执行应用程序的入口函数</li>
 <li>进程fork完成后，执行的工作交给Dalvik虚拟机</li>
 </ol>
+</li>
+</ul>
 <p>Android程序的启动过程如图4所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/01f12040677547b79aa3a07fe2def544.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图4 Android程序的启动过程"></p>
 <p>Android程序的启动流程图如图5所示。</p>
