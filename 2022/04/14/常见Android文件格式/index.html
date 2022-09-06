@@ -971,18 +971,18 @@
         </a>
         
         <a  class="全部文章 DVWA "
-           href="/2019/10/28/DVWA-High-wp/"
-           data-tag="writeup,Web,DVWA"
-           data-author="" >
-            <span class="post-title" title="DVWA-High-wp">DVWA-High-wp</span>
-            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
-        </a>
-        
-        <a  class="全部文章 DVWA "
            href="/2019/10/28/DVWA-Impossible-wp/"
            data-tag="writeup,Web,DVWA"
            data-author="" >
             <span class="post-title" title="DVWA-Impossible-wp">DVWA-Impossible-wp</span>
+            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
+        </a>
+        
+        <a  class="全部文章 DVWA "
+           href="/2019/10/28/DVWA-High-wp/"
+           data-tag="writeup,Web,DVWA"
+           data-author="" >
+            <span class="post-title" title="DVWA-High-wp">DVWA-High-wp</span>
             <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
         </a>
         
@@ -1323,18 +1323,18 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/Hackme-Misc-wp/"
-           data-tag="CTF,writeup"
-           data-author="" >
-            <span class="post-title" title="Hackme-Misc-wp">Hackme-Misc-wp</span>
-            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 CTF "
            href="/2019/10/11/Hackme-Web-wp/"
            data-tag="CTF,writeup"
            data-author="" >
             <span class="post-title" title="Hackme-Web-wp">Hackme-Web-wp</span>
+            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/Hackme-Misc-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="Hackme-Misc-wp">Hackme-Misc-wp</span>
             <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
         </a>
         
@@ -1440,7 +1440,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-04-16 15:57:24'>2022-04-14 18:43</time>
+            发布时间 : <time class="date" title='最后更新: 2022-09-06 09:33:11'>2022-04-14 18:43</time>
         
     </div>
     <div class="article-meta">
@@ -1531,7 +1531,7 @@
 <h1 id="4-DEX文件"><a href="#4-DEX文件" class="headerlink" title="4 DEX文件"></a>4 DEX文件</h1><p>classes.dex文件中包含<font color=red>APK的可执行代码</font>，是分析Android软件时最常见的目标，DEX文件的数据结构及说明如图8所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/a2336c166152491dbc29f19404d94862.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图8 DEX文件数据结构"></p>
 <p>在Android 5.0之前，主要使用的虚拟机是Dalvik。当APK首次安装，或者系统升级、重新启动时，为了提高DEX文件的执行效率，Dalvik会对APK中的DEX文件进行一定程度的优化。具体的做法是：解析DEX文件并生成一个<font color=red>ODEX文件</font>，将其存放在Android设备的&#x2F;data&#x2F;dalvik-cache目录下。以后再运行这个程序时，就不会读取APK中的DEX文件，而会直接加载这个优化过的ODEX文件，从而大大<font color=red>节省每次运行程序时在优化上耗费的时间</font>。</p>
-<h1 id="5-OAT文件"><a href="#5-OAT文件" class="headerlink" title="5 OAT文件"></a>5 OAT文件</h1><p><font color=red>OAT文件</font>是在Android 4.4中引入的。OAT是优化过的、用于ART虚拟机执行的<font color=red>DEX文件</font>，类似于Dalvik的ODEX文件。系统在安装APK时，会调用<font color=red>dex2oat</font>自动生成OAT文件。</p>
+<h1 id="5-OAT文件"><a href="#5-OAT文件" class="headerlink" title="5 OAT文件"></a>5 OAT文件</h1><p><font color=red>OAT文件</font>是在Android 4.4中引入的。OAT是优化过的、用于ART虚拟机执行的DEX文件，类似于Dalvik的<font color=red>ODEX文件</font>。系统在安装APK时，会调用<font color=red>dex2oat</font>自动生成OAT文件。</p>
 <p>OAT文件格式在设计之初就考虑到最终执行的程序是<font color=red>ELF格式</font>的这一事实，为避免过多的文件格式设计所带来的麻烦，最终<font color=red>将OAT文件格式完全融入Android所特有的ELF格式</font>。OAT文件格式图如图9所示，</p>
 <p><img src="https://img-blog.csdnimg.cn/8c9e192e56c6408caa97cd6b105a98be.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAaVJldmVyc2U=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="图9 OAT文件格式图"></p>
 <p>一个OAT文件必须包含<font color=red>oatdata</font>、<font color=red>oatexec</font>和<font color=red>oatlastword</font>三个符号。</p>
