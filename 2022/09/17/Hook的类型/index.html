@@ -1315,18 +1315,18 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/"
-           data-tag="CTF,writeup"
-           data-author="" >
-            <span class="post-title" title="攻防世界--web--新手区">攻防世界--web--新手区</span>
-            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 CTF "
            href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/"
            data-tag="CTF,writeup"
            data-author="" >
             <span class="post-title" title="攻防世界--misc--新手区">攻防世界--misc--新手区</span>
+            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="攻防世界--web--新手区">攻防世界--web--新手区</span>
             <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
         </a>
         
@@ -1456,7 +1456,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-17 17:39:24'>2022-09-17 16:02</time>
+            发布时间 : <time class="date" title='最后更新: 2022-09-17 19:21:35'>2022-09-17 16:02</time>
         
     </div>
     <div class="article-meta">
@@ -1522,11 +1522,11 @@
 <h1 id="4-LD-PRELOAD-HOOK"><a href="#4-LD-PRELOAD-HOOK" class="headerlink" title="4 LD_PRELOAD HOOK"></a>4 LD_PRELOAD HOOK</h1><p><font color=red>LD_PRELOAD</font>是Linux系统中的一个环境变量，<font color=red>LD_PRELOAD Hook</font>即针对<font color=red>LD_PRELOAD</font>环境变量的特殊Hook技术。</p>
 <p>和Windows平台的程序一样，Linux平台的程序也分为静态链接和动态链接两种。静态链接把所有引用的函数全编译到可执行文件中，程序在运行时可直接调用这些函数；动态链接没把函数编译到可执行文件中，而是在程序运行时动态载入函数库。在进行动态链接时，要查找动态链接库的位置，以便从动态链接库中查找函数的地址供程序使用。对动态链接的程序来说，它并不关心动态链接库具体在哪及如何计算函数地址，而是把这个工作交给动态加载器（又称“链接器”，32位Android的链接器为<font color=red>&#x2F;system&#x2F;bin&#x2F;linker</font>，64位的为<font color=red>&#x2F;system&#x2F;bin&#x2F;linker64</font>）完成。</p>
 <p>动态链接库为多个程序共用一份代码提供可能，节省了程序占用的磁盘空间。同时，在不重新编译程序的情况下，仅升级动态库中的函数即可升级整个程序，大大降低维护成本。但是，若进行动态链接时动态加载的函数不是开发人员而是一些别有用心之人编写，那程序的流程或返回值就可能被恶意修改，即程序被Hook。</p>
-<p><font color=red>LD_PRELOAD</font>就是这样的存在，它可影响程序运行时的动态链接。只要通过该环境变量预先指定想要加载的动态链接库文件列表，程序运行时，系统就会优先加载这个动态链接库列表中的动态库，并通过它的函数信息设置程序的<font color=red>.plt</font>节区中的函数。这是加载器提供的一个巧妙的“偷梁换柱”手法。</p>
+<p><font color=red>LD_PRELOAD</font>就是这样的存在，它可影响程序运行时的动态链接。<font color=red>只要通过该环境变量预先指定想要加载的动态链接库文件列表，程序运行时，系统就会优先加载这个动态链接库列表中的动态库，并通过它的函数信息设置程序的<font color=green>.plt</font>节区中的函数</font>。这是加载器提供的一个巧妙的“偷梁换柱”手法。</p>
 <p>本节的示例代码app.c如下所示：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stdbool.h&gt;</span><br><span class="line">bool checkSN(const char* sn) &#123;</span><br><span class="line">    char realCode[] = &quot;ilikeandroid&quot;;</span><br><span class="line">    return !(strcmp(realCode, sn));</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc, char** argv) &#123;</span><br><span class="line">    if (argc != 2) &#123;</span><br><span class="line">        printf(&quot;usage: app sn\n&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    if (!checkSN(argv[1])) &#123;</span><br><span class="line">        printf(&quot;The sn was invalid!\n&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;Thank you for your registration\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这是一个命令行的可执行程序，启动时会判断传入的参数是否为<font color=red>ilikeandroid</font>字符串，进而确定此注册码是否正确。整个程序模拟了软件的授权注册过程，代码的核心判断通过由<font color=red>strcmp()</font>进行的字符串比较实现。编译程序并push，运行，输入<font color=red>123456</font>，会提示<font color=red>The sn was invalid!</font>：</p>
+<p>这是一个命令行的可执行程序，启动时会判断传入的参数是否为<font color=red>ilikeandroid</font>字符串，进而确定此注册码是否正确。整个程序模拟了软件的授权注册过程，代码的核心判断通过由<font color=red>strcmp()</font>进行的字符串比较实现。编译程序并push，运行，输入<font color=red>123456</font>，会提示<font color=red>The sn was invalid!</font>。</p>
 <p><img src="https://img-blog.csdnimg.cn/a5f0701df7ff4c1caa9125011ac1941c.png" alt="图2 编译上传并运行示例程序app"></p>
 <p>按一般思路，这时候就会开始找注册码验证算法，但<font color=red>LD_PRELOAD Hook</font>提供了一种简单的程序破解之法。编写动态库<font color=red>libhook.so</font>，在其中编写代码Hook strcmp()，让程序在输入字符串“123”时返回0，以骗过程序的strcmp()检查。代码如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;dlfcn.h&gt;</span><br><span class="line">void* getrealaddr() &#123;</span><br><span class="line">    void* lib = dlopen(&quot;libc.so&quot;, RTLD_NOW | RTLD_GLOBAL);</span><br><span class="line">    if (lib == NULL) &#123;</span><br><span class="line">        fprintf(stderr, &quot;could not open file with dlopen()!!: %s\n&quot;, dlerror());</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    void* symbol = dlsym(lib, &quot;.strcmp&quot;);</span><br><span class="line">    dlclose(lib);</span><br><span class="line">    return symbol;</span><br><span class="line">&#125;</span><br><span class="line">int (*src_strcmp)(const char* s1, const char* s2);</span><br><span class="line">int strcmp(const char* s1, const char* s2) &#123;</span><br><span class="line">    src_strcmp = (int (*)(const char*, const char*))getrealaddr;</span><br><span class="line">    if ((0 == src_strcmp(&quot;123456&quot;, s1)) || (0 == src_strcmp(&quot;123456&quot;, s2))) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return src_strcmp(s1, s2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1534,7 +1534,7 @@
 <p>将<font color=red>hook.c</font>编译为动态库并<font color=red>libhook.so</font>并push，执行图3中的命令测试。</p>
 <p><img src="https://img-blog.csdnimg.cn/db532e9cae2f43df84fa4e63c2e419db.png" alt="图3 编译动态库libhook.so并Hook成功"></p>
 <p>从输出可看出，被执行的是<font color=red>libhook.so</font>中的函数，如此，针对strcmp()的Hook成功。</p>
-<p>进行<font color=red>LD_PRELOAD Hook</font>的前提是程序中使用的函数必须是从外部导出的，对非导出的函数，这种Hook方式无效。</p>
+<p>【注意】进行<font color=red>LD_PRELOAD Hook</font>的前提是程序中使用的函数必须是从外部导出的，对非导出的函数，这种Hook方式无效。</p>
 <h1 id="5-GOT-Hook"><a href="#5-GOT-Hook" class="headerlink" title="5 GOT Hook"></a>5 GOT Hook</h1><p>为让ELF能加载内存中的任意地址，Android的so在编译时默认指定了<font color=red>-fPIC</font>参数，使用了PIC（Position Independent Code）技术，ELF可执行文件也通过<font color=red>-fPIE -pie</font>参数生成了与位置无关的代码。这些技术都用了过程链接表（Procedure Linkage Table，PLT）和全局偏移量表（Global Offset Table，GOT）。PLT存放在<font color=red>.text</font>节区中，是一小段代码集合，意即其在内存中为只读，不会被修改。GOT存放在<font color=red>.data</font>节区中，其中包含动态链接器在进行函数符号动态链接时使用的所有外部符号信息，其内容为可读可写。GOT Hook的思路：修改内存中ELF与so的符号指针，达到“钩住”函数的目的。</p>
 <p>32位ARM ELF中，GOT的内容存放在<font color=red>.got</font>节区；64位AArch64中，使用<font color=red>.got</font>和<font color=red>.got.plt</font>节区存放GOT的内容，与外部符号相关的信息则位于<font color=red>.got.plt</font>节区。</p>
 <p>实施GOT Hook时，出于对兼容性的考虑，要同时在<font color=red>.got</font>和<font color=red>.got.plt</font>节区中查找要Hook的函数，对自身程序的GOT Hook，可按照如下步骤实施：</p>
@@ -1592,8 +1592,8 @@
 <li><p>用mprotect()将目标函数代码段的属性改为只读和可执行（即把第二步做过的事还原）。若不改回去，在开启了SELinux的Android设备上，程序的运行可能会因代码段为可写可执行而失败。</p>
 </li>
 </ol>
-<h1 id="7-总结"><a href="#7-总结" class="headerlink" title="7 总结"></a>7 总结</h1><p>如图1所示，按Java层与Native层分类，Hook技术可以分为Java层的Hook和Native的Hook。根据代码的执行环境，Java层的Hook可以分为Dalvik Hook和ART Hook。根据ELF文件的特点，Native的Hook可以分为基于动态库加载劫持的LD_PRELOAD Hook、针对.got.plt节区的GOT Hook及针对汇编指令级别的Inline Hook。</p>
-<p>本文主要介绍了Hook的类型，根据Java层与Native层分类、代码的执行环境、ELF文件的特点，可以分为不同种类的Hook技术。同时，在第4节中通过示例程序app.c和hook.c简单演示了LD_PRELOAD的原理和LD_PRELOAD Hook的过程。<br>接下来，准备向第十章《注入框架Frida》进发。</p>
+<h1 id="7-总结"><a href="#7-总结" class="headerlink" title="7 总结"></a>7 总结</h1><p>本文主要介绍了Hook的类型，根据Java层与Native层分类、代码的执行环境、ELF文件的特点，可以分为不同种类的Hook技术。同时，在第4节中通过示例程序app.c和hook.c简单演示了LD_PRELOAD的原理和LD_PRELOAD Hook的过程。</p>
+<p>接下来，准备向第十章《注入框架Frida的安装配置与基本使用》进发。</p>
 <h1 id="8-参考文献"><a href="#8-参考文献" class="headerlink" title="8  参考文献"></a>8  参考文献</h1><p>[1]丰生强. Android软件安全权威指南[M]. 电子工业出版社, 2019.</p>
 
       
