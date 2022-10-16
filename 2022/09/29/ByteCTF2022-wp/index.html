@@ -1355,18 +1355,18 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/"
-           data-tag="CTF,writeup"
-           data-author="" >
-            <span class="post-title" title="攻防世界--web--新手区">攻防世界--web--新手区</span>
-            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 CTF "
            href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/"
            data-tag="CTF,writeup"
            data-author="" >
             <span class="post-title" title="攻防世界--misc--新手区">攻防世界--misc--新手区</span>
+            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="攻防世界--web--新手区">攻防世界--web--新手区</span>
             <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
         </a>
         
@@ -1496,7 +1496,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-30 19:48:40'>2022-09-29 15:53</time>
+            发布时间 : <time class="date" title='最后更新: 2022-10-15 10:48:13'>2022-09-29 15:53</time>
         
     </div>
     <div class="article-meta">
@@ -1591,8 +1591,20 @@
 <p><img src="https://img-blog.csdnimg.cn/9af207e35ef04592a378b35cfc7a39ea.png" alt="图8 安装APK到手机"></p>
 <p>等APK安装完成后，这时重点来了，在手机上点击同意《用户协议与隐私政策》后，把Logcat界面的所有信息复制出来，搜索字符串<font color=red>CTF</font>即得flag，如图9所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/4500c1c4b61f4e9b854716d67a564e90.png" alt="图9 获得Find IMEI的flag"></p>
-<h2 id="Bronze-Droid"><a href="#Bronze-Droid" class="headerlink" title="Bronze Droid"></a>Bronze Droid</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>Let’s try some different intent redirection.</p>
-<p>nc 180.184.96.131 31337</p>
+<h2 id="Bronze-Droid"><a href="#Bronze-Droid" class="headerlink" title="Bronze Droid"></a>Bronze Droid</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
+<p>Here is a vulnerable Android client application running in an AVD simulated environment. I placed the flag file in the app’s internal storage(&#x2F;data&#x2F;data&#x2F;{pkg}&#x2F;files&#x2F;flag) or Cookies file(&#x2F;data&#x2F;data&#x2F;{pkg}&#x2F;app_webview&#x2F;Cookies). Now you have a chance to install a malicious app into the system. Can you exploit and steal the contents of the flag file through these vulnerabilities?<br>The vulnerable Android client application is named app-debug.apk, you can use jadx (<a target="_blank" rel="noopener" href="https://github.com/skylot/jadx/releases">https://github.com/skylot/jadx/releases</a>) to perform a reverse analysis.<br>In addition, the real flag is stored on the remote server, you need access server by nc ip port or socket. In order to prevent DOS, I set up a proof-of-work.</p>
+</blockquote>
+<p>意思是说有一个运行在AVD(Android Virural Device)模拟环境的安卓应用程序，出题人把Flag放在了这个App的内部存储中，现在我们有机会在它的系统上安装一个恶意app，我们要做的事情就是找到运行在服务器上的目标App的漏洞点，然后自己写一个恶意App去利用，从而拿到Flag</p>
+<p>除此之外，出题人还设置了一个PoW来防止DOS攻击<br>因此，如何拿到flag呢？</p>
+<blockquote>
+<p>Once you capture the flag, you can send it back by performing a network request. So you may need to set these in AndroidManifest.xml</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</span><br><span class="line">......</span><br><span class="line">&lt;application</span><br><span class="line">    android:usesCleartextTraffic=&quot;true&quot;</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>If an apk_download_url is required, you can set up a temporary http service to provide, and record flag. Example:<br>using node: anywhere -l 80 -s<br>using python3: python3 -m http.server 80</p>
+</blockquote>
+<p>也就是说我们要在自己写的恶意App中，拿到Flag之后，发送一个网络请求，把flag发送到自己搭建的http服务上</p>
 <h3 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h3><p>首先，下载好附件并解压之后，发现有下列文件</p>
 <blockquote>
 <p>app-debug.apk<br>Dockerfile<br>flag<br>readme.md<br>run.sh<br>server.py<br>server.sh</p>
