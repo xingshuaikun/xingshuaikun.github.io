@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Android--四大组件之BroadcastReceiver | iHui</title>
+  <meta name="keywords" content=" Android ">
+  <meta name="description" content="Android--四大组件之BroadcastReceiver | iHui">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://xingshuaikun.github.io/about/index.html">
+<meta property="og:site_name" content="iHui">
+<meta property="og:description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-25T09:43:28.000Z">
+<meta property="article:modified_time" content="2021-09-13T12:03:31.473Z">
+<meta property="article:author" content="iHui">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>iHui</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+            <a title="github"
+               href="https://github.com/xingshuaikun"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:xingshuaikun@163.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=898245375&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(105)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="计算机考研复试">
+                        
+                        计算机考研复试
+                        <small>(8)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="计算机网络">
+                        
+                        计算机网络
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="经验">
+                        
+                        经验
+                        <small>(8)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="密码学">
+                        
+                        密码学
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="区块链">
+                        
+                        区块链
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据结构">
+                        
+                        数据结构
+                        <small>(5)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="算法">
+                        
+                        算法
+                        <small>(7)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="网络安全">
+                        
+                        网络安全
+                        <small>(7)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Android">
+                        
+                        Android
+                        <small>(15)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Cpp">
+                        
+                        Cpp
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="CSharp">
+                        
+                        CSharp
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="CTF">
+                        
+                        CTF
+                        <small>(11)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="DVWA">
+                        
+                        DVWA
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Java">
+                        
+                        Java
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="JavaScript">
+                        
+                        JavaScript
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Linux">
+                        
+                        Linux
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="MySQL">
+                        
+                        MySQL
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="python">
+                        
+                        python
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="Web">
+                        
+                        Web
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="105">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://skysec.top/">一叶飘零</a></li>
+            
+            <li><a target="_blank" href="https://comydream.github.io/">追随梦想</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>计算机考研复试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>计算机网络</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>教材答案</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>经验</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>拒绝服务攻击</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>库与模块</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>密码学</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>牛客网</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>前端</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>区块链</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网络安全</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信息安全数学</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Android</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>APP Inventor</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>C</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>C++</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CTF</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DVWA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>JavaScript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Misc</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Reverse</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>web</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Web</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>writeup</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="全部文章 "
+           href="/2019/10/11/%E5%8D%9A%E5%AE%A2%E5%A3%B0%E6%98%8E/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="博客声明">博客声明</span>
+            <span class="post-date" title="2019-10-11 16:49:47">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/10/16/Android--%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8BBroadcastReceiver/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android--四大组件之BroadcastReceiver">Android--四大组件之BroadcastReceiver</span>
+            <span class="post-date" title="2022-10-16 11:08:43">2022/10/16</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/10/12/Android--%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8BService/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android--四大组件之Service">Android--四大组件之Service</span>
+            <span class="post-date" title="2022-10-12 16:18:16">2022/10/12</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/10/11/Android--%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8BActivity/"
+           data-tag="Android"
+           data-author="" >
+            <span class="post-title" title="Android--四大组件之Activity">Android--四大组件之Activity</span>
+            <span class="post-date" title="2022-10-11 16:18:16">2022/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2022/09/29/ByteCTF2022-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="ByteCTF2022-wp">ByteCTF2022-wp</span>
+            <span class="post-date" title="2022-09-29 15:53:00">2022/09/29</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/09/26/Android%20Killer%E7%AF%A1%E6%94%B9%E4%BF%A1%E6%81%AF%E3%80%81%E4%BF%AE%E6%94%B9%E5%8C%85%E5%90%8D%E5%92%8C%E5%8E%BB%E9%99%A4%E5%B9%BF%E5%91%8A/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="Android Killer篡改信息、修改包名和去除广告">Android Killer篡改信息、修改包名和去除广告</span>
+            <span class="post-date" title="2022-09-26 19:34:21">2022/09/26</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/09/18/%E6%B3%A8%E5%85%A5%E6%A1%86%E6%9E%B6Frida%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="注入框架Frida的安装配置与基本使用">注入框架Frida的安装配置与基本使用</span>
+            <span class="post-date" title="2022-09-18 09:17:04">2022/09/18</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/09/17/Hook%E7%9A%84%E7%B1%BB%E5%9E%8B/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="Hook的类型">Hook的类型</span>
+            <span class="post-date" title="2022-09-17 16:02:43">2022/09/17</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/09/14/%E4%BD%BF%E7%94%A8IDA%20Pro%E8%B0%83%E8%AF%95Android%E5%8E%9F%E7%94%9F%E7%A8%8B%E5%BA%8F/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="使用IDA Pro调试Android原生程序">使用IDA Pro调试Android原生程序</span>
+            <span class="post-date" title="2022-09-14 19:47:31">2022/09/14</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/04/19/%E5%8A%A8%E6%80%81%E5%88%86%E6%9E%90Android%E7%A8%8B%E5%BA%8F/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="动态分析Android程序">动态分析Android程序</span>
+            <span class="post-date" title="2022-04-19 11:12:43">2022/04/19</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/04/14/%E5%B8%B8%E8%A7%81Android%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="常见Android文件格式">常见Android文件格式</span>
+            <span class="post-date" title="2022-04-14 18:43:13">2022/04/14</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2022/04/11/Dalvik%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%A0%BC%E5%BC%8F%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81%E8%A7%84%E8%8C%83/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="Dalvik可执行格式与字节码规范">Dalvik可执行格式与字节码规范</span>
+            <span class="post-date" title="2022-04-11 15:50:42">2022/04/11</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2021/09/21/IDA%20Pro%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90dex%E6%96%87%E4%BB%B6/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="IDA Pro静态分析dex文件">IDA Pro静态分析dex文件</span>
+            <span class="post-date" title="2021-09-21 10:03:42">2021/09/21</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2021/09/13/%E7%BC%96%E5%86%99%E5%B9%B6%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="编写并分析第一个Android应用程序">编写并分析第一个Android应用程序</span>
+            <span class="post-date" title="2021-09-13 19:37:43">2021/09/13</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2021/09/05/Android%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/"
+           data-tag="Android,经验"
+           data-author="" >
+            <span class="post-title" title="Android四大组件">Android四大组件</span>
+            <span class="post-date" title="2021-09-05 21:20:16">2021/09/05</span>
+        </a>
+        
+        <a  class="全部文章 经验 "
+           href="/2021/06/25/%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/"
+           data-tag="经验"
+           data-author="" >
+            <span class="post-title" title="中国矿业大学本科生涯总结">中国矿业大学本科生涯总结</span>
+            <span class="post-date" title="2021-06-25 17:50:40">2021/06/25</span>
+        </a>
+        
+        <a  class="全部文章 计算机考研复试 "
+           href="/2021/03/19/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%80%83%E7%A0%94--%E5%A4%8D%E8%AF%95--%E6%9C%BA%E8%AF%95%E5%88%B7%E9%A2%98/"
+           data-tag="C,计算机考研复试"
+           data-author="" >
+            <span class="post-title" title="北京工业大学考研--复试--机试刷题">北京工业大学考研--复试--机试刷题</span>
+            <span class="post-date" title="2021-03-19 18:47:38">2021/03/19</span>
+        </a>
+        
+        <a  class="全部文章 计算机考研复试 "
+           href="/2021/01/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day7/"
+           data-tag="C,计算机考研复试,牛客网"
+           data-author="" >
+            <span class="post-title" title="计算机考研复试--牛客网--C语言练习--Day7">计算机考研复试--牛客网--C语言练习--Day7</span>
+            <span class="post-date" title="2021-01-07 21:16:49">2021/01/07</span>
+        </a>
+        
+        <a  class="全部文章 计算机考研复试 "
+           href="/2021/01/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day6/"
+           data-tag="C,计算机考研复试,牛客网"
+           data-author="" >
+            <span class="post-title" title="计算机考研复试--牛客网--C语言练习--Day6">计算机考研复试--牛客网--C语言练习--Day6</span>
+            <span class="post-date" title="2021-01-06 16:57:42">2021/01/06</span>
+        </a>
+        
+        <a  class="全部文章 计算机考研复试 "
+           href="/2021/01/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day5/"
+           data-tag="C,计算机考研复试,牛客网"
+           data-author="" >
+            <span class="post-title" title="计算机考研复试--牛客网--C语言练习--Day5">计算机考研复试--牛客网--C语言练习--Day5</span>
+            <span class="post-date" title="2021-01-05 19:43:46">2021/01/05</span>
+        </a>
+        
+        <a  class="全部文章 计算机考研复试 "
+           href="/2021/01/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day4/"
+           data-tag="C,计算机考研复试,牛客网"
+           data-author="" >
+            <span class="post-title" title="计算机考研复试--牛客网--C语言练习--Day4">计算机考研复试--牛客网--C语言练习--Day4</span>
+            <span class="post-date" title="2021-01-04 18:09:05">2021/01/04</span>
+        </a>
+        
+        <a  class="全部文章 计算机考研复试 "
+           href="/2021/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day3/"
+           data-tag="C,计算机考研复试,牛客网"
+           data-author="" >
+            <span class="post-title" title="计算机考研复试--牛客网--C语言练习--Day3">计算机考研复试--牛客网--C语言练习--Day3</span>
+            <span class="post-date" title="2021-01-03 18:25:13">2021/01/03</span>
+        </a>
+        
+        <a  class="全部文章 计算机考研复试 "
+           href="/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day2/"
+           data-tag="C,计算机考研复试,牛客网"
+           data-author="" >
+            <span class="post-title" title="计算机考研复试--牛客网--C语言练习--Day2">计算机考研复试--牛客网--C语言练习--Day2</span>
+            <span class="post-date" title="2021-01-02 21:13:49">2021/01/02</span>
+        </a>
+        
+        <a  class="全部文章 计算机考研复试 "
+           href="/2021/01/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95--%E7%89%9B%E5%AE%A2%E7%BD%91--C%E8%AF%AD%E8%A8%80%E7%BB%83%E4%B9%A0--Day1/"
+           data-tag="C,计算机考研复试,牛客网"
+           data-author="" >
+            <span class="post-title" title="计算机考研复试--牛客网--C语言练习--Day1">计算机考研复试--牛客网--C语言练习--Day1</span>
+            <span class="post-date" title="2021-01-01 09:43:16">2021/01/01</span>
+        </a>
+        
+        <a  class="全部文章 经验 "
+           href="/2020/12/30/Github%20Pages%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"
+           data-tag="经验"
+           data-author="" >
+            <span class="post-title" title="Github Pages无法访问的解决方法">Github Pages无法访问的解决方法</span>
+            <span class="post-date" title="2020-12-30 20:07:16">2020/12/30</span>
+        </a>
+        
+        <a  class="全部文章 密码学 "
+           href="/2020/05/25/%E7%89%A9%E8%81%94%E7%BD%91%E5%BA%94%E7%94%A8%E5%B1%82CoAP%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8%E5%AE%9E%E7%8E%B0/"
+           data-tag="协议,C"
+           data-author="" >
+            <span class="post-title" title="物联网应用层CoAP通信安全实现">物联网应用层CoAP通信安全实现</span>
+            <span class="post-date" title="2020-05-25 19:11:43">2020/05/25</span>
+        </a>
+        
+        <a  class="全部文章 python "
+           href="/2020/04/24/python%E7%BC%96%E5%86%99%E8%AE%A1%E7%AE%97%E5%99%A8/"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="python编写计算器">python编写计算器</span>
+            <span class="post-date" title="2020-04-24 16:17:42">2020/04/24</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2020/04/10/%E5%9F%BA%E4%BA%8EAPP%20Inventor%E7%9A%84GPS%E4%BD%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"
+           data-tag="Android,APP Inventor"
+           data-author="" >
+            <span class="post-title" title="基于APP Inventor的GPS位置应用开发">基于APP Inventor的GPS位置应用开发</span>
+            <span class="post-date" title="2020-04-10 21:15:43">2020/04/10</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2020/04/10/%E5%9F%BA%E4%BA%8EAPP%20Inventor%E7%9A%84%E8%93%9D%E7%89%99%E6%96%87%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"
+           data-tag="Android,APP Inventor"
+           data-author="" >
+            <span class="post-title" title="基于APP Inventor的蓝牙文本通信应用开发">基于APP Inventor的蓝牙文本通信应用开发</span>
+            <span class="post-date" title="2020-04-10 16:08:01">2020/04/10</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2020/02/22/2020%E5%AE%89%E6%81%92%E6%9D%AF%E5%85%83%E6%97%A6%E6%9C%88%E8%B5%9B/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="2020安恒杯元旦月赛">2020安恒杯元旦月赛</span>
+            <span class="post-date" title="2020-02-22 15:15:42">2020/02/22</span>
+        </a>
+        
+        <a  class="全部文章 密码学 "
+           href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-Hash%E5%87%BD%E6%95%B0-MD5/"
+           data-tag="密码学"
+           data-author="" >
+            <span class="post-title" title="密码学课程设计-Hash函数-MD5">密码学课程设计-Hash函数-MD5</span>
+            <span class="post-date" title="2020-02-22 15:12:42">2020/02/22</span>
+        </a>
+        
+        <a  class="全部文章 密码学 "
+           href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81-RSA/"
+           data-tag="密码学"
+           data-author="" >
+            <span class="post-title" title="密码学课程设计-公钥密码-RSA">密码学课程设计-公钥密码-RSA</span>
+            <span class="post-date" title="2020-02-22 15:05:42">2020/02/22</span>
+        </a>
+        
+        <a  class="全部文章 密码学 "
+           href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81-DES/"
+           data-tag="密码学"
+           data-author="" >
+            <span class="post-title" title="密码学课程设计-分组密码-DES">密码学课程设计-分组密码-DES</span>
+            <span class="post-date" title="2020-02-22 15:02:43">2020/02/22</span>
+        </a>
+        
+        <a  class="全部文章 密码学 "
+           href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%BA%8F%E5%88%97%E5%AF%86%E7%A0%81/"
+           data-tag="密码学"
+           data-author="" >
+            <span class="post-title" title="密码学课程设计-序列密码">密码学课程设计-序列密码</span>
+            <span class="post-date" title="2020-02-22 14:53:42">2020/02/22</span>
+        </a>
+        
+        <a  class="全部文章 密码学 "
+           href="/2020/02/22/%E5%AF%86%E7%A0%81%E5%AD%A6%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81-%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A/"
+           data-tag="密码学"
+           data-author="" >
+            <span class="post-title" title="密码学课程设计-古典密码-维吉尼亚">密码学课程设计-古典密码-维吉尼亚</span>
+            <span class="post-date" title="2020-02-22 14:33:45">2020/02/22</span>
+        </a>
+        
+        <a  class="全部文章 Java "
+           href="/2020/01/10/Java%E8%AF%BE%E7%A8%8B%E5%AE%9E%E8%B7%B5/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java课程实践">Java课程实践</span>
+            <span class="post-date" title="2020-01-10 11:06:36">2020/01/10</span>
+        </a>
+        
+        <a  class="全部文章 经验 "
+           href="/2020/01/09/base64%E9%9A%90%E5%86%99%EF%BC%88%E8%BD%AC%EF%BC%89/"
+           data-tag="经验"
+           data-author="" >
+            <span class="post-title" title="base64隐写（转）">base64隐写（转）</span>
+            <span class="post-date" title="2020-01-09 10:45:43">2020/01/09</span>
+        </a>
+        
+        <a  class="全部文章 网络安全 "
+           href="/2020/01/04/kali%E5%AD%A6%E4%B9%A0-msf-shodan-%E8%8E%B7%E5%8F%96%E6%91%84%E5%83%8F%E5%A4%B4/"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="kali学习-msf-使用msfvenom生成木马用于渗透虚拟机">kali学习-msf-使用msfvenom生成木马用于渗透虚拟机</span>
+            <span class="post-date" title="2020-01-04 16:29:27">2020/01/04</span>
+        </a>
+        
+        <a  class="全部文章 密码学 "
+           href="/2020/01/02/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/"
+           data-tag="密码学"
+           data-author="" >
+            <span class="post-title" title="密码学复习">密码学复习</span>
+            <span class="post-date" title="2020-01-02 18:37:43">2020/01/02</span>
+        </a>
+        
+        <a  class="全部文章 经验 "
+           href="/2019/12/25/zip%E4%BC%AA%E5%8A%A0%E5%AF%86/"
+           data-tag="经验"
+           data-author="" >
+            <span class="post-title" title="zip伪加密">zip伪加密</span>
+            <span class="post-date" title="2019-12-25 15:01:43">2019/12/25</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/12/25/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6CTF-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="北京工业大学CTF-wp">北京工业大学CTF-wp</span>
+            <span class="post-date" title="2019-12-25 14:30:42">2019/12/25</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/12/20/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E9%AB%98%E6%89%8B%E5%8C%BA/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="攻防世界--web--高手区">攻防世界--web--高手区</span>
+            <span class="post-date" title="2019-12-20 18:03:42">2019/12/20</span>
+        </a>
+        
+        <a  class="全部文章 python "
+           href="/2019/12/16/python%E7%9A%84gmpy2%E6%A8%A1%E5%9D%97/"
+           data-tag="库与模块,python"
+           data-author="" >
+            <span class="post-title" title="python的gmpy2模块的使用">python的gmpy2模块的使用</span>
+            <span class="post-date" title="2019-12-16 18:32:12">2019/12/16</span>
+        </a>
+        
+        <a  class="全部文章 python "
+           href="/2019/12/08/python%E7%9A%84openpyxl%E6%A8%A1%E5%9D%97/"
+           data-tag="库与模块,python"
+           data-author="" >
+            <span class="post-title" title="python的openpyxl模块的使用">python的openpyxl模块的使用</span>
+            <span class="post-date" title="2019-12-08 15:17:42">2019/12/08</span>
+        </a>
+        
+        <a  class="全部文章 网络安全 "
+           href="/2019/11/12/Volatility%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/"
+           data-tag="CTF,网络安全"
+           data-author="" >
+            <span class="post-title" title="Volatility使用手册">Volatility使用手册</span>
+            <span class="post-date" title="2019-11-12 19:40:43">2019/11/12</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/11/12/%E7%AC%AC%E4%B8%89%E5%B1%8A%E7%BA%A2%E5%B8%BD%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="第三届红帽杯网络安全攻防大赛">第三届红帽杯网络安全攻防大赛</span>
+            <span class="post-date" title="2019-11-12 16:07:43">2019/11/12</span>
+        </a>
+        
+        <a  class="全部文章 MySQL "
+           href="/2019/11/11/MySQL%E5%AE%9E%E9%AA%8C/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL实验">MySQL实验</span>
+            <span class="post-date" title="2019-11-11 21:53:42">2019/11/11</span>
+        </a>
+        
+        <a  class="全部文章 网络安全 "
+           href="/2019/11/11/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0/"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="网络安全复习">网络安全复习</span>
+            <span class="post-date" title="2019-11-11 20:37:43">2019/11/11</span>
+        </a>
+        
+        <a  class="全部文章 Web "
+           href="/2019/11/09/360%E6%9D%AF-Web%E5%AE%9E%E6%88%98-smity_sql%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/"
+           data-tag="CTF,Web"
+           data-author="" >
+            <span class="post-title" title="360杯-Web实战-smity_sql堆叠注入">360杯-Web实战-smity_sql堆叠注入</span>
+            <span class="post-date" title="2019-11-09 23:52:43">2019/11/09</span>
+        </a>
+        
+        <a  class="全部文章 Web "
+           href="/2019/11/09/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8CURL%E7%BC%96%E7%A0%81%EF%BC%88%E8%BD%AC%EF%BC%89/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="为什么要进行URL编码（转）">为什么要进行URL编码（转）</span>
+            <span class="post-date" title="2019-11-09 17:04:16">2019/11/09</span>
+        </a>
+        
+        <a  class="全部文章 Web "
+           href="/2019/11/09/360%E6%9D%AF-Web%E5%AE%9E%E6%88%98-smity_ssrf%E4%B8%AD%E7%9A%84gopher%E5%8D%8F%E8%AE%AE/"
+           data-tag="CTF,Web"
+           data-author="" >
+            <span class="post-title" title="360杯-Web实战-smity_ssrf中的gopher协议">360杯-Web实战-smity_ssrf中的gopher协议</span>
+            <span class="post-date" title="2019-11-09 11:59:43">2019/11/09</span>
+        </a>
+        
+        <a  class="全部文章 Web "
+           href="/2019/11/09/360%E6%9D%AF-Web%E5%AE%9E%E6%88%98-Web/"
+           data-tag="CTF,Web"
+           data-author="" >
+            <span class="post-title" title="360杯-Web实战">360杯-Web实战</span>
+            <span class="post-date" title="2019-11-09 10:23:43">2019/11/09</span>
+        </a>
+        
+        <a  class="全部文章 DVWA "
+           href="/2019/10/28/DVWA-Impossible-wp/"
+           data-tag="writeup,Web,DVWA"
+           data-author="" >
+            <span class="post-title" title="DVWA-Impossible-wp">DVWA-Impossible-wp</span>
+            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
+        </a>
+        
+        <a  class="全部文章 DVWA "
+           href="/2019/10/28/DVWA-High-wp/"
+           data-tag="writeup,Web,DVWA"
+           data-author="" >
+            <span class="post-title" title="DVWA-High-wp">DVWA-High-wp</span>
+            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
+        </a>
+        
+        <a  class="全部文章 DVWA "
+           href="/2019/10/28/DVWA-low-wp/"
+           data-tag="writeup,Web,DVWA"
+           data-author="" >
+            <span class="post-title" title="DVWA-low-wp">DVWA-low-wp</span>
+            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
+        </a>
+        
+        <a  class="全部文章 DVWA "
+           href="/2019/10/28/DVWA-Medium-wp/"
+           data-tag="writeup,Web,DVWA"
+           data-author="" >
+            <span class="post-title" title="DVWA-Medium-wp">DVWA-Medium-wp</span>
+            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
+        </a>
+        
+        <a  class="全部文章 算法 "
+           href="/2019/10/23/CUMTOJ%E7%AE%97%E6%B3%95%E4%BD%9C%E4%B8%9A%E4%B8%80/"
+           data-tag="C++,算法"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ算法作业一">CUMTOJ算法作业一</span>
+            <span class="post-date" title="2019-10-23 21:15:34">2019/10/23</span>
+        </a>
+        
+        <a  class="全部文章 数据结构 "
+           href="/2019/10/23/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E8%80%83%E8%AF%95/"
+           data-tag="C++,数据结构"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ数据结构实验考试">CUMTOJ数据结构实验考试</span>
+            <span class="post-date" title="2019-10-23 20:51:43">2019/10/23</span>
+        </a>
+        
+        <a  class="全部文章 数据结构 "
+           href="/2019/10/23/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B91-2/"
+           data-tag="C++,数据结构"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ数据结构实验内容1-2">CUMTOJ数据结构实验内容1-2</span>
+            <span class="post-date" title="2019-10-23 19:41:43">2019/10/23</span>
+        </a>
+        
+        <a  class="全部文章 Cpp "
+           href="/2019/10/23/%E4%BA%8C%E5%88%86%E6%B3%95%E6%B1%82%E6%96%B9%E7%A8%8B%E7%9A%84%E6%A0%B9/"
+           data-tag="C++,算法"
+           data-author="" >
+            <span class="post-title" title="二分法求方程的根">二分法求方程的根</span>
+            <span class="post-date" title="2019-10-23 17:50:43">2019/10/23</span>
+        </a>
+        
+        <a  class="全部文章 数据结构 "
+           href="/2019/10/22/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%83%E4%B9%A02/"
+           data-tag="C++,数据结构"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ数据结构练习2">CUMTOJ数据结构练习2</span>
+            <span class="post-date" title="2019-10-22 17:29:34">2019/10/22</span>
+        </a>
+        
+        <a  class="全部文章 数据结构 "
+           href="/2019/10/22/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%83%E4%B9%A01/"
+           data-tag="C++,数据结构"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ数据结构练习1">CUMTOJ数据结构练习1</span>
+            <span class="post-date" title="2019-10-22 17:12:10">2019/10/22</span>
+        </a>
+        
+        <a  class="全部文章 MySQL "
+           href="/2019/10/21/MySQL%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL服务启动">MySQL服务启动</span>
+            <span class="post-date" title="2019-10-21 16:29:48">2019/10/21</span>
+        </a>
+        
+        <a  class="全部文章 Cpp "
+           href="/2019/10/21/C++%E5%B8%B8%E7%94%A8%E5%BA%93%E5%87%BD%E6%95%B0/"
+           data-tag="C++,库与模块"
+           data-author="" >
+            <span class="post-title" title="C++常用库函数">C++常用库函数</span>
+            <span class="post-date" title="2019-10-21 00:48:43">2019/10/21</span>
+        </a>
+        
+        <a  class="全部文章 网络安全 "
+           href="/2019/10/20/Reverse/"
+           data-tag="Reverse,网络安全"
+           data-author="" >
+            <span class="post-title" title="Reverse">Reverse</span>
+            <span class="post-date" title="2019-10-20 18:14:43">2019/10/20</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/19/2019%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="2019巅峰极客-wp">2019巅峰极客-wp</span>
+            <span class="post-date" title="2019-10-19 09:00:00">2019/10/19</span>
+        </a>
+        
+        <a  class="全部文章 网络安全 "
+           href="/2019/10/19/hping3%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/"
+           data-tag="网络安全,拒绝服务攻击"
+           data-author="" >
+            <span class="post-title" title="hping3命令详解（转）">hping3命令详解（转）</span>
+            <span class="post-date" title="2019-10-19 01:57:34">2019/10/19</span>
+        </a>
+        
+        <a  class="全部文章 网络安全 "
+           href="/2019/10/19/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%EF%BC%88DoS%E6%94%BB%E5%87%BB%EF%BC%89/"
+           data-tag="网络安全,拒绝服务攻击"
+           data-author="" >
+            <span class="post-title" title="拒绝服务攻击（DoS攻击）">拒绝服务攻击（DoS攻击）</span>
+            <span class="post-date" title="2019-10-19 01:27:46">2019/10/19</span>
+        </a>
+        
+        <a  class="全部文章 经验 "
+           href="/2019/10/18/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"
+           data-tag="经验"
+           data-author="" >
+            <span class="post-title" title="Markdown基本语法">Markdown基本语法</span>
+            <span class="post-date" title="2019-10-18 22:03:10">2019/10/18</span>
+        </a>
+        
+        <a  class="全部文章 经验 "
+           href="/2019/10/18/%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B4%E6%96%87%E4%BB%B6%E5%B0%BE%E6%A0%BC%E5%BC%8F%E6%80%BB%E7%BB%93%E5%8F%8A%E5%90%84%E7%B1%BB%E6%96%87%E4%BB%B6%E5%A4%B4/"
+           data-tag="CTF,经验,Misc"
+           data-author="" >
+            <span class="post-title" title="常见文件文件头文件尾格式总结及各类文件头">常见文件文件头文件尾格式总结及各类文件头</span>
+            <span class="post-date" title="2019-10-18 18:53:49">2019/10/18</span>
+        </a>
+        
+        <a  class="全部文章 算法 "
+           href="/2019/10/16/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BD%9C%E4%B8%9A/"
+           data-tag="密码学,C++,算法"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ算法实验作业">CUMTOJ算法实验作业</span>
+            <span class="post-date" title="2019-10-16 20:45:46">2019/10/16</span>
+        </a>
+        
+        <a  class="全部文章 Cpp "
+           href="/2019/10/15/C++%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard%20Template%20Library,STL%EF%BC%89/"
+           data-tag="C++,库与模块,数据结构"
+           data-author="" >
+            <span class="post-title" title="C++标准模板库（Standard Template Library,STL）">C++标准模板库（Standard Template Library,STL）</span>
+            <span class="post-date" title="2019-10-15 17:07:34">2019/10/15</span>
+        </a>
+        
+        <a  class="全部文章 Cpp "
+           href="/2019/10/15/C++%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"
+           data-tag="C++"
+           data-author="" >
+            <span class="post-title" title="C++常用方法">C++常用方法</span>
+            <span class="post-date" title="2019-10-15 14:55:34">2019/10/15</span>
+        </a>
+        
+        <a  class="全部文章 python "
+           href="/2019/10/14/python%E7%9A%84requests%E6%A8%A1%E5%9D%97/"
+           data-tag="库与模块,python,web"
+           data-author="" >
+            <span class="post-title" title="python的requests模块的使用">python的requests模块的使用</span>
+            <span class="post-date" title="2019-10-14 21:26:49">2019/10/14</span>
+        </a>
+        
+        <a  class="全部文章 密码学 "
+           href="/2019/10/14/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E8%AF%BE%E5%90%8E%E7%AD%94%E6%A1%88/"
+           data-tag="信息安全数学,教材答案"
+           data-author="" >
+            <span class="post-title" title="信息安全数学基础课后答案chapter 2&amp;3">信息安全数学基础课后答案chapter 2&amp;3</span>
+            <span class="post-date" title="2019-10-14 01:52:46">2019/10/14</span>
+        </a>
+        
+        <a  class="全部文章 经验 "
+           href="/2019/10/12/win10%E7%82%B9%E5%87%BB%E5%85%B3%E6%9C%BA%E5%90%8E%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E5%85%B3%E6%9C%BA%E7%9A%84%E5%A4%84%E7%90%86/"
+           data-tag="经验"
+           data-author="" >
+            <span class="post-title" title="win10点击关机后不能正常关机的处理">win10点击关机后不能正常关机的处理</span>
+            <span class="post-date" title="2019-10-12 01:00:15">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 Web "
+           href="/2019/10/12/burpsuite%E4%BD%BF%E7%94%A8/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="burpsuite使用">burpsuite使用</span>
+            <span class="post-date" title="2019-10-12 00:57:34">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 Web "
+           href="/2019/10/12/360%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E5%AD%A6-%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5-Web%E5%AE%89%E5%85%A8/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="360网络安全大学-基础实践-Web安全">360网络安全大学-基础实践-Web安全</span>
+            <span class="post-date" title="2019-10-12 00:55:59">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 密码学 "
+           href="/2019/10/12/360%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E5%AD%A6-%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5-%E5%AF%86%E7%A0%81%E5%AD%A6/"
+           data-tag="信息安全数学,密码学"
+           data-author="" >
+            <span class="post-title" title="360网络安全大学-基础实践-密码学">360网络安全大学-基础实践-密码学</span>
+            <span class="post-date" title="2019-10-12 00:54:56">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 计算机网络 "
+           href="/2019/10/12/360%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E5%AD%A6-%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5-%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/"
+           data-tag="计算机网络,协议"
+           data-author="" >
+            <span class="post-title" title="360网络安全大学-基础实践-协议分析">360网络安全大学-基础实践-协议分析</span>
+            <span class="post-date" title="2019-10-12 00:52:34">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 计算机网络 "
+           href="/2019/10/12/360%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E5%AD%A6-%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="360网络安全大学-基础实践-计算机网络">360网络安全大学-基础实践-计算机网络</span>
+            <span class="post-date" title="2019-10-12 00:50:14">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 算法 "
+           href="/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E5%9B%9B/"
+           data-tag="C++,算法"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ算法实验四">CUMTOJ算法实验四</span>
+            <span class="post-date" title="2019-10-12 00:41:39">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 算法 "
+           href="/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%B8%89/"
+           data-tag="C++,算法"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ算法实验三">CUMTOJ算法实验三</span>
+            <span class="post-date" title="2019-10-12 00:40:56">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 算法 "
+           href="/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E4%BD%9C%E4%B8%9A%E4%BA%8C/"
+           data-tag="C++,算法"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ算法作业二">CUMTOJ算法作业二</span>
+            <span class="post-date" title="2019-10-12 00:38:16">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 算法 "
+           href="/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/"
+           data-tag="C++,算法"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ算法实验二">CUMTOJ算法实验二</span>
+            <span class="post-date" title="2019-10-12 00:38:16">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 区块链 "
+           href="/2019/10/12/%E5%8C%BA%E5%9D%97%E9%93%BE%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/"
+           data-tag="区块链"
+           data-author="" >
+            <span class="post-title" title="区块链详解（转）">区块链详解（转）</span>
+            <span class="post-date" title="2019-10-12 00:38:16">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 数据结构 "
+           href="/2019/10/12/CUMTOJ%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B93-4/"
+           data-tag="C++,数据结构"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ数据结构实验内容3-4">CUMTOJ数据结构实验内容3-4</span>
+            <span class="post-date" title="2019-10-12 00:36:49">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/12/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%951/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录1">JavaScript学习记录1</span>
+            <span class="post-date" title="2019-10-12 00:13:06">2019/10/12</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript函数与作用域">JavaScript函数与作用域</span>
+            <span class="post-date" title="2019-10-11 21:26:48">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 算法 "
+           href="/2019/10/11/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%B8%80/"
+           data-tag="C++,算法"
+           data-author="" >
+            <span class="post-title" title="CUMTOJ算法实验一">CUMTOJ算法实验一</span>
+            <span class="post-date" title="2019-10-11 21:22:49">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%955/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录5">JavaScript学习记录5</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="攻防世界--misc--新手区">攻防世界--misc--新手区</span>
+            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="攻防世界--web--新手区">攻防世界--web--新手区</span>
+            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/Hackme-Crypto-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="Hackme-Crypto-wp">Hackme-Crypto-wp</span>
+            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/Hackme-Misc-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="Hackme-Misc-wp">Hackme-Misc-wp</span>
+            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/Hackme-Web-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="Hackme-Web-wp">Hackme-Web-wp</span>
+            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 网络安全 "
+           href="/2019/10/11/kali%E5%AD%A6%E4%B9%A0-msf-%E4%BD%BF%E7%94%A8msfvenom%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC%E7%94%A8%E4%BA%8E%E6%B8%97%E9%80%8F%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="kali学习-msf-使用msfvenom生成木马用于渗透虚拟机">kali学习-msf-使用msfvenom生成木马用于渗透虚拟机</span>
+            <span class="post-date" title="2019-10-11 21:01:27">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 经验 "
+           href="/2019/10/11/%E4%B8%A4%E4%B8%AA%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B9%8B%E9%97%B4%E5%8F%AF%E4%BA%92%E7%9B%B8ping%E9%80%9A%E4%B8%94%E9%83%BD%E8%83%BD%E4%B8%8A%E7%BD%91/"
+           data-tag="经验,网络安全"
+           data-author="" >
+            <span class="post-title" title="两个虚拟机之间可互相ping通且都能上网">两个虚拟机之间可互相ping通且都能上网</span>
+            <span class="post-date" title="2019-10-11 20:55:18">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 Linux "
+           href="/2019/10/11/Linux%E6%9F%A5%E6%89%BE%E5%90%AB%E6%9C%89%E6%9F%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux查找含有某字符串的所有文件">Linux查找含有某字符串的所有文件</span>
+            <span class="post-date" title="2019-10-11 20:48:03">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CSharp "
+           href="/2019/10/11/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/"
+           data-tag="CSharp"
+           data-author="" >
+            <span class="post-title" title="程序设计综合实验">程序设计综合实验</span>
+            <span class="post-date" title="2019-10-11 17:57:48">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 Cpp "
+           href="/2019/10/11/C++%E6%8E%92%E5%BA%8F/"
+           data-tag="C++,算法,数据结构"
+           data-author="" >
+            <span class="post-title" title="C++排序">C++排序</span>
+            <span class="post-date" title="2019-10-11 17:29:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 Cpp "
+           href="/2019/10/11/%E6%97%A5%E6%9C%9F%E9%97%AE%E9%A2%98/"
+           data-tag="C++,算法"
+           data-author="" >
+            <span class="post-title" title="日期问题">日期问题</span>
+            <span class="post-date" title="2019-10-11 17:29:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%954/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录4">JavaScript学习记录4</span>
+            <span class="post-date" title="2019-10-11 00:17:29">2019/10/11</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Android--四大组件之BroadcastReceiver" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Android--四大组件之BroadcastReceiver</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Android">Android</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Android</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-10-17 16:36:44'>2022-10-16 11:08</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-BroadcastReceiver%E7%AE%80%E4%BB%8B"><span class="toc-text">1 BroadcastReceiver简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-BroadcastReceiver%E6%A6%82%E8%A7%88"><span class="toc-text">1.1 BroadcastReceiver概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%85%B3%E4%BA%8E%E7%B3%BB%E7%BB%9F%E5%B9%BF%E6%92%AD"><span class="toc-text">1.2 关于系统广播</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%8E%A5%E6%94%B6%E5%B9%BF%E6%92%AD"><span class="toc-text">2 接收广播</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%B8%85%E5%8D%95%E5%A3%B0%E6%98%8E%E7%9A%84%E6%8E%A5%E6%94%B6%E5%99%A8"><span class="toc-text">2.1 清单声明的接收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E4%B8%8A%E4%B8%8B%E6%96%87%E6%B3%A8%E5%86%8C%E7%9A%84%E6%8E%A5%E6%94%B6%E5%99%A8"><span class="toc-text">2.2 上下文注册的接收器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%AF%B9%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-text">2.3 对进程状态的影响</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="toc-text">3 发送广播</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E9%80%9A%E8%BF%87%E6%9D%83%E9%99%90%E9%99%90%E5%88%B6%E5%B9%BF%E6%92%AD"><span class="toc-text">4 通过权限限制广播</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%B8%A6%E6%9D%83%E9%99%90%E7%9A%84%E5%8F%91%E9%80%81"><span class="toc-text">4.1 带权限的发送</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E5%B8%A6%E6%9D%83%E9%99%90%E7%9A%84%E6%8E%A5%E6%94%B6"><span class="toc-text">4.2 带权限的接收</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%AE%89%E5%85%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E5%92%8C%E6%9C%80%E4%BD%B3%E5%81%9A%E6%B3%95"><span class="toc-text">5 安全注意事项和最佳做法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">6 参考文献</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-BroadcastReceiver简介"><a href="#1-BroadcastReceiver简介" class="headerlink" title="1 BroadcastReceiver简介"></a>1 BroadcastReceiver简介</h1><h2 id="1-1-BroadcastReceiver概览"><a href="#1-1-BroadcastReceiver概览" class="headerlink" title="1.1 BroadcastReceiver概览"></a>1.1 BroadcastReceiver概览</h2><p>Android应用与Android系统和其他Android应用之间可以相互收发广播消息，这与<font color=red>发布-订阅</font>设计模式相似。这些广播会在所关注的事件发生时发送。举例来说Android系统会在发生各种系统事件时发送广播，例如系统启动或设备开始充电时。再比如，应用可以发送自定义广播来通知其他应用它们可能感兴趣的事件（例如，一些新数据已下载）。</p>
+<p><img src="https://img-blog.csdnimg.cn/47c378345a5442569f05a9b9086f7b47.png" alt="图1 Broadcast Receivers示意图"></p>
+<p>应用可以注册接收特定的广播。广播发出后，系统会自动将广播传送给同意接收这种广播的应用。</p>
+<p>一般来说，广播可作为跨应用和普通用户流之外的消息传递系统。但是，不要滥用在后台响应广播和运行作业的机会，因为这会导致系统变慢。</p>
+<h2 id="1-2-关于系统广播"><a href="#1-2-关于系统广播" class="headerlink" title="1.2 关于系统广播"></a>1.2 关于系统广播</h2><p>系统会在发生各种系统事件时自动发送广播，例如当系统进入和退出飞行模式时。系统广播会被发送给所有同意接收相关事件的应用。</p>
+<p>广播消息本身会被封装在一个<font color=red>Intent</font>对象中，该对象的操作字符串会标识所发生的事件（例如<font color=red>android.intent.action.AIRPLANE_MODE</font>）。该intent可能还包含绑定到其extra字段中的附加信息。例如，飞行模式intent包含布尔值extra来指示是否已开启飞行模式。</p>
+<p>有关系统广播操作的完整列表，请参阅Android SDK中的<font color=red>BROADCAST_ACTIONS.TXT</font>文件。每个广播操作都有一个与之关联的常量字段。例如，常量<font color=red>ACTION_AIRPLANE_MODE_CHANGED</font>的值为<font color=red>android.intent.action.AIRPLANE_MODE</font>。每个广播操作的文档都可以在关联的常量字段中找到。</p>
+<h1 id="2-接收广播"><a href="#2-接收广播" class="headerlink" title="2 接收广播"></a>2 接收广播</h1><p>应用可以通过两种方式接收广播：清单声明的接收器和上下文注册的接收器。</p>
+<h2 id="2-1-清单声明的接收器"><a href="#2-1-清单声明的接收器" class="headerlink" title="2.1 清单声明的接收器"></a>2.1 清单声明的接收器</h2><p>如果在清单中声明广播接收器，系统会在广播发出后启动应用（如果应用尚未运行）。</p>
+<p>【注意】如果应用以API级别26或更高级别的平台版本为目标，则不能使用清单为隐式广播（没有明确针对应用的广播）声明接收器，但一些不受此限制的隐式广播除外。在大多数情况下，可以使用调度作业来代替。</p>
+<p>要在清单中声明广播接收器，请执行以下两个步骤：</p>
+<ol>
+<li>在应用清单中指定<font color=red>&lt;receiver&gt;</font>元素，Intent过滤器指定接收器所订阅的广播操作。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;receiver android:name=&quot;.MyBroadcastReceiver&quot;  android:exported=&quot;true&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt;</span><br><span class="line">        &lt;action android:name=&quot;android.intent.action.INPUT_METHOD_CHANGED&quot; /&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/receiver&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建<font color=red>BroadcastReceiver</font>子类并实现<font color=red>onReceive(Context, Intent)</font>。以下示例中的广播接收器会记录并显示广播的内容：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class MyBroadcastReceiver extends BroadcastReceiver &#123;</span><br><span class="line">    private static final String TAG = &quot;MyBroadcastReceiver&quot;;</span><br><span class="line">    @Override</span><br><span class="line">    public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        sb.append(&quot;Action: &quot; + intent.getAction() + &quot;\n&quot;);</span><br><span class="line">        sb.append(&quot;URI: &quot; + intent.toUri(Intent.URI_INTENT_SCHEME).toString() + &quot;\n&quot;);</span><br><span class="line">        String log = sb.toString();</span><br><span class="line">        Log.d(TAG, log);</span><br><span class="line">        Toast.makeText(context, log, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>系统软件包管理器会在应用安装时注册接收器。然后，该接收器会成为应用的一个独立入口点，这意味着如果应用当前未运行，系统可以启动应用并发送广播。</p>
+<p>系统会创建新的<font color=red>BroadcastReceiver</font>组件对象来处理它接收到的每个广播。此对象仅在调用<font color=red>onReceive(Context, Intent)</font>期间有效。一旦从此方法返回代码，系统便会认为该组件不再活跃。</p>
+<h2 id="2-2-上下文注册的接收器"><a href="#2-2-上下文注册的接收器" class="headerlink" title="2.2 上下文注册的接收器"></a>2.2 上下文注册的接收器</h2><p>要使用上下文注册接收器，请执行以下三个步骤：</p>
+<ol>
+<li>创建<font color=red>BroadcastReceiver</font>的实例。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BroadcastReceiver br = new MyBroadcastReceiver();</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建<font color=red>IntentFilter</font>并调用<font color=red>registerReceiver(BroadcastReceiver, IntentFilter)</font>来注册接收器：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);</span><br><span class="line">filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);</span><br><span class="line">this.registerReceiver(br, filter);</span><br></pre></td></tr></table></figure>
+<p>【注意】要注册本地广播，请调用<font color=red>LocalBroadcastManager.registerReceiver(BroadcastReceiver, IntentFilter)</font>。</p>
+<p>只要注册上下文有效，上下文注册的接收器就会接收广播。例如，如果在<font color=red>Activity</font>上下文中注册，只要Activity没有被销毁，就会收到广播。如果在应用上下文中注册，只要应用在运行，就会收到广播。</p>
+<ol start="3">
+<li>要停止接收广播，请调用<font color=red>unregisterReceiver(android.content.BroadcastReceiver)</font>。当不再需要接收器或上下文不再有效时，请务必注销接收器。</li>
+</ol>
+<p>请注意注册和注销接收器的位置，比方说，如果使用Activity上下文在<font color=red>onCreate(Bundle)</font>中注册接收器，则应在<font color=red>onDestroy()</font>中注销，以防接收器从Activity上下文中泄露出去。如果在<font color=red>onResume()</font>中注册接收器，则应在<font color=red>onPause()</font>中注销，以防多次注册接收器（如果不想在暂停时接收广播，这样可以减少不必要的系统开销）。请勿在<font color=red>onSaveInstanceState(Bundle)</font>中注销，因为如果用户在历史记录堆栈中后退，则不会调用此方法。</p>
+<h2 id="2-3-对进程状态的影响"><a href="#2-3-对进程状态的影响" class="headerlink" title="2.3 对进程状态的影响"></a>2.3 对进程状态的影响</h2><p><font color=red>BroadcastReceiver</font>的状态（无论它是否在运行）会影响其所在进程的状态，而其所在进程的状态又会影响它被系统终结的可能性。例如，当进程执行接收器（即当前在运行其<font color=red>onReceive()</font>方法中的代码）时，它被认为是前台进程。除非遇到极大的内存压力，否则系统会保持该进程运行。</p>
+<p>但是，一旦从<font color=red>onReceive()</font>返回代码，BroadcastReceiver就不再活跃。接收器的宿主进程变得与在其中运行的其他应用组件一样重要。如果该进程仅托管清单声明的接收器（这对于用户从未与之互动或最近没有与之互动的应用很常见），则从<font color=red>onReceive()</font>返回时，系统会将其进程视为低优先级进程，并可能会将其终止，以便将资源提供给其他更重要的进程使用。</p>
+<p>因此，不应从广播接收器启动长时间运行的后台线程。<font color=red>onReceive()</font>完成后，系统可以随时终止进程来回收内存，在此过程中，也会终止进程中运行的派生线程。要避免这种情况，应该调用<font color=red>goAsync()</font>（如果希望在后台线程中多花一点时间来处理广播）或者使用<font color=red>JobScheduler</font>从接收器调度<font color=red>JobService</font>，这样系统就会知道该进程将继续活跃地工作。</p>
+<p>以下代码段展示了一个<font color=red>BroadcastReceiver</font>，它使用<font color=red>goAsync()</font>来标记它在<font color=red>onReceive()</font>完成后需要更多时间才能完成。如果希望在<font color=red>onReceive()</font>中完成的工作很长，足以导致界面线程丢帧 (&gt;16ms)，则这种做法非常有用，这使它尤其适用于后台线程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class MyBroadcastReceiver extends BroadcastReceiver &#123;</span><br><span class="line">    private static final String TAG = &quot;MyBroadcastReceiver&quot;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line">        final PendingResult pendingResult = goAsync();</span><br><span class="line">        Task asyncTask = new Task(pendingResult, intent);</span><br><span class="line">        asyncTask.execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static class Task extends AsyncTask&lt;String, Integer, String&gt; &#123;</span><br><span class="line"></span><br><span class="line">        private final PendingResult pendingResult;</span><br><span class="line">        private final Intent intent;</span><br><span class="line"></span><br><span class="line">        private Task(PendingResult pendingResult, Intent intent) &#123;</span><br><span class="line">            this.pendingResult = pendingResult;</span><br><span class="line">            this.intent = intent;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        protected String doInBackground(String... strings) &#123;</span><br><span class="line">            StringBuilder sb = new StringBuilder();</span><br><span class="line">            sb.append(&quot;Action: &quot; + intent.getAction() + &quot;\n&quot;);</span><br><span class="line">            sb.append(&quot;URI: &quot; + intent.toUri(Intent.URI_INTENT_SCHEME).toString() + &quot;\n&quot;);</span><br><span class="line">            String log = sb.toString();</span><br><span class="line">            Log.d(TAG, log);</span><br><span class="line">            return log;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        protected void onPostExecute(String s) &#123;</span><br><span class="line">            super.onPostExecute(s);</span><br><span class="line">            // Must call finish() so the BroadcastReceiver can be recycled.</span><br><span class="line">            pendingResult.finish();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-发送广播"><a href="#3-发送广播" class="headerlink" title="3 发送广播"></a>3 发送广播</h1><p>Android为应用提供三种方式来发送广播：</p>
+<ul>
+<li><p><font color=red>sendOrderedBroadcast(Intent, String)</font>方法一次向一个接收器发送广播。当接收器逐个顺序执行时，接收器可以向下传递结果，也可以完全中止广播，使其不再传递给其他接收器。接收器的运行顺序可以通过匹配的intent-filter的android:priority属性来控制；具有相同优先级的接收器将按随机顺序运行。</p>
+</li>
+<li><p><font color=red>sendBroadcast(Intent)</font>方法会按随机的顺序向所有接收器发送广播。这称为常规广播。这种方法效率更高，但也意味着接收器无法从其他接收器读取结果，无法传递从广播中收到的数据，也无法中止广播。</p>
+</li>
+<li><p><font color=red>LocalBroadcastManager.sendBroadcast</font>方法会将广播发送给与发送器位于同一应用中的接收器。如果不需要跨应用发送广播，请使用本地广播。这种实现方法的效率更高（无需进行进程间通信），而且无需担心其他应用在收发广播时带来的任何安全问题。</p>
+</li>
+</ul>
+<p>以下代码段展示了如何通过创建Intent并调用<font color=red>sendBroadcast(Intent)</font>来发送广播。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = new Intent();</span><br><span class="line">intent.setAction(&quot;com.example.broadcast.MY_NOTIFICATION&quot;);</span><br><span class="line">intent.putExtra(&quot;data&quot;,&quot;Notice me senpai!&quot;);</span><br><span class="line">sendBroadcast(intent);</span><br></pre></td></tr></table></figure>
+
+<p>广播消息封装在<font color=red>Intent</font>对象中。Intent的操作字符串必须提供应用的Java软件包名称语法，并唯一标识广播事件。可以使用<font color=red>putExtra(String, Bundle)</font>向intent附加其他信息。也可以对intent调用<font color=red>setPackage(String)</font>，将广播限定到同一组织中的一组应用。</p>
+<p>【注意】虽然intent既用于发送广播，也用于通过<font color=red>startActivity(Intent)</font>启动Activity，但这两种操作是完全无关的。广播接收器无法查看或捕获用于启动Activity的intent；同样，当广播intent时，也无法找到或启动Activity。</p>
+<h1 id="4-通过权限限制广播"><a href="#4-通过权限限制广播" class="headerlink" title="4 通过权限限制广播"></a>4 通过权限限制广播</h1><p>可以通过权限将广播限定到拥有特定权限的一组应用。可以对广播的发送器或接收器施加限制。</p>
+<h2 id="4-1-带权限的发送"><a href="#4-1-带权限的发送" class="headerlink" title="4.1 带权限的发送"></a>4.1 带权限的发送</h2><p>当调用<font color=red>sendBroadcast(Intent, String)</font>或<font color=red>sendOrderedBroadcast(Intent, String, BroadcastReceiver, Handler, int, String, Bundle)</font>时，可以指定权限参数。接收器若要接收此广播，则必须通过其清单中的 标记请求该权限（如果存在危险，则会被授予该权限）。例如，以下代码会发送广播：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sendBroadcast(new Intent(&quot;com.example.NOTIFY&quot;), Manifest.permission.SEND_SMS);</span><br></pre></td></tr></table></figure>
+<p>要接收此广播，接收方应用必须请求如下权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>可以指定现有的系统权限（如<font color=red>SEND_SMS</font>），也可以使用<font color=red>&lt;permission&gt;</font>元素定义自定义权限。</p>
+<p>【注意】自定义权限将在安装应用时注册。定义自定义权限的应用必须在使用自定义权限的应用之前安装。</p>
+<h2 id="4-2-带权限的接收"><a href="#4-2-带权限的接收" class="headerlink" title="4.2 带权限的接收"></a>4.2 带权限的接收</h2><p>如果在注册广播接收器时指定了权限参数（通过<font color=red>registerReceiver(BroadcastReceiver, IntentFilter, String, Handler)</font>或清单中的<font color=red>&lt;receiver&gt;</font>标记指定），则广播方必须通过其清单中的<font color=red>&lt;uses-permission&gt;</font>标记请求该权限（如果存在危险，则会被授予该权限），才能向该接收器发送Intent。</p>
+<p>例如，假设接收方应用具有如下所示的清单声明的接收器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;receiver android:name=&quot;.MyBroadcastReceiver&quot;</span><br><span class="line">          android:permission=&quot;android.permission.SEND_SMS&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name=&quot;android.intent.action.AIRPLANE_MODE&quot;/&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/receiver&gt;</span><br></pre></td></tr></table></figure>
+<p>或者接收方应用具有如下所示的上下文注册的接收器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IntentFilter filter = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);</span><br><span class="line">registerReceiver(receiver, filter, Manifest.permission.SEND_SMS, null);</span><br></pre></td></tr></table></figure>
+
+<p>那么，发送方应用必须请求如下权限，才能向这些接收器发送广播：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-安全注意事项和最佳做法"><a href="#5-安全注意事项和最佳做法" class="headerlink" title="5 安全注意事项和最佳做法"></a>5 安全注意事项和最佳做法</h1><p>以下是有关收发广播的一些安全注意事项和最佳做法：</p>
+<ul>
+<li><p>如果不需要向应用以外的组件发送广播，则可以使用<font color=red>支持库</font>中提供的<font color=red>LocalBroadcastManager</font>来收发本地广播。<font color=red>LocalBroadcastManager</font>效率更高（无需进行进程间通信），并且无需考虑其他应用在收发广播时带来的任何安全问题。本地广播可在应用中作为通用的发布&#x2F;订阅事件总线，而不会产生任何系统级广播开销。</p>
+</li>
+<li><p>如果有许多应用在其清单中注册接收相同的广播，可能会导致系统启动大量应用，从而对设备性能和用户体验造成严重影响。为避免发生这种情况，请优先使用上下文注册而不是清单声明。有时，Android系统本身会强制使用上下文注册的接收器。例如，<font color=red>CONNECTIVITY_ACTION</font>广播只会传送给上下文注册的接收器。</p>
+</li>
+<li><p>请勿使用隐式intent广播敏感信息。任何注册接收广播的应用都可以读取这些信息。可以通过以下三种方式控制哪些应用可以接收广播：</p>
+<ul>
+<li><p>可以在发送广播时指定权限。</p>
+</li>
+<li><p>在Android 4.0及更高版本中，可以在发送广播时使用<font color=red>setPackage(String)</font>指定<font color=red>软件包</font>。系统会将广播限定到与该软件包匹配的一组应用。</p>
+</li>
+<li><p>可以使用<font color=red>LocalBroadcastManager</font>发送本地广播。</p>
+</li>
+</ul>
+</li>
+<li><p>当注册接收器时，任何应用都可以向应用的接收器发送潜在的恶意广播。可以通过以下三种方式限制应用可以接收的广播：</p>
+<ul>
+<li><p>可以在注册广播接收器时指定权限。</p>
+</li>
+<li><p>对于清单声明的接收器，可以在清单中将<font color=red>android:exported</font>属性设置为“false”。这样一来，接收器就不会接收来自应用外部的广播。</p>
+</li>
+<li><p>可以使用<font color=red>LocalBroadcastManager</font>限制应用只接收本地广播。</p>
+</li>
+</ul>
+</li>
+<li><p>广播操作的命名空间是全局性的。请确保在自己的命名空间中编写操作名称和其他字符串，否则可能会无意中与其他应用发生冲突。</p>
+</li>
+<li><p>由于接收器的<font color=red>onReceive(Context, Intent)</font>方法在主线程上运行，因此它会快速执行并返回。如果需要执行长时间运行的工作，请谨慎生成线程或启动后台服务，因为系统可能会在<font color=red>onReceive()</font>返回后终止整个进程。要执行长时间运行的工作，建议：</p>
+<ul>
+<li><p>在接收器的<font color=red>onReceive()</font>方法中调用<font color=red>goAsync()</font>，并将<font color=red>BroadcastReceiver.PendingResult</font>传递给后台线程。这样，在从<font color=red>onReceive()</font>返回后，广播仍可保持活跃状态。不过，即使采用这种方法，系统仍希望非常快速地完成广播（在10秒以内）。为避免影响主线程，它允许将工作移到另一个线程。</p>
+</li>
+<li><p>使用<font color=red>JobScheduler</font>调度作业。</p>
+</li>
+</ul>
+</li>
+<li><p>请勿从广播接收器启动Activity，否则会影响用户体验，尤其是有多个接收器时。相反，可以考虑显示<font color=red>通知</font>。</p>
+</li>
+</ul>
+<h1 id="6-参考文献"><a href="#6-参考文献" class="headerlink" title="6 参考文献"></a>6 参考文献</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/components/broadcasts?hl=zh-cn">https://developer.android.google.cn/guide/components/broadcasts?hl=zh-cn</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/components/broadcast-exceptions?hl=zh-cn">https://developer.android.google.cn/guide/components/broadcast-exceptions?hl=zh-cn</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/android/android-broadcast-receivers.html">https://www.runoob.com/android/android-broadcast-receivers.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/freeking101/article/details/105377197">https://blog.csdn.net/freeking101/article/details/105377197</a></li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达，可以邮件至 xingshuaikun@163.com。 </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
