@@ -1363,14 +1363,6 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/"
-           data-tag="CTF,writeup"
-           data-author="" >
-            <span class="post-title" title="攻防世界--misc--新手区">攻防世界--misc--新手区</span>
-            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 CTF "
            href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/"
            data-tag="CTF,writeup"
            data-author="" >
@@ -1379,11 +1371,11 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/Hackme-Crypto-wp/"
+           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/"
            data-tag="CTF,writeup"
            data-author="" >
-            <span class="post-title" title="Hackme-Crypto-wp">Hackme-Crypto-wp</span>
-            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+            <span class="post-title" title="攻防世界--misc--新手区">攻防世界--misc--新手区</span>
+            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
         </a>
         
         <a  class="全部文章 CTF "
@@ -1391,6 +1383,14 @@
            data-tag="CTF,writeup"
            data-author="" >
             <span class="post-title" title="Hackme-Misc-wp">Hackme-Misc-wp</span>
+            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/Hackme-Crypto-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="Hackme-Crypto-wp">Hackme-Crypto-wp</span>
             <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
         </a>
         
@@ -1502,7 +1502,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-10-17 21:40:01'>2022-10-16 11:08</time>
+            发布时间 : <time class="date" title='最后更新: 2022-10-18 09:16:53'>2022-10-16 11:08</time>
         
     </div>
     <div class="article-meta">
@@ -1568,7 +1568,7 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BroadcastReceiver br = new MyBroadcastReceiver();</span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li>创建<font color=red>IntentFilter</font>并调用<font color=red>registerReceiver(BroadcastReceiver, IntentFilter)</font>来注册接收器：</li>
+<li>创建<font color=red>IntentFilter</font>并调用<font color=red>registerReceiver(BroadcastReceiver, IntentFilter)</font>来注册接收器。</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);</span><br><span class="line">filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);</span><br><span class="line">this.registerReceiver(br, filter);</span><br></pre></td></tr></table></figure>
 <p>【注意】要注册本地广播，请调用<font color=red>LocalBroadcastManager.registerReceiver(BroadcastReceiver, IntentFilter)</font>。</p>
