@@ -9,7 +9,7 @@
 <meta name="description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于">
-<meta property="og:url" content="https://xingshuaikun.github.io/about/index.html">
+<meta property="og:url" content="https://xingshuaikun.gitee.io/about/index.html">
 <meta property="og:site_name" content="iHui">
 <meta property="og:description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
 <meta property="og:locale" content="zh_CN">
@@ -1057,18 +1057,18 @@
         </a>
         
         <a  class="全部文章 DVWA "
-           href="/2019/10/28/DVWA-High-wp/"
-           data-tag="writeup,Web,DVWA"
-           data-author="" >
-            <span class="post-title" title="DVWA-High-wp">DVWA-High-wp</span>
-            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
-        </a>
-        
-        <a  class="全部文章 DVWA "
            href="/2019/10/28/DVWA-Impossible-wp/"
            data-tag="writeup,Web,DVWA"
            data-author="" >
             <span class="post-title" title="DVWA-Impossible-wp">DVWA-Impossible-wp</span>
+            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
+        </a>
+        
+        <a  class="全部文章 DVWA "
+           href="/2019/10/28/DVWA-High-wp/"
+           data-tag="writeup,Web,DVWA"
+           data-author="" >
+            <span class="post-title" title="DVWA-High-wp">DVWA-High-wp</span>
             <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
         </a>
         
@@ -1659,7 +1659,7 @@
 <p>2</p>
 </blockquote>
 <h2 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h2><p>此题类似于我前面写过的一篇文章《CUMTOJ算法实验二》，具体思路就是最大子段和的求解，详解见如下链接</p>
-<p><a target="_blank" rel="noopener" href="https://xingshuaikun.gitee.io/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/">https://xingshuaikun.gitee.io/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/</a></p>
+<p><a href="https://xingshuaikun.gitee.io/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/">https://xingshuaikun.gitee.io/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/</a></p>
 <h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int max_num = 10000;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int max(int a, int b);</span><br><span class="line">	int n, arr[max_num], A[max_num] = &#123; 0 &#125;;</span><br><span class="line">	while (cin &gt;&gt; n)</span><br><span class="line">	&#123;</span><br><span class="line">		int result = 0;</span><br><span class="line">		for (int i = 1; i &lt;= n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; arr[i];</span><br><span class="line">			if (A[i - 1] &gt; 0)</span><br><span class="line">				A[i] = A[i - 1] + arr[i];</span><br><span class="line">			else</span><br><span class="line">				A[i] = arr[i];</span><br><span class="line">			result = max(result, A[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; result &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">int max(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">	return (a &gt; b ? a : b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="问题-G-元素整除问题"><a href="#问题-G-元素整除问题" class="headerlink" title="问题 G: 元素整除问题"></a>问题 G: 元素整除问题</h1><h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入20个整数，输出其中能被数组中其它元素整除的那些数组元素。</p>
