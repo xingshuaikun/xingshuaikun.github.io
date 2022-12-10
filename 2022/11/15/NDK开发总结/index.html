@@ -1057,18 +1057,18 @@
         </a>
         
         <a  class="全部文章 DVWA "
-           href="/2019/10/28/DVWA-Impossible-wp/"
-           data-tag="writeup,Web,DVWA"
-           data-author="" >
-            <span class="post-title" title="DVWA-Impossible-wp">DVWA-Impossible-wp</span>
-            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
-        </a>
-        
-        <a  class="全部文章 DVWA "
            href="/2019/10/28/DVWA-High-wp/"
            data-tag="writeup,Web,DVWA"
            data-author="" >
             <span class="post-title" title="DVWA-High-wp">DVWA-High-wp</span>
+            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
+        </a>
+        
+        <a  class="全部文章 DVWA "
+           href="/2019/10/28/DVWA-Impossible-wp/"
+           data-tag="writeup,Web,DVWA"
+           data-author="" >
+            <span class="post-title" title="DVWA-Impossible-wp">DVWA-Impossible-wp</span>
             <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
         </a>
         
@@ -1518,7 +1518,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-12-06 21:58:21'>2022-11-15 10:44</time>
+            发布时间 : <time class="date" title='最后更新: 2022-12-10 13:51:27'>2022-11-15 10:44</time>
         
     </div>
     <div class="article-meta">
@@ -1540,7 +1540,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%86%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-text">2 分析过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%9C%A8Android%E6%89%8B%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85apk"><span class="toc-text">2.1 在Android手机中安装apk</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">4  参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-JNI%E7%AE%80%E4%BB%8B"><span class="toc-text">2 JNI简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C%E5%92%8C%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C"><span class="toc-text">3 静态注册和动态注册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C"><span class="toc-text">3.1 静态注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C"><span class="toc-text">3.2 动态注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%8C%BA%E5%88%AB"><span class="toc-text">3.3 区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">4  参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1556,10 +1556,67 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>中秋佳节，团圆节日，祝大家中秋节快乐哈O(∩_∩)O</p>
-<p>今天上午实验室就我一个人，不过终于把困扰我两天的<font color=red>IDA Pro静态分析dex文件</font>搞定了，坤哥yyds(●’◡’●)。</p>
-<p>话不多说，分析正式开始，一大波文字加图片来袭中，请做好准备。</p>
-<h1 id="2-分析过程"><a href="#2-分析过程" class="headerlink" title="2 分析过程"></a>2 分析过程</h1><h2 id="2-1-在Android手机中安装apk"><a href="#2-1-在Android手机中安装apk" class="headerlink" title="2.1 在Android手机中安装apk"></a>2.1 在Android手机中安装apk</h2><h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4  参考文献"></a>4  参考文献</h1><p>[1]丰生强. Android软件安全权威指南[M]. 电子工业出版社, 2019.</p>
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>经过NDK开发的入门学习后，顿感自己啥也不是😅😅😅，还是好好学习吧</p>
+<h1 id="2-JNI简介"><a href="#2-JNI简介" class="headerlink" title="2 JNI简介"></a>2 JNI简介</h1><p><font color=red>JNI(Java Native Interface)</font>是指Java原生接口，它定义了Android从受管理代码（使用Java或Kotlin编程语言编写）编译的字节码与原生代码（使用C&#x2F;C++编写）互动的方式。同时，这个特性使我们可以复用以前用C&#x2F;C++写的大量代码。JNI不依赖于供应商，支持从动态共享库加载代码，虽然有时较为繁琐，但效率尚可。</p>
+<p>JNI开发流程主要分为以下6步：</p>
+<ol>
+<li>编写声明了native方法的Java类</li>
+<li>将Java源代码编译成class字节码文件</li>
+<li>用javah -jni命令生成.h头文件（javah是jdk自带的一个命令，-jni参数表示将class中用native声明的函数生成jni规则的函数）</li>
+<li>用本地代码实现.h头文件中的函数</li>
+<li>将本地代码编译成动态库（Windows：*.dll，linux&#x2F;Unix：*.so，Mac OS X：*.jnilib）</li>
+<li>拷贝动态库至java.library.path本地库搜索目录下，并运行Java程序</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/6d8f95b9be10413b9965adf58d83003b.png" alt="图1 JNI开发流程"></p>
+<h1 id="3-静态注册和动态注册"><a href="#3-静态注册和动态注册" class="headerlink" title="3 静态注册和动态注册"></a>3 静态注册和动态注册</h1><p>为什么需要<font color=red>注册</font>？其实<font color=red>就是给Java的native函数找到底层C&#x2F;C++实现的函数指针</font>。</p>
+<h2 id="3-1-静态注册"><a href="#3-1-静态注册" class="headerlink" title="3.1 静态注册"></a>3.1 静态注册</h2><p>通过包名、类名一致来确认，Java有一个命令javah，专门生成某一个JAVA文件所有的native函数的头文件(h文件)，静态方法注册JNI有哪些缺点？</p>
+<ul>
+<li>必须遵循某些规则；</li>
+<li>名字过长；</li>
+<li>多个class文件需Javah多遍；</li>
+<li>运行时去找效率不高</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**************静态方法**********************/</span><br><span class="line">extern &quot;C&quot; JNIEXPORT jstring JNICALL</span><br><span class="line">Java_com_example_calc_MainActivity_stringFromJNI(</span><br><span class="line">        JNIEnv* env,</span><br><span class="line">        jobject /* this */) &#123;</span><br><span class="line">    std::string hello = &quot;Hello from C++&quot;;</span><br><span class="line">    return env-&gt;NewStringUTF(hello.c_str());</span><br><span class="line">&#125;</span><br><span class="line">/*************************************************************/</span><br><span class="line">JNIEXPORT void JNICALL Java_com_example_jni_1demo_MainActivity_javaToC(JNIEnv *env, jobject obj)</span><br><span class="line">&#123;</span><br><span class="line">    // 获取 类</span><br><span class="line">    jclass fdClass = env-&gt;FindClass(&quot;com/example/jni_demo/MainActivity&quot;);</span><br><span class="line">    // 获取 普通方法id</span><br><span class="line">    jmethodID _jmethodID = env-&gt;GetMethodID(fdClass, &quot;_method&quot;, &quot;()V&quot;);</span><br><span class="line">    // 获取 静态方法id</span><br><span class="line">    jmethodID _staticjmethodID = env-&gt;GetStaticMethodID(fdClass, &quot;_staticMethod&quot;, &quot;()V&quot;);</span><br><span class="line">    // 调用 java中 的 普通方法</span><br><span class="line">    env-&gt;CallVoidMethod(obj, _jmethodID);</span><br><span class="line">    // 调用 java中 的 静态方法</span><br><span class="line">    env-&gt;CallStaticVoidMethod(fdClass, _staticjmethodID);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-动态注册"><a href="#3-2-动态注册" class="headerlink" title="3.2 动态注册"></a>3.2 动态注册</h2><p>在JNI层实现的，JAVA层不需要关心，因为<font color=red>在system.load函数执行时就会去调用JNI_OnLoad</font>，有就注册，没就不注册。流程清晰可控，效率更高，安全。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/************************* 动态注册 native 方法 ********************************/ </span><br><span class="line">JNINativeMethod nativeMethod[] = &#123;  // 方法数组映射</span><br><span class="line">        // 定义数组，用于绑定 java方法 和 C方法的 关系</span><br><span class="line">        &#123;&quot;addMethod&quot;, &quot;(FF)F&quot;, (void*)my_add&#125;,          // java中方法名，方法签名，C++中方法名</span><br><span class="line">        &#123;&quot;subMethod&quot;, &quot;(FF)F&quot;, (void*)my_sub&#125;,</span><br><span class="line">        &#123;&quot;mulMethod&quot;, &quot;(FF)F&quot;, (void*)my_mul&#125;,</span><br><span class="line">        &#123;&quot;divMethod&quot;, &quot;(FF)F&quot;, (void*)my_div&#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">/************************* 实现 JNI_OnLoad 动态注册方法 *******************************/</span><br><span class="line">JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved)</span><br><span class="line">&#123;</span><br><span class="line">    JNIEnv* env;</span><br><span class="line">    if(vm-&gt;GetEnv((void**)&amp;env, JNI_VERSION_1_6) != JNI_OK)</span><br><span class="line">    &#123;</span><br><span class="line">        return JNI_ERR;</span><br><span class="line">    &#125;</span><br><span class="line">    // 获取 java native 方法对应的 类</span><br><span class="line">    jclass fdClass = env-&gt;FindClass(&quot;com/example/calc/MainActivity&quot;);</span><br><span class="line">    // 注册 java 层 native 方法</span><br><span class="line">    jint retVal = env-&gt;RegisterNatives(fdClass, nativeMethod, sizeof(nativeMethod)/sizeof(nativeMethod[0]));</span><br><span class="line">    if(retVal != JNI_OK)</span><br><span class="line">    &#123;</span><br><span class="line">        // 注册失败返回 -1</span><br><span class="line">        return JNI_ERR;</span><br><span class="line">    &#125;</span><br><span class="line">    return JNI_VERSION_1_6; //必须返回一个版本号</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-区别"><a href="#3-3-区别" class="headerlink" title="3.3 区别"></a>3.3 区别</h2><p>静态注册：</p>
+<ul>
+<li>绑定java方法和C&#x2F;C++方法的方式之一；</li>
+<li>java层操作和c层操作以及整体编译：<ol>
+<li>定义被native修饰的方法</li>
+<li>根据java代码生成.h头文件（javah -jni 类的包名路径）</li>
+<li>编写C&#x2F;C++代码，导入.h头文件，实现我们.h头文件中方法</li>
+<li>编写（配置）两个mk文件：application.mk&#x2F;android.mk</li>
+<li>通过ndk-build生成so文件</li>
+<li>java代码中加载so文件（system.loadlibrary）</li>
+<li>补充：获取so库的名称<br> 1-libs文件下去头去尾（头：lib；尾：.so）;<br> 2-在android.mk直接复制模块名称；</li>
+</ol>
+</li>
+</ul>
+<p>动态注册</p>
+<ul>
+<li>作用：绑定java方法和C&#x2F;C++方法的方式之一</li>
+<li>流程：<ol>
+<li>java中定义native的方法</li>
+<li>创建C++代码代码，导入头文件，编写（配置）两个mk文件：application.mk&#x2F;android.mk</li>
+<li>JNInativeMethod：绑定java方法和C&#x2F;C++的方法</li>
+<li>registerNatives（4个参数）：注册java层相应的类以及方法</li>
+<li>使用jni.h中JNI_onload进行判断：注册是否成功（JIN_onload：系统调用，相当于java中的psvm：public static void main）</li>
+<li>ndk-build生成so</li>
+<li>java代码中加载so文件(system.loadlibrary)</li>
+</ol>
+</li>
+</ul>
+<p><font color=red>静态注册是用到时加载</font>，<font color=red>动态注册一开始就加载好了</font>，这个可以从DVM的源代码看出来。</p>
+<p><img src="https://img-blog.csdnimg.cn/d6d13fce319f41dc8ab55be72222a160.png" alt="图2 JavaVM和JNIEnv的体系结构"></p>
+<p>虚拟机相关的变量中有两个非常重要的量JavaVM和JNIEnv，两者本质上都是指向函数表的二级指针:</p>
+<ul>
+<li>JavaVM：是指进程虚拟机环境，每个进程有且只有一个JavaVM实例</li>
+<li>JNIEnv：是指线程上下文环境，每个线程有且只有一个JNIEnv实例</li>
+</ul>
+<h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4  参考文献"></a>4  参考文献</h1><p>[1]丰生强. Android软件安全权威指南[M]. 电子工业出版社, 2019.<br>[2]<a target="_blank" rel="noopener" href="https://developer.android.google.cn/training/articles/perf-jni#java">https://developer.android.google.cn/training/articles/perf-jni#java</a><br>[3]<a target="_blank" rel="noopener" href="https://blog.csdn.net/xyang81/article/details/41777471">https://blog.csdn.net/xyang81/article/details/41777471</a><br>[4]<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1356493">https://cloud.tencent.com/developer/article/1356493</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达，可以邮件至 xingshuaikun@163.com。 </span>
