@@ -6,36 +6,17 @@
   <meta name="keywords" content=" Web ">
   <meta name="description" content="burpsuite使用 | iHui">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1 背景在Android开发过程中，防作弊一直是老生常谈的问题，而模拟器和反调试的检测往往是防作弊中的重要一环。 2 模拟器检测模拟器检测的本质就是要利用模拟器和真机之间的微小差异，从而判断当前设备是否为模拟器，具体检测技术框架整理如图1所示。  通常是在入口点、入口页面分析有没有模拟器检测，一种检测代码的Java实现如下所示 12345678910111213141516171819202122">
-<meta property="og:type" content="article">
-<meta property="og:title" content="模拟器和反调试检测">
-<meta property="og:url" content="https://xingshuaikun.gitee.io/2023/02/11/%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%92%8C%E5%8F%8D%E8%B0%83%E8%AF%95%E6%A3%80%E6%B5%8B/index.html">
+<meta name="description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://xingshuaikun.github.io/about/index.html">
 <meta property="og:site_name" content="iHui">
-<meta property="og:description" content="1 背景在Android开发过程中，防作弊一直是老生常谈的问题，而模拟器和反调试的检测往往是防作弊中的重要一环。 2 模拟器检测模拟器检测的本质就是要利用模拟器和真机之间的微小差异，从而判断当前设备是否为模拟器，具体检测技术框架整理如图1所示。  通常是在入口点、入口页面分析有没有模拟器检测，一种检测代码的Java实现如下所示 12345678910111213141516171819202122">
+<meta property="og:description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/8aabdfe9bf404526bdf1a78a9ea81a5c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/bba95feeac4a4ced89645f9690b63e35.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/8df84c84f6b44ad4af8abd90bdf07de7.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c34b9818acd54a898d0e9bb0fa144185.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/0f83f7ca7b75409388b5066e1d123875.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/11eda7598f9746069d280cc395cce5b0.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/ba027c86c9284ed9be448001c1dcecb2.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c8a01284f2eb4300a6565c649cab3d3f.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/50df5bb589744ed39c9e5da310446d84.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/e8d40b7b965b4600ab12f09450a27ced.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/8227df59761148afa568146962fc191e.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/d7e2e61d7ac340e69eec0a2db58eed56.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/4f9704bfe49547398843b60f706451b5.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/e769dcb89a7c4a4d9d1172c3cbb7e720.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b5ca8d2765c84910982c94349b351913.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/312ec00e482746cdb8e7bddeead49c54.png">
-<meta property="article:published_time" content="2023-02-11T06:33:10.000Z">
-<meta property="article:modified_time" content="2023-02-15T07:28:10.061Z">
+<meta property="article:published_time" content="2021-06-25T09:43:28.000Z">
+<meta property="article:modified_time" content="2021-09-13T12:03:31.473Z">
 <meta property="article:author" content="iHui">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/8aabdfe9bf404526bdf1a78a9ea81a5c.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -1388,18 +1369,18 @@
         </a>
         
         <a  class="全部文章 JavaScript "
-           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
-           data-tag="JavaScript,前端"
-           data-author="" >
-            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
-            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 JavaScript "
            href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
            data-tag="JavaScript,前端"
            data-author="" >
             <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
             <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
         </a>
         
@@ -1436,18 +1417,18 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/Hackme-Web-wp/"
-           data-tag="CTF,writeup"
-           data-author="" >
-            <span class="post-title" title="Hackme-Web-wp">Hackme-Web-wp</span>
-            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 CTF "
            href="/2019/10/11/Hackme-Misc-wp/"
            data-tag="CTF,writeup"
            data-author="" >
             <span class="post-title" title="Hackme-Misc-wp">Hackme-Misc-wp</span>
+            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/Hackme-Web-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="Hackme-Web-wp">Hackme-Web-wp</span>
             <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
         </a>
         

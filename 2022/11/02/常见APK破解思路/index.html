@@ -6,36 +6,17 @@
   <meta name="keywords" content=" Android , Reverse ">
   <meta name="description" content="常见APK破解思路 | iHui">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1 背景在Android开发过程中，防作弊一直是老生常谈的问题，而模拟器和反调试的检测往往是防作弊中的重要一环。 2 模拟器检测模拟器检测的本质就是要利用模拟器和真机之间的微小差异，从而判断当前设备是否为模拟器，具体检测技术框架整理如图1所示。  通常是在入口点、入口页面分析有没有模拟器检测，一种检测代码的Java实现如下所示 12345678910111213141516171819202122">
-<meta property="og:type" content="article">
-<meta property="og:title" content="模拟器和反调试检测">
-<meta property="og:url" content="https://xingshuaikun.gitee.io/2023/02/11/%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%92%8C%E5%8F%8D%E8%B0%83%E8%AF%95%E6%A3%80%E6%B5%8B/index.html">
+<meta name="description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://xingshuaikun.github.io/about/index.html">
 <meta property="og:site_name" content="iHui">
-<meta property="og:description" content="1 背景在Android开发过程中，防作弊一直是老生常谈的问题，而模拟器和反调试的检测往往是防作弊中的重要一环。 2 模拟器检测模拟器检测的本质就是要利用模拟器和真机之间的微小差异，从而判断当前设备是否为模拟器，具体检测技术框架整理如图1所示。  通常是在入口点、入口页面分析有没有模拟器检测，一种检测代码的Java实现如下所示 12345678910111213141516171819202122">
+<meta property="og:description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/8aabdfe9bf404526bdf1a78a9ea81a5c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/bba95feeac4a4ced89645f9690b63e35.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/8df84c84f6b44ad4af8abd90bdf07de7.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c34b9818acd54a898d0e9bb0fa144185.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/0f83f7ca7b75409388b5066e1d123875.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/11eda7598f9746069d280cc395cce5b0.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/ba027c86c9284ed9be448001c1dcecb2.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c8a01284f2eb4300a6565c649cab3d3f.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/50df5bb589744ed39c9e5da310446d84.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/e8d40b7b965b4600ab12f09450a27ced.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/8227df59761148afa568146962fc191e.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/d7e2e61d7ac340e69eec0a2db58eed56.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/4f9704bfe49547398843b60f706451b5.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/e769dcb89a7c4a4d9d1172c3cbb7e720.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b5ca8d2765c84910982c94349b351913.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/312ec00e482746cdb8e7bddeead49c54.png">
-<meta property="article:published_time" content="2023-02-11T06:33:10.000Z">
-<meta property="article:modified_time" content="2023-02-15T07:28:10.061Z">
+<meta property="article:published_time" content="2021-06-25T09:43:28.000Z">
+<meta property="article:modified_time" content="2021-09-13T12:03:31.473Z">
 <meta property="article:author" content="iHui">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/8aabdfe9bf404526bdf1a78a9ea81a5c.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -1388,18 +1369,18 @@
         </a>
         
         <a  class="全部文章 JavaScript "
-           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
-           data-tag="JavaScript,前端"
-           data-author="" >
-            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
-            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 JavaScript "
            href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
            data-tag="JavaScript,前端"
            data-author="" >
             <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
             <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
         </a>
         
@@ -1436,18 +1417,18 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/Hackme-Web-wp/"
-           data-tag="CTF,writeup"
-           data-author="" >
-            <span class="post-title" title="Hackme-Web-wp">Hackme-Web-wp</span>
-            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 CTF "
            href="/2019/10/11/Hackme-Misc-wp/"
            data-tag="CTF,writeup"
            data-author="" >
             <span class="post-title" title="Hackme-Misc-wp">Hackme-Misc-wp</span>
+            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/Hackme-Web-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="Hackme-Web-wp">Hackme-Web-wp</span>
             <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
         </a>
         
@@ -1641,7 +1622,7 @@
 <p>最终，发现在<font color=red>com.speedsoftware.rootexplorer.RootExplorer</font>的<font color=red>onDestroy()</font>方法中发现WebPageDownLoadMainActivity用例。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">/* access modifiers changed from: protected */</span><br><span class="line">@Override // android.support.v7.app.AppCompatActivity, android.support.v4.app.FragmentActivity</span><br><span class="line">public void onDestroy() &#123;</span><br><span class="line">    Intent iii;</span><br><span class="line">    w a2;</span><br><span class="line">    if (isNetworkAvailable(this)) &#123;</span><br><span class="line">        startActivity(new Intent(this, WebPageDownLoadMainActivity.class));</span><br><span class="line">    &#125;</span><br><span class="line">    int i2 = 0;</span><br><span class="line">    while (true) &#123;</span><br><span class="line">        if (i2 &gt;= this.k.f3534a.size()) &#123;</span><br><span class="line">            iii = 1;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        v a3 = a(i2);</span><br><span class="line">        if (a3 != null &amp;&amp; (a2 = a3.a()) != null &amp;&amp; a2.p()) &#123;</span><br><span class="line">            iii = null;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        i2++;</span><br><span class="line">    &#125;</span><br><span class="line">    if (!(iii == null || BackgroundWorker.c || ig.aP == null)) &#123;</span><br><span class="line">        ig.aP.a(ig.bj + &quot; \&quot;&quot; + ig.n() + &quot;/.\&quot;*&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    this.e = true;</span><br><span class="line">    if (this.am != null) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            unregisterReceiver(this.am);</span><br><span class="line">        &#125; catch (Exception e2) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    try &#123;</span><br><span class="line">        c.disconnect();</span><br><span class="line">    &#125; catch (Exception e3) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    if (this.bI != null) &#123;</span><br><span class="line">        this.bI.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">    d = null;</span><br><span class="line">    super.onDestroy();</span><br><span class="line">    if (A) &#123;</span><br><span class="line">        Runtime.getRuntime().exit(0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>经查看上面的代码，我们可以<font color=red>修改程序的跳转逻辑，有网络的时候不启动Activity，没有网络的时候启动Activity</font>，这样程序就不会下载任何垃圾软件。以防万一，我这里把程序中下载APK的链接<font color=red><a target="_blank" rel="noopener" href="http://www.doudoubird.com:8080/ddn_app/selectAppList?aidx=2">http://www.doudoubird.com:8080/ddn_app/selectAppList?aidx=2</a></font>改成<font color=red><a target="_blank" rel="noopener" href="https://xingshuaikun.github.io/">https://xingshuaikun.github.io/</a></font>。</p>
+<p>经查看上面的代码，我们可以<font color=red>修改程序的跳转逻辑，有网络的时候不启动Activity，没有网络的时候启动Activity</font>，这样程序就不会下载任何垃圾软件。以防万一，我这里把程序中下载APK的链接<font color=red><a target="_blank" rel="noopener" href="http://www.doudoubird.com:8080/ddn_app/selectAppList?aidx=2">http://www.doudoubird.com:8080/ddn_app/selectAppList?aidx=2</a></font>改成<font color=red><a href="https://xingshuaikun.github.io/">https://xingshuaikun.github.io/</a></font>。</p>
 <p>最后，依然是编译、打包、签名，重新安装到真机中，就会在有网络的情况下不弹出广告，在没有网络的情况下弹出界面，如图10所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/9c93954505e24efa8bf309b7580ac5e1.jpeg" alt="图10 修改RE文件管理器的运行逻辑"></p>
 <h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4  参考文献"></a>4  参考文献</h1><p>[1]丰生强. Android软件安全权威指南[M]. 电子工业出版社, 2019.<br>[2]<a target="_blank" rel="noopener" href="https://ctf-wiki.org/android/basic_operating_mechanism/java_layer/smali/smali/">https://ctf-wiki.org/android/basic_operating_mechanism/java_layer/smali/smali/</a><br>[3]<a target="_blank" rel="noopener" href="https://blog.csdn.net/freeking101/article/details/105669581">https://blog.csdn.net/freeking101/article/details/105669581</a><br>[4]<a target="_blank" rel="noopener" href="https://blog.csdn.net/freeking101/article/details/105759124">https://blog.csdn.net/freeking101/article/details/105759124</a></p>
