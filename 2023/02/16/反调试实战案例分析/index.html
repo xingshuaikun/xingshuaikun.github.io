@@ -6,33 +6,17 @@
   <meta name="keywords" content=" Android , Reverse ">
   <meta name="description" content="反调试实战案例分析 | iHui">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1 背景反调试，在我们脱壳的第一步。反调试虽然不能完全阻止攻击者，但是还是能加大攻击者的时间成本，一般与加壳结合使用，核心还是加壳部分。反调试可以分为两类：一类是检测，另一类是攻击。本文主要是对Android逆向中的反调试进行案例分析。 2 so逆向之IDA绕过AliCrackme反调试2.1 Jdax反编译APK文件来自阿里聚安全的AliCrackme.apk，如图1所示，随机输入密码ihui后">
-<meta property="og:type" content="article">
-<meta property="og:title" content="反调试实战案例分析">
-<meta property="og:url" content="https://xingshuaikun.gitee.io/2023/02/16/%E5%8F%8D%E8%B0%83%E8%AF%95%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/index.html">
+<meta name="description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://xingshuaikun.gitee.io/about/index.html">
 <meta property="og:site_name" content="iHui">
-<meta property="og:description" content="1 背景反调试，在我们脱壳的第一步。反调试虽然不能完全阻止攻击者，但是还是能加大攻击者的时间成本，一般与加壳结合使用，核心还是加壳部分。反调试可以分为两类：一类是检测，另一类是攻击。本文主要是对Android逆向中的反调试进行案例分析。 2 so逆向之IDA绕过AliCrackme反调试2.1 Jdax反编译APK文件来自阿里聚安全的AliCrackme.apk，如图1所示，随机输入密码ihui后">
+<meta property="og:description" content="个人简介iReverse 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉 Java、Python、和 HTML 等编程语言； 熟悉 TCP&#x2F;IP 协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/a05a466e3ec04b88aabfd9cd87fb2d80.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/67e4e0265d48417e9d7cde5e1fdc3cbf.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b3e4b2d3b79d4a8b8f5c1564e1439a78.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/182c8e99eab640da916b44959f7d4b36.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/985f9588733e4d739a72c9f326252b87.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/5925c6b5a3b54dc4b2a339a5310e2ca1.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/1b98beff50554dc2983d0d147b5001f5.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/bc3a276aa48248b2a49396febbcd9086.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f003810798424af3ba06b87b4261a06c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/bdec49d4b6904a72b6f8b08b8f4a5863.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/a25cc1efcf6040848688ccf84a2c405e.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/9b6dd84314e149fbbf8ca055b2381e8f.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/ecc0837c19114a60ae8b4d0abe924b31.png">
-<meta property="article:published_time" content="2023-02-16T08:05:03.000Z">
-<meta property="article:modified_time" content="2023-02-17T02:04:57.204Z">
+<meta property="article:published_time" content="2021-06-25T09:43:28.000Z">
+<meta property="article:modified_time" content="2021-09-13T12:03:31.473Z">
 <meta property="article:author" content="iHui">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/a05a466e3ec04b88aabfd9cd87fb2d80.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -158,7 +142,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(112)</small>
+                <small>(113)</small>
             
         </div>
     </li>
@@ -267,7 +251,7 @@
                     <div data-rel="Android">
                         
                         Android
-                        <small>(23)</small>
+                        <small>(24)</small>
                         
                     </div>
                     
@@ -435,7 +419,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="112">
+<input type="hidden" id="yelog_site_posts_number" value="113">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -622,6 +606,14 @@
            data-author="" >
             <span class="post-title" title="博客声明">博客声明</span>
             <span class="post-date" title="2019-10-11 16:49:47">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2023/02/20/%E4%BA%BA%E4%BA%BA%E8%A7%86%E9%A2%91APP%E7%99%BB%E5%BD%95%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="人人视频APP登录协议分析">人人视频APP登录协议分析</span>
+            <span class="post-date" title="2023-02-20 21:19:07">2023/02/20</span>
         </a>
         
         <a  class="全部文章 Android "
@@ -1393,18 +1385,18 @@
         </a>
         
         <a  class="全部文章 JavaScript "
-           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
-           data-tag="JavaScript,前端"
-           data-author="" >
-            <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
-            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 JavaScript "
            href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
            data-tag="JavaScript,前端"
            data-author="" >
             <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
             <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
         </a>
         
@@ -1417,14 +1409,6 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/"
-           data-tag="CTF,writeup"
-           data-author="" >
-            <span class="post-title" title="攻防世界--web--新手区">攻防世界--web--新手区</span>
-            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 CTF "
            href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/"
            data-tag="CTF,writeup"
            data-author="" >
@@ -1433,11 +1417,11 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/Hackme-Crypto-wp/"
+           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/"
            data-tag="CTF,writeup"
            data-author="" >
-            <span class="post-title" title="Hackme-Crypto-wp">Hackme-Crypto-wp</span>
-            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+            <span class="post-title" title="攻防世界--web--新手区">攻防世界--web--新手区</span>
+            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
         </a>
         
         <a  class="全部文章 CTF "
@@ -1445,6 +1429,14 @@
            data-tag="CTF,writeup"
            data-author="" >
             <span class="post-title" title="Hackme-Misc-wp">Hackme-Misc-wp</span>
+            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/Hackme-Crypto-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="Hackme-Crypto-wp">Hackme-Crypto-wp</span>
             <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
         </a>
         
@@ -1558,7 +1550,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-02-17 10:04:57'>2023-02-16 16:05</time>
+            发布时间 : <time class="date" title='最后更新: 2023-02-19 15:59:35'>2023-02-16 16:05</time>
         
     </div>
     <div class="article-meta">
@@ -1580,7 +1572,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-so%E9%80%86%E5%90%91%E4%B9%8BIDA%E7%BB%95%E8%BF%87AliCrackme%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="toc-text">2 so逆向之IDA绕过AliCrackme反调试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Jdax%E5%8F%8D%E7%BC%96%E8%AF%91APK%E6%96%87%E4%BB%B6"><span class="toc-text">2.1 Jdax反编译APK文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-IDA%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90"><span class="toc-text">2.2 IDA静态分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-IDA%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95"><span class="toc-text">2.3 IDA动态调试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-so%E9%80%86%E5%90%91%E4%B9%8BIDA%E7%BB%95%E8%BF%87FindTracer%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="toc-text">3 so逆向之IDA绕过FindTracer反调试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Jdax%E5%8F%8D%E7%BC%96%E8%AF%91APK%E6%96%87%E4%BB%B6"><span class="toc-text">3.1 Jdax反编译APK文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-IDA%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90"><span class="toc-text">3.2 IDA静态分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-IDA%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95"><span class="toc-text">3.3 IDA动态调试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">4  参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-so%E9%80%86%E5%90%91%E4%B9%8BIDA%E7%BB%95%E8%BF%87AliCrackme%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="toc-text">2 so逆向之IDA绕过AliCrackme反调试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Jdax%E5%8F%8D%E7%BC%96%E8%AF%91APK%E6%96%87%E4%BB%B6"><span class="toc-text">2.1 Jdax反编译APK文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-IDA%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90"><span class="toc-text">2.2 IDA静态分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-IDA%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95"><span class="toc-text">2.3 IDA动态调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%8F%A6%E8%A7%A3%EF%BC%9Afrida-hook-native%E5%B1%82%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C%E6%96%B9%E6%B3%95"><span class="toc-text">2.4 另解：frida hook native层静态注册方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-so%E9%80%86%E5%90%91%E4%B9%8BIDA%E7%BB%95%E8%BF%87FindTracer%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="toc-text">3 so逆向之IDA绕过FindTracer反调试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Jdax%E5%8F%8D%E7%BC%96%E8%AF%91APK%E6%96%87%E4%BB%B6"><span class="toc-text">3.1 Jdax反编译APK文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-IDA%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90"><span class="toc-text">3.2 IDA静态分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-IDA%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95"><span class="toc-text">3.3 IDA动态调试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">4  参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1617,20 +1609,26 @@
 <p>然后双击<font color=red>[R2]</font>并按<font color=red>A</font>键，<font color=red>将数据转化为字符串</font>，查看<font color=red>v6</font>的值即为注册码<font color=red>aiyou,bucuoo</font>，如图9所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/f003810798424af3ba06b87b4261a06c.png" alt="图9 发现注册码"></p>
 <p>最后，重新打开APP输入注册码即可破解成功，其实这里就是将正确的字符和我们自己输入的字符进行比较。</p>
-<h1 id="3-so逆向之IDA绕过FindTracer反调试"><a href="#3-so逆向之IDA绕过FindTracer反调试" class="headerlink" title="3 so逆向之IDA绕过FindTracer反调试"></a>3 so逆向之IDA绕过FindTracer反调试</h1><h2 id="3-1-Jdax反编译APK文件"><a href="#3-1-Jdax反编译APK文件" class="headerlink" title="3.1 Jdax反编译APK文件"></a>3.1 Jdax反编译APK文件</h2><p>打开APP后，发现有一个<font color=red>信封</font>的图标，点击后出现<font color=red>Everything fine.</font>的提示信息，如图10所示。</p>
-<p><img src="https://img-blog.csdnimg.cn/bdec49d4b6904a72b6f8b08b8f4a5863.png" alt="图10 FindTracer程序运行效果"></p>
-<p>使用Jdax打开<font color=red>FindTracer.apk</font>后，通过分析AndroidManifest.xml后进而到MainActivity中，发现了程序的运行逻辑以及<font color=red>FindTracer类下面在so层实现的findTracer()函数</font>，如图11所示。</p>
-<p><img src="https://img-blog.csdnimg.cn/a25cc1efcf6040848688ccf84a2c405e.png" alt="图11 发现so层实现的findTracer函数"></p>
-<h2 id="3-2-IDA静态分析"><a href="#3-2-IDA静态分析" class="headerlink" title="3.2 IDA静态分析"></a>3.2 IDA静态分析</h2><p>使用IDA打开APK解压出来的<font color=red>libFindTracer.so</font>文件，在模块列表中查找<font color=red>JNI_OnLoad</font>或者<font color=red>JAVA_</font>函数，发现<font color=red>只有JNI_OnLoad</font>。<br>因此，我们分析动态注册函数JNI_OnLoad()函数的伪C代码。<br>根据伪代码分析逻辑，我们想找到动态注册函数RegisterNative，但是这里没有。在So load success处的else处的<font color=red>sub_147c()</font>函数内部有FindClass和RegisterNatives的调用，如图12所示。</p>
-<p><img src="https://img-blog.csdnimg.cn/9b6dd84314e149fbbf8ca055b2381e8f.png" alt="图12 在so加载成功处找到RegisterNatives函数"></p>
+<h2 id="2-4-另解：frida-hook-native层静态注册方法"><a href="#2-4-另解：frida-hook-native层静态注册方法" class="headerlink" title="2.4 另解：frida hook native层静态注册方法"></a>2.4 另解：frida hook native层静态注册方法</h2><p>之前的解法就是先nop掉JNI_OnLoad中的反调试，然后再动态调试到securitycheck方法中获取相关寄存器的值。图4中将输入的字符串与v7进行比较，v7又来自于v6，v6的值等于off_628c。</p>
+<p>当然，我们已经知道这是错误的值，在动态运行的过程中会对其进行处理，但是我们可以hook这个偏移值。<br>首先通过导出表函数获取securitycheck函数的值，然后根据函数值算出so基址0x11A8，加上0x628c偏移接着使用readPointer读取地址，readUtf8String读取地址中的值，具体的代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import frida, sys</span><br><span class="line"></span><br><span class="line">jscode = &quot;&quot;&quot;</span><br><span class="line">setImmediate(function () &#123;</span><br><span class="line">    send(&quot;Hook Start...&quot;);</span><br><span class="line">    var exports = Module.enumerateExportsSync(&quot;libcrackme.so&quot;);</span><br><span class="line">    var securityCheck = undefined;</span><br><span class="line">    for(var i=0;i&lt;exports.length;i++)&#123;</span><br><span class="line">        if(exports[i].name == &quot;Java_com_yaotong_crackme_MainActivity_securityCheck&quot;) &#123;</span><br><span class="line">            securityCheck = exports[i].address;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var flag = Memory.readUtf8String(Memory.readPointer(securityCheck.sub(0x000011A8).add(0x0000628C)));</span><br><span class="line">    send(flag);</span><br><span class="line">    send(&quot;Hook End...&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">def on_message(message, data):</span><br><span class="line">    if message[&#x27;type&#x27;] == &#x27;send&#x27;:</span><br><span class="line">        print(&quot;[*] &#123;0&#125;&quot;.format(message[&#x27;payload&#x27;]))</span><br><span class="line">    else:</span><br><span class="line">        print(message)</span><br><span class="line"></span><br><span class="line">process = frida.get_usb_device().attach(&#x27;自毁程序密码&#x27;)</span><br><span class="line">script = process.create_script(jscode)</span><br><span class="line">script.on(&#x27;message&#x27;, on_message)</span><br><span class="line">script.load()</span><br><span class="line">sys.stdin.read()</span><br></pre></td></tr></table></figure>
+
+<p>这种解法也是基于之前IDA动静分析so文件后得出的，如图10所示，可以说是殊途同归。</p>
+<p><img src="https://img-blog.csdnimg.cn/f21e1b6671804e3891eaaeff3ebe97e2.png" alt="图10 获得flag"></p>
+<h1 id="3-so逆向之IDA绕过FindTracer反调试"><a href="#3-so逆向之IDA绕过FindTracer反调试" class="headerlink" title="3 so逆向之IDA绕过FindTracer反调试"></a>3 so逆向之IDA绕过FindTracer反调试</h1><h2 id="3-1-Jdax反编译APK文件"><a href="#3-1-Jdax反编译APK文件" class="headerlink" title="3.1 Jdax反编译APK文件"></a>3.1 Jdax反编译APK文件</h2><p>打开APP后，发现有一个<font color=red>信封</font>的图标，点击后出现<font color=red>Everything fine.</font>的提示信息，如图11所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/bdec49d4b6904a72b6f8b08b8f4a5863.png" alt="图11 FindTracer程序运行效果"></p>
+<p>使用Jdax打开<font color=red>FindTracer.apk</font>后，通过分析AndroidManifest.xml后进而到MainActivity中，发现了程序的运行逻辑以及<font color=red>FindTracer类下面在so层实现的findTracer()函数</font>，如图12所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/a25cc1efcf6040848688ccf84a2c405e.png" alt="图12 发现so层实现的findTracer函数"></p>
+<h2 id="3-2-IDA静态分析"><a href="#3-2-IDA静态分析" class="headerlink" title="3.2 IDA静态分析"></a>3.2 IDA静态分析</h2><p>使用IDA打开APK解压出来的<font color=red>libFindTracer.so</font>文件，在模块列表中查找<font color=red>JNI_OnLoad</font>或者<font color=red>JAVA_</font>函数，发现<font color=red>只有JNI_OnLoad</font>。<br>因此，我们分析动态注册函数JNI_OnLoad()函数的伪C代码。<br>根据伪代码分析逻辑，我们想找到动态注册函数RegisterNative，但是这里没有。在So load success处的else处的<font color=red>sub_147c()</font>函数内部有FindClass和RegisterNatives的调用，如图13所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/9b6dd84314e149fbbf8ca055b2381e8f.png" alt="图13 在so加载成功处找到RegisterNatives函数"></p>
 <p>接下来，我们分析<font color=red>findTracer()</font>函数，该函数是对反调试进行检测，如果出现反调试迹象即返回1，进而导致so加载失败，点击信封后提示信息会由<font color=red>Everything fine.</font>变成<font color=red>Fuck, a tracer has been found!!!</font>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bool findTracer() &#123;</span><br><span class="line">  char v2; // [sp+Ch] [bp+Ch]</span><br><span class="line">  char v3; // [sp+Dh] [bp+Dh]</span><br><span class="line">  char v4; // [sp+Eh] [bp+Eh]</span><br><span class="line">  char v5; // [sp+Fh] [bp+Fh]</span><br><span class="line"></span><br><span class="line">  v2 = isDebuggerRunning();</span><br><span class="line">  v3 = isAttachThread();</span><br><span class="line">  v4 = isAttachThreadTid();</span><br><span class="line">  v5 = isProcessTid();</span><br><span class="line">  return v2 || v3 || v4 || v5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>因此，我们就可以进行动态调试程序，<font color=red>修改findTrace()的4个反调试检测函数的返回值为0即可绕过反调试</font>。</p>
-<h2 id="3-3-IDA动态调试"><a href="#3-3-IDA动态调试" class="headerlink" title="3.3 IDA动态调试"></a>3.3 IDA动态调试</h2><p>通过3.2节的静态分析后，我们先进行动态调试前的准备工作，然后依次修改findTrace()的4个反调试检测函数的返回值为0，修改方法是在汇编代码处<font color=red>右键</font>-&gt;<font color=red>Keypatch</font>-&gt;<font color=red>Patcher</font>，将<font color=red>MOVS R2, #1</font>修改为<font color=red>MOVS R2, #0</font>，依次类推，如图13所示。</p>
-<p><img src="https://img-blog.csdnimg.cn/ecc0837c19114a60ae8b4d0abe924b31.png" alt="图13 修改反调试检测函数的返回值"></p>
+<h2 id="3-3-IDA动态调试"><a href="#3-3-IDA动态调试" class="headerlink" title="3.3 IDA动态调试"></a>3.3 IDA动态调试</h2><p>通过3.2节的静态分析后，我们先进行动态调试前的准备工作，然后依次修改findTrace()的4个反调试检测函数的返回值为0，修改方法是在汇编代码处<font color=red>右键</font>-&gt;<font color=red>Keypatch</font>-&gt;<font color=red>Patcher</font>，将<font color=red>MOVS R2, #1</font>修改为<font color=red>MOVS R2, #0</font>，依次类推，如图14所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/ecc0837c19114a60ae8b4d0abe924b31.png" alt="图14 修改反调试检测函数的返回值"></p>
 <p>最后，取消勾选三项，F9运行程序，点击信封处会出现<font color=red>Everything fine.</font>的提示信息，成功绕过反调试。</p>
-<h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4  参考文献"></a>4  参考文献</h1><p>[1]<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Mz-zumsSICFuGoNj6C0cFg">https://mp.weixin.qq.com/s/Mz-zumsSICFuGoNj6C0cFg</a><br>[2]<a target="_blank" rel="noopener" href="https://blog.csdn.net/YJJYXM/article/details/110857185">https://blog.csdn.net/YJJYXM/article/details/110857185</a></p>
+<h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4  参考文献"></a>4  参考文献</h1><p>[1]<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Mz-zumsSICFuGoNj6C0cFg">https://mp.weixin.qq.com/s/Mz-zumsSICFuGoNj6C0cFg</a><br>[2]<a target="_blank" rel="noopener" href="https://blog.csdn.net/YJJYXM/article/details/110857185">https://blog.csdn.net/YJJYXM/article/details/110857185</a><br>[3]<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42011443/article/details/105897429">https://blog.csdn.net/weixin_42011443/article/details/105897429</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达，可以邮件至 xingshuaikun@163.com。 </span>
