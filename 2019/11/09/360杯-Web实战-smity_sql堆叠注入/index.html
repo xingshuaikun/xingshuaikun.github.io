@@ -6,17 +6,29 @@
   <meta name="keywords" content=" CTF , Web ">
   <meta name="description" content="360杯-Web实战-smity_sql堆叠注入 | iHui">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="https://xingshuaikun.github.io/about/index.html">
+<meta name="description" content="1 背景已经学习这么长时间了，所以开始实战分析一个经典APP人人9.3.8版本，虽然该软件因缺乏维护已经无法很难进行修改密码等操作，但是其中登录协议的设计还是耐人寻味的，有一定的借鉴意义。 2 使用Fiddler抓取登录的数据包首先，进入登录界面输入用户名和密码，如图1所示。  点击登录按钮后即可使用Fiddler抓取到具体的数据包，如图2所示。  通过分析图2中的web表单，我们可以查看到一些字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人人视频APP登录协议分析">
+<meta property="og:url" content="https://xingshuaikun.github.io/2023/02/20/%E4%BA%BA%E4%BA%BA%E8%A7%86%E9%A2%91APP%E7%99%BB%E5%BD%95%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="iHui">
-<meta property="og:description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
+<meta property="og:description" content="1 背景已经学习这么长时间了，所以开始实战分析一个经典APP人人9.3.8版本，虽然该软件因缺乏维护已经无法很难进行修改密码等操作，但是其中登录协议的设计还是耐人寻味的，有一定的借鉴意义。 2 使用Fiddler抓取登录的数据包首先，进入登录界面输入用户名和密码，如图1所示。  点击登录按钮后即可使用Fiddler抓取到具体的数据包，如图2所示。  通过分析图2中的web表单，我们可以查看到一些字">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-06-25T09:43:28.000Z">
-<meta property="article:modified_time" content="2023-02-22T03:39:53.441Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f391693a46604a2192b59e115a46eca5.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/4137aef53cbb458f9c7944308dea4d62.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0f90dcfc6e5f4a59a5beb83fd9ebddd4.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/09376fd0f5fe473dbd701b19330bf443.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/713d805c147d4c26b9e168e0f22bc504.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/98442850babe4f41bcebc1d9c6fb6969.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ae76c8c756f94bef9a75f7b0bac9e0f9.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fb21401032e647e3b61c0895280b799d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9ef73dd2668b4e6c834fd83b04ef61b5.png">
+<meta property="article:published_time" content="2023-02-20T13:19:07.000Z">
+<meta property="article:modified_time" content="2023-02-23T13:07:04.328Z">
 <meta property="article:author" content="iHui">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/f391693a46604a2192b59e115a46eca5.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -1385,18 +1397,18 @@
         </a>
         
         <a  class="全部文章 JavaScript "
-           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
-           data-tag="JavaScript,前端"
-           data-author="" >
-            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
-            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 JavaScript "
            href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
            data-tag="JavaScript,前端"
            data-author="" >
             <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
             <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
         </a>
         
@@ -1409,18 +1421,18 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/"
-           data-tag="CTF,writeup"
-           data-author="" >
-            <span class="post-title" title="攻防世界--misc--新手区">攻防世界--misc--新手区</span>
-            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 CTF "
            href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--web--%E6%96%B0%E6%89%8B%E5%8C%BA/"
            data-tag="CTF,writeup"
            data-author="" >
             <span class="post-title" title="攻防世界--web--新手区">攻防世界--web--新手区</span>
+            <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C--misc--%E6%96%B0%E6%89%8B%E5%8C%BA/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="攻防世界--misc--新手区">攻防世界--misc--新手区</span>
             <span class="post-date" title="2019-10-11 21:15:24">2019/10/11</span>
         </a>
         
@@ -1482,7 +1494,7 @@
         
         <a  class="全部文章 Cpp "
            href="/2019/10/11/C++%E6%8E%92%E5%BA%8F/"
-           data-tag="C++,数据结构,算法"
+           data-tag="C++,算法,数据结构"
            data-author="" >
             <span class="post-title" title="C++排序">C++排序</span>
             <span class="post-date" title="2019-10-11 17:29:36">2019/10/11</span>
