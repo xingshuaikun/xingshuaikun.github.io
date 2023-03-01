@@ -142,7 +142,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(113)</small>
+                <small>(114)</small>
             
         </div>
     </li>
@@ -251,7 +251,7 @@
                     <div data-rel="Android">
                         
                         Android
-                        <small>(24)</small>
+                        <small>(25)</small>
                         
                     </div>
                     
@@ -419,7 +419,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="113">
+<input type="hidden" id="yelog_site_posts_number" value="114">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -606,6 +606,14 @@
            data-author="" >
             <span class="post-title" title="博客声明">博客声明</span>
             <span class="post-date" title="2019-10-11 16:49:47">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2023/02/28/DEX%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="DEX文件结构">DEX文件结构</span>
+            <span class="post-date" title="2023-02-28 18:01:43">2023/02/28</span>
         </a>
         
         <a  class="全部文章 Android "
@@ -1550,7 +1558,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-12-10 13:51:27'>2022-11-15 10:44</time>
+            发布时间 : <time class="date" title='最后更新: 2023-02-25 19:48:29'>2022-11-15 10:44</time>
         
     </div>
     <div class="article-meta">
@@ -1610,9 +1618,11 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**************静态方法**********************/</span><br><span class="line">extern &quot;C&quot; JNIEXPORT jstring JNICALL</span><br><span class="line">Java_com_example_calc_MainActivity_stringFromJNI(</span><br><span class="line">        JNIEnv* env,</span><br><span class="line">        jobject /* this */) &#123;</span><br><span class="line">    std::string hello = &quot;Hello from C++&quot;;</span><br><span class="line">    return env-&gt;NewStringUTF(hello.c_str());</span><br><span class="line">&#125;</span><br><span class="line">/*************************************************************/</span><br><span class="line">JNIEXPORT void JNICALL Java_com_example_jni_1demo_MainActivity_javaToC(JNIEnv *env, jobject obj)</span><br><span class="line">&#123;</span><br><span class="line">    // 获取 类</span><br><span class="line">    jclass fdClass = env-&gt;FindClass(&quot;com/example/jni_demo/MainActivity&quot;);</span><br><span class="line">    // 获取 普通方法id</span><br><span class="line">    jmethodID _jmethodID = env-&gt;GetMethodID(fdClass, &quot;_method&quot;, &quot;()V&quot;);</span><br><span class="line">    // 获取 静态方法id</span><br><span class="line">    jmethodID _staticjmethodID = env-&gt;GetStaticMethodID(fdClass, &quot;_staticMethod&quot;, &quot;()V&quot;);</span><br><span class="line">    // 调用 java中 的 普通方法</span><br><span class="line">    env-&gt;CallVoidMethod(obj, _jmethodID);</span><br><span class="line">    // 调用 java中 的 静态方法</span><br><span class="line">    env-&gt;CallStaticVoidMethod(fdClass, _staticjmethodID);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>【注】在so文件中，静态注册方法的参数个数&#x3D;Java层方法参数个数+其余参数个数（JNIEnv，jobject）</p>
 <h2 id="3-2-动态注册"><a href="#3-2-动态注册" class="headerlink" title="3.2 动态注册"></a>3.2 动态注册</h2><p>在JNI层实现的，JAVA层不需要关心，因为<font color=red>在system.load函数执行时就会去调用JNI_OnLoad</font>，有就注册，没就不注册。流程清晰可控，效率更高，安全。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/************************* 动态注册 native 方法 ********************************/ </span><br><span class="line">JNINativeMethod nativeMethod[] = &#123;  // 方法数组映射</span><br><span class="line">        // 定义数组，用于绑定 java方法 和 C方法的 关系</span><br><span class="line">        &#123;&quot;addMethod&quot;, &quot;(FF)F&quot;, (void*)my_add&#125;,          // java中方法名，方法签名，C++中方法名</span><br><span class="line">        &#123;&quot;subMethod&quot;, &quot;(FF)F&quot;, (void*)my_sub&#125;,</span><br><span class="line">        &#123;&quot;mulMethod&quot;, &quot;(FF)F&quot;, (void*)my_mul&#125;,</span><br><span class="line">        &#123;&quot;divMethod&quot;, &quot;(FF)F&quot;, (void*)my_div&#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">/************************* 实现 JNI_OnLoad 动态注册方法 *******************************/</span><br><span class="line">JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved)</span><br><span class="line">&#123;</span><br><span class="line">    JNIEnv* env;</span><br><span class="line">    if(vm-&gt;GetEnv((void**)&amp;env, JNI_VERSION_1_6) != JNI_OK)</span><br><span class="line">    &#123;</span><br><span class="line">        return JNI_ERR;</span><br><span class="line">    &#125;</span><br><span class="line">    // 获取 java native 方法对应的 类</span><br><span class="line">    jclass fdClass = env-&gt;FindClass(&quot;com/example/calc/MainActivity&quot;);</span><br><span class="line">    // 注册 java 层 native 方法</span><br><span class="line">    jint retVal = env-&gt;RegisterNatives(fdClass, nativeMethod, sizeof(nativeMethod)/sizeof(nativeMethod[0]));</span><br><span class="line">    if(retVal != JNI_OK)</span><br><span class="line">    &#123;</span><br><span class="line">        // 注册失败返回 -1</span><br><span class="line">        return JNI_ERR;</span><br><span class="line">    &#125;</span><br><span class="line">    return JNI_VERSION_1_6; //必须返回一个版本号</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>【注】在so文件中，动态注册通常先搜索JNI_OnLoad，然后找RegisterNatives的第三个参数，接着找方法数组映射关系</p>
 <h2 id="3-3-区别"><a href="#3-3-区别" class="headerlink" title="3.3 区别"></a>3.3 区别</h2><p>静态注册：</p>
 <ul>
 <li>绑定java方法和C&#x2F;C++方法的方式之一；</li>
