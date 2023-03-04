@@ -6,29 +6,17 @@
   <meta name="keywords" content=" Android , Reverse ">
   <meta name="description" content="ELF文件结构 | iHui">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1 背景在计算机科学中，可执行链接格式（Executable and Linking Format, ELF）是一种用于二进制文件、可执行文件、目标代码、共享库和核心转储格式文件的文件格式。ELF最初是由UNIX系统实验室开发并发布的，作为应用程序二进制接口的一部分。ELF格式文档将原生程序分成如下三类进行描述：  可重定位文件(Relocatable File)：包含适合于与其他目标文件链接来创">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ELF文件结构">
-<meta property="og:url" content="https://xingshuaikun.gitee.io/2023/03/02/ELF%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
+<meta name="description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://xingshuaikun.gitee.io/about/index.html">
 <meta property="og:site_name" content="iHui">
-<meta property="og:description" content="1 背景在计算机科学中，可执行链接格式（Executable and Linking Format, ELF）是一种用于二进制文件、可执行文件、目标代码、共享库和核心转储格式文件的文件格式。ELF最初是由UNIX系统实验室开发并发布的，作为应用程序二进制接口的一部分。ELF格式文档将原生程序分成如下三类进行描述：  可重定位文件(Relocatable File)：包含适合于与其他目标文件链接来创">
+<meta property="og:description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/45a6c9a836ef477b9f30898965d35eb7.jpeg">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b398874bf3ec49f5874dab96d1a19f7b.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f43d556a778d4201b66f972583d9c4a4.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/ec516a2a65e74780911b4d8cf964b229.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/27599c10b2a145f9888372dd64058024.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/6f47a0d10d92461d911b2e4fb2fde016.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/965f776917d547188bf9251824798b8e.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/16992d5a282a4f84afb3e7dbc4010e8c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c8dd33ded8b549dc95ec0e465819f2b2.png">
-<meta property="article:published_time" content="2023-03-02T02:43:20.000Z">
-<meta property="article:modified_time" content="2023-03-03T08:50:50.464Z">
+<meta property="article:published_time" content="2021-06-25T09:43:28.000Z">
+<meta property="article:modified_time" content="2023-02-22T03:39:53.441Z">
 <meta property="article:author" content="iHui">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/45a6c9a836ef477b9f30898965d35eb7.jpeg">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -1461,18 +1449,18 @@
         </a>
         
         <a  class="全部文章 CTF "
-           href="/2019/10/11/Hackme-Web-wp/"
-           data-tag="CTF,writeup"
-           data-author="" >
-            <span class="post-title" title="Hackme-Web-wp">Hackme-Web-wp</span>
-            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 CTF "
            href="/2019/10/11/Hackme-Misc-wp/"
            data-tag="CTF,writeup"
            data-author="" >
             <span class="post-title" title="Hackme-Misc-wp">Hackme-Misc-wp</span>
+            <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 CTF "
+           href="/2019/10/11/Hackme-Web-wp/"
+           data-tag="CTF,writeup"
+           data-author="" >
+            <span class="post-title" title="Hackme-Web-wp">Hackme-Web-wp</span>
             <span class="post-date" title="2019-10-11 21:04:39">2019/10/11</span>
         </a>
         
@@ -1578,7 +1566,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-03-03 16:50:50'>2023-03-02 10:43</time>
+            发布时间 : <time class="date" title='最后更新: 2023-03-04 19:34:30'>2023-03-02 10:43</time>
         
     </div>
     <div class="article-meta">
@@ -1600,7 +1588,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%94%9F%E6%88%90ELF%E6%96%87%E4%BB%B6"><span class="toc-text">2 生成ELF文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-ELF%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">3 ELF文件结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-ELF%E6%96%87%E4%BB%B6%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">3.1 ELF文件整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-elf-header"><span class="toc-text">3.2 elf_header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-program-header-table"><span class="toc-text">3.3 program_header_table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-section-header-table"><span class="toc-text">3.4 section_header_table</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-text">4 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">5  参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%94%9F%E6%88%90ELF%E6%96%87%E4%BB%B6"><span class="toc-text">2 生成ELF文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-ELF%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">3 ELF文件结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-ELF%E6%96%87%E4%BB%B6%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">3.1 ELF文件整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Header"><span class="toc-text">3.2 Header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Program-Header-Table"><span class="toc-text">3.3 Program Header Table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-Section-Header-Table"><span class="toc-text">3.4 Section Header Table</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-text">4 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">5  参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1634,8 +1622,8 @@
 </ul>
 <p>为了对ELF文件的整体结构有个直观的印象，这里给出一张宏观描述图片。</p>
 <p><img src="https://img-blog.csdnimg.cn/ec516a2a65e74780911b4d8cf964b229.png" alt="图4 ELF文件整体结构"></p>
-<h2 id="3-2-elf-header"><a href="#3-2-elf-header" class="headerlink" title="3.2 elf_header"></a>3.2 elf_header</h2><p>ELF文件头结构及相关常数被定义在<font color=red>&#x2F;usr&#x2F;include&#x2F;elf.h</font>中，因为ELF文件在各种平台下都通用，ELF文件有32位版本和64位版本的ELF文件的文件头内容是一样的，只不过有些成员的大小不一样。它的文件头也有两种版本：分别叫<font color=red>Elf32_Ehdr</font>和<font color=red>Elf64_Ehdr</font>。ELF header的数据结构可以参考<a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta">elf.h</a>中的定义：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/* 32-bit ELF base types. */</span><br><span class="line">typedef __u32	Elf32_Addr;</span><br><span class="line">typedef __u16	Elf32_Half;</span><br><span class="line">typedef __u32	Elf32_Off;</span><br><span class="line">typedef __s32	Elf32_Sword;</span><br><span class="line">typedef __u32	Elf32_Word;</span><br><span class="line"></span><br><span class="line">#define EI_NIDENT	16</span><br><span class="line"></span><br><span class="line">typedef struct elf32_hdr &#123;</span><br><span class="line">  unsigned char	e_ident[EI_NIDENT];</span><br><span class="line">  Elf32_Half	e_type;</span><br><span class="line">  Elf32_Half	e_machine;</span><br><span class="line">  Elf32_Word	e_version;</span><br><span class="line">  Elf32_Addr	e_entry;  /* Entry point */</span><br><span class="line">  Elf32_Off	    e_phoff;</span><br><span class="line">  Elf32_Off	    e_shoff;</span><br><span class="line">  Elf32_Word	e_flags;</span><br><span class="line">  Elf32_Half	e_ehsize;</span><br><span class="line">  Elf32_Half	e_phentsize;</span><br><span class="line">  Elf32_Half	e_phnum;</span><br><span class="line">  Elf32_Half	e_shentsize;</span><br><span class="line">  Elf32_Half	e_shnum;</span><br><span class="line">  Elf32_Half	e_shstrndx;</span><br><span class="line">&#125; Elf32_Ehdr;</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-Header"><a href="#3-2-Header" class="headerlink" title="3.2 Header"></a>3.2 Header</h2><p>ELF文件头结构及相关常数被定义在<font color=red>&#x2F;usr&#x2F;include&#x2F;elf.h</font>中，因为ELF文件在各种平台下都通用，ELF文件有32位版本和64位版本的ELF文件的文件头内容是一样的，只不过有些成员的大小不一样。它的文件头也有两种版本：分别叫<font color=red>Elf32_Ehdr</font>和<font color=red>Elf64_Ehdr</font>。ELF header的数据结构可以参考<a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta">elf.h</a>中的定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/* 32-bit ELF base types. */</span><br><span class="line">typedef __u32	Elf32_Addr;</span><br><span class="line">typedef __u16	Elf32_Half;</span><br><span class="line">typedef __u32	Elf32_Off;</span><br><span class="line">typedef __s32	Elf32_Sword;</span><br><span class="line">typedef __u32	Elf32_Word;</span><br><span class="line"></span><br><span class="line">#define EI_NIDENT	16</span><br><span class="line"></span><br><span class="line">typedef struct elf32_hdr &#123;</span><br><span class="line">  unsigned char	e_ident[EI_NIDENT];</span><br><span class="line">  Elf32_Half	e_type;</span><br><span class="line">  Elf32_Half	e_machine;</span><br><span class="line">  Elf32_Word	e_version;</span><br><span class="line">  Elf32_Addr	e_entry;  /* Entry point */</span><br><span class="line">  Elf32_Off     e_phoff;</span><br><span class="line">  Elf32_Off     e_shoff;</span><br><span class="line">  Elf32_Word	e_flags;</span><br><span class="line">  Elf32_Half	e_ehsize;</span><br><span class="line">  Elf32_Half	e_phentsize;</span><br><span class="line">  Elf32_Half	e_phnum;</span><br><span class="line">  Elf32_Half	e_shentsize;</span><br><span class="line">  Elf32_Half	e_shnum;</span><br><span class="line">  Elf32_Half	e_shstrndx;</span><br><span class="line">&#125; Elf32_Ehdr;</span><br></pre></td></tr></table></figure>
 
 <p>下表是数据结构定义中用到的数据类型及用途：</p>
 <table>
@@ -1726,7 +1714,7 @@
 </tr>
 <tr>
 <td>e_ehsize</td>
-<td>ELF头部的大小</td>
+<td>ELF头部的字节长度</td>
 </tr>
 <tr>
 <td>e_phentsize</td>
@@ -1757,12 +1745,23 @@
 <ul>
 <li><font color=red>e_entry</font>：程序的入口虚拟地址，注意不是main函数的地址，而是.text段的首地址_start。当然这也要求程序本身非PIE(-no-pie)编译的且ASLR关闭的情况下，对于非ET_EXEC类型通常并不是实际的虚拟地址值。</li>
 <li><font color=red>e_ehsize</font>：ELF Header结构大小。</li>
-<li><font color=red>e_phoff</font>、<font color=red>e_phentsize</font>、<font color=red>e_phnum</font>：描述Program Header Table的偏移、表项大小、表项数目。</li>
-<li><font color=red>e_shoff</font>、<font color=red>e_shentsize</font>、<font color=red>e_shnum</font>：描述Section Header Table的偏移、表项大小、表项数目。</li>
+<li><font color=red>e_phoff</font>、<font color=red>e_phentsize</font>、<font color=red>e_phnum</font>：描述Program Header Table的在文件中的字节偏移、表项字节长度、表项数目。</li>
+<li><font color=red>e_shoff</font>、<font color=red>e_shentsize</font>、<font color=red>e_shnum</font>：描述Section Header Table的在文件中的字节偏移、表项字节长度、表项数目。</li>
 <li><font color=red>e_shstrndx</font>：这一项描述的是字符串表在Section Header Table中的索引，值1Ah表示的是Section Header Table中第26项是字符串表（String Table）。</li>
 </ul>
-<h2 id="3-3-program-header-table"><a href="#3-3-program-header-table" class="headerlink" title="3.3 program_header_table"></a>3.3 program_header_table</h2><p>ELF 程序头表及相关常数被定义在<a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta">elf.h</a>中，而且程序头表也有两种版本：分别叫<font color=red>Elf32_Phdr</font>和<font color=red>Elf64_Phdr</font>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef struct elf32_phdr &#123;</span><br><span class="line">  Elf32_Word	p_type;</span><br><span class="line">  Elf32_Off	    p_offset;</span><br><span class="line">  Elf32_Addr	p_vaddr;</span><br><span class="line">  Elf32_Addr	p_paddr;</span><br><span class="line">  Elf32_Word	p_filesz;</span><br><span class="line">  Elf32_Word	p_memsz;</span><br><span class="line">  Elf32_Word	p_flags;</span><br><span class="line">  Elf32_Word	p_align;</span><br><span class="line">&#125; Elf32_Phdr;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>综上，ELF header的<font color=red>主要作用</font>有如下五点：</p>
+<ol>
+<li>表明文件格式</li>
+<li>记录一些该文件与环境的基本信息（文件类型、机器架构、版本）</li>
+<li>程序的入口地址</li>
+<li>Program header table的起始地址与其结构表项的数量及大小</li>
+<li>Section header table的起始地址与其结构表项的数量及大小</li>
+</ol>
+</blockquote>
+<h2 id="3-3-Program-Header-Table"><a href="#3-3-Program-Header-Table" class="headerlink" title="3.3 Program Header Table"></a>3.3 Program Header Table</h2><p>Program Header Table是一个<font color=red>结构体数组</font>，每一个元素的类型是<font color=red>Elf32_Phdr</font>，描述了一个段或者其它系统在准备程序执行时所需要的信息。其中，ELF头中的<font color=red>e_phentsize</font>和<font color=red>e_phnum</font>指定了该数组每个元素的大小以及元素个数。一个目标文件的段包含一个或者多个节。<font color=red>程序的头部只有对于可执行文件和共享目标文件有意义。</font></p>
+<p>程序头表及相关常数被定义在<a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta">elf.h</a>中，而且程序头表也有两种版本：分别叫<font color=red>Elf32_Phdr</font>和<font color=red>Elf64_Phdr</font>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef struct elf32_phdr &#123;</span><br><span class="line">  Elf32_Word	p_type;</span><br><span class="line">  Elf32_Off	p_offset;</span><br><span class="line">  Elf32_Addr	p_vaddr;</span><br><span class="line">  Elf32_Addr	p_paddr;</span><br><span class="line">  Elf32_Word	p_filesz;</span><br><span class="line">  Elf32_Word	p_memsz;</span><br><span class="line">  Elf32_Word	p_flags;</span><br><span class="line">  Elf32_Word	p_align;</span><br><span class="line">&#125; Elf32_Phdr;</span><br></pre></td></tr></table></figure>
 
 <p><font color=red>Elf32_Phdr</font>数据结构定义中用到的数据类型及用途在3.2节中已介绍，<font color=red>Elf32_Phdr</font>中各个成员及其说明如下表所示：</p>
 <table>
@@ -1786,7 +1785,7 @@
 </tr>
 <tr>
 <td>p_paddr</td>
-<td>仅用于与物理地址相关的系统中。因为 System V 忽略所有应用程序的物理地址信息，此字段对与可执行文件和共享目标文件而言具体内容是未指定的。</td>
+<td>仅用于与物理地址相关的系统中。因为System V忽略所有应用程序的物理地址信息，此字段对与可执行文件和共享目标文件而言具体内容是未指定的。</td>
 </tr>
 <tr>
 <td>p_filesz</td>
@@ -1805,15 +1804,186 @@
 <td>可加载的进程段的p_vaddr和p_offset取值必须合适，相对于对页面大小的取模而言。此成员给出段在文件中和内存中如何对齐。数值0和1表示不需要对齐。否则p_align应该是个正整数，并且是2的幂次数，p_vaddr和p_offset对p_align取模后应该相等。</td>
 </tr>
 </tbody></table>
-<p>在elf_header中，<font color=red>e_phoff &#x3D; 34h</font>, <font color=red>e_phnum &#x3D;8h</font>, <font color=red>e_phentsize &#x3D; 20h</font>，因此在010 Editor找到显示<font color=red>Elf32_Phdr</font>的信息，如图7所示。</p>
+<p>在elf_header中，<font color=red>e_phoff &#x3D; 34h</font>, <font color=red>e_phnum &#x3D; 8h</font>, <font color=red>e_phentsize &#x3D; 20h</font>，因此在010 Editor找到显示<font color=red>Elf32_Phdr</font>的信息，如图7所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/965f776917d547188bf9251824798b8e.png" alt="图7 program_header_table信息"></p>
 <p>如图8所示，在Linux的Terminal通过命令<font color=red>readelf –program-headers libelf.so</font>查看到的<font color=red>Elf32_Phdr</font>与图7一致。</p>
-<p><img src="https://img-blog.csdnimg.cn/16992d5a282a4f84afb3e7dbc4010e8c.png" alt="图8 readelf查看Elf32_Phdr"></p>
-<h2 id="3-4-section-header-table"><a href="#3-4-section-header-table" class="headerlink" title="3.4 section_header_table"></a>3.4 section_header_table</h2><p>ELF 节区头表及相关常数也被定义在<a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta">elf.h</a>中，而且程序头表也有两种版本：分别叫<font color=red>Elf32_Shdr</font>和<font color=red>Elf64_Shdr</font>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef struct elf32_shdr &#123;</span><br><span class="line">  Elf32_Word	sh_name;</span><br><span class="line">  Elf32_Word	sh_type;</span><br><span class="line">  Elf32_Word	sh_flags;</span><br><span class="line">  Elf32_Addr	sh_addr;</span><br><span class="line">  Elf32_Off	sh_offset;</span><br><span class="line">  Elf32_Word	sh_size;</span><br><span class="line">  Elf32_Word	sh_link;</span><br><span class="line">  Elf32_Word	sh_info;</span><br><span class="line">  Elf32_Word	sh_addralign;</span><br><span class="line">  Elf32_Word	sh_entsize;</span><br><span class="line">&#125; Elf32_Shdr;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/16992d5a282a4f84afb3e7dbc4010e8c.png" alt="图8 readelf查看Elf32_Phdr的程序头表"></p>
+<blockquote>
+<p>综上，ELF Program Header Table的<font color=red>主要作用</font>有如下四点：</p>
+<ol>
+<li>表明段的类型及段在文件中的偏移量</li>
+<li>记录虚拟地址和物理地址</li>
+<li>段在文件和内存中的大小</li>
+<li>段权限和对齐方式</li>
+</ol>
+</blockquote>
+<h2 id="3-4-Section-Header-Table"><a href="#3-4-Section-Header-Table" class="headerlink" title="3.4 Section Header Table"></a>3.4 Section Header Table</h2><p>该结构用于<font color=red>定位ELF文件中的每个节区的具体位置</font>。节区头表是一个<font color=red>数组</font>，每个数组的元素的类型是<font color=red>ELF32_Shdr</font>，<font color=red>每一个元素都描述了一个节区的概要内容</font>。节区头表及相关常数也被定义在<a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta">elf.h</a>中，而且程序头表也有两种版本：分别叫<font color=red>Elf32_Shdr</font>和<font color=red>Elf64_Shdr</font>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef struct elf32_shdr &#123;</span><br><span class="line">  Elf32_Word	sh_name;</span><br><span class="line">  Elf32_Word	sh_type;</span><br><span class="line">  Elf32_Word	sh_flags;</span><br><span class="line">  Elf32_Addr	sh_addr;</span><br><span class="line">  Elf32_Off     sh_offset;</span><br><span class="line">  Elf32_Word	sh_size;</span><br><span class="line">  Elf32_Word	sh_link;</span><br><span class="line">  Elf32_Word	sh_info;</span><br><span class="line">  Elf32_Word	sh_addralign;</span><br><span class="line">  Elf32_Word	sh_entsize;</span><br><span class="line">&#125; Elf32_Shdr;</span><br></pre></td></tr></table></figure>
 
-<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p><img src="https://img-blog.csdnimg.cn/c8dd33ded8b549dc95ec0e465819f2b2.png" alt="图9 ELF文件结构总结"></p>
-<h1 id="5-参考文献"><a href="#5-参考文献" class="headerlink" title="5  参考文献"></a>5  参考文献</h1><p>[1]丰生强. Android软件安全权威指南[M]. 电子工业出版社, 2019.<br>[2]<a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta">https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta</a><br>[3]<a target="_blank" rel="noopener" href="https://bbs.kanxue.com/thread-274573.htm">https://bbs.kanxue.com/thread-274573.htm</a><br>[4]<a target="_blank" rel="noopener" href="https://langgithub.github.io/file/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90.pdf">https://langgithub.github.io/file/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90.pdf</a><br>[5]<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47883636/article/details/109895223">https://blog.csdn.net/weixin_47883636/article/details/109895223</a></p>
+<p>其中每个字段的定义如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sh_name</td>
+<td>给出节区名称。是节区头部字符串表节区（Section Header String Table Section）的索引。名字是一个NULL结尾的字符串。</td>
+</tr>
+<tr>
+<td>sh_type</td>
+<td>为节区的内容和语义进行分类。</td>
+</tr>
+<tr>
+<td>sh_flags</td>
+<td>节区支持1位形式的标志，这些标志描述了多种属性。</td>
+</tr>
+<tr>
+<td>sh_addr</td>
+<td>如果节区将出现在进程的内存映像中，此成员给出节区的第一个字节应处的位置。否则，此字段为0。</td>
+</tr>
+<tr>
+<td>sh_offset</td>
+<td>此成员的取值给出节区的第一个字节与文件头之间的偏移。不过，SHT_NOBITS类型的节区不占用文件的空间，因此其sh_offset成员给出的是其概念性的偏移。</td>
+</tr>
+<tr>
+<td>sh_size</td>
+<td>此成员给出节区的长度（字节数）。除非节区的类型是SHT_NOBITS，否则节区占用文件中的sh_size字节。类型为SHT_NOBITS 的节区长度可能非零，不过却不占用文件中的空间。</td>
+</tr>
+<tr>
+<td>sh_link</td>
+<td>此成员给出节区头部表索引链接，其具体的解释依赖于节区类型。</td>
+</tr>
+<tr>
+<td>sh_info</td>
+<td>此成员给出附加信息，其解释依赖于节区类型。</td>
+</tr>
+<tr>
+<td>sh_addralign</td>
+<td>某些节区带有地址对齐约束。例如，如果一个节区保存一个doubleword，那么系统必须保证整个节区能够按双字对齐。sh_addr对 sh_addralign取模，结果必须为0。目前仅允许取值为0和2的幂次数。数值0和1表示节区没有对齐约束。</td>
+</tr>
+<tr>
+<td>sh_entsize</td>
+<td>某些节区中包含固定大小的项目，如符号表。对于这类节区，此成员给出每个表项的长度字节数。如果节区中并不包含固定长度表项的表格，此成员取值为0。</td>
+</tr>
+</tbody></table>
+<p>在elf_header中，<font color=red>e_shoff &#x3D; 19224h</font>, <font color=red>e_shnum &#x3D; 1Bh</font>, <font color=red>e_shentsize &#x3D; 28h</font>，因此在010 Editor找到显示<font color=red>Elf32_Shdr</font>的信息，如图9所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/99aba607e3f44af983b840f1dbfccb79.png" alt="图9 section_header_table信息"></p>
+<p>如图10所示，在Linux的Terminal通过命令<font color=red>readelf –program-headers libelf.so</font>查看到的<font color=red>Elf32_Phdr</font>与图9一致。</p>
+<p><img src="https://img-blog.csdnimg.cn/27a7776c49444feebf1b8538732a676a.png" alt="图10 readelf查看Elf32_Phdr的节区头表"></p>
+<p>下面的表中给出了系统使用的节区，以及它们的类型和属性。</p>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.bss</td>
+<td>包含将出现在程序的内存映像中的<font color=red>未初始化数据</font>。根据定义，当程序开始执行，系统将把这些数据初始化为0。此节区不占用文件空间。</td>
+</tr>
+<tr>
+<td>.comment</td>
+<td>包含版本控制信息。</td>
+</tr>
+<tr>
+<td>.data</td>
+<td>这些节区包含<font color=red>已初始化数据</font>，将出现在程序的内存映像中。</td>
+</tr>
+<tr>
+<td>.debug</td>
+<td>此节区包含用于符号调试的信息。</td>
+</tr>
+<tr>
+<td>.dynamic</td>
+<td>此节区包含动态链接信息。节区的属性将包含SHF_ALLOC位。是否SHF_WRITE位被设置取决于处理器。</td>
+</tr>
+<tr>
+<td>.dynstr</td>
+<td>此节区包含用于动态链接的字符串，大多数情况下这些字符串代表了与符号表项相关的名称。</td>
+</tr>
+<tr>
+<td>.dynsym</td>
+<td>此节区包含了动态链接符号表。</td>
+</tr>
+<tr>
+<td>.fini</td>
+<td>此节区包含了可执行的指令，是进程终止代码的一部分。程序正常退出时，系统将安排执行这里的代码。</td>
+</tr>
+<tr>
+<td>.got</td>
+<td>此节区包含<font color=red>全局偏移表</font>。</td>
+</tr>
+<tr>
+<td>.hash</td>
+<td>此节区包含了一个符号哈希表。</td>
+</tr>
+<tr>
+<td>.init</td>
+<td>此节区包含<font color=red>可执行指令</font>，是进程初始化代码的一部分。当程序开始执行时，系统要在开始调用主程序入口之前（通常指C语言的main函数）执行这些代码。</td>
+</tr>
+<tr>
+<td>.interp</td>
+<td>此节区包含程序解释器的路径名。如果程序包含一个可加载的段，段中包含此节区，那么节区的属性将包含SHF_ALLOC位，否则该位为0。</td>
+</tr>
+<tr>
+<td>.line</td>
+<td>此节区包含符号调试的行号信息，其中描述了源程序与机器指令之间的对应关系。其内容是未定义的。</td>
+</tr>
+<tr>
+<td>.note</td>
+<td>此节区中包含注释信息，有独立的格式。</td>
+</tr>
+<tr>
+<td>.plt</td>
+<td>此节区包含<font color=red>过程链接表</font>。</td>
+</tr>
+<tr>
+<td>.rel</td>
+<td>这些节区中包含了<font color=red>重定位信息</font>。如果文件中包含可加载的段，段中有重定位内容，节区的属性将包含SHF_ALLOC位，否则该位置0。传统上name根据重定位所适用的节区给定。例如.text节区的重定位节区名字将是：.rel.text或者.rela.text。</td>
+</tr>
+<tr>
+<td>.rodata</td>
+<td>这些节区包含<font color=red>只读数据</font>，这些数据通常参与进程映像的不可写段。</td>
+</tr>
+<tr>
+<td>.shstrtab</td>
+<td>此节区包含<font color=red>节区名称</font>。</td>
+</tr>
+<tr>
+<td>.strtab</td>
+<td>此节区包含字符串，通常是代表与符号表项相关的名称。如果文件拥有一个可加载的段，段中包含符号串表，节区的属性将包含SHF_ALLOC位，否则该位为0。</td>
+</tr>
+<tr>
+<td>.symtab</td>
+<td>此节区包含一个符号表。如果文件中包含一个可加载的段，并且该段中包含符号表，那么节区的属性中包含SHF_ALLOC位，否则该位置为0。</td>
+</tr>
+<tr>
+<td>.text</td>
+<td>此节区包含程序的<font color=red>可执行指令</font>。</td>
+</tr>
+</tbody></table>
+<p>在分析这些节区的时候，需要注意如下事项：</p>
+<ul>
+<li>以“<font color=red>.</font>”开头的节区名称是系统保留的。应用程序可以使用没有前缀的节区名称，以避免与系统节区冲突。</li>
+<li>目标文件格式允许人们定义不在上述列表中的节区。</li>
+<li>目标文件中也可以包含多个名字相同的节区。</li>
+<li>保留给处理器体系结构的节区名称一般构成为：处理器体系结构名称简写+节区名称。</li>
+<li>处理器名称应该与e_machine中使用的名称相同。例如<font color=red>.FOO.psect</font>节区是由<font color=red>FOO</font>体系结构定义的<font color=red>psect</font>节区。</li>
+</ul>
+<blockquote>
+<p>综上，编译器、链接器和装载器都是依靠ELF Section Header Table来<font color=red>定位和访问各个节区的属性</font>：</p>
+<ol>
+<li>节区的名称、类型及在文件中的偏移量</li>
+<li>节区大小、权限、</li>
+<li>索引链接、地址对齐</li>
+</ol>
+</blockquote>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p><img src="https://img-blog.csdnimg.cn/c8dd33ded8b549dc95ec0e465819f2b2.png" alt="图11 ELF文件结构总结"></p>
+<h1 id="5-参考文献"><a href="#5-参考文献" class="headerlink" title="5  参考文献"></a>5  参考文献</h1><p>[1]丰生强. Android软件安全权威指南[M]. 电子工业出版社, 2019.<br>[2]<a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta">https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#enroll-beta</a><br>[3]<a target="_blank" rel="noopener" href="https://bbs.kanxue.com/thread-274573.htm">https://bbs.kanxue.com/thread-274573.htm</a><br>[4]<a target="_blank" rel="noopener" href="https://langgithub.github.io/file/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90.pdf">https://langgithub.github.io/file/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90.pdf</a><br>[5]<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47883636/article/details/109895223">https://blog.csdn.net/weixin_47883636/article/details/109895223</a><br>[6]<a target="_blank" rel="noopener" href="https://ctf-wiki.org/executable/elf/structure/basic-info/">https://ctf-wiki.org/executable/elf/structure/basic-info/</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达，可以邮件至 xingshuaikun@163.com。 </span>
