@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>密码学复习 | iHui</title>
-  <meta name="keywords" content=" 密码学 ">
-  <meta name="description" content="密码学复习 | iHui">
+  <title>最右so层OLLVM字符串混淆还原 | iHui</title>
+  <meta name="keywords" content=" Android , Reverse ">
+  <meta name="description" content="最右so层OLLVM字符串混淆还原 | iHui">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
 <meta property="og:type" content="website">
@@ -1545,9 +1545,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-密码学复习" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-最右so层OLLVM字符串混淆还原" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">密码学复习</h1>
+        <h1 class="article-title">最右so层OLLVM字符串混淆还原</h1>
     
     <div class="article-meta">
         
@@ -1557,7 +1557,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="密码学">密码学</a>
+            <a  data-rel="Android">Android</a>
             
         </span>
         
@@ -1565,14 +1565,16 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color4">密码学</a>
+            <a class="color3">Android</a>
+            
+            <a class="color3">Reverse</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-01-10 09:36:18'>2020-01-02 18:37</time>
+            发布时间 : <time class="date" title='最后更新: 2023-03-11 20:45:16'>2023-03-11 19:05</time>
         
     </div>
     <div class="article-meta">
@@ -1594,7 +1596,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81"><span class="toc-text">2 古典密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="toc-text">2.2 置换密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E4%BB%A3%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="toc-text">2.3 代换密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-text">2.4 安全性分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81"><span class="toc-text">3 分组密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-DES"><span class="toc-text">3.1 DES</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-text">安全性分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-AES"><span class="toc-text">3.2 AES</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4-1"><span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90-1"><span class="toc-text">安全性分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-IDEA"><span class="toc-text">3.3 IDEA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-text">3.4 工作模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E5%85%B7%E4%BD%93%E5%88%86%E6%9E%90"><span class="toc-text">3.5 具体分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%BA%8F%E5%88%97%E5%AF%86%E7%A0%81"><span class="toc-text">4 序列密码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="toc-text">5 哈希函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-MD5"><span class="toc-text">5.1 MD5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4-2"><span class="toc-text">基本步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-SHA1"><span class="toc-text">5.2 SHA1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90-2"><span class="toc-text">安全性分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81"><span class="toc-text">6 公钥密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-RSA"><span class="toc-text">6.1 RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4-3"><span class="toc-text">基本步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E5%88%86%E6%9E%90-3"><span class="toc-text">安全性分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-ElGamal"><span class="toc-text">6.2 ElGamal</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4-4"><span class="toc-text">基本步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-text">7 数字签名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-RSA"><span class="toc-text">7.1 RSA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-ElGamal"><span class="toc-text">7.2 ElGamal</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1 背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%86%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-text">2 分析过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90so%E6%96%87%E4%BB%B6"><span class="toc-text">2.1 静态分析so文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-IDA%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90so%E6%96%87%E4%BB%B6"><span class="toc-text">2.1.1 IDA静态分析so文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-010-Editor%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90so%E6%96%87%E4%BB%B6"><span class="toc-text">2.1.2 010 Editor静态分析so文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95so%E6%96%87%E4%BB%B6"><span class="toc-text">2.2 动态调试so文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-IDA%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95so%E6%96%87%E4%BB%B6"><span class="toc-text">2.2.1 IDA动态调试so文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-010-Editor%E5%88%86%E6%9E%90dump%E5%87%BA%E6%9D%A5%E7%9A%84so%E6%96%87%E4%BB%B6"><span class="toc-text">2.2.2 010 Editor分析dump出来的so文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%98%E5%8E%9F%E6%88%90%E5%8A%9F"><span class="toc-text">2.3 字符串还原成功</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%80%BB%E7%BB%93"><span class="toc-text">3 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">4  参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1610,109 +1612,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>明天就要进行密码学课程的考试了，所以就简单总结一下知识点，供自己复习之用，大神勿喷嘻嘻(#^.^#)</p>
-<h1 id="2-古典密码"><a href="#2-古典密码" class="headerlink" title="2 古典密码"></a>2 古典密码</h1><h2 id="2-2-置换密码"><a href="#2-2-置换密码" class="headerlink" title="2.2 置换密码"></a>2.2 置换密码</h2><p>类似于 DES 的 E 盒扩展置换和 P 盒置换。</p>
-<h2 id="2-3-代换密码"><a href="#2-3-代换密码" class="headerlink" title="2.3 代换密码"></a>2.3 代换密码</h2><table>
-<thead>
-<tr>
-<th>密码类别</th>
-<th>密钥空间</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>移位密码</td>
-<td>25</td>
-</tr>
-<tr>
-<td>乘法密码</td>
-<td>11（gcd(n, k)&#x3D;1）</td>
-</tr>
-<tr>
-<td>仿射密码</td>
-<td>311（12×26-1&#x3D;311）</td>
-</tr>
-<tr>
-<td>Playfair</td>
-<td>25!</td>
-</tr>
-<tr>
-<td>Vigenere</td>
-<td>26**m（k&#x3D;k1k2k3…km）</td>
-</tr>
-<tr>
-<td>Hill</td>
-<td>具体看矩阵</td>
-</tr>
-</tbody></table>
-<h2 id="2-4-安全性分析"><a href="#2-4-安全性分析" class="headerlink" title="2.4 安全性分析"></a>2.4 安全性分析</h2><table>
-<thead>
-<tr>
-<th>统计分析法</th>
-<th>明文-密文对分析法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>单表代换（爆破）</td>
-<td>Hill密码的矩阵</td>
-</tr>
-<tr>
-<td>多表代换（卡西斯基和重合指数确定密钥长度，拟重合指数确定密钥内容）</td>
-<td></td>
-</tr>
-</tbody></table>
-<h1 id="3-分组密码"><a href="#3-分组密码" class="headerlink" title="3 分组密码"></a>3 分组密码</h1><h2 id="3-1-DES"><a href="#3-1-DES" class="headerlink" title="3.1 DES"></a>3.1 DES</h2><h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><ul>
-<li>初始置换和初始逆置换</li>
-<li>F 函数包含 E 盒扩展置换、密钥加、S 盒代换和 P 盒置换</li>
-<li>子密钥生成</li>
-</ul>
-<h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><blockquote>
-<p>对 DES 的 S 盒、迭代次数、密钥长度等设计准则的争议<br>DES 存在一些弱密钥和半弱密钥<br>DES 的 56 位密钥无法抵抗穷举攻击<br>代数结构存在互补对称性</p>
+        <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>OLLVM(Obfuscator-LLVM)是瑞士西部应用科技大学安全实验室于2010年6月份发起的一个项目，该项目旨在提供一套开源的针对LLVM的代码混淆工具，通过代码混淆和防篡改来提高软件安全性。github上地址是<a target="_blank" rel="noopener" href="https://github.com/obfuscator-llvm/obfuscator">https://github.com/obfuscator-llvm/obfuscator</a>，只不过仅更新到4.0版本，2017年开始就没在更新。</p>
+<blockquote>
+<p>本文使用到如下工具及软件：010 Editor、IDA Pro、4.8.10版本的最右APK</p>
 </blockquote>
-<h2 id="3-2-AES"><a href="#3-2-AES" class="headerlink" title="3.2 AES"></a>3.2 AES</h2><h3 id="基本步骤-1"><a href="#基本步骤-1" class="headerlink" title="基本步骤"></a>基本步骤</h3><p>字节代换、行移位、列混合、轮密钥加</p>
-<p><img src="https://img-blog.csdnimg.cn/20200102191951156.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="AES加解密"></p>
-<h3 id="安全性分析-1"><a href="#安全性分析-1" class="headerlink" title="安全性分析"></a>安全性分析</h3><ul>
-<li>差分攻击</li>
-<li>线性攻击</li>
-</ul>
-<h2 id="3-3-IDEA"><a href="#3-3-IDEA" class="headerlink" title="3.3 IDEA"></a>3.3 IDEA</h2><p>128 位密钥加密 64 位明文</p>
-<h2 id="3-4-工作模式"><a href="#3-4-工作模式" class="headerlink" title="3.4 工作模式"></a>3.4 工作模式</h2><ul>
-<li>电子密码本模式（ECB）</li>
-<li>密码分组链接模式（CBC）</li>
-<li>密码反馈模式（CFB）</li>
-<li>输出反馈模式（OFB）</li>
-<li>计数器模式（CTR）</li>
-</ul>
-<h2 id="3-5-具体分析"><a href="#3-5-具体分析" class="headerlink" title="3.5 具体分析"></a>3.5 具体分析</h2><p>电子密码本模式（ECB）具有良好的差错控制。实际上，每一个分组可被看成是用同一个密钥加密的单独消息。密文中数据出了错，解密时，会使得相对应的整个明文分组解密错误，但它不会影响其他密文块解密。然而，如果密文中偶尔丢失或添加一些数据位，那么整个密文序列将不能正确解密，除非有某种帧结构能够重新排列分组的边界。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200102195518346.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="电子密码本模式（ECB）"></p>
-<p>使用 CBC 时，虽然明文分组中发生错误将影响对应的密文分组以及其后的所有密文分组。但是由于解密将反转这种影响，最后得到的明文也仍然只有那一个分组有错误。因而，CBC 没有明文错误扩散。<br>密文错误相对复杂一点。由于信道噪声或存储介质损坏的存在，接收方得到的密文常常会有一些错误。在 CBC 中，密文中一个分组发生错误将影响对应解密明文分组和其后的一个解密明文分组。随后的那个分组在解密后在同样的比特位上有错误，但是，再之后的分组将不受影响。因而，CBC 的密文错误扩散是很小的。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200102195611793.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="密码分组链接模式（CBC）"></p>
-<p>同 CBC 一样在 CFB 中，明文的一个错误就好影响所有后面的密文但解密的明文只有一个分组错误。密文出现错误更有意思。首先，密文里单独 1 位的错误会引起解密后对应明文的一位错误；其次，错误进入移位寄存器，将导致加密输出错误，直到该错误从寄存器的另一端移出。在 8 比特 CFB 中，如果使用 DES 算法，密文中 1 比特的错误会使解密后明文产生 9 字节的错误，之后，系统恢复正常，后面的密文被重新正确解密。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200102195559210.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="密码反馈模式（CFB）"></p>
-<p>OFB 的一个优点是传输过程中密文在某位上发生的错误不会影响解密后明文其他位。比如，C1中有 1 位发生了错误，只会影响到 P1 的恢复，后续的明文单元不受影响。<br>但是 OFB 中，失去同步将是致命的。如果加密端和解密端移位寄存器不同步，那么恢复的明文将是一些无用的杂乱数据，任何 OFB 的系统必须有检测失步的机制，并用新的（或同一个）IV填充双方移位寄存器重新获得同步。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200102195625608.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="输出反馈模式（OFB）"></p>
-<p>CTR 只要求实现加密而不要求实现解密</p>
-<p><img src="https://img-blog.csdnimg.cn/20200102195531163.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="计数器模式（CTR）"></p>
-<h1 id="4-序列密码"><a href="#4-序列密码" class="headerlink" title="4 序列密码"></a>4 序列密码</h1><p>LFSR、周期、游程、本原多项式、m序列</p>
-<h1 id="5-哈希函数"><a href="#5-哈希函数" class="headerlink" title="5 哈希函数"></a>5 哈希函数</h1><h2 id="5-1-MD5"><a href="#5-1-MD5" class="headerlink" title="5.1 MD5"></a>5.1 MD5</h2><h3 id="基本步骤-2"><a href="#基本步骤-2" class="headerlink" title="基本步骤"></a>基本步骤</h3><p>附加填充位、初始化链接变量、分组处理、步函数</p>
-<p>注：在明文（二进制序列）的后面填充一个1和若干个0使得消息的长度模512与448同余。若原来的明文长度大于模512大于448，则填充的下一个512分组。例如原来的消息长度为500，则填充之后的长度为512+448。最后的64位存放<font color=red>消息的长度</font>，不够的在后面补0直到64位为止。</p>
-<h2 id="5-2-SHA1"><a href="#5-2-SHA1" class="headerlink" title="5.2 SHA1"></a>5.2 SHA1</h2><h2 id="安全性分析-2"><a href="#安全性分析-2" class="headerlink" title="安全性分析"></a>安全性分析</h2><p><img src="https://img-blog.csdnimg.cn/20200102193508969.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="Hash函数攻击"></p>
-<h1 id="6-公钥密码"><a href="#6-公钥密码" class="headerlink" title="6 公钥密码"></a>6 公钥密码</h1><h2 id="6-1-RSA"><a href="#6-1-RSA" class="headerlink" title="6.1 RSA"></a>6.1 RSA</h2><h3 id="基本步骤-3"><a href="#基本步骤-3" class="headerlink" title="基本步骤"></a>基本步骤</h3><p><img src="https://img-blog.csdnimg.cn/20200102191638456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="RSA算法"></p>
-<h3 id="安全性分析-3"><a href="#安全性分析-3" class="headerlink" title="安全性分析"></a>安全性分析</h3><ul>
-<li>二次筛法</li>
-<li>数域筛法</li>
-<li>共模攻击</li>
-<li>低指数攻击</li>
-<li>重复加密攻击</li>
-</ul>
-<h2 id="6-2-ElGamal"><a href="#6-2-ElGamal" class="headerlink" title="6.2 ElGamal"></a>6.2 ElGamal</h2><h3 id="基本步骤-4"><a href="#基本步骤-4" class="headerlink" title="基本步骤"></a>基本步骤</h3><p><img src="https://img-blog.csdnimg.cn/20200102192239949.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="ElGamal加解密"></p>
-<h1 id="7-数字签名"><a href="#7-数字签名" class="headerlink" title="7 数字签名"></a>7 数字签名</h1><ul>
-<li>RSA</li>
-<li>ElGamal</li>
-</ul>
-<h2 id="7-1-RSA"><a href="#7-1-RSA" class="headerlink" title="7.1 RSA"></a>7.1 RSA</h2><p><img src="https://img-blog.csdnimg.cn/20200102193218222.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="RSA签名使用Hash函数"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200102193933571.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="RSA实现数字签名"></p>
-<h2 id="7-2-ElGamal"><a href="#7-2-ElGamal" class="headerlink" title="7.2 ElGamal"></a>7.2 ElGamal</h2><p><img src="https://img-blog.csdnimg.cn/20200102193113634.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="ElGamal签名使用Hash函数"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200102194024151.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTA5MjAw,size_16,color_FFFFFF,t_70" alt="ElGamal实现数字签名"></p>
+<h1 id="2-分析过程"><a href="#2-分析过程" class="headerlink" title="2 分析过程"></a>2 分析过程</h1><h2 id="2-1-静态分析so文件"><a href="#2-1-静态分析so文件" class="headerlink" title="2.1 静态分析so文件"></a>2.1 静态分析so文件</h2><h3 id="2-1-1-IDA静态分析so文件"><a href="#2-1-1-IDA静态分析so文件" class="headerlink" title="2.1.1 IDA静态分析so文件"></a>2.1.1 IDA静态分析so文件</h3><p>首先，解压apk文件，提取出lib目录下的<font color=red>libnet_crypto.so</font>文件并用IDA打开，待其加载完成后查看一下字符串窗口的<font color=red>.data</font>区，发现基本都是混淆加密的，如图1所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/a481f1b5dabe421db528a94c8be5b297.png" alt="图1 发现经过加密后的字符串"></p>
+<p>在Exports中搜索JNI_OnLoad函数，查看伪代码未发现混淆处理，导入jni.h头文件后修改变量类型和名称，最终得到图2中JNI_OnLoad的代码。</p>
+<p><img src="https://img-blog.csdnimg.cn/fcf4f7ad19144aadaf7c85aa9d5ada5b.png" alt="图2 找到JNI_OnLoad中的RegisterNatives函数"></p>
+<p>双击<font color=red>RegisterNatives</font>函数的第三个参数<font color=red>off_17D010</font>，进入.data区，如图3所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/22067302746b4c2caaa3e12f51e133e3.png" alt="图3 查看对应关系"></p>
+<p>常规思路是应该会出现<font color=red>Java层方法、签名和so层方法的对应关系</font>，结果翻车了。<br>接下来调转思路，<font color=red>尝试还原被OLLVM加密混淆的字符串信息</font>。</p>
+<h3 id="2-1-2-010-Editor静态分析so文件"><a href="#2-1-2-010-Editor静态分析so文件" class="headerlink" title="2.1.2 010 Editor静态分析so文件"></a>2.1.2 010 Editor静态分析so文件</h3><p>将<font color=red>libnet_crypto.so</font>文件拖进010 Editor中，主要分析数据区域。第一个是程序头，在这里无需过多关注，第二个和第三个<font color=red>Loadable Segment</font>才是是关注重点，第二个是只读的，那么<font color=red>根据so文件需要对字符串进行加解密的过程，因此可以判断IDA编译出的混淆字符串属于第三个区域</font>，如图4所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/4b4d7436584e4cb1bfa1f958d23353a4.png" alt="图4 找到加载段的读写区"></p>
+<p>然而，这部分的数据<font color=red>p_data是被混淆过的</font>，如图5所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/581945fb711e456798c717495f2677bc.png" alt="图5 发现被混淆过的数据p_data"></p>
+<p><font color=red>此处灵光一闪，对于这个so的还原，就需要dump出解密后的数据，将数据复制到原加密数据位置，这样就完成对字符串解密。</font><br>结合so文件的加载过程，dump的位置可能在<font color=red>JNI_onload</font>、<font color=red>init</font>、<font color=red>init_array</font>，这就需要尝试了。</p>
+<h2 id="2-2-动态调试so文件"><a href="#2-2-动态调试so文件" class="headerlink" title="2.2 动态调试so文件"></a>2.2 动态调试so文件</h2><h3 id="2-2-1-IDA动态调试so文件"><a href="#2-2-1-IDA动态调试so文件" class="headerlink" title="2.2.1 IDA动态调试so文件"></a>2.2.1 IDA动态调试so文件</h3><p>动态调试，老套路了，依次按下列命令执行即可</p>
+<blockquote>
+<p>.&#x2F;as -p 10001<br>adb forward tcp:10001 tcp:10001<br>adb shell am start -D -n cn.xiaochuankeji.tieba&#x2F;cn.xiaochuankeji.tieba.ui.base.SplashActivity<br>打开IDA，填写主机号127.0.0.1，端口号10001，选择进程，双击进来，勾选三项</p>
+</blockquote>
+<p>好巧不巧，在<font color=red>ctrl+s</font>并搜索<font color=red>libnet_crypto.so</font>，发现so文件已经被加载进去了😄😄😄，如图6所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/3ad30e3d799840fc83407f289db54bfc.png" alt="图6 发现libnet_crypto.so文件"></p>
+<p>那就这样吧，直接搜索dump内存中解密的字符串数据。依次点击<font color=red>File</font>-&gt;<font color=red>script command</font>，然后输入下列命令，替换初始地址和结束地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">static main(void) &#123;</span><br><span class="line">    auto fp, dexAddress, end, size;</span><br><span class="line">    dexAddress = 0xC3B74000;</span><br><span class="line">    end = 0xC3B76000;</span><br><span class="line">    fp = fopen(&quot;D:\\tmp\\tmp\\libnet_crypto_dumpdata.so&quot;, &quot;wb&quot;);</span><br><span class="line">    for ( ; dexAddress &lt; end; dexAddress++ )</span><br><span class="line">        fputc(Byte(dexAddress), fp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-2-010-Editor分析dump出来的so文件"><a href="#2-2-2-010-Editor分析dump出来的so文件" class="headerlink" title="2.2.2 010 Editor分析dump出来的so文件"></a>2.2.2 010 Editor分析dump出来的so文件</h3><p>使用010 Editor打开<font color=red>libnet_crypto_dumpdata.so</font>文件，发现里面的字符串都是解密的，如图7所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/f3eb7f1b873743729ec9c8611c0119c3.png" alt="图7 发现解密后的字符串"></p>
+<p><font color=red>libnet_crypto.so</font>中的<font color=red>.data</font>区中存放加密数据，可以与<font color=red>libnet_crypto_dumpdata.so</font>文件对比一下。<br>因为<font color=red>libnet_crypto_dumpdata.so</font>是从内存中dump出来的，地址应该等于<font color=red>libnet_crypto.so</font>中的<font color=red>基地址+偏移量</font>，所以两文件前六行基本一致。第<font color=red>3</font>、<font color=red>7</font>、<font color=red>B</font>、<font color=red>F列</font>均为<font color=red>固定值</font>，第<font color=red>0</font>、<font color=red>4</font>、<font color=red>8</font>、<font color=red>C列</font>内容<font color=red>一样</font>。</p>
+<p><img src="https://img-blog.csdnimg.cn/011f66b35faf4f82b87c6898d3df687d.png" alt="图8 libnet_crypto.so的.data区的前6行"></p>
+<p>复制libnet_crypto_dumpdata.so文件中解密后的数据，即<font color=red>0070h到10DFh</font>，然后将数据粘贴到libnet_crypto.so中的<font color=red>.data</font>区的对应位置处，即光标放到<font color=red>17C070h</font>处，粘贴即可，如图9所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/f0bd570491614359a7044b6cba454b2b.png" alt="图9 找到修改位置"></p>
+<h2 id="2-3-字符串还原成功"><a href="#2-3-字符串还原成功" class="headerlink" title="2.3 字符串还原成功"></a>2.3 字符串还原成功</h2><p>最后，打开IDA查看修复后的so文件中RegisterNatives的Java层方法、签名和so层方法的对应关系，如图10所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/50766045d20f4626b4b48540c242adb9.png" alt="图10 成功还原字符串"></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1><p>本文中的方法<font color=red>仅适用在内存中解密状态的情况</font>，如果是在使用时解密，解密后再清除，需要使用动态调试。</p>
+<h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4  参考文献"></a>4  参考文献</h1><p>[1]<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/TfF-xcqH--9Hv5JQ-LI3dQ">https://mp.weixin.qq.com/s/TfF-xcqH--9Hv5JQ-LI3dQ</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达，可以邮件至 xingshuaikun@163.com。 </span>
