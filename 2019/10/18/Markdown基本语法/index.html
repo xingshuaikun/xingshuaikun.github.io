@@ -7,31 +7,17 @@
   <meta name="keywords" content=" 经验 ">
   <meta name="description" content="Markdown基本语法 | iHui">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1 背景在计算机科学中，可执行链接格式（Executable and Linking Format, ELF）是一种用于二进制文件、可执行文件、目标代码、共享库和核心转储格式文件的文件格式。ELF最初是由UNIX系统实验室开发并发布的，作为应用程序二进制接口的一部分。ELF格式文档将原生程序分成如下三类进行描述：  可重定位文件(Relocatable File)：包含适合于与其他目标文件链接来创">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ELF文件结构">
-<meta property="og:url" content="https://xingshuaikun.gitee.io/2023/03/02/ELF%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
+<meta name="description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://xingshuaikun.github.io/about/index.html">
 <meta property="og:site_name" content="iHui">
-<meta property="og:description" content="1 背景在计算机科学中，可执行链接格式（Executable and Linking Format, ELF）是一种用于二进制文件、可执行文件、目标代码、共享库和核心转储格式文件的文件格式。ELF最初是由UNIX系统实验室开发并发布的，作为应用程序二进制接口的一部分。ELF格式文档将原生程序分成如下三类进行描述：  可重定位文件(Relocatable File)：包含适合于与其他目标文件链接来创">
+<meta property="og:description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/45a6c9a836ef477b9f30898965d35eb7.jpeg">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/b398874bf3ec49f5874dab96d1a19f7b.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f43d556a778d4201b66f972583d9c4a4.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/ec516a2a65e74780911b4d8cf964b229.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/27599c10b2a145f9888372dd64058024.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/6f47a0d10d92461d911b2e4fb2fde016.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/965f776917d547188bf9251824798b8e.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/16992d5a282a4f84afb3e7dbc4010e8c.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/99aba607e3f44af983b840f1dbfccb79.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/27a7776c49444feebf1b8538732a676a.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c8dd33ded8b549dc95ec0e465819f2b2.png">
-<meta property="article:published_time" content="2023-03-02T02:43:20.000Z">
-<meta property="article:modified_time" content="2023-03-04T11:34:30.011Z">
+<meta property="article:published_time" content="2021-06-25T09:43:28.000Z">
+<meta property="article:modified_time" content="2023-02-22T03:39:53.441Z">
 <meta property="article:author" content="iHui">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/45a6c9a836ef477b9f30898965d35eb7.jpeg">
 
 
 <link rel="icon" href="/img/avatar.jpg">
