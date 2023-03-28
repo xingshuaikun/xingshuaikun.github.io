@@ -10,7 +10,7 @@
 <meta name="description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于">
-<meta property="og:url" content="https://xingshuaikun.github.io/about/index.html">
+<meta property="og:url" content="https://xingshuaikun.gitee.io/about/index.html">
 <meta property="og:site_name" content="iHui">
 <meta property="og:description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
 <meta property="og:locale" content="zh_CN">
@@ -143,7 +143,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(116)</small>
+                <small>(117)</small>
             
         </div>
     </li>
@@ -252,7 +252,7 @@
                     <div data-rel="Android">
                         
                         Android
-                        <small>(27)</small>
+                        <small>(28)</small>
                         
                     </div>
                     
@@ -420,7 +420,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="116">
+<input type="hidden" id="yelog_site_posts_number" value="117">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -607,6 +607,14 @@
            data-author="" >
             <span class="post-title" title="博客声明">博客声明</span>
             <span class="post-date" title="2019-10-11 16:49:47">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 Android "
+           href="/2023/03/28/%E6%9C%80%E5%8F%B3so%E5%B1%82OLLVM%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%B7%B7%E6%B7%86%E8%BF%98%E5%8E%9F%20copy/"
+           data-tag="Android,Reverse"
+           data-author="" >
+            <span class="post-title" title="test">test</span>
+            <span class="post-date" title="2023-03-28 08:53:49">2023/03/28</span>
         </a>
         
         <a  class="全部文章 Android "
@@ -1716,7 +1724,7 @@
 <p>2</p>
 </blockquote>
 <h2 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h2><p>此题类似于我前面写过的一篇文章《CUMTOJ算法实验二》，具体思路就是最大子段和的求解，详解见如下链接</p>
-<p><a target="_blank" rel="noopener" href="https://xingshuaikun.gitee.io/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/">https://xingshuaikun.gitee.io/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/</a></p>
+<p><a href="https://xingshuaikun.gitee.io/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/">https://xingshuaikun.gitee.io/2019/10/12/CUMTOJ%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C/</a></p>
 <h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int max_num = 10000;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int max(int a, int b);</span><br><span class="line">	int n, arr[max_num], A[max_num] = &#123; 0 &#125;;</span><br><span class="line">	while (cin &gt;&gt; n)</span><br><span class="line">	&#123;</span><br><span class="line">		int result = 0;</span><br><span class="line">		for (int i = 1; i &lt;= n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; arr[i];</span><br><span class="line">			if (A[i - 1] &gt; 0)</span><br><span class="line">				A[i] = A[i - 1] + arr[i];</span><br><span class="line">			else</span><br><span class="line">				A[i] = arr[i];</span><br><span class="line">			result = max(result, A[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; result &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">int max(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">	return (a &gt; b ? a : b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="问题-G-元素整除问题"><a href="#问题-G-元素整除问题" class="headerlink" title="问题 G: 元素整除问题"></a>问题 G: 元素整除问题</h1><h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入20个整数，输出其中能被数组中其它元素整除的那些数组元素。</p>
