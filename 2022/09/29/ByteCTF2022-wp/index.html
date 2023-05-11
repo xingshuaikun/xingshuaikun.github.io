@@ -7,30 +7,17 @@
   <meta name="keywords" content=" CTF , writeup ">
   <meta name="description" content="ByteCTF2022-wp | iHui">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1 背景OLLVM(Obfuscator-LLVM)是瑞士西部应用科技大学安全实验室于2010年6月份发起的一个项目，该项目旨在提供一套开源的针对LLVM的代码混淆工具，通过代码混淆和防篡改来提高软件安全性。github上地址是https:&#x2F;&#x2F;github.com&#x2F;obfuscator-llvm&#x2F;obfuscator，只不过仅更新到4.0版本，2017年开始就没在更新。  本文使用到如下工具及软件">
-<meta property="og:type" content="article">
-<meta property="og:title" content="最右so层OLLVM字符串混淆还原">
-<meta property="og:url" content="https://xingshuaikun.gitee.io/2023/03/11/%E6%9C%80%E5%8F%B3so%E5%B1%82OLLVM%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%B7%B7%E6%B7%86%E8%BF%98%E5%8E%9F/index.html">
+<meta name="description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://xingshuaikun.gitee.io/about/index.html">
 <meta property="og:site_name" content="iHui">
-<meta property="og:description" content="1 背景OLLVM(Obfuscator-LLVM)是瑞士西部应用科技大学安全实验室于2010年6月份发起的一个项目，该项目旨在提供一套开源的针对LLVM的代码混淆工具，通过代码混淆和防篡改来提高软件安全性。github上地址是https:&#x2F;&#x2F;github.com&#x2F;obfuscator-llvm&#x2F;obfuscator，只不过仅更新到4.0版本，2017年开始就没在更新。  本文使用到如下工具及软件">
+<meta property="og:description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/a481f1b5dabe421db528a94c8be5b297.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/fcf4f7ad19144aadaf7c85aa9d5ada5b.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/22067302746b4c2caaa3e12f51e133e3.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/4b4d7436584e4cb1bfa1f958d23353a4.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/581945fb711e456798c717495f2677bc.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/3ad30e3d799840fc83407f289db54bfc.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f3eb7f1b873743729ec9c8611c0119c3.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/011f66b35faf4f82b87c6898d3df687d.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f0bd570491614359a7044b6cba454b2b.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/50766045d20f4626b4b48540c242adb9.png">
-<meta property="article:published_time" content="2023-03-11T11:05:49.000Z">
-<meta property="article:modified_time" content="2023-03-11T12:45:16.616Z">
+<meta property="article:published_time" content="2021-06-25T09:43:28.000Z">
+<meta property="article:modified_time" content="2023-02-22T03:39:53.441Z">
 <meta property="article:author" content="iHui">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="Reverse">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/a481f1b5dabe421db528a94c8be5b297.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -1588,7 +1575,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-10-15 10:48:13'>2022-09-29 15:53</time>
+            发布时间 : <time class="date" title='最后更新: 2023-05-11 16:08:05'>2022-09-29 15:53</time>
         
     </div>
     <div class="article-meta">
@@ -1677,12 +1664,13 @@
 <p><img src="https://img-blog.csdnimg.cn/22878a238c7c41a3adc1d8dfc40969a8.jpeg" alt="图5 用户协议与隐私政策界面"></p>
 <p>接着，在手机上卸载安装的Find_IMEI.apk。打开Android Studio的<font color=red>Profile or Debug APK</font>界面，如图6所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/36c084106fa54c7b8725b97965473b49.png" alt="图6 打开Android Studio的Profile or Debug APK界面"></p>
-<p>待Android Studio分析号APK后，打开<font color=red>Logcat界面</font>，如图7所示。</p>
+<p>待Android Studio分析好APK后，打开<font color=red>Logcat界面</font>，如图7所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/620ae674e24e4725aa214d43604eed59.png" alt="图7 打开Logcat界面"></p>
 <p>下一步，我们点击图8中的绿色按钮，将APK安装到手机中。</p>
 <p><img src="https://img-blog.csdnimg.cn/9af207e35ef04592a378b35cfc7a39ea.png" alt="图8 安装APK到手机"></p>
-<p>等APK安装完成后，这时重点来了，在手机上点击同意《用户协议与隐私政策》后，把Logcat界面的所有信息复制出来，搜索字符串<font color=red>CTF</font>即得flag，如图9所示。</p>
+<p>等APK安装完成后，这时重点来了，把Logcat界面的所有信息复制出来，搜索字符串<font color=red>CTF</font>即得flag，如图9所示。</p>
 <p><img src="https://img-blog.csdnimg.cn/4500c1c4b61f4e9b854716d67a564e90.png" alt="图9 获得Find IMEI的flag"></p>
+<p>【注】此题还有另外一种非预期解法，通过DDMS查看APP打开时候的Logcat信息，过滤<font color=red>tag:CTF</font>即可获得与图9相同的flag。</p>
 <h2 id="Bronze-Droid"><a href="#Bronze-Droid" class="headerlink" title="Bronze Droid"></a>Bronze Droid</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
 <p>Here is a vulnerable Android client application running in an AVD simulated environment. I placed the flag file in the app’s internal storage(&#x2F;data&#x2F;data&#x2F;{pkg}&#x2F;files&#x2F;flag) or Cookies file(&#x2F;data&#x2F;data&#x2F;{pkg}&#x2F;app_webview&#x2F;Cookies). Now you have a chance to install a malicious app into the system. Can you exploit and steal the contents of the flag file through these vulnerabilities?<br>The vulnerable Android client application is named app-debug.apk, you can use jadx (<a target="_blank" rel="noopener" href="https://github.com/skylot/jadx/releases">https://github.com/skylot/jadx/releases</a>) to perform a reverse analysis.<br>In addition, the real flag is stored on the remote server, you need access server by nc ip port or socket. In order to prevent DOS, I set up a proof-of-work.</p>
 </blockquote>
