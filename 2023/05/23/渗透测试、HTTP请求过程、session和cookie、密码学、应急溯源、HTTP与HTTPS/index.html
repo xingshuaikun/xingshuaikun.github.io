@@ -143,7 +143,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(117)</small>
+                <small>(119)</small>
             
         </div>
     </li>
@@ -238,7 +238,7 @@
                     <div data-rel="网络安全">
                         
                         网络安全
-                        <small>(8)</small>
+                        <small>(10)</small>
                         
                     </div>
                     
@@ -420,7 +420,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="117">
+<input type="hidden" id="yelog_site_posts_number" value="119">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -607,6 +607,22 @@
            data-author="" >
             <span class="post-title" title="博客声明">博客声明</span>
             <span class="post-date" title="2019-10-11 16:49:47">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 网络安全 "
+           href="/2023/05/23/OWASP%20TOP10/"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="OWASP TOP10">OWASP TOP10</span>
+            <span class="post-date" title="2023-05-23 21:09:49">2023/05/23</span>
+        </a>
+        
+        <a  class="全部文章 网络安全 "
+           href="/2023/05/23/%E5%B8%B8%E8%A7%81%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="常见中间件漏洞">常见中间件漏洞</span>
+            <span class="post-date" title="2023-05-23 20:20:49">2023/05/23</span>
         </a>
         
         <a  class="全部文章 网络安全 "
@@ -1418,18 +1434,18 @@
         </a>
         
         <a  class="全部文章 JavaScript "
-           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
-           data-tag="JavaScript,前端"
-           data-author="" >
-            <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
-            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
-        </a>
-        
-        <a  class="全部文章 JavaScript "
            href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%952/"
            data-tag="JavaScript,前端"
            data-author="" >
             <span class="post-title" title="JavaScript学习记录2">JavaScript学习记录2</span>
+            <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
+        </a>
+        
+        <a  class="全部文章 JavaScript "
+           href="/2019/10/11/JavaScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%953/"
+           data-tag="JavaScript,前端"
+           data-author="" >
+            <span class="post-title" title="JavaScript学习记录3">JavaScript学习记录3</span>
             <span class="post-date" title="2019-10-11 21:20:36">2019/10/11</span>
         </a>
         
@@ -1583,7 +1599,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-05-23 20:15:10'>2023-05-23 19:35</time>
+            发布时间 : <time class="date" title='最后更新: 2023-05-23 21:02:38'>2023-05-23 19:35</time>
         
     </div>
     <div class="article-meta">
@@ -1625,7 +1641,10 @@
 <p>下面的部分内容可能引用自其他师傅的文章，有的忘记引用了，侵删。</p>
 <h1 id="2-渗透测试流程"><a href="#2-渗透测试流程" class="headerlink" title="2 渗透测试流程"></a>2 渗透测试流程</h1><p>正规的渗透测试流程都有六步，分别是信息收集、漏洞扫描、漏洞利用、权限提升&amp;权限维持&amp;内网信息收集、清理日志、总结报告及修复方案。</p>
 <h2 id="2-1-信息收集"><a href="#2-1-信息收集" class="headerlink" title="2.1 信息收集"></a>2.1 信息收集</h2><p>(1) 获取域名的whois信息，注册者姓名邮箱电话等；<br>(2) 收集旁站、子域名、测试域名，因为主站一般比较难攻破；<br>(3) 查看服务器操作系统版本、CMS类型和web中间件，查看是否存在已知的漏洞，比如IIS，APACHE，NGINX的解析漏洞；<br>(4) 绕过CDN之后对IP地址端口进行扫描，对响应的端口进行漏洞探测，比如21FTP、22SSH、80HTTP、443HTTPS、1433SQL Server、1521Oracle、3306MySQL、3389RDP(远程桌面)、6379Redis、27017MongoDB等。<br>(5) 使用direarch、dirb、wwwscan和御剑扫描网站目录结构，看看是否存在遍历目录，或者敏感文件泄漏。<br>(6) Fofa、Google、ZoomEye和Shodan进一步探测网站的信息、后台、敏感文件。<br>(7) 资产收集：灯塔系统、OneForAll。</p>
-<h2 id="2-2-漏洞扫描"><a href="#2-2-漏洞扫描" class="headerlink" title="2.2 漏洞扫描"></a>2.2 漏洞扫描</h2><p>开始检测漏洞，我们可以使用漏洞扫描工具：AWVS、Nessus、appscan、xray。同时，配合手动测试，如OWASP Top 10，如果进入内网可以使用fscan扫描或者搭建内网socks5代理进行扫描。<br>xray_windows_amd64.exe webscan –basic-crawler URL</p>
+<h2 id="2-2-漏洞扫描"><a href="#2-2-漏洞扫描" class="headerlink" title="2.2 漏洞扫描"></a>2.2 漏洞扫描</h2><p>开始检测漏洞，我们可以使用漏洞扫描工具：AWVS、Nessus、appscan、xray。同时，配合手动测试，如OWASP Top 10，如果进入内网可以使用fscan扫描或者搭建内网socks5代理进行扫描。</p>
+<blockquote>
+<p>xray_windows_amd64.exe webscan –basic-crawler URL</p>
+</blockquote>
 <h2 id="2-3-漏洞利用"><a href="#2-3-漏洞利用" class="headerlink" title="2.3 漏洞利用"></a>2.3 漏洞利用</h2><p>基于漏洞扫描出来的结果可以利用一些方式进行渗透。</p>
 <h2 id="2-4-权限提升-amp-权限维持-amp-内网信息收集"><a href="#2-4-权限提升-amp-权限维持-amp-内网信息收集" class="headerlink" title="2.4 权限提升&amp;权限维持&amp;内网信息收集"></a>2.4 权限提升&amp;权限维持&amp;内网信息收集</h2><p>(1) 权限提升<br>渗透过程中一般权限很低，所以我们需要提权。<br>① MySQL提权：UDF导出提权、MOF加载提权、启动项重启提权；<br>② Linux提权：脏牛提权；SUID提权、SUDO提权；pkexec提权、配置错误引发提权、第三方服务提权；<br>③ Windows提权：土豆家族提权；内核漏洞提权；系统配置错误提权；动态链接库DLL劫持提权；BypassUAC提权。<br>(2) 权限维持<br>Linux：SUID SHELL、软链接、写SSH key、写定时任务&#x2F;etc&#x2F;crontab<br>Windows：建立隐藏账号、写定时任务schtasks、Winlogin加载DLL、启动项后门、WMI构造无文件后门<br>(3) 内网信息收集<br>Windows和Linux思路类似，使用工具linux_information、Cobaltstike和Mimikatz查看系统信息、用户信息、服务信息、安全扫描、主机存活信息；将passwd和shadow文件下载到kali中进行unshadow，随后john跑hash；使用hack browser data解密浏览器数据；使用GoWxDump取证微信聊天记录。</p>
 <h2 id="2-5-日志清理"><a href="#2-5-日志清理" class="headerlink" title="2.5 日志清理"></a>2.5 日志清理</h2><p>删除攻击日志，湮灭攻击痕迹。</p>
