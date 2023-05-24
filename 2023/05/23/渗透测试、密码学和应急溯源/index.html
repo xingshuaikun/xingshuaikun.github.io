@@ -7,17 +7,21 @@
   <meta name="keywords" content=" 密码学 , 网络安全 ">
   <meta name="description" content="渗透测试、密码学和应急溯源 | iHui">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="https://xingshuaikun.github.io/about/index.html">
+<meta name="description" content="1 背景面经总结第六篇–数据库。 下面的部分内容可能引用自其他师傅的文章，有的忘记引用了，侵删。 2 关系范式级别、事务的特性和事务并发操作引发的问题、封锁技术、和三级封锁协议2.1 关系范式级别1NF：表中的所有字段值都是不可分解的原子值2NF：在1NF基础上满足非关键字段完全函数依赖于候选关键字段3NF：在2NF基础上满足非关键字段不传递函数依赖于候选关键字段BCNF：在3NF基础上消除候选关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库">
+<meta property="og:url" content="https://xingshuaikun.github.io/2023/05/24/%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
 <meta property="og:site_name" content="iHui">
-<meta property="og:description" content="个人简介iHui 目前是一名北京工业大学信息学部网络空间安全专业的硕士研究生。  熟悉Java、Python、和HTML等编程语言； 熟悉TCP&#x2F;IP协议，具有协议分析经验； 了解网站开发和渗透测试流程以及渗透测试工具的使用； 了解Android软件开发和逆向分析的流程以及常见逆向分析工具的使用。  喜欢研究Android系统领域的新兴技术和未来发展方向。 最近在跟着导师一边学习可信计算">
+<meta property="og:description" content="1 背景面经总结第六篇–数据库。 下面的部分内容可能引用自其他师傅的文章，有的忘记引用了，侵删。 2 关系范式级别、事务的特性和事务并发操作引发的问题、封锁技术、和三级封锁协议2.1 关系范式级别1NF：表中的所有字段值都是不可分解的原子值2NF：在1NF基础上满足非关键字段完全函数依赖于候选关键字段3NF：在2NF基础上满足非关键字段不传递函数依赖于候选关键字段BCNF：在3NF基础上消除候选关">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-06-25T09:43:28.000Z">
-<meta property="article:modified_time" content="2023-02-22T03:39:53.441Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9ef27296022240f5b956ab99610bb39c.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d36e90c840dd4f469b0a0207add73e90.png">
+<meta property="article:published_time" content="2023-05-24T07:34:49.000Z">
+<meta property="article:modified_time" content="2023-05-24T07:42:14.712Z">
 <meta property="article:author" content="iHui">
+<meta property="article:tag" content="经验">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/9ef27296022240f5b956ab99610bb39c.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -1623,7 +1627,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-05-24 15:45:41'>2023-05-23 19:35</time>
+            发布时间 : <time class="date" title='最后更新: 2023-05-24 15:49:13'>2023-05-23 19:35</time>
         
     </div>
     <div class="article-meta">
@@ -1662,6 +1666,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h1><p>从开学到现在大概三个月了，这三个月基本上就是都是在总结面经，皇天不负有心人，终于有offer了，趁入职之前还比较清闲，那就做个总结。</p>
+<p>面经总结第一篇–渗透测试、密码学和应急溯源。</p>
 <p>下面的部分内容可能引用自其他师傅的文章，有的忘记引用了，侵删。</p>
 <h1 id="2-渗透测试流程"><a href="#2-渗透测试流程" class="headerlink" title="2 渗透测试流程"></a>2 渗透测试流程</h1><p>正规的渗透测试流程都有六步，分别是信息收集、漏洞扫描、漏洞利用、权限提升&amp;权限维持&amp;内网信息收集、清理日志、总结报告及修复方案。</p>
 <h2 id="2-1-信息收集"><a href="#2-1-信息收集" class="headerlink" title="2.1 信息收集"></a>2.1 信息收集</h2><p>(1) 获取域名的whois信息，注册者姓名邮箱电话等；<br>(2) 收集旁站、子域名、测试域名，因为主站一般比较难攻破；<br>(3) 查看服务器操作系统版本、CMS类型和web中间件，查看是否存在已知的漏洞，比如IIS，APACHE，NGINX的解析漏洞；<br>(4) 绕过CDN之后对IP地址端口进行扫描，对响应的端口进行漏洞探测，比如21FTP、22SSH、80HTTP、443HTTPS、1433SQL Server、1521Oracle、3306MySQL、3389RDP(远程桌面)、6379Redis、27017MongoDB等。<br>(5) 使用direarch、dirb、wwwscan和御剑扫描网站目录结构，看看是否存在遍历目录，或者敏感文件泄漏。<br>(6) Fofa、Google、ZoomEye和Shodan进一步探测网站的信息、后台、敏感文件。<br>(7) 资产收集：灯塔系统、OneForAll。</p>
