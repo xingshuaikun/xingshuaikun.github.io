@@ -1162,18 +1162,18 @@
         </a>
         
         <a  class="全部文章 DVWA "
-           href="/2019/10/28/DVWA-High-wp/"
-           data-tag="writeup,Web,DVWA"
-           data-author="" >
-            <span class="post-title" title="DVWA-High-wp">DVWA-High-wp</span>
-            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
-        </a>
-        
-        <a  class="全部文章 DVWA "
            href="/2019/10/28/DVWA-Impossible-wp/"
            data-tag="writeup,Web,DVWA"
            data-author="" >
             <span class="post-title" title="DVWA-Impossible-wp">DVWA-Impossible-wp</span>
+            <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
+        </a>
+        
+        <a  class="全部文章 DVWA "
+           href="/2019/10/28/DVWA-High-wp/"
+           data-tag="writeup,Web,DVWA"
+           data-author="" >
+            <span class="post-title" title="DVWA-High-wp">DVWA-High-wp</span>
             <span class="post-date" title="2019-10-28 20:20:43">2019/10/28</span>
         </a>
         
@@ -1621,7 +1621,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-05-24 15:40:29'>2023-05-24 15:34</time>
+            发布时间 : <time class="date" title='最后更新: 2023-05-24 15:42:14'>2023-05-24 15:34</time>
         
     </div>
     <div class="article-meta">
@@ -1665,7 +1665,8 @@
 <p>1NF是所有关系型数据库的最基本要求，实际环境常使用规范化理论分解成3NF，因为分解达到BCNF的算法能保证分解的无损连接性，但不一定能保证函数依赖保持，而分解达到3NF的算法既能保持无损连接又能保证函数依赖保持。</p>
 <h2 id="2-2-事务"><a href="#2-2-事务" class="headerlink" title="2.2 事务"></a>2.2 事务</h2><p>事务的特性：ACID(原子性、一致性、隔离性、持久性)</p>
 <p>事务并发操作引发的问题：丢失修改(写后写)、幻读(读写读)、读脏数据(写读回滚)</p>
-<h2 id="2-3-封锁技术"><a href="#2-3-封锁技术" class="headerlink" title="2.3 封锁技术"></a>2.3 封锁技术</h2><p>封锁技术：封锁是实现并发控制的一种机制，即事务T在对某个数据对象操作之前，先对其加锁。<br>共享锁(Share Lock)：S锁，又称读锁，用于所有只读数据操作。<br>S锁并非独占，允许多个并发事务对同一资源加锁，但加S锁的同时不允许加X锁，即资源不能被修改。S锁通常读取结束后立即释放，无需等待事务结束。<br>排他锁(Exclusive Lock)：X锁，又称写锁，表示对数据进行写操作。<br>X锁仅允许一个事务对同一资源加锁，且直到事务结束才释放，其他任何事务必须等到X锁被释放才能访问资源。</p>
+<h2 id="2-3-封锁技术"><a href="#2-3-封锁技术" class="headerlink" title="2.3 封锁技术"></a>2.3 封锁技术</h2><p>封锁技术：封锁是实现并发控制的一种机制，即事务T在对某个数据对象操作之前，先对其加锁。</p>
+<p>共享锁(Share Lock)：S锁，又称读锁，用于所有只读数据操作。<br>S锁并非独占，允许多个并发事务对同一资源加锁，但加S锁的同时不允许加X锁，即资源不能被修改。S锁通常读取结束后立即释放，无需等待事务结束。<br>排他锁(Exclusive Lock)：X锁，又称写锁，表示对数据进行写操作。<br>X锁仅允许一个事务对同一资源加锁，且直到事务结束才释放，其他任何事务必须等到X锁被释放才能访问资源。</p>
 <h2 id="2-4-三级封锁协议"><a href="#2-4-三级封锁协议" class="headerlink" title="2.4 三级封锁协议"></a>2.4 三级封锁协议</h2><p>在运用X锁和S锁对数据对象加锁时，还需要约定一些规则，例如何时申请和释放X和S锁、持锁时间等，这些规则称为封锁协议。</p>
 <p>① 一级封锁协议：事务T在修改数据R之前必须先对其加X锁，直到事务结束才释放。<br>② 二级封锁协议：一级封锁协议加上事务T在读取数据R之前必须先对其加S锁，读完后即可释放S锁。<br>③ 三级封锁协议：一级封锁协议加上事务T在读取数据R之前必须先对其加S锁，直到事务结束才释放。</p>
 <h1 id="3-MySQL的索引类型、B-树比B树更适合索引、Hash索引和B-树区别"><a href="#3-MySQL的索引类型、B-树比B树更适合索引、Hash索引和B-树区别" class="headerlink" title="3 MySQL的索引类型、B+树比B树更适合索引、Hash索引和B+树区别"></a>3 MySQL的索引类型、B+树比B树更适合索引、Hash索引和B+树区别</h1><h2 id="3-1-MySQL的索引类型"><a href="#3-1-MySQL的索引类型" class="headerlink" title="3.1 MySQL的索引类型"></a>3.1 MySQL的索引类型</h2><p><img src="https://img-blog.csdnimg.cn/9ef27296022240f5b956ab99610bb39c.png"></p>
